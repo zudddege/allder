@@ -61,11 +61,11 @@ class OrderControllers extends Controller
     {
         return Excel::download(new UsersExport, 'zudddege.xlsx');
     }
-    public function import(Request $request) 
+    public function import() 
        
     { 
-        $file = $request->file ('file ');
-        Excel::import(new UsersImport, $file);
+        
+        Excel::import(new UsersImport, 'users.xlsx');
         
         return redirect('/')->with('success');
     }
