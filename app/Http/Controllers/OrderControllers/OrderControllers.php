@@ -61,13 +61,9 @@ class OrderControllers extends Controller
     {
         return Excel::download(new UsersExport, 'zudddege.xlsx');
     }
-    public function import() 
-       
-    { 
-        
-        Excel::import(new UsersImport, 'users.xlsx');
-        
-        return redirect('/')->with('success');
+    public function show()
+    {
+        return view('users.import');
     }
 
 
