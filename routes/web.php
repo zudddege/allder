@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','\App\Http\Controllers\OrderControllers\OrderControllers@showorder');
-Route::get('/order','\App\Http\Controllers\OrderControllers\OrderControllers@showorder');
+Route::get('/','\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
+Route::get('/order','\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
 Route::get('/users/export','\App\Http\Controllers\OrderControllers\OrderControllers@export');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
 Route::get('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@importExportView');
+
+Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');

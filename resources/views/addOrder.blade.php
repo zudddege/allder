@@ -84,8 +84,8 @@
     <!--- Animations css-->
     <link href="assets/css/animate.css" rel="stylesheet">
 
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
+    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
+        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
     <style type="text/css"
         id="s./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./package/src/animation.scss-0">
@@ -218,11 +218,11 @@
         }
 
     </style>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
+    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
+        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
+    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
+        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
 
     <style>
@@ -268,7 +268,7 @@
                 <ul class="side-menu open">
 
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="order.html"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -369,11 +369,10 @@
                                     <div class="d-flex align-items-center">
                                         <h6 class="px-2" style="padding-top: 10px;">เลขออเดอร์</h6>
                                         <div class="">
-                                            <input class="form-control" type="text" value="" id="order_no"
+                                            <input class="form-control" type="text" value="" id = "order_no"
                                                 name="order_no">
                                         </div>
-                                        <button type="button" class="btn btn-link"
-                                            id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
+                                        <button type="button" class="btn btn-link" id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
                                     </div>
                                     <hr>
 
@@ -385,42 +384,39 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value=""
-                                                    name="send_name">
+                                                <input class="form-control" type="text" value="{{ $book_name }}" name="send_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="" name="send_tel">
+                                                <input class="form-control" type="text" value="{{ $book_tel }}" name="send_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light" name="send_area"></textarea>
+                                                    class="border border-light form-control" name="send_area">{{ $book_area }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light" name="send_address"></textarea>
+                                                    class="border border-light form-control" name="send_address">{{ $book_address }}</textarea>
                                             </div>
-
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="main_address"
-                                                            value="1" id="main_address">
+                                                            value="1" id="main_address" @if($is_main_book == true) checked = "" @endif>
                                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="save_send_address"
-                                                            value="1" id="save_send_address">
+                                                            value="1" id="save_send_address" @if($is_main_book == true) checked = "" @endif>
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                         </div>
                                         <div class="col-6">
@@ -439,12 +435,12 @@
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light" name="recv_area"></textarea>
+                                                    class="border border-light form-control" name="recv_area"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light" name="recv_address"></textarea>
+                                                    class="border border-light form-control" name="recv_address"></textarea>
                                             </div>
 
                                             <div class="row">
@@ -524,7 +520,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex">
-                                        <input type="checkbox" class="mt-1">
+                                        <input type="checkbox" class="mt-1" id="accept">
                                         <p class="px-1">ฉันได้อ่านและยอมรับข้อกำหนดใน<br>
                                             <a href="#" class=""
                                                 style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
@@ -567,8 +563,8 @@
                                     </div>
                                     <div class="jumps-prevent" style="padding-top: 100px;"></div>
                                     <div class="d-flex justify-content-center">
-                                        <a class="btn btn-danger mx-2" type="reset" herf= "{{url('/add_order')}}">ยกเลิก</a> 
-                                        <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ">
+                                        <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
+                                        <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ" id="submit-button" disabled="true">
                                     </div>
                                 </div>
                             </div>
@@ -637,25 +633,37 @@
 
         <!-- custom js -->
         <script src="assets/js/custom.js"></script>
-		<script>
-            $('#main_address').on("click", function (e) {
-                if (this.checked == true) {
-                    $("#save_send_address").prop("checked", true);
-                } else {
-                    $("#save_send_address").prop("checked", false);
+
+        <script>
+            $('#main_address').on('click', function(e) {
+                if(this.checked == true) {
+                    $('#save_send_address').prop('checked', true);
                 }
             });
 
-            $('#save_send_address').on("click", function (e) {
-                if (this.checked == false) {
-                    $('#main_address').prop("checked", false);
+            $('#save_send_address').on('click', function(e) {
+                if(this.checked == false){
+                    $('#main_address').prop('checked', false);
                 }
             });
 
-            $('#auto_order_no').on("click", function (e) {
-                $('#order_no').val("{{ $order_no }}");
-            });
+            $('#accept').on('click', function(e){
+                if(this.checked == true) {
+                    $('#submit-button').prop('disabled', false);
+                }else{
+                    $('#submit-button').prop('disabled', true);
+                }
+            })
 
+            $('#auto_order_no').on('click', function(){
+                $.ajax({
+                    url : '/get_order_no',
+                    method : "GET",
+                    success : function(data){
+                        $('#order_no').val(data);
+                    }
+                })
+            });
         </script>
 
         <div class="main-navbar-backdrop"></div>

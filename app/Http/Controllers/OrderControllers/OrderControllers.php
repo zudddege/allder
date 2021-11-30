@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\OrderControllers;
 
-
 use App\User;
 use Carbon\Carbon;
 use App\Models\Order\Order;
@@ -14,27 +13,37 @@ use App\Models\AddressBook\AddressBook;
 
 class OrderControllers extends Controller
 {
-    function showorder()
+    function showOrder()
     {
         $order = order::all()->toArray();
         return view('order',compact('order'));
     }
+
     public function addOrder(){
-        $order_no = Carbon::now('Asia/Bangkok')->isoFormat("YYMMDD");
-        $order_no .= "PY01";
-        $order_no .= "001";
-        return view('addOrder')->with("order_no",  $order_no);
+        $address_book = AddressBook::select('book_name', 'book_tel', 'book_area', 'book_address','is_main_book')->where('is_main_book', true)->first();
+        if ($address_book){
+            $book_name = $address_book->book_name;
+            $book_tel = $address_book->book_tel;
+            $book_area = $address_book->book_area;
+            $book_address = $address_book->book_address;
+            $is_main_book = $address_book->is_main_book;
+        }else{
+            $book_name = $book_tel = $book_area = $book_address = "";
+            $is_main_book = false;
+        }
+        return view('addOrder', compact('book_name', 'book_tel', 'book_area', 'book_address','is_main_book'));
     }
 
     public function saveOrder(Request $request){
-        $data = $request->all();
-
-        if($request->is_main_book == "1"){
-            /*  TODO: เปลี่ยนที่อยู่หลักของบัญชีนี้ */
+        if($request->main_address){
+            $main_book = AddressBook::select('id','is_main_book')->where('is_main_book',1)->first();
+            if($main_book){
+                AddressBook::find($main_book->id)->update(['is_main_book'=> false]);
+            }
         }
 
-        if($request->save_send_address == "1" ){
-            $send_book = AddressBook::create([
+        if($request->save_send_address){
+            AddressBook::create([
                 "user_id"=>$request->user_id,
                 "book_no"=>$request->book_no,
                 "book_name"=>$request->send_name,
@@ -45,17 +54,19 @@ class OrderControllers extends Controller
             ]);
         }
 
-        if($request->save_recv_address == "1"){
-            $recv_book = AddressBook::create([
+        if($request->save_recv_address){
+            AddressBook::create([
                 "user_id"=>$request->user_id,
                 "book_no"=>$request->book_no,
                 "book_name"=>$request->recv_name,
                 "book_tel"=>$request->recv_tel,
                 "book_area"=>$request->recv_area,
-                "book_address"=>$request->recv_address
+                "book_address"=>$request->recv_address,
+                "is_main_book"=> false
             ]);
         }
-        $post = Order::create([
+
+        Order::create([
             "name" => $request->name,
             "user_id" => $request->user_id,
             "order_no" => $request->order_no,
@@ -74,29 +85,37 @@ class OrderControllers extends Controller
             "height_size" => $request->height_size,
             "cod" => $request->cod,
             "note_detail" => $request->note_detail,
-            "is_return_insurance" => $request->is_return_insurance,
-            "is_protect_insurance" => $request->is_protect_insurance,
-            "is_express_transport" => $request->is_express_transport,
-            "is_damage_insurance" => $request->is_damage_insurance,
+            "is_return_insurance" => $request->is_return_insurance ? true : false,
+            "is_protect_insurance" => $request->is_protect_insurance ? true : false,
+            "is_express_transport" => $request->is_express_transport ? true : false,
+            "is_damage_insurance" => $request->is_damage_insurance ? true : false,
             "tracking_no" => $request->tracking_no,
             "original_tracking" => $request->original_tracking,
             "return_tracking" => $request->return_tracking,
             "status" => $request->status,
             "cancel_reason" => $request->cancel_reason,
-            "create_time" => $request->create_time,
+            "create_time" => Carbon::now('Asia/Bangkok'),
             "complete_time" => $request->complete_time
         ]);
-        return redirect('/order');
+        return redirect()->back();
     }
+
+    public function genOrderNo(){
+        $order_no = Carbon::now('Asia/Bangkok')->isoFormat('YYMMDD');
+        $order_no .= "PY01";
+        $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count()+1;
+        $order_no .= str_pad($order_today , 3, '0', STR_PAD_LEFT);
+        return $order_no;
+    }
+
     public function importExportView()
     {
-       return view('importexport');
+        return view('importexport');
     }
+
     public function import() 
     {
         Excel::import(new UsersImport,request()->file('file'));
-           
         return redirect()->back();
-    } 
-    
+    }
 }
