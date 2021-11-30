@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Order\Order;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class UsersImport implements ToModel
 {

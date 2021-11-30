@@ -55,10 +55,6 @@ class OrderControllers extends Controller
                 "book_address"=>$request->recv_address
             ]);
         }
-
-
-
-
         $post = Order::create([
             "name" => $request->name,
             "user_id" => $request->user_id,
@@ -92,22 +88,15 @@ class OrderControllers extends Controller
         ]);
         return redirect('/order');
     }
-    /*  private $excel;
-
-    public function __construct(Excel $excel)
+    public function importExportView()
     {
-        $this->excel = $excel;
+       return view('importexport');
     }
-
-    public function export() 
-    {
-        return $this->excel->download(new UsersExport,'user.xlsx'); 
-    }
-    
     public function import() 
     {
         Excel::import(new UsersImport,request()->file('file'));
            
         return redirect()->back();
-    } */
+    } 
+    
 }
