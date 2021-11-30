@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\OrderControllers;
 
-use App\Http\Controllers\Controller;
+
+use App\User;
+use Carbon\Carbon;
 use App\Models\Order\Order;
 use Illuminate\Http\Request;
-use App\User;
 use App\Exports\UsersExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use App\Http\Controllers\Controller;
+use App\Models\AddressBook\AddressBook;
 
 class OrderControllers extends Controller
 {
@@ -18,12 +20,45 @@ class OrderControllers extends Controller
         return view('order',compact('order'));
     }
     public function addOrder(){
-        $a = "นี่เลขออร์เดอร์นะ";
-        return view('addOrder')->with("order_no",  $a);
+        $order_no = Carbon::now('Asia/Bangkok')->isoFormat("YYMMDD");
+        $order_no .= "PY01";
+        $order_no .= "001";
+        return view('addOrder')->with("order_no",  $order_no);
     }
 
     public function saveOrder(Request $request){
         $data = $request->all();
+
+        if($request->is_main_book == "1"){
+            /*  TODO: เปลี่ยนที่อยู่หลักของบัญชีนี้ */
+        }
+
+        if($request->save_send_address == "1" ){
+            $send_book = AddressBook::create([
+                "user_id"=>$request->user_id,
+                "book_no"=>$request->book_no,
+                "book_name"=>$request->send_name,
+                "book_tel"=>$request->send_tel,
+                "book_area"=>$request->send_area,
+                "book_address"=>$request->send_address,
+                "is_main_book"=>$request->main_address ? true : false
+            ]);
+        }
+
+        if($request->save_recv_address == "1"){
+            $recv_book = AddressBook::create([
+                "user_id"=>$request->user_id,
+                "book_no"=>$request->book_no,
+                "book_name"=>$request->recv_name,
+                "book_tel"=>$request->recv_tel,
+                "book_area"=>$request->recv_area,
+                "book_address"=>$request->recv_address
+            ]);
+        }
+
+
+
+
         $post = Order::create([
             "name" => $request->name,
             "user_id" => $request->user_id,
@@ -57,16 +92,22 @@ class OrderControllers extends Controller
         ]);
         return redirect('/order');
     }
+    /*  private $excel;
+
+    public function __construct(Excel $excel)
+    {
+        $this->excel = $excel;
+    }
+
     public function export() 
     {
-        return Excel::download(new UsersExport, 'zudddege.xlsx');
+        return $this->excel->download(new UsersExport,'user.xlsx'); 
     }
-    public function show()
-    {
-        return view('users.import');
-    }
-
-
-
     
+    public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+           
+        return redirect()->back();
+    } */
 }

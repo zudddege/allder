@@ -17,4 +17,4 @@ Route::get('/order','\App\Http\Controllers\OrderControllers\OrderControllers@sho
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
 Route::get('/users/export','\App\Http\Controllers\OrderControllers\OrderControllers@export');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
-Route::get('/import', '\App\Imports\UserImport@show');
+Route::get('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
