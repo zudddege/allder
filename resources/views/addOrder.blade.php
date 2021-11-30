@@ -98,7 +98,7 @@
             animation-duration: 1s;
             animation-fill-mode: both;
         }
-
+        
         .eva-infinite {
             animation-iteration-count: infinite;
         }
