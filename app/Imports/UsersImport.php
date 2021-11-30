@@ -15,9 +15,11 @@ class UsersImport implements ToModel
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {
+    {   
+        
         return new Order([
-            'created_at'     => $row[0],
+            
+            
             'status'         => $row[1], 
             'order_no'       => $row[2],
             'order_no'       => $row[3], 

@@ -18,6 +18,6 @@ Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderController
 Route::get('/users/export','\App\Http\Controllers\OrderControllers\OrderControllers@export');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
-Route::get('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@importExportView');
+
 
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');

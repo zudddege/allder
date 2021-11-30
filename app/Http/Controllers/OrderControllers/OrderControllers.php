@@ -10,6 +10,7 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use App\Http\Controllers\Controller;
 use App\Models\AddressBook\AddressBook;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderControllers extends Controller
 {
@@ -108,14 +109,23 @@ class OrderControllers extends Controller
         return $order_no;
     }
 
-    public function importExportView()
+    public function order() 
     {
-        return view('importexport');
+        return view('order');
     }
 
-    public function import() 
+    public function import(Request $request)
     {
-        Excel::import(new UsersImport,request()->file('file'));
+
+        if($request->file('image') !== null) {
+			$file_path = $request->file('image')->store('document', 'public');
+		}
+        $path = \Storage::disk('public')->path($file_path);
+        
+        Excel::import(new UsersImport,  $path);
+       
         return redirect()->back();
     }
+
+   
 }

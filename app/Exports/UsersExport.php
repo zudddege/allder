@@ -9,9 +9,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 
 class UsersExport implements FromCollection
 {
-    use exportable;
-
-    private $flieName = "user.xlsx";
+   
     /**
     * @return \Illuminate\Support\Collection
     */
