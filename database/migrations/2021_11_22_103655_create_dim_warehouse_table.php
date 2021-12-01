@@ -15,13 +15,13 @@ class CreateDimWarehouseTable extends Migration
     {
         Schema::create('dim_warehouse', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id")->nullable();
-            $table->string("wh_no")->nullable();
-            $table->string("wh_name")->nullable();
-            $table->string("contact_name")->nullable();
-            $table->string("wh_tel")->nullable();
-            $table->string("wh_area")->nullable();
-            $table->string("wh_address")->nullable();
+            $table->integer("user_id", 2)->nullable();
+            $table->string("wh_no", 20)->nullable();
+            $table->string("wh_name", 50)->nullable();
+            $table->string("contact_name", 50)->nullable();
+            $table->string("wh_tel", 20)->nullable();
+            $table->string("wh_area", 150)->nullable();
+            $table->string("wh_address", 200)->nullable();
             $table->timestamps();
         });
     }

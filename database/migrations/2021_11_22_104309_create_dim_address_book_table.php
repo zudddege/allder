@@ -15,12 +15,12 @@ class CreateDimAddressBookTable extends Migration
     {
         Schema::create('dim_address_book', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id")->nullable();
-            $table->string("book_no")->nullable();
-            $table->string("book_name")->nullable();
-            $table->string("book_tel")->nullable();
-            $table->string("book_area")->nullable();
-            $table->string("book_address")->nullable();
+            $table->integer("user_id", 10)->nullable();
+            $table->string("book_no", 10)->nullable();
+            $table->string("book_name", 50)->nullable();
+            $table->string("book_tel", 20)->nullable();
+            $table->string("book_area", 150)->nullable();
+            $table->string("book_address", 200)->nullable();
             $table->boolean("is_main_book")->nullable();
             $table->timestamps();
         });
