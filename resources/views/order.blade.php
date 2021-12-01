@@ -1,58 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Keywords"
-        content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4">
-
-    <!-- Title -->
     <title>Allder Express</title>
-
-    <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/icon.png" type="image/x-icon">
-
-    <!-- Icons css -->
     <link href="assets/css/icons.css" rel="stylesheet">
-
-    <!-- Bootstrap css -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Internal Data table css -->
     <link href="assets/plugins/datatable/datatables.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/responsive.dataTables.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/responsive.bootstrap5.css" rel="stylesheet">
@@ -60,77 +16,22 @@
     <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet">
-
-    <!--  Right-sidemenu css -->
     <link href="assets/plugins/sidebar/sidebar.css" rel="stylesheet">
-
-    <!-- P-scroll bar css-->
     <link href="assets/plugins/perfect-scrollbar/p-scrollbar.css" rel="stylesheet">
-
-    <!-- Sidemenu css -->
-    <link rel="stylesheet" href="assets/css/sidemenu.css">
-
-    <!--- Style css --->
+    <link href="assets/css/sidemenu.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/boxed.css" rel="stylesheet">
     <link href="assets/css/dark-boxed.css" rel="stylesheet">
-
-    <!--- Dark-mode css --->
     <link href="assets/css/style-dark.css" rel="stylesheet">
-
-    <!---Skinmodes css-->
     <link href="assets/css/skin-modes.css" rel="stylesheet">
-
-    <!--- Animations css-->
     <link href="assets/css/animate.css" rel="stylesheet">
-
-    <!--test-->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-
-    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
-
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-
-    </style>
-
-    <style>
-        body {
-            background-color:
-            #F5FAFF;
-        }
-
-    </style>
-
 </head>
 
 <body class="main-body app sidebar-mini">
-
-    <!-- Loader -->
     <div id="global-loader" style="display: none;">
         <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
     </div>
-    <!-- /Loader -->
-
-    <!-- Page -->
     <div class="page">
-
-        <!-- main-sidebar -->
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
@@ -140,9 +41,7 @@
                         class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
-
                 <ul class="side-menu open">
-
                     <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
@@ -179,7 +78,6 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html"><span
                                 class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
-
                 </ul>
             </div>
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
@@ -201,34 +99,20 @@
                 <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
             </div>
         </aside>
-        <!-- main-sidebar -->
-
-        <!-- main-content -->
         <div class="main-content app-content">
-
-            <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
-                <div class="container-fluid">
-                    <button type="button" class="btn btn-primary"
-                        style="position: absolute; left: 330;">เรียกพนักงานเข้ามารับพัสดุ</button>
-                    <button type="button" class="btn btn-primary"
-                        style="position: absolute; left: 540;">ระบุพนักงานเข้ารับพัสดุ</button>
-
+                <div class="d-flex align-items-center">
                     <div class="main-header-left ">
                         <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                             <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
                     </div>
-
+                    <button type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</button>
+                    <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
                 </div>
             </div>
-            <!-- /main-header -->
-
-            <!-- container -->
             <div class="container-fluid">
-
-                <!-- breadcrumb -->
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
                         <div class="d-flex">
@@ -236,13 +120,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- breadcrumb -->
-
-                <!-- row opened -->
                 <div class="row row-sm">
                     <div class="col-xl-12">
                         <div class="card">
-
                             <div class="card-header" style="background-color: white;">
                                 <ul class="nav main-nav-line">
                                     <li class="nav-item">
@@ -256,33 +136,31 @@
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a class="btn btn-primary mx-3" 
-                                        href="{{url('/add_order')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg> สร้างรายการ
+                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                <path
+                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                            </svg> สร้างรายการ </label>
                                     </a>
-                                    <label class="btn btn-info mx-3"  id='upload'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-upload" viewBox="0 0 16 16">
+                                    <label class="btn btn-info mx-3" id='upload'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                             <path
                                                 d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path
                                                 d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
                                         </svg> นำเข้าข้อมูล
-
                                     </label>
                                     <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
                                         @csrf
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-
-                                    <a class="btn btn-link" 
-                                        href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <a class="btn btn-link" href="{{url('/users/export')}}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path
                                                 d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path
@@ -290,10 +168,8 @@
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
                                     </a>
                                 </div>
-                                
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-
                             <div class="row px-2 mb-3">
                                 <div class="col-4">
                                     <div class="mb-1">เวลาที่ทำรายการ</div>
@@ -329,11 +205,8 @@
                                                     d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                             </svg> <u>ตัวเลือกแสดงผล</u></button>
                                     </div>
-
                                 </div>
-
                             </div>
-
                             <div class="px-2 ">
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
@@ -357,7 +230,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         @foreach($order as $row)
                                         <tr>
                                             <td><input class='subbox' type="checkbox"></td>
@@ -381,40 +253,21 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
-                    <!--/div-->
                 </div>
-                <!-- /row -->
             </div>
-            <!-- Container closed -->
         </div>
-        <!-- main-content closed -->
-
-        <!-- End Page -->
 
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-
-        <!-- JQuery min js -->
         <script src="assets/plugins/jquery/jquery.min.js"></script>
-
-        <!-- Bootstrap Bundle js -->
         <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Ionicons js -->
         <script src="assets/plugins/ionicons/ionicons.js"></script>
-
-        <!-- Moment js -->
         <script src="assets/plugins/moment/moment.js"></script>
-
-        <!-- P-scroll js -->
         <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-
-        <!-- Internal Data tables -->
         <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
         <script src="assets/plugins/datatable/datatables.min.js"></script>
         <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
@@ -426,28 +279,14 @@
         <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
         <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
         <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-
-        <!--Internal  Datatable js -->
         <script src="assets/js/table-data.js"></script>
-
-        <!-- Rating js-->
         <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
         <script src="assets/plugins/rating/jquery.barrating.js"></script>
-
-        <!-- Sidebar js -->
         <script src="assets/plugins/side-menu/sidemenu.js"></script>
-
-        <!-- Right-sidebar js -->
         <script src="assets/plugins/sidebar/sidebar.js"></script>
         <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-
-        <!-- Sticky js -->
         <script src="assets/js/sticky.js"></script>
-
-        <!-- eva-icons js -->
         <script src="assets/js/eva-icons.min.js"></script>
-
-        <!-- custom js -->
         <script src="assets/js/custom.js"></script>
 
         <script>
@@ -495,7 +334,6 @@
                     {
                         "width": "220px"
                     },
-
                 ],
                 "ordering": false
             });
@@ -508,24 +346,20 @@
             $('#upload').click(function () {
 
                 $('#me').click();
-            })
+            });
 
             function readURL(input) {
                 if (input.files && input.files[0]) {
-
-
                     $('#main-form').submit();
-
                 }
             }
+
             $('#me').on("change", function () {
                 readURL(this);
                 console.log("fff");
-
             });
 
             $('#mainbox').on('change', function (e) {
-
                 if (this.checked == true) {
                     $('.subbox').prop('checked', true)
                 } else {
@@ -535,11 +369,6 @@
             })
 
         </script>
-
-
-        <div class="main-navbar-backdrop"></div>
-        <div class="main-navbar-backdrop"></div>
-        <div class="main-navbar-backdrop"></div>
 </body>
 
 </html>
