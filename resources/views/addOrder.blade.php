@@ -241,6 +241,16 @@
 
     </style>
 
+    <style>
+        .modal-lg {
+            max-width: 90% !important;
+            /* desired relative width */
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -268,7 +278,7 @@
                 <ul class="side-menu open">
 
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="order.html"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -381,7 +391,8 @@
                                         <div class="col-6" style="border-right: 1px solid black;">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                                <a class="px-1 mt-2" style="color:blue"><u>เลือกจากสมุดที่อยู่</u></a>
+                                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                                    data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -429,7 +440,8 @@
                                         <div class="col-6">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                                <a class="px-1 mt-2" style="color:blue"><u>เลือกจากสมุดที่อยู่</u></a>
+                                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                                    data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -585,7 +597,42 @@
             <!-- Container closed -->
         </div>
         <!-- main-content closed -->
-
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class=" ">
+                        
+                            <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                        
+                    </div>
+                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                    <table class="table table-striped position-relative" id="my-table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ส่ง / ผู้รับ</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>ที่อยู่</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
+                                <td>081-123-1412</td>
+                                <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                </div>
+            </div>
+        </div>
         <!-- End Page -->
 
         <!-- Back-to-top -->

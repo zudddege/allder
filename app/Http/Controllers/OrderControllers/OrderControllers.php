@@ -41,6 +41,7 @@ class OrderControllers extends Controller
             if($main_book){
                 AddressBook::find($main_book->id)->update(['is_main_book'=> false]);
             }
+            
         }
 
         if($request->save_send_address){
@@ -98,7 +99,7 @@ class OrderControllers extends Controller
             "create_time" => Carbon::now('Asia/Bangkok'),
             "complete_time" => $request->complete_time
         ]);
-        return redirect()->back();
+        return redirect('order');
     }
 
     public function genOrderNo(){
@@ -126,6 +127,9 @@ class OrderControllers extends Controller
        
         return redirect()->back();
     }
-
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
    
 }

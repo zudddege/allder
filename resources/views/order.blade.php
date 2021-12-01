@@ -88,143 +88,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
-    <style type="text/css"
-        id="s./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./package/src/animation.scss-0">
-        /**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
-        .eva-animation {
-            animation-duration: 1s;
-            animation-fill-mode: both;
-        }
 
-        .eva-infinite {
-            animation-iteration-count: infinite;
-        }
-
-        .eva-icon-shake {
-            animation-name: eva-shake;
-        }
-
-        .eva-icon-zoom {
-            animation-name: eva-zoomIn;
-        }
-
-        .eva-icon-pulse {
-            animation-name: eva-pulse;
-        }
-
-        .eva-icon-flip {
-            animation-name: eva-flipInY;
-        }
-
-        .eva-hover {
-            display: inline-block;
-        }
-
-        .eva-hover:hover .eva-icon-hover-shake,
-        .eva-parent-hover:hover .eva-icon-hover-shake {
-            animation-name: eva-shake;
-        }
-
-        .eva-hover:hover .eva-icon-hover-zoom,
-        .eva-parent-hover:hover .eva-icon-hover-zoom {
-            animation-name: eva-zoomIn;
-        }
-
-        .eva-hover:hover .eva-icon-hover-pulse,
-        .eva-parent-hover:hover .eva-icon-hover-pulse {
-            animation-name: eva-pulse;
-        }
-
-        .eva-hover:hover .eva-icon-hover-flip,
-        .eva-parent-hover:hover .eva-icon-hover-flip {
-            animation-name: eva-flipInY;
-        }
-
-        @keyframes eva-flipInY {
-            from {
-                transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-                animation-timing-function: ease-in;
-                opacity: 0;
-            }
-
-            40% {
-                transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-                animation-timing-function: ease-in;
-            }
-
-            60% {
-                transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-                opacity: 1;
-            }
-
-            80% {
-                transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-            }
-
-            to {
-                transform: perspective(400px);
-            }
-        }
-
-        @keyframes eva-shake {
-
-            from,
-            to {
-                transform: translate3d(0, 0, 0);
-            }
-
-            10%,
-            30%,
-            50%,
-            70%,
-            90% {
-                transform: translate3d(-3px, 0, 0);
-            }
-
-            20%,
-            40%,
-            60%,
-            80% {
-                transform: translate3d(3px, 0, 0);
-            }
-        }
-
-        @keyframes eva-pulse {
-            from {
-                transform: scale3d(1, 1, 1);
-            }
-
-            50% {
-                transform: scale3d(1.2, 1.2, 1.2);
-            }
-
-            to {
-                transform: scale3d(1, 1, 1);
-            }
-        }
-
-        @keyframes eva-zoomIn {
-            from {
-                opacity: 1;
-                transform: scale3d(0.5, 0.5, 0.5);
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-    </style>
-    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
     <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
         data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
@@ -241,6 +105,14 @@
         td {
             text-align: left;
             padding: 8px;
+        }
+
+    </style>
+
+    <style>
+        body {
+            background-color:
+            #F5FAFF;
         }
 
     </style>
@@ -374,41 +246,53 @@
                             <div class="card-header" style="background-color: white;">
                                 <ul class="nav main-nav-line">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="sidebar.html">รายการเตรียมจัดส่ง</a>
+                                        <a class="nav-link active" href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="add.html">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-link" href="#">รายการจัดส่งแล้ว</a>
                                     </li>
                                 </ul>
                             </div>
+                            <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
-                                <a class="btn btn-primary" style="position: absolute; left: 45;"
-                                    href="{{url('/add_order')}}"><i class="bi bi-plus-circle"></i> สร้างรายการ</a>
-                                <label class="btn btn-success" style="position: absolute; left: 200;" id='upload'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-upload" viewBox="0 0 16 16">
-                                        <path
-                                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                        <path
-                                            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                    </svg> นำเข้าข้อมูล
-                                </label>
-                                <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
-                                    @csrf
-                                    <input type="file" style="display: none;" name="image" id='me'>
-                                </form>
+                                <div class="d-flex">
+                                    <a class="btn btn-primary mx-3" 
+                                        href="{{url('/add_order')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                        </svg> สร้างรายการ
+                                    </a>
+                                    <label class="btn btn-info mx-3"  id='upload'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-upload" viewBox="0 0 16 16">
+                                            <path
+                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path
+                                                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+                                        </svg> นำเข้าข้อมูล
 
+                                    </label>
+                                    <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
+                                        @csrf
+                                        <input type="file" style="display: none;" name="image" id='me'>
+                                    </form>
 
-                                <a class="btn btn-link" style="position: absolute; left: 320;"
-                                    href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                        <path
-                                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                        <path
-                                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                    </svg> <u>ดาวน์โหลด (Excel)</u></a>
+                                    <a class="btn btn-link" 
+                                        href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path
+                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path
+                                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                        </svg> <u>ดาวน์โหลด (Excel)</u>
+                                    </a>
+                                </div>
+                                
                             </div>
-                            <div class="jumps-prevent" style="padding-top: 45px;"></div>
+                            <div class="jumps-prevent" style="padding-top: 15px;"></div>
 
                             <div class="row px-2 mb-3">
                                 <div class="col-4">
@@ -455,7 +339,7 @@
                                     <thead>
                                         <tr>
                                             <th class="">
-                                                <input type="checkbox">
+                                                <input id='mainbox' type="checkbox">
                                             </th>
                                             <th>เวลาที่ทำรายการ</th>
                                             <th>สถานะจัดส่ง</th>
@@ -476,7 +360,7 @@
 
                                         @foreach($order as $row)
                                         <tr>
-                                            <td><input type="checkbox"></td>
+                                            <td><input class='subbox' type="checkbox"></td>
                                             <td>{{$row['created_at']}}</td>
                                             <td>{{$row['status']}}</td>
                                             <td>{{$row['order_no']}}</td>
@@ -640,7 +524,18 @@
 
             });
 
+            $('#mainbox').on('change', function (e) {
+
+                if (this.checked == true) {
+                    $('.subbox').prop('checked', true)
+                } else {
+                    $('.subbox').prop('checked', false)
+                }
+                $('.subbox')
+            })
+
         </script>
+
 
         <div class="main-navbar-backdrop"></div>
         <div class="main-navbar-backdrop"></div>
