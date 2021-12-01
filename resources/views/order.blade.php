@@ -222,11 +222,11 @@
         }
 
     </style>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
+    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
+        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
+    <script src="assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
+        data-resources-url="assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
     </script>
 
     <style>

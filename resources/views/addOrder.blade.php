@@ -98,7 +98,7 @@
             animation-duration: 1s;
             animation-fill-mode: both;
         }
-        
+
         .eva-infinite {
             animation-iteration-count: infinite;
         }
@@ -300,8 +300,8 @@
                                 class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html"><span
-                                class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html">
+                            <span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
 
                 </ul>
@@ -369,10 +369,11 @@
                                     <div class="d-flex align-items-center">
                                         <h6 class="px-2" style="padding-top: 10px;">เลขออเดอร์</h6>
                                         <div class="">
-                                            <input class="form-control" type="text" value="" id = "order_no"
+                                            <input class="form-control" type="text" value="" id="order_no"
                                                 name="order_no">
                                         </div>
-                                        <button type="button" class="btn btn-link" id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
+                                        <button type="button" class="btn btn-link"
+                                            id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
                                     </div>
                                     <hr>
 
@@ -384,35 +385,41 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="{{ $book_name }}" name="send_name">
+                                                <input class="form-control" type="text" value="{{ $book_name }}"
+                                                    name="send_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="{{ $book_tel }}" name="send_tel">
+                                                <input class="form-control" type="text" value="{{ $book_tel }}"
+                                                    name="send_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="send_area">{{ $book_area }}</textarea>
+                                                    class="border border-light form-control"
+                                                    name="send_area">{{ $book_area }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="send_address">{{ $book_address }}</textarea>
+                                                    class="border border-light form-control"
+                                                    name="send_address">{{ $book_address }}</textarea>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="main_address"
-                                                            value="1" id="main_address" @if($is_main_book == true) checked = "" @endif>
+                                                            value="1" id="main_address" @if($is_main_book==true)
+                                                            checked="" @endif>
                                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="save_send_address"
-                                                            value="1" id="save_send_address" @if($is_main_book == true) checked = "" @endif>
+                                                            value="1" id="save_send_address" @if($is_main_book==true)
+                                                            checked="" @endif>
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
@@ -435,12 +442,14 @@
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="recv_area"></textarea>
+                                                    class="border border-light form-control"
+                                                    name="recv_area"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="recv_address"></textarea>
+                                                    class="border border-light form-control"
+                                                    name="recv_address"></textarea>
                                             </div>
 
                                             <div class="row">
@@ -554,8 +563,8 @@
                                         <input type="checkbox" class="mt-1" name="is_damage_insurance" value="1">
                                         <p class="px-1">ประกันบรรจุภัณฑ์ภายนอกเสียหาย<br>
                                             <a class="text-muted">เมื่อบรรจุภัณฑ์ภายนอกเสียหายจะได้รับค่าชดเชย
-                                                <br>และเคลมเต็ม
-                                                จำนวนเงินรับประกันที่บริษัทกำหนด<br> ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
+                                                <br>และเคลมเต็ม จำนวนเงินรับประกันที่บริษัทกำหนด<br>
+                                                ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
                                                 <a href="#" class=""
                                                     style="color: blue;"><u>เงื่อนไขบริการบรรจุภัณฑ์ภายนอกเสียหาย</u></a>
                                                 <a class="text-muted">แล้ว</a></a>
@@ -564,7 +573,8 @@
                                     <div class="jumps-prevent" style="padding-top: 100px;"></div>
                                     <div class="d-flex justify-content-center">
                                         <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
-                                        <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ" id="submit-button" disabled="true">
+                                        <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ"
+                                            id="submit-button" disabled="true">
                                     </div>
                                 </div>
                             </div>
@@ -635,35 +645,36 @@
         <script src="assets/js/custom.js"></script>
 
         <script>
-            $('#main_address').on('click', function(e) {
-                if(this.checked == true) {
+            $('#main_address').on('click', function (e) {
+                if (this.checked == true) {
                     $('#save_send_address').prop('checked', true);
                 }
             });
 
-            $('#save_send_address').on('click', function(e) {
-                if(this.checked == false){
+            $('#save_send_address').on('click', function (e) {
+                if (this.checked == false) {
                     $('#main_address').prop('checked', false);
                 }
             });
 
-            $('#accept').on('click', function(e){
-                if(this.checked == true) {
+            $('#accept').on('click', function (e) {
+                if (this.checked == true) {
                     $('#submit-button').prop('disabled', false);
-                }else{
+                } else {
                     $('#submit-button').prop('disabled', true);
                 }
             })
 
-            $('#auto_order_no').on('click', function(){
+            $('#auto_order_no').on('click', function () {
                 $.ajax({
-                    url : '/get_order_no',
-                    method : "GET",
-                    success : function(data){
+                    url: '/get_order_no',
+                    method: "GET",
+                    success: function (data) {
                         $('#order_no').val(data);
                     }
                 })
             });
+
         </script>
 
         <div class="main-navbar-backdrop"></div>
