@@ -207,19 +207,19 @@
                                             </a>
                                             <div class="dropdown-menu">
                                                 <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                <input type="checkbox" id='box1'>เวลาที่ทำรายการ</input><br>
-                                                <input type="checkbox" id='box2'>สถานะจัดส่ง</input><br>
-                                                <input type="checkbox" id='box3'>เลขออเดอร์</input><br>
-                                                <input type="checkbox" id='box4'>เลขพัสดุ</input><br>
-                                                <input type="checkbox" id='box5'>แหล่งที่มา</input><br>
-                                                <input type="checkbox" id='box6'>ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box7'>เบอร์โทรศัพท์ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box8'>ผู้รับ</input><br>
-                                                <input type="checkbox" id='box9'>เบอร์โทรศัพท์ผู้รับ</input><br>
-                                                <input type="checkbox" id='box10'>ประเภทสินค้า</input><br>
-                                                <input type="checkbox" id='box11'>ยอดเก็บเงินปลายทาง</input><br>
-                                                <input type="checkbox" id='box12'>ราคาโดยประมาณ</input><br>
-                                                <input type="checkbox" id='box13'>หมายเหตุ</input><br>
+                                                <input type="checkbox" id='box1' checked="">เวลาที่ทำรายการ</input><br>
+                                                <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
+                                                <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
+                                                <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
+                                                <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
+                                                <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
+                                                <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
+                                                <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
                                             </div>
                                         </div>
 
@@ -391,93 +391,93 @@
         <script>
             $("#box1").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox1").hide();
-                } else {
                     $(".subbox1").show();
+                } else {
+                    $(".subbox1").hide();
                 }
             });
             $("#box2").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox2").hide();
-                } else {
                     $(".subbox2").show();
+                } else {
+                    $(".subbox2").hide();
                 }
             });
             $("#box3").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox3").hide();
-                } else {
                     $(".subbox3").show();
+                } else {
+                    $(".subbox3").hide();
                 }
             });
             $("#box4").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox4").hide();
-                } else {
                     $(".subbox4").show();
+                } else {
+                    $(".subbox4").hide();
                 }
             });
             $("#box5").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox5").hide();
-                } else {
                     $(".subbox5").show();
+                } else {
+                    $(".subbox5").hide();
                 }
             });
             $("#box6").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox6").hide();
-                } else {
                     $(".subbox6").show();
+                } else {
+                    $(".subbox6").hide();
                 }
             });
             $("#box7").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox7").hide();
-                } else {
                     $(".subbox7").show();
+                } else {
+                    $(".subbox7").hide();
                 }
             });
             $("#box8").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox8").hide();
-                } else {
                     $(".subbox8").show();
+                } else {
+                    $(".subbox8").hide();
                 }
             });
             $("#box9").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox9").hide();
-                } else {
                     $(".subbox9").show();
+                } else {
+                    $(".subbox9").hide();
                 }
             });
             $("#box10").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox10").hide();
-                } else {
                     $(".subbox10").show();
+                } else {
+                    $(".subbox10").hide();
                 }
             });
             $("#box11").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox11").hide();
-                } else {
                     $(".subbox11").show();
+                } else {
+                    $(".subbox11").hide();
                 }
             });
             $("#box12").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox12").hide();
-                } else {
                     $(".subbox12").show();
+                } else {
+                    $(".subbox12").hide();
                 }
             });
             $("#box13").click(function () {
                 if ($(this).prop("checked")) {
-                    $(".subbox13").hide();
-                } else {
                     $(".subbox13").show();
+                } else {
+                    $(".subbox13").hide();
                 }
             });
 
