@@ -213,11 +213,14 @@
                                                 <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
                                                 <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
                                                 <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7'
+                                                    checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
                                                 <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9'
+                                                    checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
                                                 <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
-                                                <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box11'
+                                                    checked="">ยอดเก็บเงินปลายทาง</input><br>
                                                 <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
                                                 <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
                                             </div>
@@ -249,24 +252,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($order as $row)
+                                        @foreach($orders as $order)
                                         <tr>
                                             <td><input class='subbox' type="checkbox"></td>
-                                            <td class='subbox1'>{{$row['created_at']}}</td>
-                                            <td class='subbox2'>{{$row['status']}}</td>
-                                            <td class='subbox3'>{{$row['order_no']}}</td>
-                                            <td class='subbox4'>{{$row['order_no']}}</td>
-                                            <td class='subbox5'>{{$row['order_no']}}</td>
-                                            <td class='subbox6'>{{$row['send_address']}}</td>
-                                            <td class='subbox7'>{{$row['send_tel']}}</td>
-                                            <td class='subbox8'>{{$row['recv_address']}}</td>
-                                            <td class='subbox9'>{{$row['recv_tel']}}</td>
-                                            <td class='subbox10'>{{$row['categories']}} <br> {{$row['weight']}} kg /
-                                                {{$row['width_size']}} x {{$row['length_size']}} x
-                                                {{$row['height_size']}} cm</td>
-                                            <td class='subbox11'>{{$row['cod']}}</td>
-                                            <td class='subbox12'>{{$row['cod']}}</td>
-                                            <td class='subbox13'>{{$row['note_detail']}}</td>
+                                            <td class='subbox1'>
+                                                {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                            <td class='subbox2'>{{$order->status}}</td>
+                                            <td class='subbox3'>{{$order->order_no}}</td>
+                                            <td class='subbox5'>{{$order->order_no}}</td>
+                                            <td class='subbox6'>{{$order->send_address}}</td>
+                                            <td class='subbox7'>{{$order->send_tel}}</td>
+                                            <td class='subbox4'>{{$order->order_no}}</td>
+                                            <td class='subbox8'>{{$order->recv_address}}</td>
+                                            <td class='subbox9'>{{$order->recv_tel}}</td>
+                                            <td class='subbox10'>{{$order->categories}} <br> {{$order->weight}} kg /
+                                                {{$order->width_size}} x {{$order->length_size}} x
+                                                {{$order->height_size}} cm</td>
+                                            <td class='subbox11'>{{$order->cod}}</td>
+                                            <td class='subbox12'>{{$order->cod}}</td>
+                                            <td class='subbox13'>{{$order->note_detail}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
