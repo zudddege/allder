@@ -40,8 +40,6 @@
             background-color: lightgray;
         }
 
-        .dropdown-toggle:active {}
-
     </style>
 
 </head>
