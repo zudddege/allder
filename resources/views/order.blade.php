@@ -25,6 +25,23 @@
     <link href="assets/css/style-dark.css" rel="stylesheet">
     <link href="assets/css/skin-modes.css" rel="stylesheet">
     <link href="assets/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+
+    <style>
+        th:last-child, td:last-child
+        {
+        position:sticky;
+        right:0px;
+        }
+
+        td:last-child
+        {
+            background-color: lightgray;
+        }
+
+    </style>
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -170,10 +187,10 @@
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
                             <div class="row px-2 mb-3">
-                                <div class="col-4">
-                                    <div class="mb-1">เวลาที่ทำรายการ</div>
-                                    <div style="flex: 0 0 220px;">
-                                        <input type="text" name="" class="form-control daterange icon-date " id="">
+                                <div class="col-2">
+                                    <div class="mb-1 ">เวลาที่ทำรายการ</div>
+                                    <div style="flex">
+                                        <input class="form-control" type="text"  name="datefilter" value="" />
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -190,10 +207,10 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                            เบอร์โทรศัพท</a></div>
+                                            เบอร์โทรศัพท์</a></div>
                                     <div class="d-flex ">
                                         <div class="">
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="" style="width:325px;">
                                         </div>
                                         <div class="dropdown ">
                                             <a type="button" class="btn btn-link dropdown-toggle" herf="#"
@@ -213,11 +230,14 @@
                                                 <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
                                                 <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
                                                 <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7'
+                                                    checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
                                                 <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9'
+                                                    checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
                                                 <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
-                                                <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box11'
+                                                    checked="">ยอดเก็บเงินปลายทาง</input><br>
                                                 <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
                                                 <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
                                             </div>
@@ -246,6 +266,7 @@
                                             <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
                                             <th class='subbox12'>ราคาโดยประมาณ</th>
                                             <th class='subbox13'>หมายเหตุ</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -267,6 +288,7 @@
                                             <td class='subbox11'>{{$row['cod']}}</td>
                                             <td class='subbox12'>{{$row['cod']}}</td>
                                             <td class='subbox13'>{{$row['note_detail']}}</td>
+                                            <td><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -352,6 +374,9 @@
                     },
                     {
                         "width": "220px"
+                    },
+                    {
+                        "width": "120px"
                     },
                 ],
                 "ordering": false
@@ -482,6 +507,38 @@
             });
 
         </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
+        </script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+        <script type="text/javascript">
+            $(function () {
+
+                $('input[name="datefilter"]').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear'
+                    }
+                });
+
+                $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                    $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
+                        'DD/MM/YYYY'));
+                });
+
+                $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                    $(this).val('');
+                });
+
+            });
+
+        </script>
+
+
 </body>
 
 </html>
