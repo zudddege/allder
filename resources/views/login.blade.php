@@ -37,9 +37,8 @@
 </head>
 
 <body>
-    <div id="global-loader" style="display: none;">
-        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
-    </div>
+    
+
     <div class="page">
         <div class="jumps-prevent" style="padding-top: 40px;"></div>
         <div class="d-flex justify-content-center">

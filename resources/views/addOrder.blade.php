@@ -25,12 +25,21 @@
     <link href="assets/css/style-dark.css" rel="stylesheet">
     <link href="assets/css/skin-modes.css" rel="stylesheet">
     <link href="assets/css/animate.css" rel="stylesheet">
+
+    <style>
+        .modal-lg {
+            max-width: 70% !important;
+            /* desired relative width */
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
-    <div id="global-loader" style="display: none;">
-        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
-    </div>
+    
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">

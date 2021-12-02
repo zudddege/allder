@@ -28,9 +28,8 @@
 </head>
 
 <body class="main-body app sidebar-mini">
-    <div id="global-loader" style="display: none;">
-        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
-    </div>
+    
+
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
