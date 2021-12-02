@@ -191,7 +191,7 @@
                                 <div class="col-2">
                                     <div class="mb-1 ">เวลาที่ทำรายการ</div>
                                     <div style="flex">
-                                        <input class="form-control" type="text"  name="datefilter" value="" />
+                                        <input class="form-control daterange" type="text" name="datefilter" value="" />
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -206,7 +206,7 @@
                                         <input class="form-control" type="text" value="">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
                                             เบอร์โทรศัพท์</a></div>
                                     <div class="d-flex ">
@@ -214,18 +214,19 @@
                                             <input class="form-control" type="text" value="" style="width:325px;">
                                         </div>
                                         <div class="dropdown ">
-                                            <a type="button" class="btn btn-link dropdown-toggle" herf="#"
-                                                data-toggle="dropdown">
+                                            <button aria-expanded="false" aria-haspopup="true"
+                                                class="btn ripple btn-link  dropdown-toggle mt-n1"
+                                                data-toggle="dropdown" id="dropleftMenuButton" type="button"
+                                                aria-haspopup="true" aria-expanded="false" style="font-size: 16px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-layout-three-columns"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                                </svg> <u>ตัวเลือกแสดงผล</u>
-                                            </a>
+                                                    fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
+                                                    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                                </svg> <u>ตัวเลือกการแสดงผล</u>
+                                            </button>
                                             <div class="dropdown-menu">
                                                 <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                <input type="checkbox" id='box1' checked="">เวลาที่ทำรายการ</input><br>
+                                                <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
+                                                </input><br>
                                                 <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
                                                 <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
                                                 <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
@@ -535,6 +536,40 @@
                     $(this).val('');
                 });
 
+            });
+            $(function () {
+
+                var start = moment().subtract(15, 'days');
+                var end = moment();
+
+
+
+                function cb(start, end) {
+                    $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                        'MMMM D, YYYY'));
+                }
+
+                $('.daterange').daterangepicker({
+                    startDate: start,
+                    endDate: end,
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
+                            .subtract(1, 'month').endOf('month')
+                        ]
+                    }
+                }, cb);
+
+                $('4.daterange').on('apply.daterangepicker', function (ev, picker) {
+                    console.log(picker.startDate.format('YYYY-MM-DD'));
+                    console.log(picker.endDate.format('YYYY-MM-DD'));
+                });
+
+                cb(start, end);
             });
 
         </script>
