@@ -30,15 +30,17 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
     <style>
-        th:last-child,
-        td:last-child {
+        .table th:last-child,
+        .table td:last-child {
             position: sticky;
             right: 0px;
         }
 
-        td:last-child {
+        .table td:last-child {
             background-color: lightgray;
         }
+
+        .dropdown-toggle:active {}
 
     </style>
 
@@ -189,7 +191,7 @@
                             <div class="row px-2 mb-3">
                                 <div class="col-2">
                                     <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                    <div style="flex">
+                                    <div>
                                         <input class="form-control daterange" type="text" name="datefilter" value="" />
                                     </div>
                                 </div>
@@ -213,10 +215,9 @@
                                             <input class="form-control" type="text" value="" style="width:325px;">
                                         </div>
                                         <div class="dropdown ">
-                                            <button aria-expanded="false" aria-haspopup="true"
-                                                class="btn ripple btn-link  dropdown-toggle mt-n1"
-                                                data-toggle="dropdown" id="dropleftMenuButton" type="button"
-                                                aria-haspopup="true" aria-expanded="false" style="font-size: 16px;">
+                                            <button class="btn btn-link dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-layout-three-columns"
                                                     viewBox="0 0 16 16">
@@ -224,7 +225,7 @@
                                                         d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                 </svg> <u>ตัวเลือกการแสดงผล</u>
                                             </button>
-                                            <div class="dropdown-menu">
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
                                                 <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
                                                 </input><br>
