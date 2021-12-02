@@ -28,7 +28,7 @@
 </head>
 
 <body class="main-body app sidebar-mini">
-    
+
 
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
@@ -172,9 +172,8 @@
                             <div class="row px-2 mb-3">
                                 <div class="col-4">
                                     <div class="mb-1">เวลาที่ทำรายการ</div>
-                                    <div class="">
-                                        <input class="form-control" type="text"
-                                            value="18/10/2564 - 09:00 am ถึง 18/10/2564 - 09:00 am">
+                                    <div style="flex: 0 0 220px;">
+                                        <input type="text" name="" class="form-control daterange icon-date " id="">
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -196,13 +195,34 @@
                                         <div class="">
                                             <input class="form-control" type="text" value="">
                                         </div>
-                                        <button type="button" class="btn btn-link"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-layout-three-columns"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                            </svg> <u>ตัวเลือกแสดงผล</u></button>
+                                        <div class="dropdown ">
+                                            <a type="button" class="btn btn-link dropdown-toggle" herf="#"
+                                                data-toggle="dropdown">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-layout-three-columns"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                                </svg> <u>ตัวเลือกแสดงผล</u>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                <input type="checkbox" id='box1'>เวลาที่ทำรายการ</input><br>
+                                                <input type="checkbox" id='box2'>สถานะจัดส่ง</input><br>
+                                                <input type="checkbox" id='box3'>เลขออเดอร์</input><br>
+                                                <input type="checkbox" id='box4'>เลขพัสดุ</input><br>
+                                                <input type="checkbox" id='box5'>แหล่งที่มา</input><br>
+                                                <input type="checkbox" id='box6'>ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7'>เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box8'>ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9'>เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box10'>ประเภทสินค้า</input><br>
+                                                <input type="checkbox" id='box11'>ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box12'>ราคาโดยประมาณ</input><br>
+                                                <input type="checkbox" id='box13'>หมายเหตุ</input><br>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -213,40 +233,40 @@
                                             <th class="">
                                                 <input id='mainbox' type="checkbox">
                                             </th>
-                                            <th>เวลาที่ทำรายการ</th>
-                                            <th>สถานะจัดส่ง</th>
-                                            <th>เลขออเดอร์</th>
-                                            <th>เลขพัสดุ</th>
-                                            <th>แหล่งที่มา</th>
-                                            <th>ผู้ส่ง</th>
-                                            <th>เบอร์โทรศัพท์ผู้ส่ง</th>
-                                            <th>ผู้รับ </th>
-                                            <th>เบอร์โทรศัพท์ผู้รับ</th>
-                                            <th>ประเภทสินค้า</th>
-                                            <th>ยอดเก็บเงินปลายทาง</th>
-                                            <th>ราคาโดยประมาณ</th>
-                                            <th>หมายเหตุ</th>
+                                            <th class='subbox1'>เวลาที่ทำรายการ</th>
+                                            <th class='subbox2'>สถานะจัดส่ง</th>
+                                            <th class='subbox3'>เลขออเดอร์</th>
+                                            <th class='subbox4'>เลขพัสดุ</th>
+                                            <th class='subbox5'>แหล่งที่มา</th>
+                                            <th class='subbox6'>ผู้ส่ง</th>
+                                            <th class='subbox7'>เบอร์โทรศัพท์ผู้ส่ง</th>
+                                            <th class='subbox8'>ผู้รับ </th>
+                                            <th class='subbox9'>เบอร์โทรศัพท์ผู้รับ</th>
+                                            <th class='subbox10'>ประเภทสินค้า</th>
+                                            <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
+                                            <th class='subbox12'>ราคาโดยประมาณ</th>
+                                            <th class='subbox13'>หมายเหตุ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($order as $row)
                                         <tr>
                                             <td><input class='subbox' type="checkbox"></td>
-                                            <td>{{$row['created_at']}}</td>
-                                            <td>{{$row['status']}}</td>
-                                            <td>{{$row['order_no']}}</td>
-                                            <td>{{$row['order_no']}}</td>
-                                            <td>{{$row['order_no']}}</td>
-                                            <td>{{$row['send_address']}}</td>
-                                            <td>{{$row['send_tel']}}</td>
-                                            <td>{{$row['recv_address']}}</td>
-                                            <td>{{$row['recv_tel']}}</td>
-                                            <td>{{$row['categories']}} <br> {{$row['weight']}} kg /
+                                            <td class='subbox1'>{{$row['created_at']}}</td>
+                                            <td class='subbox2'>{{$row['status']}}</td>
+                                            <td class='subbox3'>{{$row['order_no']}}</td>
+                                            <td class='subbox4'>{{$row['order_no']}}</td>
+                                            <td class='subbox5'>{{$row['order_no']}}</td>
+                                            <td class='subbox6'>{{$row['send_address']}}</td>
+                                            <td class='subbox7'>{{$row['send_tel']}}</td>
+                                            <td class='subbox8'>{{$row['recv_address']}}</td>
+                                            <td class='subbox9'>{{$row['recv_tel']}}</td>
+                                            <td class='subbox10'>{{$row['categories']}} <br> {{$row['weight']}} kg /
                                                 {{$row['width_size']}} x {{$row['length_size']}} x
                                                 {{$row['height_size']}} cm</td>
-                                            <td>{{$row['cod']}}</td>
-                                            <td>{{$row['cod']}}</td>
-                                            <td>{{$row['note_detail']}}</td>
+                                            <td class='subbox11'>{{$row['cod']}}</td>
+                                            <td class='subbox12'>{{$row['cod']}}</td>
+                                            <td class='subbox13'>{{$row['note_detail']}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -366,6 +386,100 @@
                 }
                 $('.subbox')
             })
+
+        </script>
+        <script>
+            $("#box1").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox1").hide();
+                } else {
+                    $(".subbox1").show();
+                }
+            });
+            $("#box2").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox2").hide();
+                } else {
+                    $(".subbox2").show();
+                }
+            });
+            $("#box3").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox3").hide();
+                } else {
+                    $(".subbox3").show();
+                }
+            });
+            $("#box4").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox4").hide();
+                } else {
+                    $(".subbox4").show();
+                }
+            });
+            $("#box5").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox5").hide();
+                } else {
+                    $(".subbox5").show();
+                }
+            });
+            $("#box6").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox6").hide();
+                } else {
+                    $(".subbox6").show();
+                }
+            });
+            $("#box7").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox7").hide();
+                } else {
+                    $(".subbox7").show();
+                }
+            });
+            $("#box8").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox8").hide();
+                } else {
+                    $(".subbox8").show();
+                }
+            });
+            $("#box9").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox9").hide();
+                } else {
+                    $(".subbox9").show();
+                }
+            });
+            $("#box10").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox10").hide();
+                } else {
+                    $(".subbox10").show();
+                }
+            });
+            $("#box11").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox11").hide();
+                } else {
+                    $(".subbox11").show();
+                }
+            });
+            $("#box12").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox12").hide();
+                } else {
+                    $(".subbox12").show();
+                }
+            });
+            $("#box13").click(function () {
+                if ($(this).prop("checked")) {
+                    $(".subbox13").hide();
+                } else {
+                    $(".subbox13").show();
+                }
+            });
 
         </script>
 </body>
