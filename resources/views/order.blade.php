@@ -30,13 +30,13 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
     <style>
-        th:last-child,
-        td:last-child {
+        .table th:last-child,
+        .table td:last-child {
             position: sticky;
             right: 0px;
         }
 
-        td:last-child {
+        .table td:last-child {
             background-color: lightgray;
         }
 
@@ -189,7 +189,7 @@
                             <div class="row px-2 mb-3">
                                 <div class="col-2">
                                     <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                    <div style="flex">
+                                    <div>
                                         <input class="form-control daterange" type="text" name="datefilter" value="" />
                                     </div>
                                 </div>
