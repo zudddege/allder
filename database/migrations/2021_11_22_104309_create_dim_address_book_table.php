@@ -4,18 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDimAddressBookTable extends Migration
-{
+class CreateDimAddressBookTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('dim_address_book', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id", 10)->nullable();
+            $table->integer("user_id")->length(10)->nullable();
             $table->string("book_no", 10)->nullable();
             $table->string("book_name", 50)->nullable();
             $table->string("book_tel", 20)->nullable();
@@ -31,8 +29,7 @@ class CreateDimAddressBookTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('dim_address_book');
     }
 }

@@ -15,7 +15,7 @@ class CreateDimWarehouseTable extends Migration
     {
         Schema::create('dim_warehouse', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id", 2)->nullable();
+            $table->integer("user_id")->length(10)->nullable();
             $table->string("wh_no", 20)->nullable();
             $table->string("wh_name", 50)->nullable();
             $table->string("contact_name", 50)->nullable();

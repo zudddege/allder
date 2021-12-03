@@ -15,7 +15,7 @@ class CreateFactOrderTable extends Migration
     {
         Schema::create('fact_order', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id", 10)->nullable();
+            $table->integer("user_id")->length(10)->nullable();
             $table->string("order_no", 20)->nullable();
             $table->string("send_name", 50)->nullable();
             $table->string("send_tel", 20)->nullable();
