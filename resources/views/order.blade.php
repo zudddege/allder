@@ -30,14 +30,13 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
     <style>
-        th:last-child, td:last-child
-        {
-        position:sticky;
-        right:0px;
+        .table th:last-child,
+        .table td:last-child {
+            position: sticky;
+            right: 0px;
         }
 
-        td:last-child
-        {
+        .table td:last-child {
             background-color: lightgray;
         }
 
@@ -190,8 +189,8 @@
                             <div class="row px-2 mb-3">
                                 <div class="col-2">
                                     <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                    <div style="flex">
-                                        <input class="form-control" type="text"  name="datefilter" value="" />
+                                    <div>
+                                        <input class="form-control daterange" type="text" name="datefilter" value="" />
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -206,7 +205,7 @@
                                         <input class="form-control" type="text" value="">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
                                             เบอร์โทรศัพท์</a></div>
                                     <div class="d-flex ">
@@ -214,18 +213,20 @@
                                             <input class="form-control" type="text" value="" style="width:325px;">
                                         </div>
                                         <div class="dropdown ">
-                                            <a type="button" class="btn btn-link dropdown-toggle" herf="#"
-                                                data-toggle="dropdown">
+                                            <button class="btn btn-link dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-layout-three-columns"
                                                     viewBox="0 0 16 16">
                                                     <path
                                                         d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                                </svg> <u>ตัวเลือกแสดงผล</u>
-                                            </a>
-                                            <div class="dropdown-menu">
+                                                </svg> <u>ตัวเลือกการแสดงผล</u>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                <input type="checkbox" id='box1' checked="">เวลาที่ทำรายการ</input><br>
+                                                <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
+                                                </input><br>
                                                 <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
                                                 <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
                                                 <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
@@ -271,24 +272,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($order as $row)
+                                        @foreach($orders as $order)
                                         <tr>
                                             <td><input class='subbox' type="checkbox"></td>
-                                            <td class='subbox1'>{{$row['created_at']}}</td>
-                                            <td class='subbox2'>{{$row['status']}}</td>
-                                            <td class='subbox3'>{{$row['order_no']}}</td>
-                                            <td class='subbox4'>{{$row['order_no']}}</td>
-                                            <td class='subbox5'>{{$row['order_no']}}</td>
-                                            <td class='subbox6'>{{$row['send_address']}}</td>
-                                            <td class='subbox7'>{{$row['send_tel']}}</td>
-                                            <td class='subbox8'>{{$row['recv_address']}}</td>
-                                            <td class='subbox9'>{{$row['recv_tel']}}</td>
-                                            <td class='subbox10'>{{$row['categories']}} <br> {{$row['weight']}} kg /
-                                                {{$row['width_size']}} x {{$row['length_size']}} x
-                                                {{$row['height_size']}} cm</td>
-                                            <td class='subbox11'>{{$row['cod']}}</td>
-                                            <td class='subbox12'>{{$row['cod']}}</td>
-                                            <td class='subbox13'>{{$row['note_detail']}}</td>
+                                            <td class='subbox1'>
+                                                {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                            <td class='subbox2'>{{$order->status}}</td>
+                                            <td class='subbox3'>{{$order->order_no}}</td>
+                                            <td class='subbox4'>{{$order->order_no}}</td>
+                                            <td class='subbox5'>{{$order->order_no}}</td>
+                                            <td class='subbox6'>{{$order->send_address}}</td>
+                                            <td class='subbox7'>{{$order->send_tel}}</td>
+                                            <td class='subbox8'>{{$order->recv_address}}</td>
+                                            <td class='subbox9'>{{$order->recv_tel}}</td>
+                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
+                                                {{$order->width_size}} x {{$order->length_size}} x
+                                                {{$order->height_size}} cm</td>
+                                            <td class='subbox11'>{{$order->cod}}</td>
+                                            <td class='subbox12'>{{$order->cod}}</td>
+                                            <td class='subbox13'>{{$order->note_detail}}</td>
                                             <td><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
@@ -515,7 +517,6 @@
         <link rel="stylesheet" type="text/css"
             href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-
         <script type="text/javascript">
             $(function () {
 
@@ -536,10 +537,38 @@
                 });
 
             });
+            $(function () {
+                var start = moment().subtract(15, 'days');
+                var end = moment();
+
+                function cb(start, end) {
+                    $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                        'MMMM D, YYYY'));
+                }
+
+                $('.daterange').daterangepicker({
+                    startDate: start,
+                    endDate: end,
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
+                            .subtract(1, 'month').endOf('month')
+                        ]
+                    }
+                }, cb);
+
+                $('4.daterange').on('apply.daterangepicker', function (ev, picker) {
+                    console.log(picker.startDate.format('YYYY-MM-DD'));
+                    console.log(picker.endDate.format('YYYY-MM-DD'));
+                });
+                cb(start, end);
+            });
 
         </script>
-
-
 </body>
 
 </html>

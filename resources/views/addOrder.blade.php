@@ -39,7 +39,7 @@
 </head>
 
 <body class="main-body app sidebar-mini">
-    
+
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
@@ -236,7 +236,7 @@
                                             <p class="mb-1">ประเภทสินค้า</p>
                                             <select class="custom-select my-1 mr-sm-2 border-light"
                                                 id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;"
-                                                name="categories">
+                                                name="category">
                                                 <option disabled>ประเภทสินค้า</option>
                                                 <option value="เอกสาร">เอกสาร</option>
                                                 <option value="อาหารแห้ง">อาหารแห้ง</option>

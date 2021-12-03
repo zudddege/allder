@@ -9,12 +9,14 @@ use App\Models\AddressBook\AddressBook;
 use App\Models\Order\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OrderControllers extends Controller {
     public function showOrder() {
-        $order = order::all()->toArray();
-        return view('order', compact('order'));
+        $orders = Order::all();
+
+        return view('order', compact('orders'));
     }
 
     public function addOrder() {
@@ -29,6 +31,7 @@ class OrderControllers extends Controller {
             $book_name = $book_tel = $book_area = $book_address = "";
             $is_main_book = false;
         }
+
         return view('addOrder', compact('book_name', 'book_tel', 'book_area', 'book_address', 'is_main_book'));
     }
 
@@ -77,7 +80,7 @@ class OrderControllers extends Controller {
             "recv_tel" => $request->recv_tel,
             "recv_area" => $request->recv_area,
             "recv_address" => $request->recv_address,
-            "categories" => $request->categories,
+            "category" => $request->category,
             "weight" => $request->weight,
             "width_size" => $request->width_size,
             "length_size" => $request->length_size,
@@ -96,6 +99,7 @@ class OrderControllers extends Controller {
             "create_time" => Carbon::now('Asia/Bangkok'),
             "complete_time" => $request->complete_time,
         ]);
+
         return redirect('order');
     }
 
@@ -104,6 +108,7 @@ class OrderControllers extends Controller {
         $order_no .= "PY01";
         $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count() + 1;
         $order_no .= str_pad($order_today, 3, '0', STR_PAD_LEFT);
+
         return $order_no;
     }
 
@@ -115,8 +120,9 @@ class OrderControllers extends Controller {
         if ($request->file('image') !== null) {
             $file_path = $request->file('image')->store('document', 'public');
         }
-        $path = \Storage::disk('public')->path($file_path);
+        $path = Storage::disk('public')->path($file_path);
         Excel::import(new UsersImport, $path);
+
         return redirect()->back();
     }
 
