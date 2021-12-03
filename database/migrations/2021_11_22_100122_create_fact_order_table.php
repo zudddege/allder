@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFactOrderTable extends Migration
-{
+class CreateFactOrderTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('fact_order', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id")->length(10)->nullable();
@@ -26,11 +24,11 @@ class CreateFactOrderTable extends Migration
             $table->string("recv_area", 150)->nullable();
             $table->string("recv_address", 200)->nullable();
             $table->string("category", 20)->nullable();
-            $table->decimal("weight", 3, 2)->nullable();
-            $table->decimal("width_size", 4, 2)->nullable();
-            $table->decimal("length_size", 4, 2)->nullable();
-            $table->decimal("height_size", 4, 2)->nullable();
-            $table->decimal("cod", 7, 2)->nullable();
+            $table->decimal("weight", 5, 2)->nullable();
+            $table->decimal("width_size", 6, 2)->nullable();
+            $table->decimal("length_size", 6, 2)->nullable();
+            $table->decimal("height_size", 6, 2)->nullable();
+            $table->decimal("cod", 9, 2)->nullable();
             $table->string("note_detail", 200)->nullable();
             $table->boolean("is_return_insurance")->nullable();
             $table->boolean("is_protect_insurance")->nullable();
@@ -52,8 +50,7 @@ class CreateFactOrderTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('fact_order');
     }
 }

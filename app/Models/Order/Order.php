@@ -17,7 +17,7 @@ class Order extends Model {
         "recv_tel",
         "recv_area",
         "recv_address",
-        "categories",
+        "category",
         "weight",
         "width_size",
         "length_size",

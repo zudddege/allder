@@ -285,7 +285,7 @@
                                             <td class='subbox7'>{{$order->send_tel}}</td>
                                             <td class='subbox8'>{{$order->recv_address}}</td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
-                                            <td class='subbox10'>{{$order->categories}} <br> {{$order->weight}} kg /
+                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
                                                 {{$order->width_size}} x {{$order->length_size}} x
                                                 {{$order->height_size}} cm</td>
                                             <td class='subbox11'>{{$order->cod}}</td>

@@ -80,7 +80,7 @@ class OrderControllers extends Controller {
             "recv_tel" => $request->recv_tel,
             "recv_area" => $request->recv_area,
             "recv_address" => $request->recv_address,
-            "categories" => $request->categories,
+            "category" => $request->category,
             "weight" => $request->weight,
             "width_size" => $request->width_size,
             "length_size" => $request->length_size,
