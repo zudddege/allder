@@ -279,10 +279,10 @@
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             <td class='subbox2'>{{$order->status}}</td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
+                                            <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
                                             <td class='subbox6'>{{$order->send_address}}</td>
                                             <td class='subbox7'>{{$order->send_tel}}</td>
-                                            <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox8'>{{$order->recv_address}}</td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
                                             <td class='subbox10'>{{$order->categories}} <br> {{$order->weight}} kg /
