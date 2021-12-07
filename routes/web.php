@@ -30,6 +30,7 @@ Route::get('/edit', '\App\Http\Controllers\OrderControllers\OrderControllers@edi
 Route::get('/remove', '\App\Http\Controllers\OrderControllers\OrderControllers@remove');
 Route::get('/cancel', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
 Route::get('/ordersuccess','\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
-
-
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
+Route::post('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
+
+
