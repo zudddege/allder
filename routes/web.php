@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login', function(){
-    return view('login');
+    return view('Login_page.login');
+});
+
+Route::get('/edit', function(){
+    return view('edit');
 });
 
 Route::get('/','\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
