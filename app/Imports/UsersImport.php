@@ -22,7 +22,7 @@ class UsersImport implements ToModel {
             'send_tel' => $row[6],
             'recv_address' => $row[7],
             'recv_tel' => $row[8],
-            'categories' => $row[9],
+            'category' => $row[9],
             'weight' => $row[10],
             'width_size' => $row[11],
             'length_size' => $row[12],

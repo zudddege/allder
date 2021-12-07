@@ -14,7 +14,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class OrderControllers extends Controller {
     public function showOrder() {
-
         $orders = Order::all();
 
         return view('order', compact('orders'));
@@ -40,7 +39,6 @@ class OrderControllers extends Controller {
             if ($main_book) {
                 AddressBook::find($main_book->id)->update(['is_main_book' => false]);
             }
-
         }
 
         if ($request->save_send_address) {
@@ -98,7 +96,7 @@ class OrderControllers extends Controller {
             "complete_time" => $request->complete_time,
         ]);
 
-        return redirect('/');
+        return redirect('/order');
     }
 
     public function genOrderNo() {

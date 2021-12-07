@@ -12,16 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('/login', function () {
-    return view('login');
-});
 
 Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
+Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
 Route::post('/export', '\App\Http\Controllers\OrderControllers\OrderControllers@export');
-
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/get_address_book', '\App\Http\Controllers\OrderControllers\OrderControllers@addressBook');
 Route::get('/fetch_book', '\App\Http\Controllers\OrderControllers\OrderControllers@fetchBook');
@@ -31,3 +28,4 @@ Route::get('/cancel', '\App\Http\Controllers\OrderControllers\OrderControllers@c
 Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::post('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
+Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');

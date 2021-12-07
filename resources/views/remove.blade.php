@@ -213,7 +213,7 @@
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
                                             <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -256,7 +256,7 @@
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
                                             <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -400,7 +400,8 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">ต้องการยกเลิกรายการใช่หรือไม่
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                        ต้องการยกเลิกรายการใช่หรือไม่
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -412,8 +413,9 @@
                                                     <input class="form-control" type="text" value="">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="{{url('/cancel')}}"  class="btn btn-danger">ยกเลิกรายการ</a>
-                                                    <button type="button" class="btn btn-outline-primary">เก็บไว้ก่อน</button>
+                                                    <a href="{{url('/cancel')}}" class="btn btn-danger">ยกเลิกรายการ</a>
+                                                    <button type="button"
+                                                        class="btn btn-outline-primary">เก็บไว้ก่อน</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -423,8 +425,10 @@
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{url('/order')}}" class="btn btn-danger mx-2" style="color: red;">ยกเลิก</a>
-                                    <a href="{{url('/order')}}" id="submit-button" disabled="true" class="btn btn-primary mx-2" style="color: white;">บันทึกการแก้ไข</a>
+                                    <a href="{{url('/order')}}" class="btn btn-danger mx-2"
+                                        style="color: red;">ยกเลิก</a>
+                                    <a href="{{url('/order')}}" id="submit-button" disabled="true"
+                                        class="btn btn-primary mx-2" style="color: white;">บันทึกการแก้ไข</a>
                                 </div>
 
 
@@ -440,40 +444,40 @@
         <!-- main-content closed -->
 
         <!-- End Page -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
-                <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                <h5><b>เลือกจากสมุดที่อยู่</b></h5>
-                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
-                <div class=" ">
-                    <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class=" ">
+                        <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                    </div>
+                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                    <table class="table table-striped position-relative" id="my-table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ส่ง / ผู้รับ</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>ที่อยู่</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
+                                <td>081-123-1412</td>
+                                <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
-                <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                <table class="table table-striped position-relative" id="my-table">
-                    <thead>
-                        <tr>
-                            <th>ชื่อผู้ส่ง / ผู้รับ</th>
-                            <th>เบอร์โทรศัพท์</th>
-                            <th>ที่อยู่</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
-                            <td>081-123-1412</td>
-                            <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="jumps-prevent" style="padding-top: 25px;"></div>
             </div>
         </div>
-    </div>
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
         <script src="assets/plugins/jquery/jquery.min.js"></script>
@@ -512,6 +516,7 @@
                     $('#submit-button').prop('disabled', true);
                 }
             })
+
         </script>
 
 </body>

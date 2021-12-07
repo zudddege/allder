@@ -175,15 +175,15 @@
                                         @csrf
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-                                    <a class="btn btn-link" href="{{url('/users/export')}}"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <label class="btn btn-link" id='export'><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16" fill="currentColor" class="bi bi-download"
+                                            viewBox="0 0 16 16">
                                             <path
                                                 d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path
                                                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
+                                    </label>
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
@@ -260,9 +260,7 @@
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
                                         <tr>
-                                            <th class="">
-                                                <input id='mainbox' type="checkbox">
-                                            </th>
+                                            <th class=""><input id='mainbox' type="checkbox"></th>
                                             <th class='subbox1'>เวลาที่ทำรายการ</th>
                                             <th class='subbox2'>สถานะจัดส่ง</th>
                                             <th class='subbox3'>เลขออเดอร์</th>
@@ -289,9 +287,12 @@
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
-                                            <td class='subbox6'>{{$order->send_address}}</td>
+                                            <td class='subbox6'>{{$order->send_name}}<br>
+                                                <a class="text-muted">{{$order->send_address}}</a></td>
                                             <td class='subbox7'>{{$order->send_tel}}</td>
-                                            <td class='subbox8'>{{$order->recv_address}}</td>
+                                            <td class='subbox8'>{{$order->recv_name}}<br>
+                                                <a class="text-muted">{{$order->recv_address}}</a></td>
+                                            </td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
                                             <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
                                                 {{$order->width_size}} x {{$order->length_size}} x
@@ -311,272 +312,359 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Back-to-top -->
-        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/plugins/ionicons/ionicons.js"></script>
-        <script src="assets/plugins/moment/moment.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-        <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-        <script src="assets/plugins/datatable/datatables.min.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-        <script src="assets/plugins/datatable/js/jszip.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-        <script src="assets/js/table-data.js"></script>
-        <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
-        <script src="assets/plugins/rating/jquery.barrating.js"></script>
-        <script src="assets/plugins/side-menu/sidemenu.js"></script>
-        <script src="assets/plugins/sidebar/sidebar.js"></script>
-        <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-        <script src="assets/js/sticky.js"></script>
-        <script src="assets/js/eva-icons.min.js"></script>
-        <script src="assets/js/custom.js"></script>
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/ionicons/ionicons.js"></script>
+    <script src="assets/plugins/moment/moment.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/datatables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+    <script src="assets/plugins/datatable/js/jszip.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+    <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+    <script src="assets/js/table-data.js"></script>
+    <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+    <script src="assets/plugins/rating/jquery.barrating.js"></script>
+    <script src="assets/plugins/side-menu/sidemenu.js"></script>
+    <script src="assets/plugins/sidebar/sidebar.js"></script>
+    <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
+    <script src="assets/js/sticky.js"></script>
+    <script src="assets/js/eva-icons.min.js"></script>
+    <script src="assets/js/custom.js"></script>
 
-        <script>
-            $('#my-table').DataTable({
-                scrollX: true,
-                "columns": [{
-                        "width": "2%"
-                    },
-                    {
-                        "width": "175px"
-                    },
-                    {
-                        "width": "90px"
-                    },
-                    {
-                        "width": "5%"
-                    },
-                    {
-                        "width": "5%"
-                    },
-                    {
-                        "width": "60px"
-                    },
-                    {
-                        "width": "700px"
-                    },
-                    {
-                        "width": "120px"
-                    },
-                    {
-                        "width": "700px"
-                    },
-                    {
-                        "width": "120px"
-                    },
-                    {
-                        "width": "300px"
-                    },
-                    {
-                        "width": "150px"
-                    },
-                    {
-                        "width": "120px"
-                    },
-                    {
-                        "width": "220px"
-                    },
-                    {
-                        "width": "120px"
-                    },
-                ],
-                "ordering": false
-            });
-            $(".dataTables_length").css("display", "none");
-            $(".dataTables_filter").css("display", "none");
+    <script>
+        $('#my-table').DataTable({
+            scrollX: true,
+            "columns": [{
+                "width": "2%"
+            }, {
+                "width": "150px"
+            }, {
+                "width": "90px"
+            }, {
+                "width": "5%"
+            }, {
+                "width": "5%"
+            }, {
+                "width": "60px"
+            }, {
+                "width": "700px"
+            }, {
+                "width": "120px"
+            }, {
+                "width": "700px"
+            }, {
+                "width": "120px"
+            }, {
+                "width": "300px"
+            }, {
+                "width": "150px"
+            }, {
+                "width": "120px"
+            }, {
+                "width": "220px"
+            }, {
+                "width": "120px"
+            }, ],
+            "ordering": false
+        });
+        $(".dataTables_length").css("display", "none");
+        $(".dataTables_filter").css("display", "none");
 
-        </script>
+    </script>
 
-        <script>
-            $('#upload').click(function () {
+    <script>
+        $('#upload').click(function () {
+            $('#me').click();
+        });
 
-                $('#me').click();
-            });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                $('#main-form').submit();
+            }
+        }
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    $('#main-form').submit();
+        $('#me').on("change", function () {
+            readURL(this);
+        });
+
+        $('#mainbox').on('change', function (e) {
+            if (this.checked == true) {
+                $('.subbox').prop('checked', true)
+            } else {
+                $('.subbox').prop('checked', false)
+            }
+            $('.subbox')
+        })
+
+    </script>
+    <script>
+        $("#box1").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox1").show();
+            } else {
+                $(".subbox1").hide();
+            }
+        });
+        $("#box2").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox2").show();
+            } else {
+                $(".subbox2").hide();
+            }
+        });
+        $("#box3").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox3").show();
+            } else {
+                $(".subbox3").hide();
+            }
+        });
+        $("#box4").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox4").show();
+            } else {
+                $(".subbox4").hide();
+            }
+        });
+        $("#box5").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox5").show();
+            } else {
+                $(".subbox5").hide();
+            }
+        });
+        $("#box6").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox6").show();
+            } else {
+                $(".subbox6").hide();
+            }
+        });
+        $("#box7").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox7").show();
+            } else {
+                $(".subbox7").hide();
+            }
+        });
+        $("#box8").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox8").show();
+            } else {
+                $(".subbox8").hide();
+            }
+        });
+        $("#box9").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox9").show();
+            } else {
+                $(".subbox9").hide();
+            }
+        });
+        $("#box10").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox10").show();
+            } else {
+                $(".subbox10").hide();
+            }
+        });
+        $("#box11").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox11").show();
+            } else {
+                $(".subbox11").hide();
+            }
+        });
+        $("#box12").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox12").show();
+            } else {
+                $(".subbox12").hide();
+            }
+        });
+        $("#box13").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox13").show();
+            } else {
+                $(".subbox13").hide();
+            }
+        });
+
+        $('#mainbox').on('change', function (e) {
+            if (this.checked == true) {
+                $('.subbox').prop('checked', true)
+            } else {
+                $('.subbox').prop('checked', false)
+            }
+            $('.subbox')
+        });
+
+    </script>
+    <script>
+        $("#box1").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox1").show();
+            } else {
+                $(".subbox1").hide();
+            }
+        });
+        $("#box2").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox2").show();
+            } else {
+                $(".subbox2").hide();
+            }
+        });
+        $("#box3").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox3").show();
+            } else {
+                $(".subbox3").hide();
+            }
+        });
+        $("#box4").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox4").show();
+            } else {
+                $(".subbox4").hide();
+            }
+        });
+        $("#box5").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox5").show();
+            } else {
+                $(".subbox5").hide();
+            }
+        });
+        $("#box6").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox6").show();
+            } else {
+                $(".subbox6").hide();
+            }
+        });
+        $("#box7").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox7").show();
+            } else {
+                $(".subbox7").hide();
+            }
+        });
+        $("#box8").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox8").show();
+            } else {
+                $(".subbox8").hide();
+            }
+        });
+        $("#box9").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox9").show();
+            } else {
+                $(".subbox9").hide();
+            }
+        });
+        $("#box10").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox10").show();
+            } else {
+                $(".subbox10").hide();
+            }
+        });
+        $("#box11").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox11").show();
+            } else {
+                $(".subbox11").hide();
+            }
+        });
+        $("#box12").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox12").show();
+            } else {
+                $(".subbox12").hide();
+            }
+        });
+        $("#box13").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox13").show();
+            } else {
+                $(".subbox13").hide();
+            }
+        });
+
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
                 }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
+                    'DD/MM/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+        });
+        $(function () {
+            var start = moment().subtract(15, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                    'MMMM D, YYYY'));
             }
 
-            $('#me').on("change", function () {
-                readURL(this);
-                console.log("fff");
-            });
+            $('.daterange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                }
+            }, cb);
 
-            $('#mainbox').on('change', function (e) {
-                if (this.checked == true) {
-                    $('.subbox').prop('checked', true)
-                } else {
-                    $('.subbox').prop('checked', false)
-                }
-                $('.subbox')
-            })
-        </script>
-        <script>
-            $("#box1").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox1").show();
-                } else {
-                    $(".subbox1").hide();
-                }
+            $('4.daterange').on('apply.daterangepicker', function (ev, picker) {
+                console.log(picker.startDate.format('YYYY-MM-DD'));
+                console.log(picker.endDate.format('YYYY-MM-DD'));
             });
-            $("#box2").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox2").show();
-                } else {
-                    $(".subbox2").hide();
-                }
-            });
-            $("#box3").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox3").show();
-                } else {
-                    $(".subbox3").hide();
-                }
-            });
-            $("#box4").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox4").show();
-                } else {
-                    $(".subbox4").hide();
-                }
-            });
-            $("#box5").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox5").show();
-                } else {
-                    $(".subbox5").hide();
-                }
-            });
-            $("#box6").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox6").show();
-                } else {
-                    $(".subbox6").hide();
-                }
-            });
-            $("#box7").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox7").show();
-                } else {
-                    $(".subbox7").hide();
-                }
-            });
-            $("#box8").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox8").show();
-                } else {
-                    $(".subbox8").hide();
-                }
-            });
-            $("#box9").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox9").show();
-                } else {
-                    $(".subbox9").hide();
-                }
-            });
-            $("#box10").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox10").show();
-                } else {
-                    $(".subbox10").hide();
-                }
-            });
-            $("#box11").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox11").show();
-                } else {
-                    $(".subbox11").hide();
-                }
-            });
-            $("#box12").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox12").show();
-                } else {
-                    $(".subbox12").hide();
-                }
-            });
-            $("#box13").click(function () {
-                if ($(this).prop("checked")) {
-                    $(".subbox13").show();
-                } else {
-                    $(".subbox13").hide();
-                }
-            });
+            cb(start, end);
+        });
 
-        </script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
-        </script>
-        <link rel="stylesheet" type="text/css"
-            href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-        <script type="text/javascript">
-            $(function () {
-
-                $('input[name="datefilter"]').daterangepicker({
-                    autoUpdateInput: false,
-                    locale: {
-                        cancelLabel: 'Clear'
-                    }
-                });
-
-                $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                    $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
-                        'DD/MM/YYYY'));
-                });
-
-                $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                    $(this).val('');
-                });
-
-            });
-            $(function () {
-                var start = moment().subtract(15, 'days');
-                var end = moment();
-
-                function cb(start, end) {
-                    $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                        'MMMM D, YYYY'));
-                }
-
-                $('.daterange').daterangepicker({
-                    startDate: start,
-                    endDate: end,
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
-                            .subtract(1, 'month').endOf('month')
-                        ]
-                    }
-                }, cb);
-
-                $('4.daterange').on('apply.daterangepicker', function (ev, picker) {
-                    console.log(picker.startDate.format('YYYY-MM-DD'));
-                    console.log(picker.endDate.format('YYYY-MM-DD'));
-                });
-                cb(start, end);
-            });
-
-        </script>
+    </script>
 </body>
 
 </html>
