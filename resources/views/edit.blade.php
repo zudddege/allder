@@ -1,55 +1,15 @@
 <html lang="en">
 
 <head>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-    </style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Keywords"
-        content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4">
-
-    <!-- Title -->
     <title>Allder Express</title>
-
-    <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/icon.png" type="image/x-icon">
-
-    <!-- Icons css -->
     <link href="assets/css/icons.css" rel="stylesheet">
-
-    <!-- Bootstrap css -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Internal Data table css -->
     <link href="assets/plugins/datatable/datatables.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/responsive.dataTables.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/responsive.bootstrap5.css" rel="stylesheet">
@@ -57,194 +17,29 @@
     <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="assets/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet">
-
-    <!--  Right-sidemenu css -->
     <link href="assets/plugins/sidebar/sidebar.css" rel="stylesheet">
-
-    <!-- P-scroll bar css-->
     <link href="assets/plugins/perfect-scrollbar/p-scrollbar.css" rel="stylesheet">
-
-    <!-- Sidemenu css -->
     <link rel="stylesheet" href="assets/css/sidemenu.css">
-
-    <!--- Style css --->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/boxed.css" rel="stylesheet">
     <link href="assets/css/dark-boxed.css" rel="stylesheet">
-
-    <!--- Dark-mode css --->
     <link href="assets/css/style-dark.css" rel="stylesheet">
-
-    <!---Skinmodes css-->
     <link href="assets/css/skin-modes.css" rel="stylesheet">
-
-    <!--- Animations css-->
     <link href="assets/css/animate.css" rel="stylesheet">
 
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
-    <style type="text/css"
-        id="s./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./package/src/animation.scss-0">
-        /**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
-        .eva-animation {
-            animation-duration: 1s;
-            animation-fill-mode: both;
-        }
-
-        .eva-infinite {
-            animation-iteration-count: infinite;
-        }
-
-        .eva-icon-shake {
-            animation-name: eva-shake;
-        }
-
-        .eva-icon-zoom {
-            animation-name: eva-zoomIn;
-        }
-
-        .eva-icon-pulse {
-            animation-name: eva-pulse;
-        }
-
-        .eva-icon-flip {
-            animation-name: eva-flipInY;
-        }
-
-        .eva-hover {
-            display: inline-block;
-        }
-
-        .eva-hover:hover .eva-icon-hover-shake,
-        .eva-parent-hover:hover .eva-icon-hover-shake {
-            animation-name: eva-shake;
-        }
-
-        .eva-hover:hover .eva-icon-hover-zoom,
-        .eva-parent-hover:hover .eva-icon-hover-zoom {
-            animation-name: eva-zoomIn;
-        }
-
-        .eva-hover:hover .eva-icon-hover-pulse,
-        .eva-parent-hover:hover .eva-icon-hover-pulse {
-            animation-name: eva-pulse;
-        }
-
-        .eva-hover:hover .eva-icon-hover-flip,
-        .eva-parent-hover:hover .eva-icon-hover-flip {
-            animation-name: eva-flipInY;
-        }
-
-        @keyframes eva-flipInY {
-            from {
-                transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-                animation-timing-function: ease-in;
-                opacity: 0;
-            }
-
-            40% {
-                transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-                animation-timing-function: ease-in;
-            }
-
-            60% {
-                transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-                opacity: 1;
-            }
-
-            80% {
-                transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-            }
-
-            to {
-                transform: perspective(400px);
-            }
-        }
-
-        @keyframes eva-shake {
-
-            from,
-            to {
-                transform: translate3d(0, 0, 0);
-            }
-
-            10%,
-            30%,
-            50%,
-            70%,
-            90% {
-                transform: translate3d(-3px, 0, 0);
-            }
-
-            20%,
-            40%,
-            60%,
-            80% {
-                transform: translate3d(3px, 0, 0);
-            }
-        }
-
-        @keyframes eva-pulse {
-            from {
-                transform: scale3d(1, 1, 1);
-            }
-
-            50% {
-                transform: scale3d(1.2, 1.2, 1.2);
-            }
-
-            to {
-                transform: scale3d(1, 1, 1);
-            }
-        }
-
-        @keyframes eva-zoomIn {
-            from {
-                opacity: 1;
-                transform: scale3d(0.5, 0.5, 0.5);
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-    </style>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
-    <script src="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/ionicons.z18qlu2u.js"
-        data-resources-url="file:///C:/xampp/htdocs/html/assets/plugins/ionicons/ionicons/" data-namespace="ionicons">
-    </script>
-
     <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
+        .modal-lg {
+            max-width: 70% !important;
+            /* desired relative width */
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
     </style>
 
 </head>
 
 <body class="main-body app sidebar-mini">
-
-    <!-- Loader -->
-    <div id="global-loader" style="display: none;">
-        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
-    </div>
-    <!-- /Loader -->
 
     <!-- Page -->
     <div class="page">
@@ -301,24 +96,7 @@
 
                 </ul>
             </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; height: 722px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 580px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-            </div>
+
         </aside>
         <!-- main-sidebar -->
 
@@ -327,11 +105,7 @@
 
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
-                <div class="container-fluid">
-                    <button type="button" class="btn btn-primary"
-                        style="position: absolute; left: 330;">เรียกพนักงานเข้ามารับพัสดุ</button>
-                    <button type="button" class="btn btn-primary"
-                        style="position: absolute; left: 540;">ระบุพนักงานเข้ารับพัสดุ</button>
+                <div class="d-flex align-items-center">
 
                     <div class="main-header-left ">
                         <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
@@ -339,57 +113,10 @@
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
                     </div>
-                    <div class="main-header-right">
-                        <div class="nav nav-item  navbar-nav-right ml-auto">
-                            <div class="nav-link" id="bs-example-navbar-collapse-1">
-                                <form class="navbar-form" role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-btn">
-                                            <button type="reset" class="btn btn-default">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-default nav-link resp-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="11" cy="11" r="8"></circle>
-                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="nav-item full-screen fullscreen-button">
-                                <a class="new nav-link full-screen-link" href="#"><svg
-                                        xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
-                                        </path>
-                                    </svg></a>
-                            </div>
-                            <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                <a class="profile-user d-flex" href=""><img alt=""
-                                        src="assets/images/91831124_p0.jpg"></a>
-                                <div class="dropdown-menu">
-                                    <div class="main-header-profile bg-primary p-3">
-                                        <div class="d-flex wd-100p">
-                                            <div class="main-img-user"><img alt="" src="assets/images/91831124_p0.jpg"
-                                                    class=""></div>
-                                            <div class="ml-3 my-auto">
-                                                <h6>Zudddege</h6><span>Super Admin</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="dropdown-item" href="page-signin.html"><i class="bx bx-log-out"></i> Sign
-                                        Out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <button type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</button>
+                    <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
+
                 </div>
             </div>
             <!-- /main-header -->
@@ -425,7 +152,8 @@
                                     <div class="col-6" style="border-right: 1px solid black;">
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                            <a class="px-1 mt-2" style="color:blue"><u>เลือกจากสมุดที่อยู่</u></a>
+                                            <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
+                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -438,12 +166,12 @@
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                             <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light"></textarea>
+                                                class="border border-light form-control"></textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                             <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light"></textarea>
+                                                class="border border-light form-control"></textarea>
                                         </div>
 
 
@@ -467,7 +195,8 @@
                                     <div class="col-6">
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                            <a class="px-1 mt-2" style="color:blue"><u>เลือกจากสมุดที่อยู่</u></a>
+                                            <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
+                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -480,12 +209,12 @@
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                             <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light"></textarea>
+                                                class="border border-light form-control"></textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                             <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light"></textarea>
+                                                class="border border-light form-control"></textarea>
                                         </div>
 
                                         <div class="row">
@@ -556,7 +285,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1">
+                                    <input type="checkbox" class="mt-1" id="accept">
                                     <p class="px-1">ฉันได้อ่านและยอมรับข้อกำหนดใน<br>
                                         <a href="#" class="" style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
                                     </p>
@@ -603,10 +332,14 @@
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
 
                                 <div class="d-flex justify-content-center">
+<<<<<<< HEAD
                                     <a class="btn btn-primary mx-2" href="{{url('/remove')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+=======
+                                    <button class="btn btn-primary mx-2" id="submit-button" disabled="true" href="remove v1.html" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+>>>>>>> 6335df121d8163206f65396a10c9c3b68881458a
                                         <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                                         <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z"/>
-                                      </svg> แก้ไข</a>
+                                      </svg> แก้ไข</button>
                                 </div>
 
 
@@ -622,28 +355,50 @@
         <!-- main-content closed -->
 
         <!-- End Page -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class=" ">
+                        <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                    </div>
+                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                    <table class="table table-striped position-relative" id="my-table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ส่ง / ผู้รับ</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>ที่อยู่</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
+                                <td>081-123-1412</td>
+                                <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                </div>
+            </div>
+        </div>
 
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-
-        <!-- JQuery min js -->
         <script src="assets/plugins/jquery/jquery.min.js"></script>
-
-        <!-- Bootstrap Bundle js -->
         <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Ionicons js -->
         <script src="assets/plugins/ionicons/ionicons.js"></script>
-
-        <!-- Moment js -->
         <script src="assets/plugins/moment/moment.js"></script>
-
-        <!-- P-scroll js -->
         <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-
-        <!-- Internal Data tables -->
         <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
         <script src="assets/plugins/datatable/datatables.min.js"></script>
         <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
@@ -655,33 +410,26 @@
         <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
         <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
         <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-
-        <!--Internal  Datatable js -->
         <script src="assets/js/table-data.js"></script>
-
-        <!-- Rating js-->
         <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
         <script src="assets/plugins/rating/jquery.barrating.js"></script>
-
-        <!-- Sidebar js -->
         <script src="assets/plugins/side-menu/sidemenu.js"></script>
-
-        <!-- Right-sidebar js -->
         <script src="assets/plugins/sidebar/sidebar.js"></script>
         <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-
-        <!-- Sticky js -->
         <script src="assets/js/sticky.js"></script>
-
-        <!-- eva-icons js -->
         <script src="assets/js/eva-icons.min.js"></script>
-
-        <!-- custom js -->
         <script src="assets/js/custom.js"></script>
 
-        <div class="main-navbar-backdrop"></div>
-        <div class="main-navbar-backdrop"></div>
-        <div class="main-navbar-backdrop"></div>
+        <script>
+            $('#accept').on('click', function (e) {
+                if (this.checked == true) {
+                    $('#submit-button').prop('disabled', false);
+                } else {
+                    $('#submit-button').prop('disabled', true);
+                }
+            })
+        </script>
+
 </body>
 
 </html>
