@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class OrderControllers extends Controller {
     public function showOrder() {
+
         $orders = Order::all();
 
         return view('order', compact('orders'));
@@ -69,7 +70,6 @@ class OrderControllers extends Controller {
         }
 
         Order::create([
-            "name" => $request->name,
             "user_id" => $request->user_id,
             "order_no" => $request->order_no,
             "send_name" => $request->send_name,
