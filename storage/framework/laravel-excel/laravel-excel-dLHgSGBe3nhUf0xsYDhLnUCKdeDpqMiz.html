@@ -59,11 +59,11 @@
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="http://127.0.0.1:8000/order"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcuria')}}"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="http://127.0.0.1:8000/callcuria"><span
                                 class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
@@ -124,7 +124,7 @@
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
                     </div>
-                    <a href="{{url('/callcuria')}}" type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</a>
+                    <a href="http://127.0.0.1:8000/callcuria" type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</a>
                     <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
                 </div>
             </div>
@@ -142,17 +142,17 @@
                             <div class="card-header" style="background-color: white;">
                                 <ul class="nav main-nav-line">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
+                                        <a class="nav-link active" href="http://127.0.0.1:8000/order">รายการเตรียมจัดส่ง</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/ordersuccess')}}">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-link" href="#">รายการจัดส่งแล้ว</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg
+                                    <a href="http://127.0.0.1:8000/add_order"><label class="btn btn-primary mx-3"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path
@@ -171,10 +171,9 @@
                                         </svg> นำเข้าข้อมูล
                                     </label>
                                     <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
-                                        @csrf
-                                        <input type="file" style="display: none;" name="image" id='me'>
+                                        <input type="hidden" name="_token" value="LqAyZbCaHqv2jktYpDtBpkmgnkF0IqxvYHsW6KW4">                                        <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-                                    <a class="btn btn-link" href="{{url('/users/export')}}"><svg
+                                    <a class="btn btn-link" href="http://127.0.0.1:8000/users/export"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path
@@ -272,29 +271,267 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($orders as $order)
-                                        <tr>
+                                                                                <tr>
                                             <td><input class='subbox' type="checkbox"></td>
                                             <td class='subbox1'>
-                                                {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td class='subbox2'>{{$order->status}}</td>
-                                            <td class='subbox3'>{{$order->order_no}}</td>
-                                            <td class='subbox4'>{{$order->order_no}}</td>
-                                            <td class='subbox5'>{{$order->order_no}}</td>
-                                            <td class='subbox6'>{{$order->send_address}}</td>
-                                            <td class='subbox7'>{{$order->send_tel}}</td>
-                                            <td class='subbox8'>{{$order->recv_address}}</td>
-                                            <td class='subbox9'>{{$order->recv_tel}}</td>
-                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
-                                                {{$order->width_size}} x {{$order->length_size}} x
-                                                {{$order->height_size}} cm</td>
-                                            <td class='subbox11'>{{$order->cod}}</td>
-                                            <td class='subbox12'>{{$order->cod}}</td>
-                                            <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                                03/12/2564 - 02:19 am</td>
+                                            <td class='subbox2'></td>
+                                            <td class='subbox3'>211203PY01001</td>
+                                            <td class='subbox4'>211203PY01001</td>
+                                            <td class='subbox5'>211203PY01001</td>
+                                            <td class='subbox6'>บริษัท OOO 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox7'>0964481268</td>
+                                            <td class='subbox8'>บริษัท OOO 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox9'>0851068406</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                2.00 x 1.00 x
+                                                2.00 cm</td>
+                                            <td class='subbox11'>32.00</td>
+                                            <td class='subbox12'>32.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
-                                        @endforeach
-                                    </tbody>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10899</td>
+                                            <td class='subbox7'>0964481267</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10899</td>
+                                            <td class='subbox9'>0851068405</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox7'>0964481268</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox9'>0851068406</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox7'>0964481269</td>
+                                            <td class='subbox8'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                            <td class='subbox9'>0851068407</td>
+                                            <td class='subbox10'> <br>  kg /
+                                                 x  x
+                                                 cm</td>
+                                            <td class='subbox11'></td>
+                                            <td class='subbox12'></td>
+                                            <td class='subbox13'></td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10901</td>
+                                            <td class='subbox7'>0964481270</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10901</td>
+                                            <td class='subbox9'>0851068408</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10901</td>
+                                            <td class='subbox7'>0964481271</td>
+                                            <td class='subbox8'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10901</td>
+                                            <td class='subbox9'>0851068409</td>
+                                            <td class='subbox10'> <br>  kg /
+                                                 x  x
+                                                 cm</td>
+                                            <td class='subbox11'></td>
+                                            <td class='subbox12'></td>
+                                            <td class='subbox13'></td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10902</td>
+                                            <td class='subbox7'>0964481272</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10902</td>
+                                            <td class='subbox9'>0851068410</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10902</td>
+                                            <td class='subbox7'>0964481273</td>
+                                            <td class='subbox8'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10902</td>
+                                            <td class='subbox9'>0851068411</td>
+                                            <td class='subbox10'> <br>  kg /
+                                                 x  x
+                                                 cm</td>
+                                            <td class='subbox11'></td>
+                                            <td class='subbox12'></td>
+                                            <td class='subbox13'></td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10903</td>
+                                            <td class='subbox7'>0964481274</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10903</td>
+                                            <td class='subbox9'>0851068412</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10903</td>
+                                            <td class='subbox7'>0964481275</td>
+                                            <td class='subbox8'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10903</td>
+                                            <td class='subbox9'>0851068413</td>
+                                            <td class='subbox10'> <br>  kg /
+                                                 x  x
+                                                 cm</td>
+                                            <td class='subbox11'></td>
+                                            <td class='subbox12'></td>
+                                            <td class='subbox13'></td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10904</td>
+                                            <td class='subbox7'>0964481276</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10904</td>
+                                            <td class='subbox9'>0851068414</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10904</td>
+                                            <td class='subbox7'>0964481277</td>
+                                            <td class='subbox8'>บริษัท น้อยศรี 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10904</td>
+                                            <td class='subbox9'>0851068415</td>
+                                            <td class='subbox10'> <br>  kg /
+                                                 x  x
+                                                 cm</td>
+                                            <td class='subbox11'></td>
+                                            <td class='subbox12'></td>
+                                            <td class='subbox13'></td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td><input class='subbox' type="checkbox"></td>
+                                            <td class='subbox1'>
+                                                03/12/2564 - 03:39 am</td>
+                                            <td class='subbox2'>รอของ</td>
+                                            <td class='subbox3'>OR2020100024</td>
+                                            <td class='subbox4'>OR2020100024</td>
+                                            <td class='subbox5'>OR2020100024</td>
+                                            <td class='subbox6'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10905</td>
+                                            <td class='subbox7'>0964481278</td>
+                                            <td class='subbox8'>บริษัท สุเดช 354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10905</td>
+                                            <td class='subbox9'>0851068416</td>
+                                            <td class='subbox10'> <br> 5.00 kg /
+                                                5.00 x 4.00 x
+                                                5.00 cm</td>
+                                            <td class='subbox11'>5.00</td>
+                                            <td class='subbox12'>5.00</td>
+                                            <td class='subbox13'>ระวังของหายนะ</td>
+                                            <td><a href="http://127.0.0.1:8000/edit" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                        </tr>
+                                                                            </tbody>
                                 </table>
                             </div>
                         </div>

@@ -130,4 +130,22 @@ class OrderControllers extends Controller {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 
+    public function callcuria() {
+        return view('Curia.callcuria');
+    }
+    public function edit() {
+        return view('edit');
+    }
+    public function remove() {
+        return view('remove');
+    }
+    public function cancel() {
+        return view('cancel');
+    }
+    public function login() {
+        return view('Login_page.login');
+    }
+    public function ordersuccess() {
+        return view('ordersuccess');
+    }
 }

@@ -48,11 +48,11 @@
                 <ul class="side-menu open">
 
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="order.html"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" href="#"><span
+                        <a class="side-menu__item" href="{{url('/callcuria')}}"><span
                                 class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
@@ -410,7 +410,7 @@
                                                     <input class="form-control" type="text" value="">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="cancel.html"  class="btn btn-danger">ยกเลิกรายการ</a>
+                                                    <a href="{{url('/cancel')}}"  class="btn btn-danger">ยกเลิกรายการ</a>
                                                     <button type="button" class="btn btn-outline-primary">เก็บไว้ก่อน</button>
                                                 </div>
                                             </div>
@@ -421,8 +421,8 @@
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="order.html" class="btn btn-danger mx-2" style="color: red;">ยกเลิก</a>
-                                    <a class="btn btn-primary mx-2" style="color: white;">สร้างรายการ</a>
+                                    <a href="{{url('/order')}}" class="btn btn-danger mx-2" style="color: red;">ยกเลิก</a>
+                                    <a href="{{url('/order')}}" class="btn btn-primary mx-2" style="color: white;">บันทึกการแก้ไข</a>
                                 </div>
 
 

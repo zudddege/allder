@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    
+
 
     <div class="page">
         <div class="jumps-prevent" style="padding-top: 40px;"></div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="jumps-prevent" style="padding-top: 45px;"></div>
                             <div class="d-flex justify-content-center">
-                                <a href="#" class="btn btn-primary" style="color: white; width: 220px;">เข้าสู่ระบบ</a>
+                                <a href="{{url('/order')}}" class="btn btn-primary" style="color: white; width: 220px;">เข้าสู่ระบบ</a>
                             </div>
                         </div>
                     </div>

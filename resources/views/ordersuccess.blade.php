@@ -142,38 +142,16 @@
                             <div class="card-header" style="background-color: white;">
                                 <ul class="nav main-nav-line">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
+                                        <a class="nav-link " href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/ordersuccess')}}">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-link active" href="#">รายการจัดส่งแล้ว</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path
-                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                            </svg> สร้างรายการ </label>
-                                    </a>
-                                    <label class="btn btn-info mx-3" id='upload'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                        </svg> นำเข้าข้อมูล
-                                    </label>
-                                    <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
-                                        @csrf
-                                        <input type="file" style="display: none;" name="image" id='me'>
-                                    </form>
                                     <a class="btn btn-link" href="{{url('/users/export')}}"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
