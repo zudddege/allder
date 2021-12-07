@@ -150,44 +150,47 @@
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
                                                 <button type="button" class="btn btn-link" data-toggle="modal"
-                                                    data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                    data-target="#send_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="{{ $book_name }}"
-                                                    name="send_name">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $address_book->book_name }}" name="send_name"
+                                                    id="send_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="{{ $book_tel }}"
-                                                    name="send_tel">
+                                                <input class="form-control" type="text"
+                                                    value="{{$address_book->book_tel }}" name="send_tel" id="send_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control"
-                                                    name="send_area">{{ $book_area }}</textarea>
+                                                    class="border border-light form-control" name="send_area"
+                                                    id="send_area">{{ $address_book->book_area }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control"
-                                                    name="send_address">{{ $book_address }}</textarea>
+                                                    class="border border-light form-control" name="send_address"
+                                                    id="send_address">{{ $address_book->book_address }}</textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="main_address"
-                                                            value="1" id="main_address" @if($is_main_book==true)
-                                                            checked="" @endif>
+                                                            value="1" id="main_address"
+                                                            @if($address_book->is_main_book==true)
+                                                        checked="" @endif>
                                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
                                                         <input type="checkbox" class="mt-1" name="save_send_address"
-                                                            value="1" id="save_send_address" @if($is_main_book==true)
-                                                            checked="" @endif>
+                                                            value="1" id="save_send_address"
+                                                            @if($address_book->is_main_book==true)
+                                                        checked="" @endif>
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
@@ -197,33 +200,35 @@
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
                                                 <button type="button" class="btn btn-link" data-toggle="modal"
-                                                    data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                    data-target="#recv_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="" name="recv_name">
+                                                <input class="form-control" type="text" value="" name="recv_name"
+                                                    id="recv_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="" name="recv_tel">
+                                                <input class="form-control" type="text" value="" name="recv_tel"
+                                                    id="recv_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control"
-                                                    name="recv_area"></textarea>
+                                                    class="border border-light form-control" name="recv_area"
+                                                    id="recv_area"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control"
-                                                    name="recv_address"></textarea>
+                                                    class="border border-light form-control" name="recv_address"
+                                                    id="recv_address"></textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex px-4 mt-3">
                                                         <input type="checkbox" class="mt-1" name="save_recv_address"
-                                                            value="1">
+                                                            value="1" id="save_recv_address">
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
@@ -347,7 +352,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true">
+            aria-hidden="true" id="send_address_book">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -357,92 +362,218 @@
                         <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
                     </div>
                     <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                    <table class="table table-striped position-relative" id="my-table">
+                    <table class="table table-striped position-relative " id="send-table" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th>ชื่อผู้ส่ง / ผู้รับ</th>
                                 <th>เบอร์โทรศัพท์</th>
                                 <th>ที่อยู่</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
-                                <td>081-123-1412</td>
-                                <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
-                                </td>
-                            </tr>
-                        </tbody>
                     </table>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true" id="recv_address_book">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class=" ">
+                        <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                    </div>
+                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                    <table class="table table-striped position-relative " id="recv-table" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ส่ง / ผู้รับ</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>ที่อยู่</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Back-to-top -->
-        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/plugins/ionicons/ionicons.js"></script>
-        <script src="assets/plugins/moment/moment.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-        <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-        <script src="assets/plugins/datatable/datatables.min.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-        <script src="assets/plugins/datatable/js/jszip.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-        <script src="assets/js/table-data.js"></script>
-        <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
-        <script src="assets/plugins/rating/jquery.barrating.js"></script>
-        <script src="assets/plugins/side-menu/sidemenu.js"></script>
-        <script src="assets/plugins/sidebar/sidebar.js"></script>
-        <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-        <script src="assets/js/sticky.js"></script>
-        <script src="assets/js/eva-icons.min.js"></script>
-        <script src="assets/js/custom.js"></script>
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/ionicons/ionicons.js"></script>
+    <script src="assets/plugins/moment/moment.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/datatables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+    <script src="assets/plugins/datatable/js/jszip.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+    <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+    <script src="assets/js/table-data.js"></script>
+    <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+    <script src="assets/plugins/rating/jquery.barrating.js"></script>
+    <script src="assets/plugins/side-menu/sidemenu.js"></script>
+    <script src="assets/plugins/sidebar/sidebar.js"></script>
+    <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
+    <script src="assets/js/sticky.js"></script>
+    <script src="assets/js/eva-icons.min.js"></script>
+    <script src="assets/js/custom.js"></script>
 
-        <script>
-            $('#main_address').on('click', function (e) {
-                if (this.checked == true) {
-                    $('#save_send_address').prop('checked', true);
-                }
-            });
+    <script>
+        $('#main_address').on('click', function (e) {
+            if (this.checked == true) {
+                $('#save_send_address').prop('checked', true);
+            }
+        });
 
-            $('#save_send_address').on('click', function (e) {
-                if (this.checked == false) {
-                    $('#main_address').prop('checked', false);
-                }
-            });
+        $('#save_send_address').on('click', function (e) {
+            if (this.checked == false) {
+                $('#main_address').prop('checked', false);
+            }
+        });
 
-            $('#accept').on('click', function (e) {
-                if (this.checked == true) {
-                    $('#submit-button').prop('disabled', false);
-                } else {
-                    $('#submit-button').prop('disabled', true);
+        $('#accept').on('click', function (e) {
+            if (this.checked == true) {
+                $('#submit-button').prop('disabled', false);
+            } else {
+                $('#submit-button').prop('disabled', true);
+            }
+        })
+
+        $('#auto_order_no').on('click', function () {
+            $.ajax({
+                url: '/get_order_no',
+                method: "GET",
+                success: function (data) {
+                    $('#order_no').val(data);
                 }
             })
+        });
 
-            $('#auto_order_no').on('click', function () {
-                $.ajax({
-                    url: '/get_order_no',
-                    method: "GET",
-                    success: function (data) {
-                        $('#order_no').val(data);
-                    }
-                })
+        $(document).ready(function () {
+            $.ajax({
+                'url': "/get_address_book",
+                'method': "GET",
+                'contentType': 'json',
+                'success': function (data) {
+                    $("#send-table").dataTable({
+                        autoWidth: false,
+                        searching: false,
+                        filter: false,
+                        ordering: false,
+                        paging: false,
+                        info: false,
+                        data: data,
+                        columns: [{
+                            width: '25%',
+                            data: 'book_name',
+                        }, {
+                            width: '15%',
+                            data: 'book_tel',
+                        }, {
+                            width: '45%',
+                            data: {
+                                book_area: 'book_area',
+                                book_address: 'book_address'
+                            },
+                            render: function (data) {
+                                return data.book_area + "<br/>" + data
+                                    .book_address;
+                            },
+                        }, {
+                            width: '15%',
+                            data: 'id',
+                            render: function (data) {
+                                return `<button type='button' class='btn btn-primary fetch_book' onclick="sendFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
+                            },
+                        }],
+                    });
+                    $("#recv-table").dataTable({
+                        autoWidth: false,
+                        searching: false,
+                        filter: false,
+                        ordering: false,
+                        paging: false,
+                        info: false,
+                        data: data,
+                        columns: [{
+                            width: '25%',
+                            data: 'book_name',
+                        }, {
+                            width: '15%',
+                            data: 'book_tel',
+                        }, {
+                            width: '45%',
+                            data: {
+                                book_area: 'book_area',
+                                book_address: 'book_address'
+                            },
+                            render: function (data) {
+                                return data.book_area + "<br/>" + data
+                                    .book_address;
+                            },
+                        }, {
+                            width: '15%',
+                            data: 'id',
+                            render: function (data) {
+                                return `<button type='button' class='btn btn-primary fetch_book' onclick="recvFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
+                            },
+                        }],
+                    });
+                },
             });
+        });
 
-        </script>
+        function sendFetchBook(id) {
+            $.ajax({
+                url: '/fetch_book',
+                method: 'GET',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    $('#send_name').val(res.book_name);
+                    $('#send_tel').val(res.book_tel);
+                    $('#send_area').val(res.book_area);
+                    $('#send_address').val(res.book_address);
+                    $('#main_address').prop('checked', res.is_main_book);
+                    $('#save_send_address').prop('checked', true);
+                }
+            })
+        }
+
+        function recvFetchBook(id) {
+            $.ajax({
+                url: '/fetch_book',
+                method: 'GET',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    $('#recv_name').val(res.book_name);
+                    $('#recv_tel').val(res.book_tel);
+                    $('#recv_area').val(res.book_area);
+                    $('#recv_address').val(res.book_address);
+                    $('#save_recv_address').prop('checked', true);
+                }
+            })
+        }
+
+    </script>
 </body>
 
 </html>

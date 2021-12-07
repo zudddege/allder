@@ -21,18 +21,16 @@ class OrderControllers extends Controller {
 
     public function addOrder() {
         $address_book = AddressBook::select('book_name', 'book_tel', 'book_area', 'book_address', 'is_main_book')->where('is_main_book', true)->first();
-        if ($address_book) {
-            $book_name = $address_book->book_name;
-            $book_tel = $address_book->book_tel;
-            $book_area = $address_book->book_area;
-            $book_address = $address_book->book_address;
-            $is_main_book = $address_book->is_main_book;
-        } else {
-            $book_name = $book_tel = $book_area = $book_address = "";
-            $is_main_book = false;
+        if (!$address_book) {
+            $address_book = AddressBook::all();
+            $address_book->book_name = "";
+            $address_book->book_tel = "";
+            $address_book->book_area = "";
+            $address_book->book_address = "";
+            $address_book->is_main_book = "";
         }
 
-        return view('addOrder', compact('book_name', 'book_tel', 'book_area', 'book_address', 'is_main_book'));
+        return view('addOrder', compact('address_book'));
     }
 
     public function saveOrder(Request $request) {
@@ -69,7 +67,6 @@ class OrderControllers extends Controller {
         }
 
         Order::create([
-            "name" => $request->name,
             "user_id" => $request->user_id,
             "order_no" => $request->order_no,
             "send_name" => $request->send_name,
@@ -100,7 +97,7 @@ class OrderControllers extends Controller {
             "complete_time" => $request->complete_time,
         ]);
 
-        return redirect('order');
+        return redirect('/');
     }
 
     public function genOrderNo() {
@@ -110,10 +107,6 @@ class OrderControllers extends Controller {
         $order_no .= str_pad($order_today, 3, '0', STR_PAD_LEFT);
 
         return $order_no;
-    }
-
-    public function order() {
-        return view('order');
     }
 
     public function import(Request $request) {
@@ -126,8 +119,19 @@ class OrderControllers extends Controller {
         return redirect()->back();
     }
 
-    public function export() {
-        return Excel::download(new UsersExport, 'users.xlsx');
+    public function export(Request $request) {
+        return Excel::download(new UsersExport($request), 'order.xlsx');
     }
 
+    public function addressBook() {
+        $addressBook = AddressBook::select('id', 'book_name', 'book_tel', 'book_area', 'book_address')->get();
+
+        return response()->json($addressBook);
+    }
+
+    public function fetchBook(Request $request) {
+        $book_details = AddressBook::find($request->id);
+
+        return $book_details;
+    }
 }
