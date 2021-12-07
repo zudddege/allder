@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class OrderControllers extends Controller {
     public function showOrder() {
+
         $orders = Order::all();
 
         return view('order', compact('orders'));
@@ -133,5 +134,29 @@ class OrderControllers extends Controller {
         $book_details = AddressBook::find($request->id);
 
         return $book_details;
+    }
+
+    public function callcuria() {
+        return view('Curia.callcuria');
+    }
+
+    public function edit() {
+        return view('edit');
+    }
+
+    public function remove() {
+        return view('remove');
+    }
+
+    public function cancel() {
+        return view('cancel');
+    }
+
+    public function login() {
+        return view('Login_page.login');
+    }
+
+    public function ordersuccess() {
+        return view('ordersuccess');
     }
 }

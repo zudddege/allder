@@ -27,6 +27,16 @@
     <link href="assets/css/skin-modes.css" rel="stylesheet">
     <link href="assets/css/animate.css" rel="stylesheet">
 
+    <style>
+        .modal-lg {
+            max-width: 70% !important;
+            /* desired relative width */
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -86,24 +96,7 @@
 
                 </ul>
             </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; height: 722px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 580px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-            </div>
+
         </aside>
         <!-- main-sidebar -->
 
@@ -112,71 +105,18 @@
 
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
-                <div class="container-fluid">
-
+                <div class="d-flex align-items-center">
 
                     <div class="main-header-left ">
                         <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                             <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
-                        <button type="button" class="btn btn-primary mx-2">เรียกพนักงานเข้ามารับพัสดุ</button>
-                        <button type="button" class="btn btn-primary mx-2">ระบุพนักงานเข้ารับพัสดุ</button>
-
                     </div>
 
+                    <button type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</button>
+                    <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
 
-                    <div class="main-header-right">
-                        <div class="nav nav-item  navbar-nav-right ml-auto">
-                            <div class="nav-link" id="bs-example-navbar-collapse-1">
-                                <form class="navbar-form" role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-btn">
-                                            <button type="reset" class="btn btn-default">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-default nav-link resp-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="11" cy="11" r="8"></circle>
-                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="nav-item full-screen fullscreen-button">
-                                <a class="new nav-link full-screen-link" href="#"><svg
-                                        xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
-                                        </path>
-                                    </svg></a>
-                            </div>
-                            <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                <a class="profile-user d-flex" href=""><img alt=""
-                                        src="assets/images/91831124_p0.jpg"></a>
-                                <div class="dropdown-menu">
-                                    <div class="main-header-profile bg-primary p-3">
-                                        <div class="d-flex wd-100p">
-                                            <div class="main-img-user"><img alt="" src="assets/images/91831124_p0.jpg"
-                                                    class=""></div>
-                                            <div class="ml-3 my-auto">
-                                                <h6>Zudddege</h6><span>Super Admin</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="dropdown-item" href="page-signin.html"><i class="bx bx-log-out"></i> Sign
-                                        Out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- /main-header -->
@@ -389,42 +329,13 @@
                                             <a class="text-muted">แล้ว</a></a>
                                     </p>
                                 </div>
-
-                                <div class="jumps-prevent d-flex justify-content-center" style="padding-top: 100px;">
-                                    <a type="button" data-toggle="modal" data-target="#exampleModalCenter"
-                                        style="color: red;">
-                                        <u>ยกเลิกรายการ</u>
-                                    </a>
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">ต้องการยกเลิกรายการใช่หรือไม่
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    เหตุผลที่ทำการยกเลิก
-                                                    <input class="form-control" type="text" value="">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="{{url('/cancel')}}"  class="btn btn-danger">ยกเลิกรายการ</a>
-                                                    <button type="button" class="btn btn-outline-primary">เก็บไว้ก่อน</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
 
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{url('/order')}}" class="btn btn-danger mx-2" style="color: red;">ยกเลิก</a>
-                                    <a href="{{url('/order')}}" id="submit-button" disabled="true" class="btn btn-primary mx-2" style="color: white;">บันทึกการแก้ไข</a>
+                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('/remove')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z"/>
+                                      </svg> แก้ไข</a>
                                 </div>
 
 
@@ -440,40 +351,41 @@
         <!-- main-content closed -->
 
         <!-- End Page -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
-                <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                <h5><b>เลือกจากสมุดที่อยู่</b></h5>
-                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
-                <div class=" ">
-                    <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class=" ">
+                        <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                    </div>
+                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                    <table class="table table-striped position-relative" id="my-table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ส่ง / ผู้รับ</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>ที่อยู่</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
+                                <td>081-123-1412</td>
+                                <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
-                <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                <table class="table table-striped position-relative" id="my-table">
-                    <thead>
-                        <tr>
-                            <th>ชื่อผู้ส่ง / ผู้รับ</th>
-                            <th>เบอร์โทรศัพท์</th>
-                            <th>ที่อยู่</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</td>
-                            <td>081-123-1412</td>
-                            <td>354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">ใช้ที่อยู่นี้</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="jumps-prevent" style="padding-top: 25px;"></div>
             </div>
         </div>
-    </div>
+
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
         <script src="assets/plugins/jquery/jquery.min.js"></script>

@@ -36,9 +36,9 @@
             right: 0px;
         }
 
-        /* .table td:last-child {
+        .table td:last-child {
             background-color: lightgray;
-        } */
+        }
 
     </style>
 
@@ -124,8 +124,7 @@
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
                     </div>
-                    <a href="{{url('/callcuria')}}" type="button"
-                        class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</a>
+                    <a href="{{url('/callcuria')}}" type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</a>
                     <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
                 </div>
             </div>
@@ -143,38 +142,16 @@
                             <div class="card-header" style="background-color: white;">
                                 <ul class="nav main-nav-line">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
+                                        <a class="nav-link " href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/ordersuccess')}}">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-link active" href="#">รายการจัดส่งแล้ว</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path
-                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                            </svg> สร้างรายการ </label>
-                                    </a>
-                                    <label class="btn btn-info mx-3" id='upload'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                        </svg> นำเข้าข้อมูล
-                                    </label>
-                                    <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
-                                        @csrf
-                                        <input type="file" style="display: none;" name="image" id='me'>
-                                    </form>
                                     <a class="btn btn-link" href="{{url('/users/export')}}"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -187,75 +164,68 @@
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <form action="" id='date'>
-                                <div class="row px-2 mb-3">
-
-                                    <div class="col-2">
-                                        <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                        <div>
-                                            <input class="form-control daterange" type="text" name="datefilter"
-                                                value="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="mb-1">สถานะการทำรายการ</div>
-                                        <div class="">
-                                            <input class="form-control" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="mb-1">แหล่งที่มา</div>
-                                        <div class="">
-                                            <input class="form-control" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                                เบอร์โทรศัพท์</a></div>
-                                        <div class="d-flex ">
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
-                                            </div>
-                                            <div class="dropdown ">
-                                                <button class="btn btn-link dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-layout-three-columns"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                                    </svg> <u>ตัวเลือกการแสดงผล</u>
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                    <input type="checkbox" id='box1'
-                                                        checked=""><span>เวลาที่ทำรายการ</span>
-                                                    </input><br>
-                                                    <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
-                                                    <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
-                                                    <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
-                                                    <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
-                                                    <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                    <input type="checkbox" id='box7'
-                                                        checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
-                                                    <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                    <input type="checkbox" id='box9'
-                                                        checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
-                                                    <input type="checkbox" id='box10'
-                                                        checked="">ประเภทสินค้า</input><br>
-                                                    <input type="checkbox" id='box11'
-                                                        checked="">ยอดเก็บเงินปลายทาง</input><br>
-                                                    <input type="checkbox" id='box12'
-                                                        checked="">ราคาโดยประมาณ</input><br>
-                                                    <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                            <div class="row px-2 mb-3">
+                                <div class="col-2">
+                                    <div class="mb-1 ">เวลาที่ทำรายการ</div>
+                                    <div>
+                                        <input class="form-control daterange" type="text" name="datefilter" value="" />
                                     </div>
                                 </div>
-                            </form>
+                                <div class="col-2">
+                                    <div class="mb-1">สถานะการทำรายการ</div>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="mb-1">แหล่งที่มา</div>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
+                                            เบอร์โทรศัพท์</a></div>
+                                    <div class="d-flex ">
+                                        <div class="">
+                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                        </div>
+                                        <div class="dropdown ">
+                                            <button class="btn btn-link dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-layout-three-columns"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                                </svg> <u>ตัวเลือกการแสดงผล</u>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
+                                                </input><br>
+                                                <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
+                                                <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
+                                                <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
+                                                <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
+                                                <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7'
+                                                    checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9'
+                                                    checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
+                                                <input type="checkbox" id='box11'
+                                                    checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
+                                                <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             <div class="px-2 ">
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
@@ -299,8 +269,7 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
-                                            </td>
+                                            <td><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -423,6 +392,7 @@
                 }
                 $('.subbox')
             })
+
         </script>
         <script>
             $("#box1").click(function () {
