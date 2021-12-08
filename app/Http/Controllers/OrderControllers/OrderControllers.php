@@ -22,9 +22,12 @@ class OrderControllers extends Controller
     }
     public function search(Request $request)
     {
-
         $firstdate = explode(" - ", $request->datefilter);
-        $orders = Order::where('created_at', '>=', $firstdate[0])->where('created_at', '<=', $firstdate[1])->get();
+        $adate= explode("/",$firstdate[0] );
+        $cdate= explode("/",$firstdate[1] );
+        $bdate=$adate[2]."/".$adate[1]."/".$adate[0];
+        $ddate=$cdate[2]."/".$cdate[1]."/".$cdate[0];
+        $orders = Order::whereDate('created_at', '>=', $bdate)->whereDate('created_at', '<=', $ddate)->get();
         return view('order', compact('orders'));
     }
 
