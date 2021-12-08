@@ -39,6 +39,7 @@
         .td_detail_row:nth-child(odd) .td_detail {
             background-color: #E3E8F7;
         }
+
         .td_detail_row:nth-child(even) .td_detail {
             background-color: white;
         }
@@ -178,21 +179,20 @@
                                         @csrf
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-                                    <label class="btn btn-link" id='export'><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="16" height="16" fill="currentColor" class="bi bi-download"
-                                            viewBox="0 0 16 16">
+                                    <a class="btn btn-link" href="{{url('/export')}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path
                                                 d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path
                                                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </label>
+                                    </a>
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
                             <form action="" id='date'>
                                 <div class="row px-2 mb-3">
-
                                     <div class="col-2">
                                         <div class="mb-1 ">เวลาที่ทำรายการ</div>
                                         <div>
@@ -254,7 +254,6 @@
                                                     <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +286,9 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
+                                            <td class='subbox2'> <span class="border border-success rounded-50"
+                                                    style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
+                                            </td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
@@ -304,7 +305,8 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/edit')}}"
+                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
