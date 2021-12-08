@@ -14,15 +14,22 @@ class CreateFactOrderTable extends Migration {
         Schema::create('fact_order', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id")->length(10)->nullable();
+            $table->string("wh_no", 20)->nullable();
             $table->string("order_no", 20)->nullable();
             $table->string("send_name", 50)->nullable();
             $table->string("send_tel", 20)->nullable();
-            $table->string("send_area", 150)->nullable();
-            $table->string("send_address", 200)->nullable();
+            $table->string("send_postal_code", 5)->nullable();
+            $table->string("send_province", 50)->nullable();
+            $table->string("send_city", 50)->nullable();
+            $table->string("send_district", 50)->nullable();
+            $table->string("send_detail", 200)->nullable();
             $table->string("recv_name", 50)->nullable();
             $table->string("recv_tel", 20)->nullable();
-            $table->string("recv_area", 150)->nullable();
-            $table->string("recv_address", 200)->nullable();
+            $table->string("recv_postal_code", 5)->nullable();
+            $table->string("recv_province", 50)->nullable();
+            $table->string("recv_city", 50)->nullable();
+            $table->string("recv_district", 50)->nullable();
+            $table->string("recv_detail", 200)->nullable();
             $table->string("category", 20)->nullable();
             $table->decimal("weight", 5, 2)->nullable();
             $table->decimal("width_size", 6, 2)->nullable();
@@ -39,8 +46,6 @@ class CreateFactOrderTable extends Migration {
             $table->string("return_tracking", 20)->nullable();
             $table->string("status", 50)->nullable();
             $table->string("cancel_reason", 200)->nullable();
-            $table->string("create_time", 20)->nullable();
-            $table->string("complete_time", 20)->nullable();
             $table->timestamps();
         });
     }

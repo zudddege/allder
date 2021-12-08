@@ -12,28 +12,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
-class OrderControllers extends Controller
-{
-    public function showOrder()
-    {
+class OrderControllers extends Controller {
+    public function showOrder() {
         $orders = Order::all();
 
         return view('order', compact('orders'));
     }
-    public function search(Request $request)
-    {
 
+    public function search(Request $request) {
         $firstdate = explode(" - ", $request->datefilter);
-        $adate= explode("/",$firstdate[0] );
-        $cdate= explode("/",$firstdate[1] );
-        $bdate=$adate[2]."/".$adate[1]."/".$adate[0];
-        $ddate=$cdate[2]."/".$cdate[1]."/".$cdate[0];
+        $adate = explode("/", $firstdate[0]);
+        $cdate = explode("/", $firstdate[1]);
+        $bdate = $adate[2] . "/" . $adate[1] . "/" . $adate[0];
+        $ddate = $cdate[2] . "/" . $cdate[1] . "/" . $cdate[0];
         $orders = Order::whereDate('created_at', '>=', $bdate)->whereDate('created_at', '<=', $ddate)->get();
+
         return view('order', compact('orders'));
     }
 
-    public function addOrder()
-    {
+    public function addOrder() {
         $address_book = AddressBook::select('book_name', 'book_tel', 'book_area', 'book_address', 'is_main_book')->where('is_main_book', true)->first();
         if (!$address_book) {
             $address_book = AddressBook::all();
@@ -47,8 +44,7 @@ class OrderControllers extends Controller
         return view('addOrder', compact('address_book'));
     }
 
-    public function saveOrder(Request $request)
-    {
+    public function saveOrder(Request $request) {
         if ($request->main_address) {
             $main_book = AddressBook::select('id', 'is_main_book')->where('is_main_book', 1)->first();
             if ($main_book) {
@@ -82,15 +78,22 @@ class OrderControllers extends Controller
 
         Order::create([
             "user_id" => $request->user_id,
+            "wh_no" => $request->wh_no,
             "order_no" => $request->order_no,
             "send_name" => $request->send_name,
             "send_tel" => $request->send_tel,
-            "send_area" => $request->send_area,
-            "send_address" => $request->send_address,
+            "send_postal_code" => $request->send_postal_code,
+            "send_province" => $request->send_province,
+            "send_city" => $request->send_city,
+            "send_district" => $request->send_district,
+            "send_detail" => $request->send_detail,
             "recv_name" => $request->recv_name,
             "recv_tel" => $request->recv_tel,
-            "recv_area" => $request->recv_area,
-            "recv_address" => $request->recv_address,
+            "recv_postal_code" => $request->recv_postal_code,
+            "recv_province" => $request->recv_province,
+            "recv_city" => $request->recv_city,
+            "recv_district" => $request->recv_district,
+            "recv_detail" => $request->recv_detail,
             "category" => $request->category,
             "weight" => $request->weight,
             "width_size" => $request->width_size,
@@ -107,15 +110,12 @@ class OrderControllers extends Controller
             "return_tracking" => $request->return_tracking,
             "status" => $request->status,
             "cancel_reason" => $request->cancel_reason,
-            "create_time" => Carbon::now('Asia/Bangkok'),
-            "complete_time" => $request->complete_time,
         ]);
 
         return redirect('/order');
     }
 
-    public function genOrderNo()
-    {
+    public function genOrderNo() {
         $order_no = Carbon::now('Asia/Bangkok')->isoFormat('YYMMDD');
         $order_no .= "PY01";
         $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count() + 1;
@@ -124,8 +124,7 @@ class OrderControllers extends Controller
         return $order_no;
     }
 
-    public function import(Request $request)
-    {
+    public function import(Request $request) {
         if ($request->file('image') !== null) {
             $file_path = $request->file('image')->store('document', 'public');
         }
@@ -135,52 +134,43 @@ class OrderControllers extends Controller
         return redirect()->back();
     }
 
-    public function export()
-    {
+    public function export() {
         return Excel::download(new UsersExport, 'order.xlsx');
     }
 
-    public function addressBook()
-    {
+    public function addressBook() {
         $addressBook = AddressBook::select('id', 'book_name', 'book_tel', 'book_area', 'book_address')->get();
 
         return response()->json($addressBook);
     }
 
-    public function fetchBook(Request $request)
-    {
+    public function fetchBook(Request $request) {
         $book_details = AddressBook::find($request->id);
 
         return $book_details;
     }
 
-    public function callcuria()
-    {
+    public function callcuria() {
         return view('Curia.callcuria');
     }
 
-    public function edit()
-    {
+    public function edit() {
         return view('edit');
     }
 
-    public function remove()
-    {
+    public function remove() {
         return view('remove');
     }
 
-    public function cancel()
-    {
+    public function cancel() {
         return view('cancel');
     }
 
-    public function login()
-    {
+    public function login() {
         return view('Login_page.login');
     }
 
-    public function ordersuccess()
-    {
+    public function ordersuccess() {
         $orders = Order::all();
 
         return view('ordersuccess', compact('orders'));
