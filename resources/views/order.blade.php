@@ -635,7 +635,7 @@
                 alwaysShowCalendars: true,
 
                 locale: {
-                    format: 'DD/MM/YYYY',
+                    format: 'YYYY/MM/DD',
                 },
                 ranges: {
                     'Today': [moment(), moment()],
