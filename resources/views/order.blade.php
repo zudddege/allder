@@ -39,6 +39,7 @@
         .td_detail_row:nth-child(odd) .td_detail {
             background-color: #E3E8F7;
         }
+
         .td_detail_row:nth-child(even) .td_detail {
             background-color: white;
         }
@@ -48,11 +49,10 @@
             margin-right: 50% !important;
         }
 
-        .dropend button:focus, .dropdown button:focus {
-            color:blue  !important;
+        .dropend button:focus,
+        .dropdown button:focus {
+            color: blue !important;
         }
-
-
 
     </style>
 
@@ -247,23 +247,37 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span></input></div>
-                                                                <div class=""><input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box3' checked="">เลขออเดอร์</input></div>
-                                                                <div class=""><input type="checkbox" id='box4' checked="">เลขพัสดุ</input></div>
-                                                                <div class=""><input type="checkbox" id='box5' checked="">แหล่งที่มา</input></div>
-                                                                <div class=""><input type="checkbox" id='box6' checked="">ผู้ส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box1'
+                                                                        checked=""><span>เวลาที่ทำรายการ</span></input>
+                                                                </div>
+                                                                <div class=""><input type="checkbox" id='box2'
+                                                                        checked="">สถานะจัดส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box3'
+                                                                        checked="">เลขออเดอร์</input></div>
+                                                                <div class=""><input type="checkbox" id='box4'
+                                                                        checked="">เลขพัสดุ</input></div>
+                                                                <div class=""><input type="checkbox" id='box5'
+                                                                        checked="">แหล่งที่มา</input></div>
+                                                                <div class=""><input type="checkbox" id='box6'
+                                                                        checked="">ผู้ส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box7'
+                                                                        checked="">เบอร์โทรศัพท์ผู้ส่ง</input></div>
                                                             </div>
-                                                         </div>
+                                                        </div>
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box8' checked="">ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box10' checked="">ประเภทสินค้า</input></div>
-                                                                <div class=""><input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input></div>
-                                                                <div class=""><input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input></div>
-                                                                <div class=""><input type="checkbox" id='box13' checked="">หมายเหตุ</input></div>
+                                                                <div class=""><input type="checkbox" id='box8'
+                                                                        checked="">ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box9'
+                                                                        checked="">เบอร์โทรศัพท์ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box10'
+                                                                        checked="">ประเภทสินค้า</input></div>
+                                                                <div class=""><input type="checkbox" id='box11'
+                                                                        checked="">ยอดเก็บเงินปลายทาง</input></div>
+                                                                <div class=""><input type="checkbox" id='box12'
+                                                                        checked="">ราคาโดยประมาณ</input></div>
+                                                                <div class=""><input type="checkbox" id='box13'
+                                                                        checked="">หมายเหตุ</input></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -303,7 +317,9 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
+                                            <td class='subbox2'> <span class="border border-success rounded-50"
+                                                    style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
+                                            </td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
@@ -320,7 +336,8 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/edit')}}"
+                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -374,9 +391,9 @@
             }, {
                 "width": "90px"
             }, {
-                "width": "5%"
+                "width": "100px"
             }, {
-                "width": "5%"
+                "width": "100px"
             }, {
                 "width": "60px"
             }, {
@@ -573,6 +590,12 @@
             $('.daterange').daterangepicker({
                 startDate: start,
                 endDate: end,
+                autoUpdateInput: true,
+                alwaysShowCalendars: true,
+
+                locale: {
+                    format: 'DD/MM/YYYY',
+                },
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -586,8 +609,7 @@
             }, cb);
 
             $('.daterange').on('apply.daterangepicker', function (ev, picker) {
-                console.log(picker.startDate.format('YYYY-MM-DD'));
-                console.log(picker.endDate.format('YYYY-MM-DD'));
+                $('#testform').submit();
             });
             cb(start, end);
         });

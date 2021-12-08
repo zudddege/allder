@@ -22,6 +22,7 @@ class OrderControllers extends Controller
     }
     public function search(Request $request)
     {
+
         $firstdate = explode(" - ", $request->datefilter);
         $adate= explode("/",$firstdate[0] );
         $cdate= explode("/",$firstdate[1] );
