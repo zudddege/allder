@@ -131,9 +131,9 @@ class OrderControllers extends Controller
         return redirect()->back();
     }
 
-    public function export(Request $request)
+    public function export()
     {
-        return Excel::download(new UsersExport($request), 'order.xlsx');
+        return Excel::download(new UsersExport, 'order.xlsx');
     }
 
     public function addressBook()

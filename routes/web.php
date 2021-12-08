@@ -18,7 +18,7 @@ Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@sh
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
-Route::post('/export', '\App\Http\Controllers\OrderControllers\OrderControllers@export');
+Route::get('/export', '\App\Http\Controllers\OrderControllers\OrderControllers@export');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/get_address_book', '\App\Http\Controllers\OrderControllers\OrderControllers@addressBook');
 Route::get('/fetch_book', '\App\Http\Controllers\OrderControllers\OrderControllers@fetchBook');
