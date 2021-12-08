@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <style>
         .table th:last-child,
@@ -39,6 +40,7 @@
         .td_detail_row:nth-child(odd) .td_detail {
             background-color: #E3E8F7;
         }
+
         .td_detail_row:nth-child(even) .td_detail {
             background-color: white;
         }
@@ -190,14 +192,15 @@
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <form action="" id='date'>
+                            <form action="/search" method="get" id="testform">
+
                                 <div class="row px-2 mb-3">
 
                                     <div class="col-2">
                                         <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                        <div>
+                                        <div class="d-flex">
                                             <input class="form-control daterange" type="text" name="datefilter"
-                                                value="" />
+                                                id="datefilter" value="" />
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -287,7 +290,9 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
+                                            <td class='subbox2'> <span class="border border-success rounded-50"
+                                                    style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
+                                            </td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
@@ -304,7 +309,8 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/edit')}}"
+                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -358,9 +364,9 @@
             }, {
                 "width": "90px"
             }, {
-                "width": "5%"
+                "width": "100px"
             }, {
-                "width": "5%"
+                "width": "100px"
             }, {
                 "width": "60px"
             }, {
@@ -613,59 +619,44 @@
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
-    </script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-    <script type="text/javascript">
+    <script>
         $(function () {
-
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                }
-            });
-
-            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
-                    'DD/MM/YYYY'));
-            });
-
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                $(this).val('');
-            });
-
-        });
-        $(function () {
-            var start = moment().subtract(15, 'days');
+            var start = moment().subtract(29, 'days');
             var end = moment();
 
             function cb(start, end) {
-                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                    'MMMM D, YYYY'));
+                $('#datefilter ').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
 
             $('.daterange').daterangepicker({
                 startDate: start,
                 endDate: end,
+                autoUpdateInput: true,
+                alwaysShowCalendars: true,
+
+                locale: {
+                    format: 'DD/MM/YYYY',
+                },
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                     'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                     'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                     'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
-                        .subtract(1, 'month').endOf('month')
-                    ]
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                        'month').endOf('month')]
                 }
+
             }, cb);
 
-            $('4.daterange').on('apply.daterangepicker', function (ev, picker) {
-                console.log(picker.startDate.format('YYYY-MM-DD'));
-                console.log(picker.endDate.format('YYYY-MM-DD'));
-            });
             cb(start, end);
+            $('.daterange').on('apply.daterangepicker', function (ev, picker) {
+                $('#testform').submit();
+            });
+
+
         });
 
     </script>

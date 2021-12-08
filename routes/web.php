@@ -27,7 +27,8 @@ Route::get('/remove', '\App\Http\Controllers\OrderControllers\OrderControllers@r
 Route::get('/cancel', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
 Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
-Route::post('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
+Route::get('/search', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
 Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
 Route::get('/callcuria', '\App\Http\Controllers\OrderControllers\OrderControllers@callcuria');
+
 
