@@ -29,3 +29,5 @@ Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControl
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::post('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
 Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
+Route::get('/callcuria', '\App\Http\Controllers\OrderControllers\OrderControllers@callcuria');
+

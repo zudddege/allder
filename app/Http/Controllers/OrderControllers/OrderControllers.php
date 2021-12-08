@@ -155,6 +155,8 @@ class OrderControllers extends Controller {
     }
 
     public function ordersuccess() {
-        return view('ordersuccess');
+        $orders = Order::all();
+
+        return view('ordersuccess', compact('orders'));
     }
 }

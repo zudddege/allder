@@ -36,9 +36,12 @@
             right: 0px;
         }
 
-        /* .table td:last-child {
-            background-color: lightgray;
-        } */
+        .td_detail_row:nth-child(odd) .td_detail {
+            background-color: #E3E8F7;
+        }
+        .td_detail_row:nth-child(even) .td_detail {
+            background-color: white;
+        }
 
     </style>
 
@@ -279,11 +282,12 @@
                                     </thead>
                                     <tbody>
                                         @foreach($orders as $order)
-                                        <tr>
+                                        <tr class="td_detail_row">
                                             <td><input class='subbox' type="checkbox"></td>
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td class='subbox2'>{{$order->status}}</td>
+                                            {{-- <td class='subbox2'>{{$order->status}}</td> --}}
+                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
@@ -300,7 +304,7 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
