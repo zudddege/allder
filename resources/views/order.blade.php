@@ -28,7 +28,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <style>
         .table th:last-child,
@@ -40,10 +39,20 @@
         .td_detail_row:nth-child(odd) .td_detail {
             background-color: #E3E8F7;
         }
-
         .td_detail_row:nth-child(even) .td_detail {
             background-color: white;
         }
+
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
+        .dropend button:focus, .dropdown button:focus {
+            color:blue  !important;
+        }
+
+
 
     </style>
 
@@ -180,26 +189,26 @@
                                         @csrf
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-                                    <a class="btn btn-link" href="{{url('/export')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <label class="btn btn-link" id='export'><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16" fill="currentColor" class="bi bi-download"
+                                            viewBox="0 0 16 16">
                                             <path
                                                 d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path
                                                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
+                                    </label>
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <form action="/search" method="get" id="testform">
-
+                            <form action="" id='date'>
                                 <div class="row px-2 mb-3">
+
                                     <div class="col-2">
                                         <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                        <div class="d-flex">
+                                        <div>
                                             <input class="form-control daterange" type="text" name="datefilter"
-                                                id="datefilter" value="" />
+                                                value="" />
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -224,7 +233,7 @@
                                             <div class="dropdown ">
                                                 <button class="btn btn-link dropdown-toggle" type="button"
                                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
+                                                    aria-expanded="true">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-layout-three-columns"
                                                         viewBox="0 0 16 16">
@@ -232,30 +241,36 @@
                                                             d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                     </svg> <u>ตัวเลือกการแสดงผล</u>
                                                 </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                                <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
                                                     <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                    <input type="checkbox" id='box1'
-                                                        checked=""><span>เวลาที่ทำรายการ</span>
-                                                    </input><br>
-                                                    <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
-                                                    <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
-                                                    <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
-                                                    <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
-                                                    <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                    <input type="checkbox" id='box7'
-                                                        checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
-                                                    <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                    <input type="checkbox" id='box9'
-                                                        checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
-                                                    <input type="checkbox" id='box10'
-                                                        checked="">ประเภทสินค้า</input><br>
-                                                    <input type="checkbox" id='box11'
-                                                        checked="">ยอดเก็บเงินปลายทาง</input><br>
-                                                    <input type="checkbox" id='box12'
-                                                        checked="">ราคาโดยประมาณ</input><br>
-                                                    <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="d-flexd align-content-center mx-1">
+                                                                <div class=""><input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span></input></div>
+                                                                <div class=""><input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box3' checked="">เลขออเดอร์</input></div>
+                                                                <div class=""><input type="checkbox" id='box4' checked="">เลขพัสดุ</input></div>
+                                                                <div class=""><input type="checkbox" id='box5' checked="">แหล่งที่มา</input></div>
+                                                                <div class=""><input type="checkbox" id='box6' checked="">ผู้ส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                            </div>
+                                                         </div>
+                                                        <div class="col">
+                                                            <div class="d-flexd align-content-center mx-1">
+                                                                <div class=""><input type="checkbox" id='box8' checked="">ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box10' checked="">ประเภทสินค้า</input></div>
+                                                                <div class=""><input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input></div>
+                                                                <div class=""><input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input></div>
+                                                                <div class=""><input type="checkbox" id='box13' checked="">หมายเหตุ</input></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -288,9 +303,7 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50"
-                                                    style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
-                                            </td>
+                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
@@ -307,8 +320,7 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}"
-                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -362,9 +374,9 @@
             }, {
                 "width": "90px"
             }, {
-                "width": "100px"
+                "width": "5%"
             }, {
-                "width": "100px"
+                "width": "5%"
             }, {
                 "width": "60px"
             }, {
@@ -521,140 +533,63 @@
         });
 
     </script>
-    <script>
-        $("#box1").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox1").show();
-            } else {
-                $(".subbox1").hide();
-            }
-        });
-        $("#box2").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox2").show();
-            } else {
-                $(".subbox2").hide();
-            }
-        });
-        $("#box3").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox3").show();
-            } else {
-                $(".subbox3").hide();
-            }
-        });
-        $("#box4").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox4").show();
-            } else {
-                $(".subbox4").hide();
-            }
-        });
-        $("#box5").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox5").show();
-            } else {
-                $(".subbox5").hide();
-            }
-        });
-        $("#box6").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox6").show();
-            } else {
-                $(".subbox6").hide();
-            }
-        });
-        $("#box7").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox7").show();
-            } else {
-                $(".subbox7").hide();
-            }
-        });
-        $("#box8").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox8").show();
-            } else {
-                $(".subbox8").hide();
-            }
-        });
-        $("#box9").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox9").show();
-            } else {
-                $(".subbox9").hide();
-            }
-        });
-        $("#box10").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox10").show();
-            } else {
-                $(".subbox10").hide();
-            }
-        });
-        $("#box11").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox11").show();
-            } else {
-                $(".subbox11").hide();
-            }
-        });
-        $("#box12").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox12").show();
-            } else {
-                $(".subbox12").hide();
-            }
-        });
-        $("#box13").click(function () {
-            if ($(this).prop("checked")) {
-                $(".subbox13").show();
-            } else {
-                $(".subbox13").hide();
-            }
-        });
 
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    <script>
+    <script type="text/javascript">
         $(function () {
-            var start = moment().subtract(29, 'days');
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
+                    'DD/MM/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+        });
+        $(function () {
+            var start = moment().subtract(15, 'days');
             var end = moment();
 
             function cb(start, end) {
-                $('#datefilter ').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                    'MMMM D, YYYY'));
             }
 
             $('.daterange').daterangepicker({
                 startDate: start,
                 endDate: end,
-                autoUpdateInput: true,
-                alwaysShowCalendars: true,
-
-                locale: {
-                    format: 'DD/MM/YYYY',
-                },
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                     'Last 7 Days': [moment().subtract(6, 'days'), moment()],
                     'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                     'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                        'month').endOf('month')]
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
                 }
-
             }, cb);
 
-            cb(start, end);
             $('.daterange').on('apply.daterangepicker', function (ev, picker) {
-                $('#testform').submit();
+                console.log(picker.startDate.format('YYYY-MM-DD'));
+                console.log(picker.endDate.format('YYYY-MM-DD'));
             });
-
-
+            cb(start, end);
         });
 
     </script>
