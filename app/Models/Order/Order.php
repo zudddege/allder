@@ -27,7 +27,7 @@ class Order extends Model {
         "is_return_insurance",
         "is_protect_insurance",
         "is_express_transport",
-        "is_damage_insurance" .
+        "is_damage_insurance",
         "tracking_no",
         "original_tracking",
         "return_tracking",
