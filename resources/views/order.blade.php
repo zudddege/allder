@@ -201,14 +201,14 @@
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <form action="" id='date'>
+                            <form action="/search" method="get" id="testform">
                                 <div class="row px-2 mb-3">
 
                                     <div class="col-2">
                                         <div class="mb-1 ">เวลาที่ทำรายการ</div>
                                         <div>
                                             <input class="form-control daterange" type="text" name="datefilter"
-                                                value="" />
+                                                id="datefilter" value="" />
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -551,11 +551,9 @@
 
     </script>
 
-    </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script type="text/javascript">
@@ -592,7 +590,6 @@
                 endDate: end,
                 autoUpdateInput: true,
                 alwaysShowCalendars: true,
-
                 locale: {
                     format: 'DD/MM/YYYY',
                 },
