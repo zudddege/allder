@@ -170,11 +170,22 @@
                                                     id="send_area">{{ $address_book->book_area }}</textarea>
                                             </div>
                                             <div class="px-4">
-                                                <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="send_address"
-                                                    id="send_address">{{ $address_book->book_address }}</textarea>
+                                                <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                                <input class="form-control" type="text" value="" name="" id="district-0">
                                             </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                                <input class="form-control" type="text" value="" name="" id="amphoe-0">
+                                            </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">จังหวัด</p>
+                                                <input class="form-control" type="text" value="" name="" id="province-0">
+                                            </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                                <input class="form-control" type="text" value="" name="" id="zipcode-0">
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
@@ -219,11 +230,22 @@
                                                     id="recv_area"></textarea>
                                             </div>
                                             <div class="px-4">
-                                                <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="recv_address"
-                                                    id="recv_address"></textarea>
+                                                <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                                <input class="form-control" type="text" value="" name="" id="district-1">
                                             </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                                <input class="form-control" type="text" value="" name="" id="amphoe-1">
+                                            </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">จังหวัด</p>
+                                                <input class="form-control" type="text" value="" name="" id="province-1">
+                                            </div>
+                                            <div class="px-4">
+                                                <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                                <input class="form-control" type="text" value="" name="" id="zipcode-1">
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex px-4 mt-3">
@@ -432,8 +454,33 @@
     <script src="assets/js/sticky.js"></script>
     <script src="assets/js/eva-icons.min.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
 
     <script>
+
+        $.Thailand({
+            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+            $district: $('#district-0'), // input ของตำบล
+            $amphoe: $('#amphoe-0'), // input ของอำเภอ
+            $province: $('#province-0'), // input ของจังหวัด
+            $zipcode: $('#zipcode-0'), // input ของรหัสไปรษณีย์
+        });
+
+        $.Thailand({
+            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+            $district: $('#district-1'), // input ของตำบล
+            $amphoe: $('#amphoe-1'), // input ของอำเภอ
+            $province: $('#province-1'), // input ของจังหวัด
+            $zipcode: $('#zipcode-1'), // input ของรหัสไปรษณีย์
+        });
+
+
         $('#main_address').on('click', function (e) {
             if (this.checked == true) {
                 $('#save_send_address').prop('checked', true);
