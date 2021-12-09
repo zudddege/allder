@@ -166,8 +166,8 @@
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="send_area"
-                                                    id="send_area">{{ $address_book->book_area }}</textarea>
+                                                    class="border border-light form-control" name="send_detail"
+                                                    id="send_detail">{{ $address_book->book_detail }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
@@ -226,8 +226,8 @@
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">พื้นที่บริการ</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="recv_area"
-                                                    id="recv_area"></textarea>
+                                                    class="border border-light form-control" name="recv_detail"
+                                                    id="recv_detail"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
@@ -534,12 +534,11 @@
                         }, {
                             width: '45%',
                             data: {
-                                book_area: 'book_area',
-                                book_address: 'book_address'
+                                book_detail: 'book_detail',
+
                             },
                             render: function (data) {
-                                return data.book_area + "<br/>" + data
-                                    .book_address;
+                                return data.book_detail + "<br/>"
                             },
                         }, {
                             width: '15%',
@@ -566,12 +565,11 @@
                         }, {
                             width: '45%',
                             data: {
-                                book_area: 'book_area',
-                                book_address: 'book_address'
+                                book_detail: 'book_detail',
+
                             },
                             render: function (data) {
-                                return data.book_area + "<br/>" + data
-                                    .book_address;
+                                return data.book_detail + "<br/>" ;
                             },
                         }, {
                             width: '15%',
@@ -595,8 +593,8 @@
                 success: function (res) {
                     $('#send_name').val(res.book_name);
                     $('#send_tel').val(res.book_tel);
-                    $('#send_area').val(res.book_area);
-                    $('#send_address').val(res.book_address);
+                    $('#send_detail').val(res.book_detail);
+
                     $('#main_address').prop('checked', res.is_main_book);
                     $('#save_send_address').prop('checked', true);
                 }
@@ -613,8 +611,8 @@
                 success: function (res) {
                     $('#recv_name').val(res.book_name);
                     $('#recv_tel').val(res.book_tel);
-                    $('#recv_area').val(res.book_area);
-                    $('#recv_address').val(res.book_address);
+                    $('#recv_detail').val(res.book_detail);
+
                     $('#save_recv_address').prop('checked', true);
                 }
             })

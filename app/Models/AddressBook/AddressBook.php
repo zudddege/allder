@@ -12,8 +12,11 @@ class AddressBook extends Model
         "book_no",
         "book_name",
         "book_tel",
-        "book_area",
-        "book_address",
+        "book_postal_code",
+        "book_province",
+        "book_city",
+        "book_district",
+        "book_detail",
         "is_main_book"
     ];
 }

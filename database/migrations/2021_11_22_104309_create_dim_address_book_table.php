@@ -17,8 +17,11 @@ class CreateDimAddressBookTable extends Migration {
             $table->string("book_no", 10)->nullable();
             $table->string("book_name", 50)->nullable();
             $table->string("book_tel", 20)->nullable();
-            $table->string("book_area", 150)->nullable();
-            $table->string("book_address", 200)->nullable();
+            $table->string("book_postal_code", 5)->nullable();
+            $table->string("book_province", 50)->nullable();
+            $table->string("book_city", 50)->nullable();
+            $table->string("book_district", 50)->nullable();
+            $table->string("book_detail", 200)->nullable();
             $table->boolean("is_main_book")->nullable();
             $table->timestamps();
         });
