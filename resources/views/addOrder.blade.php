@@ -171,19 +171,19 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="" id="district-0">
+                                                <input class="form-control" type="text" value="" name="send_district" id="send_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="" id="amphoe-0">
+                                                <input class="form-control" type="text" value="" name="send_city" id="send_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="" id="province-0">
+                                                <input class="form-control" type="text" value="" name="send_province" id="send_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="" id="zipcode-0">
+                                                <input class="form-control" type="text" value="" name="send_postal_code" id="send_postal_code">
                                             </div>
 
                                             <div class="row">
@@ -231,19 +231,19 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="" id="district-1">
+                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="" id="amphoe-1">
+                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="" id="province-1">
+                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="" id="zipcode-1">
+                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
                                             </div>
 
                                             <div class="row">
@@ -466,18 +466,18 @@
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#district-0'), // input ของตำบล
-            $amphoe: $('#amphoe-0'), // input ของอำเภอ
-            $province: $('#province-0'), // input ของจังหวัด
-            $zipcode: $('#zipcode-0'), // input ของรหัสไปรษณีย์
+            $district: $('#send_district'), // input ของตำบล
+            $amphoe: $('#send_city'), // input ของอำเภอ
+            $province: $('#send_province'), // input ของจังหวัด
+            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
         });
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#district-1'), // input ของตำบล
-            $amphoe: $('#amphoe-1'), // input ของอำเภอ
-            $province: $('#province-1'), // input ของจังหวัด
-            $zipcode: $('#zipcode-1'), // input ของรหัสไปรษณีย์
+            $district: $('#recv_district'), // input ของตำบล
+            $amphoe: $('#recv_city'), // input ของอำเภอ
+            $province: $('#recv_province'), // input ของจังหวัด
+            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
         });
 
 

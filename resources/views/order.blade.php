@@ -324,10 +324,20 @@
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
                                             <td class='subbox6'>{{$order->send_name}}<br>
-                                                <a class="text-muted">{{$order->send_address}}</a></td>
+                                                <a class="text-muted">{{$order->wh_no}}</a>
+                                                <a class="text-muted">{{$order->send_postal_code}}</a>
+                                                <a class="text-muted">{{$order->send_province}}</a>
+                                                <a class="text-muted">{{$order->send_city}}</a>
+                                                <a class="text-muted">{{$order->send_district}}</a>
+                                                <a class="text-muted">{{$order->send_detail}}</a></td>
                                             <td class='subbox7'>{{$order->send_tel}}</td>
                                             <td class='subbox8'>{{$order->recv_name}}<br>
-                                                <a class="text-muted">{{$order->recv_address}}</a></td>
+                                                <a class="text-muted">{{$order->recv_postal_code}}</a>
+                                                <a class="text-muted">{{$order->recv_province}}</a>
+                                                <a class="text-muted">{{$order->recv_city}}</a>
+                                                <a class="text-muted">{{$order->recv_district}}</a>
+                                                <a class="text-muted">{{$order->recv_detail}}</a>
+                                            </td>
                                             </td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
                                             <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /

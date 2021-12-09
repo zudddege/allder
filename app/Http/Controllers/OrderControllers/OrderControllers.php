@@ -20,12 +20,12 @@ class OrderControllers extends Controller {
     }
 
     public function search(Request $request) {
-        $firstdate = explode(" - ", $request->datefilter);
-        $adate = explode("/", $firstdate[0]);
-        $cdate = explode("/", $firstdate[1]);
-        $bdate = $adate[2] . "/" . $adate[1] . "/" . $adate[0];
-        $ddate = $cdate[2] . "/" . $cdate[1] . "/" . $cdate[0];
-        $orders = Order::whereDate('created_at', '>=', $bdate)->whereDate('created_at', '<=', $ddate)->get();
+        $date = explode(" - ", $request->datefilter);
+        $cut_a_date = explode("/", $date[0]);
+        $cut_c_date = explode("/", $date[1]);
+        $cut_b_date = $cut_a_date[2] . "/" . $cut_a_date[1] . "/" . $cut_a_date[0];
+        $cut_d_date = $cut_c_date[2] . "/" . $cut_c_date[1] . "/" . $cut_c_date[0];
+        $orders = Order::whereDate('created_at', '>=', $cut_b_date)->whereDate('created_at', '<=', $cut_d_date)->get();
 
         return view('order', compact('orders'));
     }
