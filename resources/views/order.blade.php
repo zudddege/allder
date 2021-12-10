@@ -197,7 +197,7 @@
                                             <path
                                                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
-                                     </a>
+                                    </a>
                                 </div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
@@ -241,7 +241,6 @@
                                                             d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                     </svg> <u>ตัวเลือกการแสดงผล</u>
                                                 </button>
-
                                                 <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
                                                     <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
                                                     <div class="row">
@@ -281,10 +280,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -324,20 +321,18 @@
                                             <td class='subbox4'>{{$order->order_no}}</td>
                                             <td class='subbox5'>{{$order->order_no}}</td>
                                             <td class='subbox6'>{{$order->send_name}}<br>
-                                                <a class="text-muted">{{$order->wh_no}}</a>
-                                                <a class="text-muted">{{$order->send_postal_code}}</a>
-                                                <a class="text-muted">{{$order->send_province}}</a>
-                                                <a class="text-muted">{{$order->send_city}}</a>
+                                                <a class="text-muted">{{$order->send_detail}}</a>
                                                 <a class="text-muted">{{$order->send_district}}</a>
-                                                <a class="text-muted">{{$order->send_detail}}</a></td>
+                                                <a class="text-muted">{{$order->send_city}}</a>
+                                                <a class="text-muted">{{$order->send_province}}</a>
+                                                <a class="text-muted">{{$order->send_postal_code}}</a></td>
                                             <td class='subbox7'>{{$order->send_tel}}</td>
                                             <td class='subbox8'>{{$order->recv_name}}<br>
-                                                <a class="text-muted">{{$order->recv_postal_code}}</a>
-                                                <a class="text-muted">{{$order->recv_province}}</a>
-                                                <a class="text-muted">{{$order->recv_city}}</a>
-                                                <a class="text-muted">{{$order->recv_district}}</a>
                                                 <a class="text-muted">{{$order->recv_detail}}</a>
-                                            </td>
+                                                <a class="text-muted">{{$order->recv_district}}</a>
+                                                <a class="text-muted">{{$order->recv_city}}</a>
+                                                <a class="text-muted">{{$order->recv_province}}</a>
+                                                <a class="text-muted">{{$order->recv_postal_code}}</a></td>
                                             </td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
                                             <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
@@ -407,11 +402,11 @@
             }, {
                 "width": "60px"
             }, {
-                "width": "700px"
+                "width": "600px"
             }, {
                 "width": "120px"
             }, {
-                "width": "700px"
+                "width": "600px"
             }, {
                 "width": "120px"
             }, {
@@ -421,7 +416,7 @@
             }, {
                 "width": "120px"
             }, {
-                "width": "220px"
+                "width": "250px"
             }, {
                 "width": "120px"
             }, ],

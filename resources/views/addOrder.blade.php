@@ -25,6 +25,8 @@
     <link href="assets/css/style-dark.css" rel="stylesheet">
     <link href="assets/css/skin-modes.css" rel="stylesheet">
     <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css"
+        rel="stylesheet">
 
     <style>
         .modal-lg {
@@ -161,29 +163,37 @@
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
                                                 <input class="form-control" type="text"
-                                                    value="{{$address_book->book_tel }}" name="send_tel" id="send_tel">
+                                                    value="{{ $address_book->book_tel }}" name="send_tel" id="send_tel">
                                             </div>
                                             <div class="px-4">
-                                                <p class="mt-2 mb-1">พื้นที่บริการ</p>
+                                                <p class="mt-2 mb-1">ที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
                                                     class="border border-light form-control" name="send_detail"
                                                     id="send_detail">{{ $address_book->book_detail }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="send_district" id="send_district">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $address_book->book_district }}" name="send_district"
+                                                    id="send_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="send_city" id="send_city">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $address_book->book_city }}" name="send_city"
+                                                    id="send_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="send_province" id="send_province">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $address_book->book_province }}" name="send_province"
+                                                    id="send_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="send_postal_code" id="send_postal_code">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $address_book->book_postal_code }}"
+                                                    name="send_postal_code" id="send_postal_code">
                                             </div>
 
                                             <div class="row">
@@ -224,26 +234,30 @@
                                                     id="recv_tel">
                                             </div>
                                             <div class="px-4">
-                                                <p class="mt-2 mb-1">พื้นที่บริการ</p>
+                                                <p class="mt-2 mb-1">ที่อยู่</p>
                                                 <textarea style="resize: none; width: 100%;" rows="4"
                                                     class="border border-light form-control" name="recv_detail"
                                                     id="recv_detail"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                                <input class="form-control" type="text" value="" name="recv_district"
+                                                    id="recv_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                                <input class="form-control" type="text" value="" name="recv_city"
+                                                    id="recv_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                                <input class="form-control" type="text" value="" name="recv_province"
+                                                    id="recv_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                                <input class="form-control" type="text" value="" name="recv_postal_code"
+                                                    id="recv_postal_code">
                                             </div>
 
                                             <div class="row">
@@ -454,15 +468,18 @@
     <script src="assets/js/sticky.js"></script>
     <script src="assets/js/eva-icons.min.js"></script>
     <script src="assets/js/custom.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
-    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
 
-    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
-    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
+    </script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js">
+    </script>
 
     <script>
+        $.Thailand.setup({
+            autocomplete_size: 10,
+        });
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
@@ -479,7 +496,6 @@
             $province: $('#recv_province'), // input ของจังหวัด
             $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
         });
-
 
         $('#main_address').on('click', function (e) {
             if (this.checked == true) {
@@ -513,10 +529,10 @@
 
         $(document).ready(function () {
             $.ajax({
-                'url': "/get_address_book",
-                'method': "GET",
-                'contentType': 'json',
-                'success': function (data) {
+                url: "/get_address_book",
+                method: "GET",
+                contentType: 'json',
+                success: function (data) {
                     $("#send-table").dataTable({
                         autoWidth: false,
                         searching: false,
@@ -535,11 +551,14 @@
                             width: '45%',
                             data: {
                                 book_detail: 'book_detail',
-
+                                book_district: 'book_district',
+                                book_city: 'book_city',
+                                book_province: 'book_province',
+                                book_postal_code: 'book_postal_code',
                             },
                             render: function (data) {
-                                return data.book_detail + "<br/>"
-                            },
+                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
+                            }
                         }, {
                             width: '15%',
                             data: 'id',
@@ -566,10 +585,13 @@
                             width: '45%',
                             data: {
                                 book_detail: 'book_detail',
-
+                                book_district: 'book_district',
+                                book_city: 'book_city',
+                                book_province: 'book_province',
+                                book_postal_code: 'book_postal_code',
                             },
                             render: function (data) {
-                                return data.book_detail + "<br/>" ;
+                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
                             },
                         }, {
                             width: '15%',
@@ -594,7 +616,10 @@
                     $('#send_name').val(res.book_name);
                     $('#send_tel').val(res.book_tel);
                     $('#send_detail').val(res.book_detail);
-
+                    $('#send_district').val(res.book_district);
+                    $('#send_city').val(res.book_city);
+                    $('#send_province').val(res.book_province);
+                    $('#send_postal_code').val(res.book_postal_code);
                     $('#main_address').prop('checked', res.is_main_book);
                     $('#save_send_address').prop('checked', true);
                 }
@@ -612,7 +637,10 @@
                     $('#recv_name').val(res.book_name);
                     $('#recv_tel').val(res.book_tel);
                     $('#recv_detail').val(res.book_detail);
-
+                    $('#recv_district').val(res.book_district);
+                    $('#recv_city').val(res.book_city);
+                    $('#recv_province').val(res.book_province);
+                    $('#recv_postal_code').val(res.book_postal_code);
                     $('#save_recv_address').prop('checked', true);
                 }
             })
