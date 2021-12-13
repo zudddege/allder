@@ -318,8 +318,8 @@
                                                     style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
                                             </td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
-                                            <td class='subbox4'>{{$order->order_no}}</td>
-                                            <td class='subbox5'>{{$order->order_no}}</td>
+                                            <td class='subbox4'>{{$order->tracking_no}}</td>
+                                            <td class='subbox5'>Allder Express</td>
                                             <td class='subbox6'>{{$order->send_name}}<br>
                                                 <a class="text-muted">{{$order->send_detail}}</a>
                                                 <a class="text-muted">{{$order->send_district}}</a>

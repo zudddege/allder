@@ -279,18 +279,19 @@
                                                 id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;"
                                                 name="category">
                                                 <option disabled>ประเภทสินค้า</option>
-                                                <option value="เอกสาร">เอกสาร</option>
-                                                <option value="อาหารแห้ง">อาหารแห้ง</option>
-                                                <option value="ของใช้ทั่วไป">ของใช้ทั่วไป</option>
-                                                <option value="อุปกรณ์ไอที">อุปกรณ์ไอที</option>
-                                                <option value="เสื้อผ้า">เสื้อผ้า</option>
-                                                <option value="สื่อบันเทิง">สื่อบันเทิง</option>
-                                                <option value="อะไหล่ยนต์">อะไหล่ยนต์</option>
-                                                <option value="รองเท้า/กระเป๋า">รองเท้า/กระเป๋า</option>
-                                                <option value="เครื่องสำอางค์">เครื่องสำอางค์</option>
-                                                <option value="เฟอร์นิเจอร์">เฟอร์นิเจอร์</option>
-                                                <option value="ผลไม้">ผลไม้</option>
-                                                <option value="อื่นๆ">อื่นๆ</option>
+                                                <option value="0" selected>เอกสาร</option>
+                                                <option value="1">อาหารแห้ง</option>
+                                                <option value="2">ของใช้ทั่วไป</option>
+                                                <option value="3">อุปกรณ์ไอที</option>
+                                                <option value="4">เสื้อผ้า</option>
+                                                <option value="5">สื่อบันเทิง</option>
+                                                <option value="6">อะไหล่ยนต์</option>
+                                                <option value="7">รองเท้า/กระเป๋า</option>
+                                                <option value="8">อุปกรณ์กีฬา</option>
+                                                <option value="9">เครื่องสำอางค์</option>
+                                                <option value="10">เฟอร์นิเจอร์</option>
+                                                <option value="11">ผลไม้</option>
+                                                <option value="99">อื่นๆ</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
@@ -469,7 +470,6 @@
     <script src="assets/js/eva-icons.min.js"></script>
     <script src="assets/js/custom.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js">
     </script>

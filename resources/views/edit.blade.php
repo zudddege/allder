@@ -153,7 +153,7 @@
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
                                             <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -196,7 +196,7 @@
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
                                             <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                            data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -332,10 +332,16 @@
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
 
                                 <div class="d-flex justify-content-center">
-                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('/remove')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
-                                        <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z"/>
-                                      </svg> แก้ไข</a>
+                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true"
+                                        href="{{url('/remove')}}" style="color: white;"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-box-arrow-in-down-left"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                                            <path fill-rule="evenodd"
+                                                d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
+                                        </svg> แก้ไข</a>
                                 </div>
 
 
@@ -424,6 +430,7 @@
                     $('#submit-button').prop('disabled', true);
                 }
             })
+
         </script>
 
 </body>
