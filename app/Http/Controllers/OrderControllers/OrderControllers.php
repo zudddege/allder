@@ -373,4 +373,11 @@ class OrderControllers extends Controller {
         return response($post)->header("Content-type", "application/pdf");
     }
 
+    public function subaccount() {
+        return view('Sub_account.subaccount');
+    }
+
+    public function add_subaccount() {
+        return view('Sub_account.add_subaccount');
+    }
 }

@@ -31,3 +31,5 @@ Route::get('/search', '\App\Http\Controllers\OrderControllers\OrderControllers@s
 Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
 Route::get('/callcuria', '\App\Http\Controllers\OrderControllers\OrderControllers@callcuria');
 Route::get('/print/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@printLabel');
+Route::get('/subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@subaccount');
+Route::get('/add_subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@add_subaccount');
