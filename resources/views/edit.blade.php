@@ -7,30 +7,29 @@
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
     <title>Allder Express</title>
-    <link rel="icon" href="assets/img/brand/icon.png" type="image/x-icon">
-    <link href="assets/css/icons.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/datatables.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/responsive.bootstrap5.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/buttons.bootstrap5.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet">
-    <link href="assets/plugins/sidebar/sidebar.css" rel="stylesheet">
-    <link href="assets/plugins/perfect-scrollbar/p-scrollbar.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/sidemenu.css">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/boxed.css" rel="stylesheet">
-    <link href="assets/css/dark-boxed.css" rel="stylesheet">
-    <link href="assets/css/style-dark.css" rel="stylesheet">
-    <link href="assets/css/skin-modes.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="{{ asset('assets/img/brand/icon.png')}}" type="image/x-icon" rel="icon">
+    <link href="{{ asset('assets/css/icons.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/responsive.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/responsive.bootstrap5.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/css/buttons.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/sidemenu.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/boxed.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style-dark.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/skin-modes.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/animate.css')}}" rel="stylesheet">
 
     <style>
         .modal-lg {
             max-width: 70% !important;
-            /* desired relative width */
             margin-left: auto !important;
             margin-right: auto !important;
         }
@@ -48,10 +47,12 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png"
-                        class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png"
-                        class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#">
+                    <img src="{{ asset('assets/img/brand/allderExpress.png')}}" class="main-logo" alt="logo">
+                </a>
+                <a class="logo-icon mobile-logo icon-light active" href="#">
+                    <img src="{{ asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo">
+                </a>
             </div>
             <div class="main-sidemenu is-expanded">
 
@@ -133,121 +134,118 @@
                     </div>
                 </div>
 
-
                 <div class="row row-sm">
                     <div class="col-sm-8">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-row align-self-center">
                                     <h6 class="px-2 mt-2">เลขออเดอร์</h6>
-                                    <a class="px-3 mt-2" style="color:blue">OR2020100023</a>
+                                    <h6 class="px-3 mt-2" style="color:blue">{{$order->order_no}}</h6>
                                     <h6 class="px-2 mt-2">เลขพัสดุ</h6>
-                                    <a class="px-3 mt-2" style="color:blue">SM593373CH</a>
+                                    <h6 class="px-3 mt-2" style="color:blue">{{$order->tracking_no}}</h6>
                                     <h6 class="px-2 mt-2">เวลาที่ทำรายการ</h6>
-                                    <a class="px-3 mt-2" style="color:blue">18/10/2564 - 09:00 am</a>
+                                    <h6 class="px-3 mt-2" style="color:blue">
+                                        {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}
+                                    </h6>
                                 </div>
                                 <hr>
 
                                 <div class="row row-cols-12">
-                                    <div class="col-6" style="border-right: 1px solid black;">
+                                    <div class="col-6 bd-r bd-2">
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                            <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{$order->send_name}}"
+                                                readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{$order->send_tel}}"
+                                                readonly>
                                         </div>
                                         <div class="px-4">
-                                            <p class="mt-2 mb-1">พื้นที่บริการ</p>
-                                            <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light form-control"></textarea>
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4"
+                                                class="border border-light form-control"
+                                                readonly> {{ $order->send_detail }}</textarea>
                                         </div>
                                         <div class="px-4">
-                                            <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
-                                            <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light form-control"></textarea>
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="{{ $order->send_district }}"
+                                                readonly>
                                         </div>
-
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex px-4 mt-3">
-                                                    <input type="checkbox" class="mt-1">
-                                                    <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="d-flex px-1 mt-3">
-                                                    <input type="checkbox" class="mt-1">
-                                                    <p class="px-1">บันทึกข้อมูลที่อยู่</p>
-                                                </div>
-                                            </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="{{ $order->send_city }}"
+                                                readonly>
                                         </div>
-
-
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="{{ $order->send_province }}"
+                                                readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text"
+                                                value="{{ $order->send_postal_code }}" readonly>
+                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="d-flex">
                                             <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                            <button class="btn btn-link px-1" style="color:blue" data-toggle="modal"
-                                                data-target=".bd-example-modal-lg"><u>เลือกจากสมุดที่อยู่</u></button>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{$order->recv_name}}"
+                                                readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{$order->recv_tel}}"
+                                                readonly>
                                         </div>
                                         <div class="px-4">
-                                            <p class="mt-2 mb-1">พื้นที่บริการ</p>
-                                            <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light form-control"></textarea>
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4"
+                                                class="border border-light form-control"
+                                                readonly>{{ $order->recv_detail }}</textarea>
                                         </div>
                                         <div class="px-4">
-                                            <p class="mt-2 mb-1">รายละเอียดที่อยู่</p>
-                                            <textarea style="resize: none;" rows="4" cols="43"
-                                                class="border border-light form-control"></textarea>
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="{{ $order->recv_district }}"
+                                                readonly>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex px-4 mt-3">
-                                                    <input type="checkbox" class="mt-1">
-                                                    <p class="px-1">บันทึกข้อมูลที่อยู่</p>
-                                                </div>
-                                            </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="{{ $order->recv_city }}"
+                                                readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="{{ $order->recv_province }}"
+                                                readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text"
+                                                value="{{ $order->recv_postal_code }}" readonly>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                 <h5 class="px-2 mt-2"><b>รายละเอียดสินค้า</b></h5>
                                 <div class="row px-2 mt-3">
                                     <div class="col-3">
                                         <p class="mb-1">ประเภทสินค้า</p>
-                                        <select class="custom-select my-1 mr-sm-2 border-light"
-                                            id="inlineFormCustomSelectPref" style="width: 170px; height: 35px;">
-                                            <option selected>เลือก...</option>
-                                            <option value="1">เอกสาร</option>
-                                            <option value="2">อาหารแห้ง</option>
-                                            <option value="3">ของใช้ทั่วไป</option>
-                                            <option value="4">อุปกรณ์ไอที</option>
-                                            <option value="5">เสื้อผ้า</option>
-                                            <option value="6">สื่อบันเทิง</option>
-                                            <option value="7">อะไหล่ยนต์</option>
-                                        </select>
+                                        <input class="form-control" type="text" value="{{ $order->category }}" readonly>
                                     </div>
                                     <div class="col-3">
                                         <p class="mb-1">น้ำหนัก</p>
                                         <div class="d-flex">
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{ $order->weight }}"
+                                                readonly>
                                             <p class="mt-2 px-1">kg.</p>
                                         </div>
 
@@ -255,11 +253,14 @@
                                     <div class="col-6">
                                         <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                         <div class="d-flex">
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{ $order->width_size}}"
+                                                readonly>
                                             <a class="mt-2 px-2">x</a>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{ $order->length_size}}"
+                                                readonly>
                                             <a class="mt-2 px-2">x</a>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{ $order->height_size }}"
+                                                readonly>
                                             <a class="mt-2 px-2">cm.</a>
                                         </div>
                                     </div>
@@ -268,31 +269,30 @@
                                 <div class="row px-2 mt-3">
                                     <div class="col-4">
                                         <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                        <input class="form-control" type="text" value="">
+                                        <input class="form-control" type="text" value="{{$order->cod}}" readonly>
                                     </div>
                                     <div class="col">
                                         <p class="mb-1">หมายเหตุ</p>
-                                        <input class="form-control" type="text" value="">
+                                        <input class="form-control" type="text" value="{{$order->note_detail}}"
+                                            readonly>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1" id="accept">
+                                    <input type="checkbox" class="mt-1" id="accept" disabled checked>
                                     <p class="px-1">ฉันได้อ่านและยอมรับข้อกำหนดใน<br>
                                         <a href="#" class="" style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
                                     </p>
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1">
+                                    <input type="checkbox" class="mt-1" disabled @if($order->is_return_insurance)
+                                    checked @endif>
                                     <p class="px-1">ประกันพัสดุดีดกลับ<br>
                                         <a class="text-muted">หากพัสดุถูกดีดกลับ
                                             จะไม่คิดค่าขนส่งดีดกลับ<br>ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
@@ -303,12 +303,14 @@
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1">
+                                    <input type="checkbox" class="mt-1" disabled @if($order->is_protect_insurance)
+                                    checked @endif>
                                     <p class="px-1">ประกันคุ้มครองพัสดุ</p>
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1">
+                                    <input type="checkbox" class="mt-1" disabled @if($order->is_express_transport)
+                                    checked @endif>
                                     <p class="px-1">SPEED<br>
                                         <a class="text-muted">คาดการณ์จัดส่งภายในวันที่<br>เพื่อรับรองประสิทธิภาพการจัดส่งพัสดุ
                                             กรุณาบุ๊คกิ๊งก่อนเวลา <br> ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
@@ -319,7 +321,8 @@
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                 <div class="d-flex">
-                                    <input type="checkbox" class="mt-1">
+                                    <input type="checkbox" class="mt-1" disabled @if($order->is_damage_insurance)
+                                    checked @endif>
                                     <p class="px-1">ประกันบรรจุภัณฑ์ภายนอกเสียหาย<br>
                                         <a class="text-muted">เมื่อบรรจุภัณฑ์ภายนอกเสียหายจะได้รับค่าชดเชย
                                             <br>และเคลมเต็ม
@@ -330,7 +333,6 @@
                                     </p>
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
-
                                 <div class="d-flex justify-content-center">
                                     <a class="btn btn-primary mx-2" id="submit-button" disabled="true"
                                         href="{{url('/remove')}}" style="color: white;"><svg
@@ -343,14 +345,10 @@
                                                 d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
                                         </svg> แก้ไข</a>
                                 </div>
-
-
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
             <!-- Container closed -->
         </div>
@@ -363,7 +361,8 @@
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                     <h5><b>เลือกจากสมุดที่อยู่</b></h5>
-                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a>
+                    </div>
                     <div class=" ">
                         <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
                     </div>
@@ -394,33 +393,33 @@
 
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/plugins/ionicons/ionicons.js"></script>
-        <script src="assets/plugins/moment/moment.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-        <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-        <script src="assets/plugins/datatable/datatables.min.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-        <script src="assets/plugins/datatable/js/jszip.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-        <script src="assets/js/table-data.js"></script>
-        <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
-        <script src="assets/plugins/rating/jquery.barrating.js"></script>
-        <script src="assets/plugins/side-menu/sidemenu.js"></script>
-        <script src="assets/plugins/sidebar/sidebar.js"></script>
-        <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-        <script src="assets/js/sticky.js"></script>
-        <script src="assets/js/eva-icons.min.js"></script>
-        <script src="assets/js/custom.js"></script>
+        <script src="/assets/plugins/jquery/jquery.min.js"></script>
+        <script src="/assets/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/plugins/ionicons/ionicons.js"></script>
+        <script src="/assets/plugins/moment/moment.js"></script>
+        <script src="/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="/assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+        <script src="/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+        <script src="/assets/plugins/datatable/datatables.min.js"></script>
+        <script src="/assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+        <script src="/assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+        <script src="/assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+        <script src="/assets/plugins/datatable/js/jszip.min.js"></script>
+        <script src="/assets/plugins/datatable/js/buttons.html5.min.js"></script>
+        <script src="/assets/plugins/datatable/js/buttons.print.min.js"></script>
+        <script src="/assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+        <script src="/assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+        <script src="/assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+        <script src="/assets/js/table-data.js"></script>
+        <script src="/assets/plugins/rating/jquery.rating-stars.js"></script>
+        <script src="/assets/plugins/rating/jquery.barrating.js"></script>
+        <script src="/assets/plugins/side-menu/sidemenu.js"></script>
+        <script src="/assets/plugins/sidebar/sidebar.js"></script>
+        <script src="/assets/plugins/sidebar/sidebar-custom.js"></script>
+        <script src="/assets/js/sticky.js"></script>
+        <script src="/assets/js/eva-icons.min.js"></script>
+        <script src="/assets/js/custom.js"></script>
 
         <script>
             $('#accept').on('click', function (e) {

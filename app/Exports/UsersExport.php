@@ -35,7 +35,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
             $order->length_size,
             $order->height_size,
             $order->cod,
-            $order->cod,
+            $order->estimate_price,
             $order->note_detail,
         ];
     }
@@ -53,10 +53,10 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
             "ผู้รับ",
             "เบอร์โทรศัพท์ผู้รับ",
             "ประเภทสินค้า",
-            "น้ำหนัก",
-            "ความกว้าง",
-            "ความยาว",
-            "ความสูง",
+            "น้ำหนัก (kg)",
+            "ความกว้าง (cm)",
+            "ความยาว (cm)",
+            "ความสูง (cm)",
             "ยอดเก็บเงินปลายทาง",
             "ราคาโดยประมาณ",
             "หมายเหตุ",

@@ -22,11 +22,12 @@ Route::get('/export', '\App\Http\Controllers\OrderControllers\OrderControllers@e
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/get_address_book', '\App\Http\Controllers\OrderControllers\OrderControllers@addressBook');
 Route::get('/fetch_book', '\App\Http\Controllers\OrderControllers\OrderControllers@fetchBook');
-Route::get('/edit', '\App\Http\Controllers\OrderControllers\OrderControllers@edit');
+Route::get('/edit/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@edit');
 Route::get('/remove', '\App\Http\Controllers\OrderControllers\OrderControllers@remove');
-Route::get('/cancel', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
+Route::get('/cancel/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
 Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/search', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
 Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
 Route::get('/callcuria', '\App\Http\Controllers\OrderControllers\OrderControllers@callcuria');
+Route::get('/print/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@printLabel');

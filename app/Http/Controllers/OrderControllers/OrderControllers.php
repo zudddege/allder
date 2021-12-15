@@ -81,7 +81,7 @@ class OrderControllers extends Controller {
         $create = FlashCoreFunction::buildRequestParam([
             "mchId" => 'AA0594',
             "nonceStr" => time(),
-            "expressCategory" => $request->is_express_transport == 1 ? "2" : "1",
+            "expressCategory" => $request->is_express_transport == 1 ? 2 : 1,
             "srcName" => $request->send_name,
             "srcPhone" => $request->send_tel,
             "srcProvinceName" => $request->send_province,
@@ -111,8 +111,32 @@ class OrderControllers extends Controller {
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v3/orders", $create);
         $response = json_decode($post, true);
+        $tracking_no = $response["data"]["pno"];
 
         if ($response["message"] == "success") {
+            $rate = FlashCoreFunction::buildRequestParam([
+                "mchId" => 'AA0594',
+                "nonceStr" => time(),
+                "srcProvinceName" => $request->send_province,
+                "srcCityName" => $request->send_city,
+                "srcDistrictName" => $request->send_district,
+                "srcPostalCode" => $request->send_postal_code,
+                "dstProvinceName" => $request->recv_province,
+                "dstCityName" => $request->recv_city,
+                "dstDistrictName" => $request->recv_district,
+                "dstPostalCode" => $request->recv_postal_code,
+                "weight" => ($request->weight) * 1000,
+                "width" => $request->width_size,
+                "length" => $request->length_size,
+                "height" => $request->height_size,
+                "expressCategory" => $request->is_express_transport == 1 ? "2" : "1",
+                "pricingTable" => 0,
+            ]);
+
+            $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
+            $response = json_decode($post, true);
+            $estimate_price = $response["data"]["estimatePrice"];
+
             if ($request->main_address) {
                 $main_book = AddressBook::select('id', 'is_main_book')->where('is_main_book', 1)->first();
                 if ($main_book) {
@@ -174,12 +198,13 @@ class OrderControllers extends Controller {
                 "length_size" => $request->length_size,
                 "height_size" => $request->height_size,
                 "cod" => $request->cod,
+                "estimate_price" => $estimate_price / 100,
                 "note_detail" => $request->note_detail,
                 "is_return_insurance" => $request->is_return_insurance ? true : false,
                 "is_protect_insurance" => $request->is_protect_insurance ? true : false,
                 "is_express_transport" => $request->is_express_transport ? true : false,
                 "is_damage_insurance" => $request->is_damage_insurance ? true : false,
-                "tracking_no" => $response["data"]["pno"],
+                "tracking_no" => $tracking_no,
                 "original_tracking" => $request->original_tracking,
                 "status" => "รอรับพัสดุ",
             ]);
@@ -229,83 +254,83 @@ class OrderControllers extends Controller {
         return view('Curia.callcuria');
     }
 
-    public function edit() {
-        $order = Order::find();
+    public function edit($id) {
+        $order = Order::find($id);
 
-        switch ($order->category) {
+        /* switch ($order->category) {
         case ("เอกสาร"): $category_num = 0;
-            break;
+        break;
         case ('อาหารแห้ง'): $category_num = 1;
-            break;
+        break;
         case ('ของใช้ทั่วไป'): $category_num = 2;
-            break;
+        break;
         case ('อุปกรณ์ไอที'): $category_num = 3;
-            break;
+        break;
         case ('เสื้อผ้า'): $category_num = 4;
-            break;
+        break;
         case ('สื่อบันเทิง'): $category_num = 5;
-            break;
+        break;
         case ('อะไหล่ยนต์'): $category_num = 6;
-            break;
+        break;
         case ('รองเท้า/กระเป๋า'): $category_num = 7;
-            break;
+        break;
         case ('อุปกรณ์กีฬา'): $category_num = 8;
-            break;
+        break;
         case ('เครื่องสำอางค์'): $category_num = 9;
-            break;
+        break;
         case ('เฟอร์นิเจอร์'): $category_num = 10;
-            break;
+        break;
         case ('ผลไม้'): $category_num = 11;
-            break;
+        break;
         case ('อื่นๆ'): $category_num = 12;
-            break;
+        break;
         }
 
         $edit = FlashCoreFunction::buildRequestParam([
-            "mchId" => 'AA0594',
-            "nonceStr" => time(),
-            "pno" => $order->tracking_no,
-            "expressCategory" => $order->is_express_transport == 1 ? "2" : "1",
-            "srcName" => $order->send_name,
-            "srcPhone" => $order->send_tel,
-            "srcDetailAddress" => $order->send_detail,
-            "dstName" => $order->recv_name,
-            "dstPhone" => $order->recv_tel,
-            "dstProvinceName" => $order->recv_province,
-            "dstCityName" => $order->recv_city,
-            "dstDistrictName" => $order->recv_district,
-            "dstPostalCode" => $order->recv_postal_code,
-            "dstDetailAddress" => $order->recv_detail,
-            "articleCategory" => $category_num,
-            "weight" => intval(($order->weight) * 1000),
-            "width" => intval($order->width_size),
-            "length" => intval($order->length_size),
-            "height" => intval($order->height_size),
-            "insured" => $order->is_protect_insurance ? 1 : 0,
-            "freightInsureEnabled" => $order->is_return_insurance ? 1 : 0,
-            "opdInsureEnabled" => $order->is_damage_insurance ? 1 : 0,
-            "codEnabled" => $order->cod == "0" ? 0 : 1,
-            "codAmount" => ($order->cod) * 100,
-            "remark" => $order->note_detail,
+        "mchId" => 'AA0594',
+        "nonceStr" => time(),
+        "pno" => $order->tracking_no,
+        "expressCategory" => $order->is_express_transport == 1 ? "2" : "1",
+        "srcName" => $order->send_name,
+        "srcPhone" => $order->send_tel,
+        "srcDetailAddress" => $order->send_detail,
+        "dstName" => $order->recv_name,
+        "dstPhone" => $order->recv_tel,
+        "dstProvinceName" => $order->recv_province,
+        "dstCityName" => $order->recv_city,
+        "dstDistrictName" => $order->recv_district,
+        "dstPostalCode" => $order->recv_postal_code,
+        "dstDetailAddress" => $order->recv_detail,
+        "articleCategory" => $category_num,
+        "weight" => intval(($order->weight) * 1000),
+        "width" => intval($order->width_size),
+        "length" => intval($order->length_size),
+        "height" => intval($order->height_size),
+        "insured" => $order->is_protect_insurance ? 1 : 0,
+        "freightInsureEnabled" => $order->is_return_insurance ? 1 : 0,
+        "opdInsureEnabled" => $order->is_damage_insurance ? 1 : 0,
+        "codEnabled" => $order->cod == "0" ? 0 : 1,
+        "codAmount" => ($order->cod) * 100,
+        "remark" => $order->note_detail,
         ]);
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/modify", $edit);
         $response = json_decode($post, true);
 
         if ($response["message"] == "success") {
-            dd($post);
-        }
+        dd($post);
+        } */
 
-        return view('edit');
+        return view('edit', compact('order'));
     }
 
     public function remove() {
         return view('remove');
     }
 
-    public function cancel() {
-        $order = Order::find();
-        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $order->tracking_no . "/cancel";
+    public function cancel($id) {
+        $tracking_no = Order::find($id)->tracking_no;
+        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/cancel";
 
         $cancel = FlashCoreFunction::buildRequestParam([
             "mchId" => 'AA0594',
@@ -333,4 +358,19 @@ class OrderControllers extends Controller {
 
         return view('ordersuccess', compact('orders'));
     }
+
+    public function printLabel($id) {
+        $tracking_no = Order::find($id)->tracking_no;
+        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/pre_print";
+
+        $print = FlashCoreFunction::buildRequestParam([
+            "mchId" => 'AA0594',
+            "nonceStr" => time(),
+        ]);
+
+        $post = FlashCoreFunction::postRequest($url, $print);
+
+        return response($post)->header("Content-type", "application/pdf");
+    }
+
 }

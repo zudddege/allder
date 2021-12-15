@@ -314,8 +314,20 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50"
-                                                    style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span>
+                                            <td class='subbox2'>
+                                                @if($order->status == "รอรับพัสดุ")
+                                                <span class="border border-primary rounded-10"
+                                                    style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
+                                                @elseif($order->status == "ระหว่างจัดส่ง")
+                                                <span class="border border-warning rounded-10"
+                                                    style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
+                                                @elseif($order->status == "เสร็จสิ้น")
+                                                <span class="border border-success rounded-10"
+                                                    style="padding: 5px 10px; color: #5cb85c;">{{$order->status}}</span>
+                                                @elseif($order->status == "ยกเลิก")
+                                                <span class="border border-danger rounded-10"
+                                                    style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
+                                                @endif
                                             </td>
                                             <td class='subbox3'>{{$order->order_no}}</td>
                                             <td class='subbox4'>{{$order->tracking_no}}</td>
@@ -339,9 +351,9 @@
                                                 {{$order->width_size}} x {{$order->length_size}} x
                                                 {{$order->height_size}} cm</td>
                                             <td class='subbox11'>{{$order->cod}}</td>
-                                            <td class='subbox12'>{{$order->cod}}</td>
+                                            <td class='subbox12'>{{$order->estimate_price}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}"
+                                            <td class="td_detail shadow"><a href="{{url('/edit/'.$order->id)}}"
                                                     class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
@@ -394,7 +406,7 @@
             }, {
                 "width": "150px"
             }, {
-                "width": "90px"
+                "width": "100px",
             }, {
                 "width": "100px"
             }, {
@@ -556,7 +568,6 @@
 
     </script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />

@@ -32,10 +32,11 @@ class CreateFactOrderTable extends Migration {
             $table->string("recv_postal_code", 5)->nullable();
             $table->string("category", 20)->nullable();
             $table->decimal("weight", 5, 3)->nullable();
-            $table->decimal("width_size", 4, 1)->nullable();
-            $table->decimal("length_size", 4, 1)->nullable();
-            $table->decimal("height_size", 4, 1)->nullable();
+            $table->decimal("width_size", 3, 0)->nullable();
+            $table->decimal("length_size", 3, 0)->nullable();
+            $table->decimal("height_size", 3, 0)->nullable();
             $table->decimal("cod", 9, 2)->nullable();
+            $table->decimal("estimate_price", 9, 2)->nullable();
             $table->string("note_detail", 200)->nullable();
             $table->boolean("is_return_insurance")->nullable();
             $table->boolean("is_protect_insurance")->nullable();

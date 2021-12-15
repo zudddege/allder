@@ -30,6 +30,7 @@ class Order extends Model {
         "length_size",
         "height_size",
         "cod",
+        "estimate_price",
         "note_detail",
         "is_return_insurance",
         "is_protect_insurance",
