@@ -333,4 +333,12 @@ class OrderControllers extends Controller {
 
         return view('ordersuccess', compact('orders'));
     }
+
+    public function subaccount() {
+        return view('Sub_account.subaccount');
+    }
+
+    public function add_subaccount() {
+        return view('Sub_account.add_subaccount');
+    }
 }

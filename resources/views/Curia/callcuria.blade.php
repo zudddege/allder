@@ -6,25 +6,24 @@
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
     <title>Allder Express</title>
-    <link rel="icon" href="assets/img/brand/icon.png" type="image/x-icon">
-    <link href="assets/css/icons.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/datatables.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/responsive.bootstrap5.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/buttons.bootstrap5.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="assets/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet">
-    <link href="assets/plugins/sidebar/sidebar.css" rel="stylesheet">
-    <link href="assets/plugins/perfect-scrollbar/p-scrollbar.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/sidemenu.css">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/boxed.css" rel="stylesheet">
-    <link href="assets/css/dark-boxed.css" rel="stylesheet">
-    <link href="assets/css/style-dark.css" rel="stylesheet">
-    <link href="assets/css/skin-modes.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/responsive.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/responsive.bootstrap5.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/css/buttons.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/sidemenu.css')}}">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/boxed.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
     <style>
         table {
@@ -61,11 +60,11 @@
 
                 <ul class="side-menu open">
 
-                    <li class="slide is-expanded">
+                    <li class="slide ">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
                                 class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
@@ -94,29 +93,11 @@
                                 class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html"><span
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span
                                 class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
 
                 </ul>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; height: 722px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 580px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-            </div>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-            </div>
-            <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
             </div>
         </aside>
         <!-- main-sidebar -->
@@ -348,33 +329,33 @@
 
         <!-- Back-to-top -->
         <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/plugins/ionicons/ionicons.js"></script>
-        <script src="assets/plugins/moment/moment.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
-        <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-        <script src="assets/plugins/datatable/datatables.min.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
-        <script src="assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-        <script src="assets/plugins/datatable/js/jszip.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.html5.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.print.min.js"></script>
-        <script src="assets/plugins/datatable/js/buttons.colVis.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-        <script src="assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-        <script src="assets/js/table-data.js"></script>
-        <script src="assets/plugins/rating/jquery.rating-stars.js"></script>
-        <script src="assets/plugins/rating/jquery.barrating.js"></script>
-        <script src="assets/plugins/side-menu/sidemenu.js"></script>
-        <script src="assets/plugins/sidebar/sidebar.js"></script>
-        <script src="assets/plugins/sidebar/sidebar-custom.js"></script>
-        <script src="assets/js/sticky.js"></script>
-        <script src="assets/js/eva-icons.min.js"></script>
-        <script src="assets/js/custom.js"></script>
+        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+        <script src="{{asset('assets/js/table-data.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+        <script src="{{asset('assets/js/sticky.js')}}"></script>
+        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+        <script src="{{asset('assets/js/custom.js')}}"></script>
 
         <script>
             $('#my-table').DataTable({
