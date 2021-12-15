@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
+// Order
 Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
 Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
@@ -28,8 +29,11 @@ Route::get('/cancel/{id}', '\App\Http\Controllers\OrderControllers\OrderControll
 Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/search', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
-Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
-Route::get('/callcuria', '\App\Http\Controllers\OrderControllers\OrderControllers@callcuria');
 Route::get('/print/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@printLabel');
+// Carrier
+Route::get('/callcourier', '\App\Http\Controllers\OrderControllers\OrderControllers@callcourier');
+// Login
+Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
+// subaccount
 Route::get('/subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@subaccount');
 Route::get('/add_subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@add_subaccount');

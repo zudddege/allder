@@ -52,7 +52,7 @@
                                 class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" href="{{url('/callcuria')}}"><span
+                        <a class="side-menu__item" href="{{url('/callcourier')}}"><span
                                 class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">

@@ -250,8 +250,8 @@ class OrderControllers extends Controller {
         return $book_details;
     }
 
-    public function callcuria() {
-        return view('Curia.callcuria');
+    public function callcourier() {
+        return view('courier.callcourier');
     }
 
     public function edit($id) {
