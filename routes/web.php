@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,23 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-// Order
-Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
-Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
-Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
+//api
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
 Route::get('/export', '\App\Http\Controllers\OrderControllers\OrderControllers@export');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/get_address_book', '\App\Http\Controllers\OrderControllers\OrderControllers@addressBook');
 Route::get('/fetch_book', '\App\Http\Controllers\OrderControllers\OrderControllers@fetchBook');
+Route::post('/cancel/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
+Route::get('/print/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@printLabel');
+Route::post('/edit_order/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@editOrder');
+// Order
+Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
+Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
+Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
+Route::get('/detail/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@detail');
 Route::get('/edit/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@edit');
-Route::get('/remove', '\App\Http\Controllers\OrderControllers\OrderControllers@remove');
-Route::get('/cancel/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@cancel');
 Route::get('/ordersuccess', '\App\Http\Controllers\OrderControllers\OrderControllers@ordersuccess');
 Route::get('/get_order_no', '\App\Http\Controllers\OrderControllers\OrderControllers@genOrderNo');
 Route::get('/search', '\App\Http\Controllers\OrderControllers\OrderControllers@search');
-Route::get('/print/{id}', '\App\Http\Controllers\OrderControllers\OrderControllers@printLabel');
 // Carrier
 Route::get('/callcourier', '\App\Http\Controllers\OrderControllers\OrderControllers@callcourier');
 // Login
