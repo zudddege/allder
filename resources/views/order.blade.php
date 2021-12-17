@@ -117,15 +117,45 @@
         </aside>
         <div class="main-content app-content">
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
-                <div class="d-flex align-items-center">
-                    <div class="main-header-left ">
-                        <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
-                            <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
-                            <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
+                <div class="container-fluid">
+
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
+                                <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
+                                <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-primary mx-2">เรียกพนักงานเข้ามารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2">ระบุพนักงานเข้ารับพัสดุ</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="">
+                        <div class="nav nav-item  navbar-nav-right ml-auto">
+                            <div class="dropdown main-profile-menu nav nav-item nav-link">
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }}
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" >
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                            </div>
                         </div>
                     </div>
-                    <a href="{{url('/callcuria')}}" type="button" class="btn btn-primary mx-3">เรียกพนักงานเข้ามารับพัสดุ</a>
-                    <button type="button" class="btn btn-primary">ระบุพนักงานเข้ารับพัสดุ</button>
                 </div>
             </div>
             <div class="container-fluid">
@@ -209,7 +239,7 @@
                                                         <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                     </svg> <u>ตัวเลือกการแสดงผล</u>
                                                 </button>
-                                                <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
+                                                <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="sizedrop">
                                                     <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
                                                     <div class="row">
                                                         <div class="col">

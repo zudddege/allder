@@ -96,7 +96,10 @@
 	.slider.round {
 	  border-radius: 34px;
 	}
-
+    .dropdown-menu {
+            width: 150px !important;
+            margin-right: 50% !important;
+        }
 	.slider.round:before {
 	  border-radius: 50%;
 	}
@@ -158,19 +161,43 @@
 
 			<!-- main-header -->
 			<div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
-				<div class="container-fluid">
-                        <button type="button" class="btn btn-primary" style="position: absolute; left: 330;">เรียกพนักงานเข้ามารับพัสดุ</button>
-                        <button type="button" class="btn btn-primary" style="position: absolute; left: 540;">ระบุพนักงานเข้ารับพัสดุ</button>
+                <div class="container-fluid">
 
-                    <div class="main-header-left ">
-						<div class="app-sidebar__toggle" data-bs-toggle="sidebar">
-							<a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
-							<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
-						</div>
-					</div>
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
+                                <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
+                                <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
+                            </div>
 
-				</div>
-			</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="">
+                        <div class="nav nav-item  navbar-nav-right ml-auto">
+                            <div class="dropdown main-profile-menu nav nav-item nav-link">
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }}
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="sizelogout">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<!-- /main-header -->
 
 			<!-- container -->
