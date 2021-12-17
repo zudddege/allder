@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use \Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 // Order
-Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
-Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder');
+Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
+Route::get('/order', '\App\Http\Controllers\OrderControllers\OrderControllers@showOrder')->name('order');
 Route::get('/add_order', '\App\Http\Controllers\OrderControllers\OrderControllers@addOrder');
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
@@ -35,5 +36,11 @@ Route::get('/callcourier', '\App\Http\Controllers\OrderControllers\OrderControll
 // Login
 Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
 // subaccount
-Route::get('/subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@subaccount');
+Route::get('/subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@subaccount')->name('subacc');
 Route::get('/add_subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@add_subaccount');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');

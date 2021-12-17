@@ -49,25 +49,41 @@
                     </div>
                     <div class="col">
                         <div class="" style="margin-right: 15px;">
+
                             <div class="d-flex justify-content-center">
                                 <img src="assets/img/brand/allderExpress.png" alt="" sizes="w:350px" class="my-"
                                     style="padding-top: 45px; padding-bottom: 45px;">
                             </div>
+
                             <div class="d-flex justify-content-end" style="padding-right: 25px;">
                                 <a href="forget.html" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <input class="form-control mb-3" type="text" value="" placeholder="ชื่อผู้ใช้"
-                                    style="width: 250;">
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <input class="form-control" type="password" value="" placeholder="รหัสผ่าน"
-                                    style="width: 250;">
-                            </div>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="d-flex justify-content-center">
+                                    <input id="email" placeholder="ชื่อผู้ใช้" style="width: 250;" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <input id="password" placeholder="รหัสผ่าน"  style="width: 250;" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             <div class="jumps-prevent" style="padding-top: 45px;"></div>
                             <div class="d-flex justify-content-center">
-                                <a href="{{url('/order')}}" class="btn btn-primary" style="color: white; width: 220px;">เข้าสู่ระบบ</a>
+                                <button type="submit" class="btn btn-primary" style="color: white; width: 220px;">{{ __('เข้าสู่ระบบ') }}</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
