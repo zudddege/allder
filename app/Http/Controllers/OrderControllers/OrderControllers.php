@@ -354,7 +354,7 @@ class OrderControllers extends Controller {
                 'note_detail' => $request->note_detail,
             ]);
         } else {
-            dd($edit);
+            dd($post);
         }
 
         return redirect('detail/' . $id);

@@ -384,8 +384,8 @@
                             <input class="form-control" type="text" value="" name="cancel_reason" id="cancel_reason">
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger">ยกเลิกรายการ</>
-                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">เก็บไว้ก่อน</button>
+                            <button type="submit" class="btn btn-danger">ยกเลิกรายการ</button>
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">เก็บไว้ก่อน</button>
                         </div>
                     </div>
                 </form>

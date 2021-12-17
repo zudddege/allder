@@ -71,8 +71,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span
-                                class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -199,8 +198,7 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                                เบอร์โทรศัพท์</a></div>
+                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
                                         <div class="d-flex ">
                                             <div class="">
                                                 <input class="form-control" type="text" value="" style="width:325px;">
@@ -216,24 +214,23 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span></input>
-                                                                </div>
-                                                                <div class=""><input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box3' checked="">เลขออเดอร์</input></div>
-                                                                <div class=""><input type="checkbox" id='box4' checked="">เลขพัสดุ</input></div>
-                                                                <div class=""><input type="checkbox" id='box5' checked="">แหล่งที่มา</input></div>
-                                                                <div class=""><input type="checkbox" id='box6' checked="">ผู้ส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box1' checked><span>เวลาที่ทำรายการ</span></input></div>
+                                                                <div class=""><input type="checkbox" id='box2' checked>สถานะจัดส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box3' checked>เลขออเดอร์</input></div>
+                                                                <div class=""><input type="checkbox" id='box4' checked>เลขพัสดุ</input></div>
+                                                                <div class=""><input type="checkbox" id='box5' checked>แหล่งที่มา</input></div>
+                                                                <div class=""><input type="checkbox" id='box6' checked>ผู้ส่ง</input></div>
+                                                                <div class=""><input type="checkbox" id='box7' checked>เบอร์โทรศัพท์ผู้ส่ง</input></div>
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box8' checked="">ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box10' checked="">ประเภทสินค้า</input></div>
-                                                                <div class=""><input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input></div>
-                                                                <div class=""><input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input></div>
-                                                                <div class=""><input type="checkbox" id='box13' checked="">หมายเหตุ</input></div>
+                                                                <div class=""><input type="checkbox" id='box8' checked>ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box9' checked>เบอร์โทรศัพท์ผู้รับ</input></div>
+                                                                <div class=""><input type="checkbox" id='box10' checked>ประเภทสินค้า</input></div>
+                                                                <div class=""><input type="checkbox" id='box11' checked>ยอดเก็บเงินปลายทาง</input></div>
+                                                                <div class=""><input type="checkbox" id='box12' checked>ราคาโดยประมาณ</input></div>
+                                                                <div class=""><input type="checkbox" id='box13' checked>หมายเหตุ</input></div>
                                                             </div>
                                                         </div>
                                                     </div>
