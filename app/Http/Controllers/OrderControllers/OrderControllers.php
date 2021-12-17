@@ -253,73 +253,14 @@ class OrderControllers extends Controller {
     public function callcourier() {
         return view('courier.callcourier');
     }
+    public function detail($id) {
+        $order = Order::find($id);
+
+        return view('detail', compact('order'));
+    }
 
     public function edit($id) {
         $order = Order::find($id);
-
-        /* switch ($order->category) {
-        case ("เอกสาร"): $category_num = 0;
-        break;
-        case ('อาหารแห้ง'): $category_num = 1;
-        break;
-        case ('ของใช้ทั่วไป'): $category_num = 2;
-        break;
-        case ('อุปกรณ์ไอที'): $category_num = 3;
-        break;
-        case ('เสื้อผ้า'): $category_num = 4;
-        break;
-        case ('สื่อบันเทิง'): $category_num = 5;
-        break;
-        case ('อะไหล่ยนต์'): $category_num = 6;
-        break;
-        case ('รองเท้า/กระเป๋า'): $category_num = 7;
-        break;
-        case ('อุปกรณ์กีฬา'): $category_num = 8;
-        break;
-        case ('เครื่องสำอางค์'): $category_num = 9;
-        break;
-        case ('เฟอร์นิเจอร์'): $category_num = 10;
-        break;
-        case ('ผลไม้'): $category_num = 11;
-        break;
-        case ('อื่นๆ'): $category_num = 12;
-        break;
-        }
-
-        $edit = FlashCoreFunction::buildRequestParam([
-        "mchId" => 'AA0594',
-        "nonceStr" => time(),
-        "pno" => $order->tracking_no,
-        "expressCategory" => $order->is_express_transport == 1 ? "2" : "1",
-        "srcName" => $order->send_name,
-        "srcPhone" => $order->send_tel,
-        "srcDetailAddress" => $order->send_detail,
-        "dstName" => $order->recv_name,
-        "dstPhone" => $order->recv_tel,
-        "dstProvinceName" => $order->recv_province,
-        "dstCityName" => $order->recv_city,
-        "dstDistrictName" => $order->recv_district,
-        "dstPostalCode" => $order->recv_postal_code,
-        "dstDetailAddress" => $order->recv_detail,
-        "articleCategory" => $category_num,
-        "weight" => intval(($order->weight) * 1000),
-        "width" => intval($order->width_size),
-        "length" => intval($order->length_size),
-        "height" => intval($order->height_size),
-        "insured" => $order->is_protect_insurance ? 1 : 0,
-        "freightInsureEnabled" => $order->is_return_insurance ? 1 : 0,
-        "opdInsureEnabled" => $order->is_damage_insurance ? 1 : 0,
-        "codEnabled" => $order->cod == "0" ? 0 : 1,
-        "codAmount" => ($order->cod) * 100,
-        "remark" => $order->note_detail,
-        ]);
-
-        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/modify", $edit);
-        $response = json_decode($post, true);
-
-        if ($response["message"] == "success") {
-        dd($post);
-        } */
 
         return view('edit', compact('order'));
     }
@@ -328,7 +269,7 @@ class OrderControllers extends Controller {
         return view('remove');
     }
 
-    public function cancel($id) {
+    public function cancel(Request $request, $id) {
         $tracking_no = Order::find($id)->tracking_no;
         $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/cancel";
 
@@ -341,12 +282,15 @@ class OrderControllers extends Controller {
         $response = json_decode($post, true);
 
         if ($response["message"] == "success") {
-            // TODO: เปลี่ยนสถานะจัดส่งเป็น ยกเลิก
+            Order::find($id)->update([
+                'status' => "ยกเลิก",
+                'cancel_reason' => $request->cancel_reason,
+            ]);
         } else {
             dd($post);
         }
 
-        return view('cancel');
+        return redirect('detail/' . $id);
     }
 
     public function login() {

@@ -35,6 +35,7 @@
         .td_detail_row:nth-child(odd) .td_detail {
             background-color: #E3E8F7;
         }
+
         .td_detail_row:nth-child(even) .td_detail {
             background-color: white;
         }
@@ -50,48 +51,37 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png"
-                        class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png"
-                        class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
-                                class="side-menu__label">จัดการออเดอร์</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span
-                                class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">กระทบค่าขนส่ง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตารางรายการ POD</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html"><span
-                                class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                 </ul>
             </div>
@@ -151,13 +141,9 @@
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a class="btn btn-link" href="{{url('/users/export')}}"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                    <a class="btn btn-link" href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
                                     </a>
                                 </div>
@@ -190,14 +176,9 @@
                                             <input class="form-control" type="text" value="" style="width:325px;">
                                         </div>
                                         <div class="dropdown ">
-                                            <button class="btn btn-link dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-layout-three-columns"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
+                                                    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                 </svg> <u>ตัวเลือกการแสดงผล</u>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -209,14 +190,11 @@
                                                 <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
                                                 <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
                                                 <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box7'
-                                                    checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
                                                 <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                <input type="checkbox" id='box9'
-                                                    checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
                                                 <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
-                                                <input type="checkbox" id='box11'
-                                                    checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
                                                 <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
                                                 <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
                                             </div>
@@ -263,9 +241,7 @@
                                             <td class='subbox7'>{{$order->send_tel}}</td>
                                             <td class='subbox8'>{{$order->recv_address}}</td>
                                             <td class='subbox9'>{{$order->recv_tel}}</td>
-                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
-                                                {{$order->width_size}} x {{$order->length_size}} x
-                                                {{$order->height_size}} cm</td>
+                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->width_size}} x {{$order->length_size}} x {{$order->height_size}} cm</td>
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->cod}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
@@ -492,8 +468,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js">
         </script>
-        <link rel="stylesheet" type="text/css"
-            href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
         <script type="text/javascript">
             $(function () {

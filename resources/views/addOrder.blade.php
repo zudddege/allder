@@ -24,8 +24,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
-    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css"
-        rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 
     <style>
         .modal-lg {
@@ -45,44 +44,34 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png"
-                        class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png"
-                        class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
-                                class="side-menu__label">จัดการออเดอร์</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span
-                                class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">กระทบค่าขนส่ง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตารางรายการ POD</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html">
@@ -139,144 +128,112 @@
                                     <div class="d-flex align-items-center">
                                         <h6 class="px-2" style="padding-top: 10px;">เลขออเดอร์</h6>
                                         <div class="">
-                                            <input class="form-control" type="text" value="" id="order_no"
-                                                name="order_no">
+                                            <input class="form-control" type="text" value="" id="order_no" name="order_no">
                                         </div>
-                                        <button type="button" class="btn btn-link"
-                                            id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
+                                        <button type="button" class="btn btn-link" id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
                                     </div>
                                     <hr>
                                     <div class="row row-cols-12">
-                                        <div class="col-6" style="border-right: 1px solid black;">
+                                        <div class="col-6 bd-r bd-2">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal"
-                                                    data-target="#send_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#send_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_name }}" name="send_name"
-                                                    id="send_name">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_name }}" name="send_name" id="send_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_tel }}" name="send_tel" id="send_tel">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_tel }}" name="send_tel" id="send_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="send_detail"
-                                                    id="send_detail">{{ $address_book->book_detail }}</textarea>
+                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $address_book->book_detail }}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_district }}" name="send_district"
-                                                    id="send_district">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_district }}" name="send_district" id="send_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_city }}" name="send_city"
-                                                    id="send_city">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_city }}" name="send_city" id="send_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_province }}" name="send_province"
-                                                    id="send_province">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_province }}" name="send_province" id="send_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text"
-                                                    value="{{ $address_book->book_postal_code }}"
-                                                    name="send_postal_code" id="send_postal_code">
+                                                <input class="form-control" type="text" value="{{ $address_book->book_postal_code }}" name="send_postal_code" id="send_postal_code">
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
-                                                        <input type="checkbox" class="mt-1" name="main_address"
-                                                            value="1" id="main_address"
-                                                            @if($address_book->is_main_book==true)
-                                                        checked="" @endif>
+                                                        <input type="checkbox" class="mt-1" name="main_address" value="1" id="main_address">
                                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
-                                                        <input type="checkbox" class="mt-1" name="save_send_address"
-                                                            value="1" id="save_send_address"
-                                                            @if($address_book->is_main_book==true)
-                                                        checked="" @endif>
+                                                        <input type="checkbox" class="mt-1" name="save_send_address" value="1" id="save_send_address">
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-6">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal"
-                                                    data-target="#recv_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="" name="recv_name"
-                                                    id="recv_name">
+                                                <input class="form-control" type="text" value="" name="recv_name" id="recv_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="" name="recv_tel"
-                                                    id="recv_tel">
+                                                <input class="form-control" type="text" value="" name="recv_tel" id="recv_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4"
-                                                    class="border border-light form-control" name="recv_detail"
-                                                    id="recv_detail"></textarea>
+                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="recv_detail" id="recv_detail"></textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="recv_district"
-                                                    id="recv_district">
+                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="recv_city"
-                                                    id="recv_city">
+                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="recv_province"
-                                                    id="recv_province">
+                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="recv_postal_code"
-                                                    id="recv_postal_code">
+                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex px-4 mt-3">
-                                                        <input type="checkbox" class="mt-1" name="save_recv_address"
-                                                            value="1" id="save_recv_address">
+                                                        <input type="checkbox" class="mt-1" name="save_recv_address" value="1" id="save_recv_address">
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="jumps-prevent" style="padding-top: 20px;"></div>
                                     <h5 class="px-2 mt-2"><b>รายละเอียดสินค้า</b></h5>
                                     <div class="row px-2 mt-3">
                                         <div class="col-3">
                                             <p class="mb-1">ประเภทสินค้า</p>
-                                            <select class="custom-select my-1 mr-sm-2 border-light"
-                                                id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;"
-                                                name="category">
+                                            <select class="custom-select my-1 mr-sm-2 border-light" id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;" name="category">
                                                 <option disabled>ประเภทสินค้า</option>
                                                 <option value="0" selected>เอกสาร</option>
                                                 <option value="1">อาหารแห้ง</option>
@@ -296,22 +253,18 @@
                                         <div class="col-3">
                                             <p class="mb-1">น้ำหนัก</p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" style="width: 100%;"
-                                                    name="weight">
+                                                <input class="form-control" type="text" value="" name="weight">
                                                 <p class="mt-2 px-1">kg.</p>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" style="width: 100%;"
-                                                    name="width_size">
+                                                <input class="form-control" type="text" value="" name="length_size">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" style="width: 100%;"
-                                                    name="length_size">
+                                                <input class="form-control" type="text" value="" name="width_size">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" style="width: 100%;"
-                                                    name="height_size">
+                                                <input class="form-control" type="text" value="" name="height_size">
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
@@ -335,8 +288,7 @@
                                     <div class="d-flex">
                                         <input type="checkbox" class="mt-1" id="accept">
                                         <p class="px-1">ฉันได้อ่านและยอมรับข้อกำหนดใน<br>
-                                            <a href="#" class=""
-                                                style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
+                                            <a href="#" class="" style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
                                         </p>
                                     </div>
                                     <div class="d-flex">
@@ -344,8 +296,7 @@
                                         <p class="px-1">ประกันพัสดุดีดกลับ<br>
                                             <a class="text-muted">หากพัสดุถูกดีดกลับ
                                                 จะไม่คิดค่าขนส่งดีดกลับ<br>ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
-                                                <a href="#" class=""
-                                                    style="color: blue;"><u>เงื่อนไขความคุ้มครองพัสดุดีดกลับ</u></a>
+                                                <a href="#" class="" style="color: blue;"><u>เงื่อนไขความคุ้มครองพัสดุดีดกลับ</u></a>
                                                 <a class="text-muted">แล้ว</a></a>
                                         </p>
                                     </div>
@@ -369,16 +320,14 @@
                                             <a class="text-muted">เมื่อบรรจุภัณฑ์ภายนอกเสียหายจะได้รับค่าชดเชย
                                                 <br>และเคลมเต็ม จำนวนเงินรับประกันที่บริษัทกำหนด<br>
                                                 ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
-                                                <a href="#" class=""
-                                                    style="color: blue;"><u>เงื่อนไขบริการบรรจุภัณฑ์ภายนอกเสียหาย</u></a>
+                                                <a href="#" class="" style="color: blue;"><u>เงื่อนไขบริการบรรจุภัณฑ์ภายนอกเสียหาย</u></a>
                                                 <a class="text-muted">แล้ว</a></a>
                                         </p>
                                     </div>
                                     <div class="jumps-prevent" style="padding-top: 100px;"></div>
                                     <div class="d-flex justify-content-center">
-                                        <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
-                                        <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ"
-                                            id="submit-button" disabled="true">
+                                        <a href="{{url('/order')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button" disabled>สร้างรายการ</button>
                                     </div>
                                 </div>
                             </div>
@@ -387,8 +336,7 @@
                 </form>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true" id="send_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="send_address_book">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -412,8 +360,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true" id="recv_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="recv_address_book">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -514,7 +461,7 @@
             } else {
                 $('#submit-button').prop('disabled', true);
             }
-        })
+        });
 
         $('#auto_order_no').on('click', function () {
             $.ajax({
