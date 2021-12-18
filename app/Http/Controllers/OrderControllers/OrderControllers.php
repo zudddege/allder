@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use App\Models\AddressBook\AddressBook;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Order\Order;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -387,6 +388,9 @@ class OrderControllers extends Controller {
     public function login() {
         return view('Login_page.login');
     }
+    public function forgot() {
+        return view('Login_page.forget');
+    }
 
     public function ordersuccess() {
         $orders = Order::all();
@@ -409,7 +413,8 @@ class OrderControllers extends Controller {
     }
 
     public function subaccount() {
-        return view('Sub_account.subaccount');
+            $subaccount = User::all();
+        return view('Sub_account.subaccount',compact('subaccount'));
     }
 
     public function add_subaccount() {

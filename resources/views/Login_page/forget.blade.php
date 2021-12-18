@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-end" style="padding-right: 25px;">
-                                    <a href="login.html" style="color: blue; text-align:end;"><u>กลับไปยังเข้าสู่ระบบ</u></a>
+                                    <a href="{{url('/')}}" style="color: blue; text-align:end;"><u>กลับไปยังเข้าสู่ระบบ</u></a>
                                 </div>
 
                                 <div class="d-flex justify-content-center">

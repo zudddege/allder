@@ -40,9 +40,14 @@ Route::get('/login', '\App\Http\Controllers\OrderControllers\OrderControllers@lo
 // subaccount
 Route::get('/subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@subaccount')->name('subacc');
 Route::get('/add_subaccount', '\App\Http\Controllers\OrderControllers\OrderControllers@add_subaccount');
-
+Route::post('/createSubAccount','\App\Http\Controllers\UserController@createSubAccount');
+//login
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+//forgotpassword
+Route::get('/forgot', '\App\Http\Controllers\OrderControllers\OrderControllers@forgot');
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');

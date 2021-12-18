@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end" style="padding-right: 25px;">
-                                <a href="forget.html" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
+                                <a href="{{url('/forgot')}}" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
                             </div>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
