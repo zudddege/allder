@@ -244,12 +244,12 @@ class OrderController extends Controller {
             break;
         }
 
-        $tracking_no = Order::find($id)->tracking_no;
+        $dataId = Order::select('send_province', 'send_city', 'send_district', 'send_postal_code', 'tracking_no')->find($id);
 
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
-            'pno' => $tracking_no,
+            'pno' => $dataId->tracking_no,
             'expressCategory' => $request->is_express_transport == 1 ? "2" : "1",
             'srcName' => $request->send_name,
             'srcPhone' => $request->send_tel,
@@ -281,10 +281,10 @@ class OrderController extends Controller {
             $rate = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
                 'nonceStr' => time(),
-                'srcProvinceName' => $request->send_province,
-                'srcCityName' => $request->send_city,
-                'srcDistrictName' => $request->send_district,
-                'srcPostalCode' => $request->send_postal_code,
+                'srcProvinceName' => $dataId->send_province,
+                'srcCityName' => $dataId->send_city,
+                'srcDistrictName' => $dataId->send_district,
+                'srcPostalCode' => $dataId->send_postal_code,
                 'dstProvinceName' => $request->recv_province,
                 'dstCityName' => $request->recv_city,
                 'dstDistrictName' => $request->recv_district,

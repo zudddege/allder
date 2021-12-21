@@ -181,8 +181,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                            เบอร์โทรศัพท์</a></div>
+                                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
                                     <div class="d-flex ">
                                         <div class="">
                                             <input class="form-control" type="text" value="">
@@ -194,9 +193,7 @@
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
                                         <tr>
-                                            <th class="">
-                                                <input type="checkbox">
-                                            </th>
+                                            <th class=""><input type="checkbox"></th>
                                             <th>เวลาที่ทำรายการ</th>
                                             <th>สถานะจัดส่ง</th>
                                             <th>ที่อยู่เข้ารับพัสดุ</th>
@@ -206,9 +203,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="">
-                                                <input type="checkbox">
-                                            </td>
+                                            <td><input type="checkbox"></td>
                                             <td>18/10/2564 - 09:00 am</td>
                                             <td style="color: orange;">รอรับพัสดุ</td>
                                             <td>

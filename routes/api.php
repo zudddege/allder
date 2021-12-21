@@ -29,6 +29,9 @@ Route::post('/order/{id}/modify', 'OrderController\OrderController@modifyOrder')
 Route::post('/order/{id}/cancel', 'OrderController\OrderController@cancelOrder');
 
 /* Courier Controller */
+Route::get('/courier/get-notify', 'CourierController\CourierController@getNotification');
+Route::post('/courier/notify-courier', 'CourierController\CourierController@notifyCourier');
+Route::post('/courier/cancel-notify', 'CourierController\CourierController@cancelNotification');
 
 /* Address Book Controller */
 Route::get('/address-book/id', 'AddressBookController\AddressBookController@getAddressBookById');
