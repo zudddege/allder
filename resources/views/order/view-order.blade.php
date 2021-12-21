@@ -288,7 +288,7 @@
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             <td class='subbox2'>
-                                                @if($order->status == "รอรับพัสดุ")
+                                                @if($order->status == "รอจัดสรร")
                                                 <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
                                                 @elseif($order->status == "ระหว่างจัดส่ง")
                                                 <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
@@ -367,7 +367,10 @@
     <script>
         $('#my-table').DataTable({
             scrollX: true,
-            "columns": [{
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
+            columns: [{
                 "width": "2%"
             }, {
                 "width": "150px"

@@ -213,7 +213,6 @@
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">
-
                     <div class="d-flex">
                         <div class="">
                             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
@@ -227,7 +226,6 @@
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="sizelogout">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -269,7 +267,6 @@
                                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                         </svg> สร้างรายการ
                                     </a>
-
                                     <button type="button" class="btn btn-info" style="position: absolute; left: 180;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
@@ -286,12 +283,11 @@
                                         <input class="form-control" type="text" value="" style="width: 300px;">
                                     </div>
                                 </div>
-
                                 <div class="px-1">
                                     <table class="table table-striped position-relative" id="my-table">
                                         <thead>
                                             <tr>
-                                                <th class="">
+                                                <th>
                                                     <input type="checkbox" class="main-check">
                                                 </th>
                                                 <th>รหัสผู้ใช้งาน</th>
@@ -318,7 +314,7 @@
                                                 <td>{{$account->tel_no}}</td>
                                                 <td>{{$account->discount}}</td>
                                                 <td>{{$account->cod}}</td>
-                                                <td><label class="switch"><input type="checkbox" @if($account->is_status_user === 1) checked @elseif($account->is_status_user === 0) unchecked @endif><span class="slider round"></span></label></td>
+                                                <td><label class="switch"><input type="checkbox" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif
                                             @endforeach
@@ -335,88 +331,86 @@
             <!-- Container closed -->
         </div>
         <!-- main-content closed -->
+    </div>
+    <!-- End Page -->
 
-        <!-- End Page -->
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+    <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('assets/js/table-data.js')}}"></script>
+    <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+    <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+    <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+    <script src="{{asset('assets/js/sticky.js')}}"></script>
+    <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 
-        <!-- Back-to-top -->
-        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
-        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
-        <script src="{{asset('assets/js/table-data.js')}}"></script>
-        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
-        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
-        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
-        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
-        <script src="{{asset('assets/js/sticky.js')}}"></script>
-        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
-        <script src="{{asset('assets/js/custom.js')}}"></script>
+    <script>
+        $('#my-table').DataTable({
+            scrollX: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
+            "columns": [{
+                "width": "2%"
+            }, {
+                "width": "10%"
+            }, {
+                "width": "10%"
+            }, {
+                "width": "20%"
+            }, {
+                "width": "20%"
+            }, {
+                "width": "10%"
+            }, {
+                "width": "13%"
+            }, {
+                "width": "5%"
+            }, {
+                "width": "5%"
+            }, ],
+            "ordering": false
+        });
+        $(".dataTables_length").css("display", "none");
+        $(".dataTables_filter").css("display", "none");
 
-        <script>
-            $('#my-table').DataTable({
-                scrollX: true,
-                "columns": [{
-                        "width": "2%"
-                    }, {
-                        "width": "10%"
-                    }, {
-                        "width": "50px"
-                    }, {
-                        "width": "5%"
-                    }, {
-                        "width": "100px"
-                    }, {
-                        "width": "60px"
-                    }, {
-                        "width": "20px"
-                    }, {
-                        "width": "20px"
-                    }, {
-                        "width": "15px"
-                    },
+        $('.app-sidebar__toggle').click(function () {
+            setTimeout(function () {
+                table.columns.adjust().draw();
+            }, 230);
+        });
 
-                ],
-                "ordering": false
-            });
-            $(".dataTables_length").css("display", "none");
-            $(".dataTables_filter").css("display", "none");
+    </script>
+    <script>
+        $('.main-check').on("change", function (e) {
+            if (this.checked) {
+                $('.sub-check').prop('checked', true)
+            } else {
+                $('.sub-check').prop('checked', false)
+            }
+        })
 
-            $('.app-sidebar__toggle').click(function () {
-
-                setTimeout(function () {
-                    table.columns.adjust().draw();
-                }, 230);
-            })
-            s
-
-        </script>
-
-        <script>
-            $('.main-check').on("change", function (e) {
-                if (this.checked) {
-                    $('.sub-check').prop('checked', true)
-                } else {
-                    $('.sub-check').prop('checked', false)
-                }
-            })
-
-        </script>
+    </script>
 
 </body>
 

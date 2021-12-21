@@ -557,13 +557,16 @@
             }
         });
 
-        $("#send-table").dataTable({
+        $("#send-table").DataTable({
             autoWidth: false,
             searching: false,
             filter: false,
             ordering: false,
             paging: false,
             info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
             columns: [{
                 width: '25%',
             }, {
@@ -575,13 +578,16 @@
             }],
         });
 
-        $("#recv-table").dataTable({
+        $("#recv-table").DataTable({
             autoWidth: false,
             searching: false,
             filter: false,
             ordering: false,
             paging: false,
             info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
             columns: [{
                 width: '25%',
             }, {
@@ -605,10 +611,6 @@
                     $('#send_tel').val(res.book_tel);
                     $('#send_detail').val(res.book_detail);
                     $('#send_district').val(res.book_district);
-                    $('#send_city').val(res.book_city);
-                    $('#send_province').val(res.book_province);
-                    $('#send_postal_code').val(res.book_postal_code);
-                    $('#main_address').prop('checked', res.is_main_book);
                     $('#save_send_address').prop('checked', true);
                 }
             })

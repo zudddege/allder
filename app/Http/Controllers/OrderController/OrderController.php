@@ -205,7 +205,7 @@ class OrderController extends Controller {
                 'is_damage_insurance' => $request->is_damage_insurance ? true : false,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
-                'status' => "รอรับพัสดุ",
+                'status' => "รอจัดสรร",
             ]);
         } else {
             dd($post);
