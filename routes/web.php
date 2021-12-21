@@ -14,7 +14,7 @@ use \Illuminate\Support\Facades\Auth;
 |
  */
 // login
-Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@login');
+Route::get('/', '\App\Http\Controllers\OrderControllers\OrderControllers@login')->name('login');
 //api
 Route::post('/save_order', '\App\Http\Controllers\OrderControllers\OrderControllers@saveOrder');
 Route::post('/import', '\App\Http\Controllers\OrderControllers\OrderControllers@import');
@@ -43,7 +43,6 @@ Route::get('/add_subaccount', '\App\Http\Controllers\OrderControllers\OrderContr
 Route::post('/createSubAccount','\App\Http\Controllers\UserController@createSubAccount');
 //login
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 //forgotpassword
 Route::get('/forgot', '\App\Http\Controllers\OrderControllers\OrderControllers@forgot');
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
