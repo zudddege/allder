@@ -1,6 +1,37 @@
 <html lang="en">
 
 <head>
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden
+        }
+
+        .hydrated {
+            visibility: inherit
+        }
+
+    </style>
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden
+        }
+
+        .hydrated {
+            visibility: inherit
+        }
+
+    </style>
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden
+        }
+
+        .hydrated {
+            visibility: inherit
+        }
+
+    </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +56,22 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+    </style>
 
     <style>
         .switch {
@@ -83,6 +130,11 @@
             border-radius: 34px;
         }
 
+        .dropdown-menu {
+            width: 150px !important;
+            margin-right: 50% !important;
+        }
+
         .slider.round:before {
             border-radius: 50%;
         }
@@ -104,14 +156,12 @@
                 <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
-
                 <ul class="side-menu open">
-
-                    <li class="slide">
+                    <li class="slide ">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -132,9 +182,8 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
-
                 </ul>
             </div>
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
@@ -171,22 +220,17 @@
                                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                             </div>
-
                         </div>
-
                     </div>
-
-
                     <div class="">
                         <div class="nav nav-item  navbar-nav-right ml-auto">
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="sizelogout">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -207,116 +251,86 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
-                        <div class="d-flex px-2">
-                            <h5 class="content-title mb-0 my-auto">จัดการผู้ใช้งาน</h5>
+                        <div class="d-flex">
+                            <h5 class="content-title mb-0 my-auto">จัดการ Sub - Account</h5>
                         </div>
                     </div>
                 </div>
                 <!-- breadcrumb -->
 
                 <!-- row opened -->
-                <form method="POST" action="{{ url('/createSubAccount') }}">
-                    @csrf
-                    <div class="row row-sm">
-                        <div class="col-xl-5">
-                            <div class="card card-body">
+                <div class="row row-sm">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="d-flex">
-                                    <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
-                                    <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" readonly>
+                                    <a class="btn btn-primary" style="position: absolute; left: 45;" href="{{url('/sub-account/create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                        </svg> สร้างรายการ
+                                    </a>
+
+                                    <button type="button" class="btn btn-info" style="position: absolute; left: 180;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+                                        </svg> นำเข้าข้อมูล</button>
+                                    <button type="button" class="btn btn-link" style="position: absolute; left: 320;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                        </svg> <u>ดาวน์โหลด (Excel)</u></button>
                                 </div>
-                                <div class="">
+                                <div class="jumps-prevent" style="padding-bottom: 70px;"></div>
+                                <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท</a></div>
+                                <div class="d-flex px-4 mb-2">
                                     <div class="">
-                                        <p class="my-1">อีเมล</p>
-                                        <div class="">
-                                            <input class="form-control" name="email" type="text" value="" style="width: 65%; height: 75%;">
-                                        </div>
-                                    </div>
-                                    <div class="my-1">
-                                        <p class="my-1">ชื่อผู้ใช้งาน / ชื่อธุรกิจ</p>
-                                        <div class="">
-                                            <input class="form-control" name="name" type="text" value="" style="width: 65%; height: 75%;">
-                                        </div>
-                                    </div>
-                                    <div class="">
-                                        <p class="my-1">เบอร์ติดต่อ</p>
-                                        <div class="">
-                                            <input class="form-control" type="text" name="tel_no" value="" style="width: 65%; height: 75%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card card-body">
-                                <p>เงื่อนไขการใช้งาน</p>
-                                <div class="">
-                                    <p class="my-1">ส่วนลดที่ได้รับ</p>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" name="discount" value="">
-                                        <span class="px-1">%</span>
-                                    </div>
-                                </div>
-                                <div class="my-2">
-                                    <p class="my-1">COD</p>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" value="" name="cod">
-                                        <span class="px-1">%</span>
+                                        <input class="form-control" type="text" value="" style="width: 300px;">
                                     </div>
                                 </div>
 
-                            </div>
-
-                        </div>
-                        <div class="col-xl-5">
-                            <div class="card card-body">
-                                <div class="d-flex align-content-center">
-                                    <p>การเข้าสู่ระบบ</p>
-                                    <div class="d-flex align-content-center" style="margin-left: 60%;">
-                                        <p class="px-1">สถานะ</p>
-                                        <label class="switch">
-                                            <input type="checkbox" checked>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
+                                <div class="px-1">
+                                    <table class="table table-striped position-relative" id="my-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="">
+                                                    <input type="checkbox" class="main-check">
+                                                </th>
+                                                <th>รหัสผู้ใช้งาน</th>
+                                                <th>ID</th>
+                                                <th>อีเมล</th>
+                                                <th>ชื่อผู้ใช้งาน / ชื่อธุรกิจ</th>
+                                                <th>เบอร์ติดต่อ</th>
+                                                <th>ส่วนลดที่ได้รับ</th>
+                                                <th>COD</th>
+                                                <th>สถานะ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($subaccount as $account)
+                                            @if ($account->is_admin === 0)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="sub-check">
+                                                </td>
+                                                <td>{{$account->close_id}}</td>
+                                                <td>{{$account->username}}</td>
+                                                <td>{{$account->email}}</td>
+                                                <td>{{$account->name}}</td>
+                                                <td>{{$account->tel_no}}</td>
+                                                <td>{{$account->discount}}</td>
+                                                <td>{{$account->cod}}</td>
+                                                <td><label class="switch"><input type="checkbox" @if($account->is_status_user === 1) checked @elseif($account->is_status_user === 0) unchecked @endif><span class="slider round"></span></label></td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="">
-                                    <p class="my-1">ID</p>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" name="username">
-                                    </div>
-                                </div>
-                                <div class="my-1">
-                                    <p class="my-1">รหัสผ่าน <span class="text-muted">(8 - 16 ตัวอักษร)</span></p>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control @error('password') is-invalid @enderror" type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password" >
-                                        <button class="btn btn-link" type="button"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <p class="my-1">รหัสผ่านอีกครั้ง</p>
-                                    <div class="">
-                                        <input class="form-control" type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm"  >
-                                    </div>
-                                </div>
-
-                                <div class="jumps-prevent" style="padding-top: 130;"></div>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-danger mx-1" style="width: 125px;" type="reset" value="ยกเลิก">
-                                    <input class="btn btn-primary mx-1" style="width: 125px;" type="submit" value="เพิ่มผู้ใช้งาน">
-                                </div>
-
-                                {{-- <div class="jumps-prevent" style="padding-top: 25px;"></div> --}}
                             </div>
                         </div>
-                        <!--/div-->
                     </div>
-                </form>
+                    <!--/div-->
+                </div>
                 <!-- /row -->
-
             </div>
             <!-- Container closed -->
         </div>
@@ -353,6 +367,56 @@
         <script src="{{asset('assets/js/sticky.js')}}"></script>
         <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
+
+        <script>
+            $('#my-table').DataTable({
+                scrollX: true,
+                "columns": [{
+                        "width": "2%"
+                    }, {
+                        "width": "10%"
+                    }, {
+                        "width": "50px"
+                    }, {
+                        "width": "5%"
+                    }, {
+                        "width": "100px"
+                    }, {
+                        "width": "60px"
+                    }, {
+                        "width": "20px"
+                    }, {
+                        "width": "20px"
+                    }, {
+                        "width": "15px"
+                    },
+
+                ],
+                "ordering": false
+            });
+            $(".dataTables_length").css("display", "none");
+            $(".dataTables_filter").css("display", "none");
+
+            $('.app-sidebar__toggle').click(function () {
+
+                setTimeout(function () {
+                    table.columns.adjust().draw();
+                }, 230);
+            })
+            s
+
+        </script>
+
+        <script>
+            $('.main-check').on("change", function (e) {
+                if (this.checked) {
+                    $('.sub-check').prop('checked', true)
+                } else {
+                    $('.sub-check').prop('checked', false)
+                }
+            })
+
+        </script>
 
 </body>
 
