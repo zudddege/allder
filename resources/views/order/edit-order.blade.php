@@ -60,7 +60,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -81,7 +81,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
 
                 </ul>
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('/edit_order/'.$order->id)}}" method="POST">
+                <form action="{{ url('/api/order/'.$order->id.'/modify')}}" method="POST">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-sm-8">
@@ -155,7 +155,7 @@
                                         <div class="col-6 bd-r bd-2">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#send_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#send-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -203,7 +203,7 @@
                                         <div class="col-6">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -368,7 +368,7 @@
         <!-- End Page -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <form action="{{url('/cancel/'.$order->id)}}" method="POST">
+                <form action="{{url('/api/order/'.$order->id.'/cancel')}}" method="POST">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
@@ -392,7 +392,7 @@
             </div>
         </div>
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="send_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="send-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -411,12 +411,28 @@
                                 <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($addressBooks as $addressBook)
+                            <tr>
+                                <td>{{$addressBook->book_name}}</td>
+                                <td>{{$addressBook->book_tel}}</td>
+                                <td>
+                                    {{$addressBook->book_detail}}
+                                    {{$addressBook->book_district}}
+                                    {{$addressBook->book_city}}
+                                    {{$addressBook->book_province}}
+                                    {{$addressBook->book_postal_code}}
+                                </td>
+                                <td><button type='button' class='btn btn-primary' onclick="sendFetchBook({{$addressBook->id}});" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="recv_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="recv-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -435,6 +451,22 @@
                                 <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($addressBooks as $addressBook)
+                            <tr>
+                                <td>{{$addressBook->book_name}}</td>
+                                <td>{{$addressBook->book_tel}}</td>
+                                <td>
+                                    {{$addressBook->book_detail}}
+                                    {{$addressBook->book_district}}
+                                    {{$addressBook->book_city}}
+                                    {{$addressBook->book_province}}
+                                    {{$addressBook->book_postal_code}}
+                                </td>
+                                <td><button type='button' class='btn btn-primary' onclick="recvFetchBook({{$addressBook->id}});" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
@@ -525,88 +557,45 @@
             }
         });
 
-        $(document).ready(function () {
-            $.ajax({
-                url: "/get_address_book",
-                method: "GET",
-                contentType: 'json',
-                success: function (data) {
-                    $("#send-table").dataTable({
-                        autoWidth: false,
-                        searching: false,
-                        filter: false,
-                        ordering: false,
-                        paging: false,
-                        info: false,
-                        data: data,
-                        columns: [{
-                            width: '25%',
-                            data: 'book_name',
-                        }, {
-                            width: '15%',
-                            data: 'book_tel',
-                        }, {
-                            width: '45%',
-                            data: {
-                                book_detail: 'book_detail',
-                                book_district: 'book_district',
-                                book_city: 'book_city',
-                                book_province: 'book_province',
-                                book_postal_code: 'book_postal_code',
-                            },
-                            render: function (data) {
-                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
-                            }
-                        }, {
-                            width: '15%',
-                            data: 'id',
-                            render: function (data) {
-                                return `<button type='button' class='btn btn-primary fetch_book' onclick="sendFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
-                            },
-                        }],
-                    });
+        $("#send-table").dataTable({
+            autoWidth: false,
+            searching: false,
+            filter: false,
+            ordering: false,
+            paging: false,
+            info: false,
+            columns: [{
+                width: '25%',
+            }, {
+                width: '15%',
+            }, {
+                width: '45%',
+            }, {
+                width: '15%',
+            }],
+        });
 
-                    $("#recv-table").dataTable({
-                        autoWidth: false,
-                        searching: false,
-                        filter: false,
-                        ordering: false,
-                        paging: false,
-                        info: false,
-                        data: data,
-                        columns: [{
-                            width: '25%',
-                            data: 'book_name',
-                        }, {
-                            width: '15%',
-                            data: 'book_tel',
-                        }, {
-                            width: '45%',
-                            data: {
-                                book_detail: 'book_detail',
-                                book_district: 'book_district',
-                                book_city: 'book_city',
-                                book_province: 'book_province',
-                                book_postal_code: 'book_postal_code',
-                            },
-                            render: function (data) {
-                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
-                            },
-                        }, {
-                            width: '15%',
-                            data: 'id',
-                            render: function (data) {
-                                return `<button type='button' class='btn btn-primary fetch_book' onclick="recvFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
-                            },
-                        }],
-                    });
-                },
-            });
+        $("#recv-table").dataTable({
+            autoWidth: false,
+            searching: false,
+            filter: false,
+            ordering: false,
+            paging: false,
+            info: false,
+            columns: [{
+                width: '25%',
+            }, {
+                width: '15%',
+            }, {
+                width: '45%',
+            }, {
+                width: '15%',
+            }],
         });
 
         function sendFetchBook(id) {
             $.ajax({
-                url: '/fetch_book',
+                url: '/api/address-book/id',
                 method: 'GET',
                 data: {
                     id: id
@@ -615,6 +604,10 @@
                     $('#send_name').val(res.book_name);
                     $('#send_tel').val(res.book_tel);
                     $('#send_detail').val(res.book_detail);
+                    $('#send_district').val(res.book_district);
+                    $('#send_city').val(res.book_city);
+                    $('#send_province').val(res.book_province);
+                    $('#send_postal_code').val(res.book_postal_code);
                     $('#main_address').prop('checked', res.is_main_book);
                     $('#save_send_address').prop('checked', true);
                 }
@@ -623,7 +616,7 @@
 
         function recvFetchBook(id) {
             $.ajax({
-                url: '/fetch_book',
+                url: '/api/address-book/id',
                 method: 'GET',
                 data: {
                     id: id

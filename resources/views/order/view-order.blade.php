@@ -18,7 +18,7 @@
     <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/sidemenu.css')}}">
+    <link href="{{asset('assets/css/sidemenu.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
@@ -52,12 +52,9 @@
         }
 
     </style>
-
 </head>
 
 <body class="main-body app sidebar-mini">
-
-
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
@@ -71,7 +68,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -92,7 +89,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                 </ul>
             </div>
@@ -118,41 +115,35 @@
         <div class="main-content app-content">
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">
-
                     <div class="d-flex">
-                        <div class="">
+                        <div>
                             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                             </div>
 
                         </div>
-                        <div class="">
+                        <div>
                             <button type="button" class="btn btn-primary mx-2">เรียกพนักงานเข้ามารับพัสดุ</button>
                             <button type="button" class="btn btn-primary mx-2">ระบุพนักงานเข้ารับพัสดุ</button>
                         </div>
-
                     </div>
-
-
-                    <div class="">
+                    <div>
                         <div class="nav nav-item  navbar-nav-right ml-auto">
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                        <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }}
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" >
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
                             </div>
                         </div>
                     </div>
@@ -175,14 +166,14 @@
                                         <a class="nav-link active" href="{{url('/order')}}">รายการเตรียมจัดส่ง</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/ordersuccess')}}">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-link" href="{{url('#')}}">รายการจัดส่งแล้ว</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <a href="{{url('/order/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                             </svg> สร้างรายการ </label>
@@ -193,11 +184,11 @@
                                             <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
                                         </svg> นำเข้าข้อมูล
                                     </label>
-                                    <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
+                                    <form action="/api/import/excel" method="post" enctype="multipart/form-data" id="main-form">
                                         @csrf
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
-                                    <a class="btn btn-link" href="{{url('/export')}}">
+                                    <a class="btn btn-link" href="{{url('/api/export/excel')}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
@@ -208,7 +199,6 @@
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
                             <form action="/search" method="get" id="testform">
                                 <div class="row px-2 mb-3">
-
                                     <div class="col-2">
                                         <div class="mb-1 ">เวลาที่ทำรายการ</div>
                                         <div>
@@ -297,7 +287,6 @@
                                             <td><input class='subbox' type="checkbox"></td>
                                             <td class='subbox1'>
                                                 {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            {{-- <td class='subbox2'>{{$order->status}}</td> --}}
                                             <td class='subbox2'>
                                                 @if($order->status == "รอรับพัสดุ")
                                                 <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
@@ -331,7 +320,7 @@
                                             <td class='subbox11'>{{$order->cod}}</td>
                                             <td class='subbox12'>{{$order->estimate_price}}</td>
                                             <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/detail/'.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                            <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -574,8 +563,7 @@
             var end = moment();
 
             function cb(start, end) {
-                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                    'MMMM D, YYYY'));
+                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
 
             $('.daterange').daterangepicker({

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Allder Express</title>
+    <link href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon" rel="icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
@@ -39,21 +40,20 @@
 </head>
 
 <body class="main-body app sidebar-mini">
-
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="{{ asset('assets/img/brand/allderExpress.png') }}" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{ asset('assets/img/brand/icon.png') }}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/order') }}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/courier') }}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -74,8 +74,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="subaccount.html">
-                            <span class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/sub-account') }}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                 </ul>
             </div>
@@ -119,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/save_order" method="post">
+                <form action="/api/order/create" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-8">
@@ -137,47 +136,46 @@
                                         <div class="col-6 bd-r bd-2">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#send_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#send-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_name }}" name="send_name" id="send_name">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_name ?? '' }}" name="send_name" id="send_name">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_tel }}" name="send_tel" id="send_tel">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_tel ?? ''}}" name="send_tel" id="send_tel">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $address_book->book_detail }}</textarea>
+                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $mainBook->book_detail ?? ''}}</textarea>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_district }}" name="send_district" id="send_district">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_district ?? ''}}" name="send_district" id="send_district">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_city }}" name="send_city" id="send_city">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_city ?? ''}}" name="send_city" id="send_city">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_province }}" name="send_province" id="send_province">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_province ?? ''}}" name="send_province" id="send_province">
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="{{ $address_book->book_postal_code }}" name="send_postal_code" id="send_postal_code">
+                                                <input class="form-control" type="text" value="{{ $mainBook->book_postal_code ?? ''}}" name="send_postal_code" id="send_postal_code">
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
-                                                        <input type="checkbox" class="mt-1" name="main_address" value="1" id="main_address">
+                                                        <input type="checkbox" class="mt-1" name="main_address" value="1" id="main_address" @if($mainBook) checked @endif>
                                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex justify-content-center mt-3">
-                                                        <input type="checkbox" class="mt-1" name="save_send_address" value="1" id="save_send_address">
+                                                        <input type="checkbox" class="mt-1" name="save_send_address" value="1" id="save_send_address" @if($mainBook) checked @endif>
                                                         <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                                     </div>
                                                 </div>
@@ -187,7 +185,7 @@
                                         <div class="col-6">
                                             <div class="d-flex">
                                                 <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
-                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv_address_book"><u>เลือกจากสมุดที่อยู่</u></button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
@@ -336,7 +334,7 @@
                 </form>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="send_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="send-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -355,12 +353,28 @@
                                 <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($addressBooks as $addressBook)
+                            <tr>
+                                <td>{{$addressBook->book_name}}</td>
+                                <td>{{$addressBook->book_tel}}</td>
+                                <td>
+                                    {{$addressBook->book_detail}}
+                                    {{$addressBook->book_district}}
+                                    {{$addressBook->book_city}}
+                                    {{$addressBook->book_province}}
+                                    {{$addressBook->book_postal_code}}
+                                </td>
+                                <td><button type='button' class='btn btn-primary' onclick="sendFetchBook({{$addressBook->id}});" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="recv_address_book">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="recv-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -379,6 +393,22 @@
                                 <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($addressBooks as $addressBook)
+                            <tr>
+                                <td>{{$addressBook->book_name}}</td>
+                                <td>{{$addressBook->book_tel}}</td>
+                                <td>
+                                    {{$addressBook->book_detail}}
+                                    {{$addressBook->book_district}}
+                                    {{$addressBook->book_city}}
+                                    {{$addressBook->book_province}}
+                                    {{$addressBook->book_postal_code}}
+                                </td>
+                                <td><button type='button' class='btn btn-primary' onclick='recvFetchBook({{$addressBook->id}});' data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 </div>
@@ -465,7 +495,7 @@
 
         $('#auto_order_no').on('click', function () {
             $.ajax({
-                url: '/get_order_no',
+                url: '/api/order/gen-order-no',
                 method: "GET",
                 success: function (data) {
                     $('#order_no').val(data);
@@ -473,87 +503,45 @@
             })
         });
 
-        $(document).ready(function () {
-            $.ajax({
-                url: "/get_address_book",
-                method: "GET",
-                contentType: 'json',
-                success: function (data) {
-                    $("#send-table").dataTable({
-                        autoWidth: false,
-                        searching: false,
-                        filter: false,
-                        ordering: false,
-                        paging: false,
-                        info: false,
-                        data: data,
-                        columns: [{
-                            width: '25%',
-                            data: 'book_name',
-                        }, {
-                            width: '15%',
-                            data: 'book_tel',
-                        }, {
-                            width: '45%',
-                            data: {
-                                book_detail: 'book_detail',
-                                book_district: 'book_district',
-                                book_city: 'book_city',
-                                book_province: 'book_province',
-                                book_postal_code: 'book_postal_code',
-                            },
-                            render: function (data) {
-                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
-                            }
-                        }, {
-                            width: '15%',
-                            data: 'id',
-                            render: function (data) {
-                                return `<button type='button' class='btn btn-primary fetch_book' onclick="sendFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
-                            },
-                        }],
-                    });
-                    $("#recv-table").dataTable({
-                        autoWidth: false,
-                        searching: false,
-                        filter: false,
-                        ordering: false,
-                        paging: false,
-                        info: false,
-                        data: data,
-                        columns: [{
-                            width: '25%',
-                            data: 'book_name',
-                        }, {
-                            width: '15%',
-                            data: 'book_tel',
-                        }, {
-                            width: '45%',
-                            data: {
-                                book_detail: 'book_detail',
-                                book_district: 'book_district',
-                                book_city: 'book_city',
-                                book_province: 'book_province',
-                                book_postal_code: 'book_postal_code',
-                            },
-                            render: function (data) {
-                                return `<td>${data.book_detail} ${data.book_district} ${data.book_city} ${data.book_province} ${data.book_postal_code}<td>`;
-                            },
-                        }, {
-                            width: '15%',
-                            data: 'id',
-                            render: function (data) {
-                                return `<button type='button' class='btn btn-primary fetch_book' onclick="recvFetchBook(${data})" data-dismiss='modal'>ใช้ที่อยู่นี้</button>`;
-                            },
-                        }],
-                    });
-                },
-            });
+        $("#send-table").dataTable({
+            autoWidth: false,
+            searching: false,
+            filter: false,
+            ordering: false,
+            paging: false,
+            info: false,
+            columns: [{
+                width: '25%',
+            }, {
+                width: '15%',
+            }, {
+                width: '45%',
+            }, {
+                width: '15%',
+            }],
+        });
+
+        $("#recv-table").dataTable({
+            autoWidth: false,
+            searching: false,
+            filter: false,
+            ordering: false,
+            paging: false,
+            info: false,
+            columns: [{
+                width: '25%',
+            }, {
+                width: '15%',
+            }, {
+                width: '45%',
+            }, {
+                width: '15%',
+            }],
         });
 
         function sendFetchBook(id) {
             $.ajax({
-                url: '/fetch_book',
+                url: '/api/address-book/id',
                 method: 'GET',
                 data: {
                     id: id
@@ -574,7 +562,7 @@
 
         function recvFetchBook(id) {
             $.ajax({
-                url: '/fetch_book',
+                url: '/api/address-book/id',
                 method: 'GET',
                 data: {
                     id: id
