@@ -25,23 +25,6 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
-
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-
-    </style>
-
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -53,13 +36,11 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="{{asset('assets/img/brand/allderExpress.png')}}" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
-
                 <ul class="side-menu open">
-
                     <li class="slide ">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
@@ -87,7 +68,6 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
-
                 </ul>
             </div>
         </aside>
@@ -101,7 +81,6 @@
                 <div class="container-fluid">
                     <button type="button" class="btn btn-primary" style="position: absolute; left: 330;">เรียกพนักงานเข้ามารับพัสดุ</button>
                     <button type="button" class="btn btn-primary" style="position: absolute; left: 540;">ระบุพนักงานเข้ารับพัสดุ</button>
-
                     <div class="main-header-left ">
                         <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                             <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
@@ -145,16 +124,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="page-signin.html"><i class="bx bx-log-out"></i> Sign
-                                        Out</a>
+                                    <a class="dropdown-item" href="page-signin.html"><i class="bx bx-log-out"></i> Sign Out</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
             <!-- /main-header -->
 
             <!-- container -->
@@ -164,6 +140,7 @@
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
                         <div class="d-flex">
+                            <h5 class="content-title mb-0 my-auto">เรียกคูเรียร์รับพัสดุ</h5>
                         </div>
                     </div>
                 </div>
@@ -173,19 +150,13 @@
                 <div class="row row-sm">
                     <div class="col-xl-12">
                         <div class="card">
-
-                            <div class="card-header pb-0">
-
-                            </div>
                             <div class="jumps-prevent" style="padding-top: 5px;"></div>
                             <div class="card-body">
-
                                 <a class="btn btn-primary" style="position: absolute; left: 45;" href="add.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                     </svg> เรียกพนักงานเข้ารับพัสดุ
                                 </a>
-
                                 <button type="button" class="btn btn-info" style="position: absolute; left: 260;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
@@ -196,7 +167,6 @@
                                     </svg> <u>ดาวน์โหลด (Excel)</u></button>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 45px;"></div>
-
                             <div class="row px-2 mb-3">
                                 <div class="col-4">
                                     <div class="mb-1">เวลาที่ทำรายการ</div>
@@ -212,19 +182,15 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                            เบอร์โทรศัพท</a></div>
+                                            เบอร์โทรศัพท์</a></div>
                                     <div class="d-flex ">
                                         <div class="">
                                             <input class="form-control" type="text" value="">
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
-
-                            <div class="px-2 ">
+                            <div class="px-2">
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
                                         <tr>
@@ -244,7 +210,7 @@
                                                 <input type="checkbox">
                                             </td>
                                             <td>18/10/2564 - 09:00 am</td>
-                                            <td style="color: orange;">รอรับพัสุ</td>
+                                            <td style="color: orange;">รอรับพัสดุ</td>
                                             <td>
                                                 <div class="">บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</div>
                                                 <div class="">354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร
@@ -255,7 +221,6 @@
                                                 <div class="">354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร
                                                     กรุงเทพฯ 10900</div>
                                             </td>
-
                                             <td>เป็นสินค้าเกี่ยวกับอิเล็กทรอนิกส์ห้ามกระแทกรุนแรง</td>
                                         </tr>
                                         <tr>
@@ -263,7 +228,7 @@
                                                 <input type="checkbox">
                                             </td>
                                             <td>18/10/2564 - 09:00 am</td>
-                                            <td style="color: orange;">รอรับพัสุ</td>
+                                            <td style="color: orange;">รอรับพัสดุ</td>
                                             <td>
                                                 <div class="">บริษัท โรงแรมเกทเวย์ จำกัด (บัญชี)</div>
                                                 <div class="">354 ซ.พหลโยธิน 40 ถ.พหลโยธิน แขวงเสนานิคม เขตจตุจักร
@@ -343,8 +308,6 @@
                     {
                         "width": "650px"
                     },
-
-
                 ],
                 "ordering": false
             });

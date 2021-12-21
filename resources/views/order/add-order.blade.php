@@ -503,13 +503,16 @@
             })
         });
 
-        $("#send-table").dataTable({
+        $("#send-table").DataTable({
             autoWidth: false,
             searching: false,
             filter: false,
             ordering: false,
             paging: false,
             info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
             columns: [{
                 width: '25%',
             }, {
@@ -521,13 +524,16 @@
             }],
         });
 
-        $("#recv-table").dataTable({
+        $("#recv-table").DataTable({
             autoWidth: false,
             searching: false,
             filter: false,
             ordering: false,
             paging: false,
             info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
             columns: [{
                 width: '25%',
             }, {
