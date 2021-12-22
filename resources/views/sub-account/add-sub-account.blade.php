@@ -215,7 +215,7 @@
                 <!-- breadcrumb -->
 
                 <!-- row opened -->
-                <form method="POST" action="{{ url('/createSubAccount') }}">
+                <form method="POST" action="{{ url('/api/sub-account/create') }}">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-xl-5">

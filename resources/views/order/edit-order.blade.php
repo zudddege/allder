@@ -206,7 +206,7 @@
                                                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                                             </div>
                                             <div class="px-4">
-                                                <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
+                                                <p class="mt-2 mb-1">ชื่อผู้รับ</p>
                                                 <input class="form-control" type="text" value="{{$order->recv_name}}" name="recv_name" id="recv_name">
                                             </div>
                                             <div class="px-4">
@@ -611,6 +611,7 @@
                     $('#send_tel').val(res.book_tel);
                     $('#send_detail').val(res.book_detail);
                     $('#send_district').val(res.book_district);
+                    $('#main_address').prop('checked', res.is_main_book);
                     $('#save_send_address').prop('checked', true);
                 }
             })
