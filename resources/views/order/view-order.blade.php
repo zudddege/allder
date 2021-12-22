@@ -589,6 +589,17 @@
     </script>
 
     <script>
+        var mytable = $('#my-table').DataTable()
+        var ordersuccesstable = $('#order-success-table').DataTable()
+
+        $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
+        mytable.columns.adjust().draw();
+        ordersuccesstable.columns.adjust().draw();
+        });
+
+    </script>
+
+    <script>
         $('#upload').click(function () {
             $('#me').click();
         });
