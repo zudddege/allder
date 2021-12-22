@@ -140,6 +140,7 @@
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
+
                                 <div class="d-flex">
                                     <a class="btn btn-link" href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
@@ -147,109 +148,110 @@
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
                                     </a>
                                 </div>
-                            </div>
-                            <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <div class="row px-2 mb-3">
-                                <div class="col-2">
-                                    <div class="mb-1 ">เวลาที่ทำรายการ</div>
-                                    <div>
-                                        <input class="form-control daterange" type="text" name="datefilter" value="" />
+                                <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                                <div class="row px-2 mb-3">
+                                    <div class="col-2">
+                                        <div class="mb-1 ">เวลาที่ทำรายการ</div>
+                                        <div>
+                                            <input class="form-control daterange" type="text" name="datefilter" value="" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="mb-1">สถานะการทำรายการ</div>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="mb-1">แหล่งที่มา</div>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                            เบอร์โทรศัพท์</a></div>
-                                    <div class="d-flex ">
+                                    <div class="col-2">
+                                        <div class="mb-1">สถานะการทำรายการ</div>
                                         <div class="">
-                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                            <input class="form-control" type="text" value="">
                                         </div>
-                                        <div class="dropdown ">
-                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
-                                                    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                                </svg> <u>ตัวเลือกการแสดงผล</u>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
-                                                </input><br>
-                                                <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
-                                                <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
-                                                <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
-                                                <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
-                                                <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
-                                                <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
-                                                <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
-                                                <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
-                                                <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
-                                                <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
-                                                <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="mb-1">แหล่งที่มา</div>
+                                        <div class="">
+                                            <input class="form-control" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
+                                                เบอร์โทรศัพท์</a></div>
+                                        <div class="d-flex ">
+                                            <div class="">
+                                                <input class="form-control" type="text" value="" style="width:325px;">
                                             </div>
-                                        </div>
+                                            <div class="dropdown ">
+                                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                                    </svg> <u>ตัวเลือกการแสดงผล</u>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                    <input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span>
+                                                    </input><br>
+                                                    <input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input><br>
+                                                    <input type="checkbox" id='box3' checked="">เลขออเดอร์</input><br>
+                                                    <input type="checkbox" id='box4' checked="">เลขพัสดุ</input><br>
+                                                    <input type="checkbox" id='box5' checked="">แหล่งที่มา</input><br>
+                                                    <input type="checkbox" id='box6' checked="">ผู้ส่ง</input><br>
+                                                    <input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input><br>
+                                                    <input type="checkbox" id='box8' checked="">ผู้รับ</input><br>
+                                                    <input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input><br>
+                                                    <input type="checkbox" id='box10' checked="">ประเภทสินค้า</input><br>
+                                                    <input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input><br>
+                                                    <input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input><br>
+                                                    <input type="checkbox" id='box13' checked="">หมายเหตุ</input><br>
+                                                </div>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="px-2 ">
-                                <table class="table table-striped position-relative" id="my-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="">
-                                                <input id='mainbox' type="checkbox">
-                                            </th>
-                                            <th class='subbox1'>เวลาที่ทำรายการ</th>
-                                            <th class='subbox2'>สถานะจัดส่ง</th>
-                                            <th class='subbox3'>เลขออเดอร์</th>
-                                            <th class='subbox4'>เลขพัสดุ</th>
-                                            <th class='subbox5'>แหล่งที่มา</th>
-                                            <th class='subbox6'>ผู้ส่ง</th>
-                                            <th class='subbox7'>เบอร์โทรศัพท์ผู้ส่ง</th>
-                                            <th class='subbox8'>ผู้รับ </th>
-                                            <th class='subbox9'>เบอร์โทรศัพท์ผู้รับ</th>
-                                            <th class='subbox10'>ประเภทสินค้า</th>
-                                            <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
-                                            <th class='subbox12'>ราคาโดยประมาณ</th>
-                                            <th class='subbox13'>หมายเหตุ</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($orders as $order)
-                                        <tr class="td_detail_row">
-                                            <td><input class='subbox' type="checkbox"></td>
-                                            <td class='subbox1'>
-                                                {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            {{-- <td class='subbox2'>{{$order->status}}</td> --}}
-                                            <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
-                                            <td class='subbox3'>{{$order->order_no}}</td>
-                                            <td class='subbox4'>{{$order->order_no}}</td>
-                                            <td class='subbox5'>{{$order->order_no}}</td>
-                                            <td class='subbox6'>{{$order->send_address}}</td>
-                                            <td class='subbox7'>{{$order->send_tel}}</td>
-                                            <td class='subbox8'>{{$order->recv_address}}</td>
-                                            <td class='subbox9'>{{$order->recv_tel}}</td>
-                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->width_size}} x {{$order->length_size}} x {{$order->height_size}} cm</td>
-                                            <td class='subbox11'>{{$order->cod}}</td>
-                                            <td class='subbox12'>{{$order->cod}}</td>
-                                            <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="px-2 ">
+                                    <table class="table table-striped position-relative" id="my-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="">
+                                                    <input id='mainbox' type="checkbox">
+                                                </th>
+                                                <th class='subbox1'>เวลาที่ทำรายการ</th>
+                                                <th class='subbox2'>สถานะจัดส่ง</th>
+                                                <th class='subbox3'>เลขออเดอร์</th>
+                                                <th class='subbox4'>เลขพัสดุ</th>
+                                                <th class='subbox5'>แหล่งที่มา</th>
+                                                <th class='subbox6'>ผู้ส่ง</th>
+                                                <th class='subbox7'>เบอร์โทรศัพท์ผู้ส่ง</th>
+                                                <th class='subbox8'>ผู้รับ </th>
+                                                <th class='subbox9'>เบอร์โทรศัพท์ผู้รับ</th>
+                                                <th class='subbox10'>ประเภทสินค้า</th>
+                                                <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
+                                                <th class='subbox12'>ราคาโดยประมาณ</th>
+                                                <th class='subbox13'>หมายเหตุ</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($orders as $order)
+                                            <tr class="td_detail_row">
+                                                <td><input class='subbox' type="checkbox"></td>
+                                                <td class='subbox1'>
+                                                    {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                                {{-- <td class='subbox2'>{{$order->status}}</td> --}}
+                                                <td class='subbox2'> <span class="border border-success rounded-50" style="padding: 5px 10px; color:rgb(0, 197, 0);">เสร็จสิ้น</span></td>
+                                                <td class='subbox3'>{{$order->order_no}}</td>
+                                                <td class='subbox4'>{{$order->order_no}}</td>
+                                                <td class='subbox5'>{{$order->order_no}}</td>
+                                                <td class='subbox6'>{{$order->send_address}}</td>
+                                                <td class='subbox7'>{{$order->send_tel}}</td>
+                                                <td class='subbox8'>{{$order->recv_address}}</td>
+                                                <td class='subbox9'>{{$order->recv_tel}}</td>
+                                                <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->width_size}} x {{$order->length_size}} x {{$order->height_size}} cm</td>
+                                                <td class='subbox11'>{{$order->cod}}</td>
+                                                <td class='subbox12'>{{$order->cod}}</td>
+                                                <td class='subbox13'>{{$order->note_detail}}</td>
+                                                <td class="td_detail shadow"><a href="{{url('/edit')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
