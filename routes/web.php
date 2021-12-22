@@ -24,6 +24,9 @@ Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
 /* Courier Controller */
 Route::get('/courier', 'CourierController\CourierController@showCourier');
 
+/* Address Book Controller */
+Route::get('/book/address', 'AddressBookController\AddressBookController@showAddressBook');
+
 /* Sub Account Controller */
 Route::get('/sub-account', 'UserController@showSubAccount')->name('subacc');
 Route::get('/sub-account/create', 'UserController@addSubAccount');

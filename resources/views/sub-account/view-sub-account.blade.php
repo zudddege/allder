@@ -312,8 +312,8 @@
                                                 <td>{{$account->email}}</td>
                                                 <td>{{$account->name}}</td>
                                                 <td>{{$account->tel_no}}</td>
-                                                <td>{{$account->discount}}</td>
-                                                <td>{{$account->cod}}</td>
+                                                <td>{{$account->discount}} %</td>
+                                                <td>{{$account->cod}} %</td>
                                                 <td><label class="switch"><input type="checkbox" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif
@@ -377,15 +377,15 @@
             }, {
                 "width": "10%"
             }, {
-                "width": "20%"
+                "width": "22%"
             }, {
-                "width": "20%"
+                "width": "22%"
             }, {
                 "width": "10%"
             }, {
-                "width": "13%"
+                "width": "10%"
             }, {
-                "width": "5%"
+                "width": "8%"
             }, {
                 "width": "5%"
             }, ],

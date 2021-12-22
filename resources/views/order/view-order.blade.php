@@ -74,10 +74,10 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/tracking')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book/address')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
@@ -145,10 +145,8 @@
                             <div class="card-header" style="background-color: white;">
                                 <nav>
                                     <div class="nav main-nav-line" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-order-tab" data-toggle="tab" href="#nav-order"
-                                        role="tab" aria-controls="nav-order" aria-selected="true">รายการเตรียมจัดส่ง</a>
-                                    <a class="nav-item nav-link" id="nav-ordersuc-tab" data-toggle="tab" href="#nav-ordersuc"
-                                        role="tab" aria-controls="nav-ordersuc" aria-selected="false">รายการจัดส่งแล้ว</a>
+                                        <a class="nav-item nav-link active" id="nav-order-tab" data-toggle="tab" href="#nav-order" role="tab" aria-controls="nav-order" aria-selected="true">รายการเตรียมจัดส่ง</a>
+                                        <a class="nav-item nav-link" id="nav-ordersuc-tab" data-toggle="tab" href="#nav-ordersuc" role="tab" aria-controls="nav-ordersuc" aria-selected="false">รายการจัดส่งแล้ว</a>
                                     </div>
                                 </nav>
                             </div>
@@ -305,8 +303,7 @@
                                                         <td class='subbox11'>{{$order->cod}}</td>
                                                         <td class='subbox12'>{{$order->estimate_price}}</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
-                                                        <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
-                                                        </td>
+                                                        <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -445,8 +442,8 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod}}</td>
-                                                        <td class='subbox12'>{{$order->estimate_price}}</td>
+                                                        <td class='subbox11'>{{$order->cod}} ({{$order->cod_rate}})</td>
+                                                        <td class='subbox12'>{{$order->estimate_price}} ({{$order->estimate_price_rate}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
@@ -592,9 +589,9 @@
         var mytable = $('#my-table').DataTable()
         var ordersuccesstable = $('#order-success-table').DataTable()
 
-        $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
-        mytable.columns.adjust().draw();
-        ordersuccesstable.columns.adjust().draw();
+        $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+            mytable.columns.adjust().draw();
+            ordersuccesstable.columns.adjust().draw();
         });
 
     </script>

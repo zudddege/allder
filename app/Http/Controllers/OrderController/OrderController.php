@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AddressBook\AddressBook;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Order\Order;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -75,6 +76,8 @@ class OrderController extends Controller {
             break;
         }
 
+        $accountRate = User::select('discount', 'cod')->find(1);
+
         $create = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
@@ -134,7 +137,10 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $estimate_price = $response['data']['estimatePrice'];
+            $estimatePrice = $response['data']['estimatePrice'];
+
+            $estimateRate = round($estimatePrice * (1 - (($accountRate->discount) / 100)) / 100, 2);
+            $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
 
             if ($request->main_address) {
                 $main_book = AddressBook::select('id')->where('is_main_book', 1)->first();
@@ -197,7 +203,9 @@ class OrderController extends Controller {
                 'length_size' => $request->length_size,
                 'height_size' => $request->height_size,
                 'cod' => $request->cod,
-                'estimate_price' => $estimate_price / 100,
+                'cod_rate' => $codRate,
+                'estimate_price' => $estimatePrice / 100,
+                'estimate_price_rate' => $estimateRate,
                 'note_detail' => $request->note_detail,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
@@ -299,7 +307,7 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $estimate_price = $response['data']['estimatePrice'];
+            $estimatePrice = $response['data']['estimatePrice'];
 
             Order::find($id)->update([
                 'send_name' => $request->send_name,
@@ -318,7 +326,7 @@ class OrderController extends Controller {
                 'weight_type' => $request->weight_type,
                 'height' => $request->height,
                 'cod' => $request->cod,
-                'estimate_price' => $estimate_price / 100,
+                'estimate_price' => $estimatePrice / 100,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
                 'is_express_transport' => $request->is_express_transport ? true : false,

@@ -48,6 +48,7 @@ class UserController extends Controller {
             "cod" => $data->cod,
             "username" => $data->username,
             "password" => Hash::make($data->password),
+            'is_status_user' => 1,
         ]);
 
         return redirect('/sub-account');

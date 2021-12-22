@@ -25,121 +25,80 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
-
-    <style>
-        .table th:last-child,
-        .table td:last-child {
-            position: sticky;
-            right: 0px;
-        }
-
-        .td_detail_row:nth-child(odd) .td_detail {
-            background-color: #E3E8F7;
-        }
-
-        .td_detail_row:nth-child(even) .td_detail {
-            background-color: white;
-        }
-
-    </style>
-
 </head>
 
 <body class="main-body app sidebar-mini">
-
-
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png"
-                        class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png"
-                        class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="{{asset('assets/img/brand/allderExpress.png')}}" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span
-                                class="side-menu__label">จัดการออเดอร์</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span
-                                class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/bookaddress')}}"><span
-                                class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/bookaddress')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">กระทบค่าขนส่ง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span
-                                class="side-menu__label">ตารางรายการ POD</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span
-                                class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                 </ul>
             </div>
         </aside>
 
         <div class="main-content app-content">
-
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">
-
                     <div class="d-flex">
-                        <div class="">
+                        <div>
                             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                             </div>
-
                         </div>
-                        <div class="">
+                        <div>
                             <button type="button" class="btn btn-primary mx-2">เรียกพนักงานเข้ามารับพัสดุ</button>
                             <button type="button" class="btn btn-primary mx-2">ระบุพนักงานเข้ารับพัสดุ</button>
                         </div>
 
                     </div>
 
-
-                    <div class="">
+                    <div>
                         <div class="nav nav-item  navbar-nav-right ml-auto">
                             <div class="nav-item full-screen fullscreen-button">
-                                <a class="new nav-link full-screen-link" href="#"><svg
-                                        xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                                <a class="new nav-link full-screen-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
                                         </path>
                                     </svg></a>
                             </div>
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                <a class="profile-user d-flex" href=""><img alt=""
-                                        src="assets/images/91831124_p0.jpg"></a>
+                                <a class="profile-user d-flex" href=""><img alt="" src="{{asset('assets/images/91831124_p0.jpg')}}"></a>
                                 <div class="dropdown-menu">
                                     <div class="main-header-profile bg-primary p-3">
                                         <div class="d-flex wd-100p">
-                                            <div class="main-img-user"><img alt="" src="assets/images/91831124_p0.jpg"
-                                                    class=""></div>
+                                            <div class="main-img-user"><img alt="" src="{{asset('assets/images/91831124_p0.jpg')}}" class=""></div>
                                             <div class="ml-3 my-auto">
                                                 <h6>Zudddege</h6><span>Super Admin</span>
                                             </div>
@@ -178,22 +137,15 @@
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path
-                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                             </svg> เพิ่มที่อยู่ </label>
                                     </a>
                                     <label class="btn btn-info mx-3" id='upload'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
                                         </svg> นำเข้าข้อมูล
                                     </label>
                                     <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
@@ -201,12 +153,9 @@
                                         <input type="file" style="display: none;" name="image" id='me'>
                                     </form>
                                     <a class="btn btn-link" href="{{url('/export')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
                                     </a>
                                 </div>
@@ -230,7 +179,7 @@
                                 <table class="table table-striped position-relative" id="my-table">
                                     <thead>
                                         <tr>
-                                            <th class=""><input id='mainbox' type="checkbox"></th>
+                                            <th><input id='mainbox' type="checkbox"></th>
                                             <th class='subbox1'>ชื่อผู้ส่ง / ผู้รับ</th>
                                             <th class='subbox2'>เบอร์โทรศัพท์</th>
                                             <th class='subbox3'>ที่อยู่</th>
@@ -238,21 +187,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr class="td_detail_row">
-                                            <td><input class='subbox' type="checkbox"></td>
-                                            <td>111111111</td>
-                                            <td>222222222</td>
-                                            <td>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
-                                            <td class="td_detail shadow"><a href="{{url('/')}}"
-                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                        @foreach($addressBooks as $addressBook)
+                                        <tr>
+                                            <td><input id='mainbox' type="checkbox"></td>
+                                            <td>{{$addressBook->book_name}}</td>
+                                            <td>{{$addressBook->book_tel}}</td>
+                                            <td>
+                                                {{$addressBook->book_detail}}
+                                                {{$addressBook->book_district}}
+                                                {{$addressBook->book_city}}
+                                                {{$addressBook->book_province}}
+                                                {{$addressBook->book_postal_code}}
                                             </td>
+                                            <td class="shadow"><a href="{{url('#')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -292,19 +244,20 @@
 
     <script>
         $('#my-table').DataTable({
-            scrollX: true,
-            "columns": [{
-                "width": "2%"
+            scrollX: false,
+            autoWidth: false,
+            columns: [{
+                width: "2%"
             }, {
-                "width": "150px"
+                width: '20%',
             }, {
-                "width": "100px"
+                width: '10%',
             }, {
-                "width": "300px"
+                width: '55%',
             }, {
-                "width": "120px"
+                width: '13%',
             }, ],
-            "ordering": false
+            ordering: false
         });
         $(".dataTables_length").css("display", "none");
         $(".dataTables_filter").css("display", "none");
