@@ -127,14 +127,18 @@
                         <div class="card">
                             <div class="px-4 py-4">
                                 <div class="d-flex align-items-center">
-                                    <span>รหัสที่อยู่ ผู้รับ / ผู้ส่ง</span>
+                                    <span>รหัสคลังสินค้า</span>
                                     <input class="form-control mx-2" type="text" style="width: 70%">
                                 </div>
                                 <div class="my-3">
-                                    <h5>ข้อมูลที่อยู่ ผู้รับ / ผู้ส่ง</h5>
+                                    <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
                                 </div>
                                 <div class="my-2">
-                                    <span>ชื่อผู้ส่ง / ผู้รับ</span>
+                                    <span>ขื่อคลังสินค้า</span>
+                                    <input class="form-control" type="text">
+                                </div>
+                                <div class="my-2">
+                                    <span>ชื่อผู้ติดต่อ</span>
                                     <input class="form-control" type="text">
                                 </div>
                                 <div class="my-2">
@@ -174,11 +178,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex mt-3">
-                                    <input type="checkbox" class="mt-1" name="save_recv_address"
-                                        value="1" id="save_recv_address">
-                                    <p class="px-1">บันทึกข้อมูลที่อยู่</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('order/'.$order->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
