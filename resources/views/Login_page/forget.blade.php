@@ -1,12 +1,13 @@
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-	<meta name="Author" content="Spruko Technologies Private Limited">
-	<title>Allder Express</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <title>Allder Express</title>
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
@@ -28,11 +29,12 @@
 
     <style>
         body {
-        background-image: url('./assets/img/login/bg-login.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
+            background-image: url('./assets/img/login/bg-login.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
+
     </style>
 
 </head>
@@ -41,8 +43,8 @@
 
 <body>
 
-	<!-- Page -->
-	<div class="page">
+    <!-- Page -->
+    <div class="page">
         <div>
             <div class="jumps-prevent" style="padding-top: 40px;"></div>
             <div class="d-flex justify-content-center">
@@ -62,15 +64,23 @@
                                 <div class="d-flex justify-content-end" style="padding-right: 25px;">
                                     <a href="{{url('/')}}" style="color: blue; text-align:end;"><u>กลับไปยังเข้าสู่ระบบ</u></a>
                                 </div>
-
-                                <div class="d-flex justify-content-center">
-                                    <input class="form-control mb-3" type="text" value="" placeholder="อีเมลของท่าน" style="width: 250;">
+                                @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
                                 </div>
+                                @endif
+                                <form action="{{ route('forget.password.post') }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex justify-content-center">
+                                        <input class="form-control mb-3" type="text" id="email_address" name="email" required autofocus value="" placeholder="อีเมลของท่าน" style="width: 250;">
+                                    </div>
 
-                                <div class="jumps-prevent" style="padding-top: 45px;"></div>
-                                <div class="d-flex justify-content-center">
-                                    <a href="mailcon.html" class="btn btn-primary" style="color: white; width: 220px;">ส่งคำร้องลืมรหัสผ่าน</a>
-                                </div>
+                                    <div class="jumps-prevent" style="padding-top: 45px;"></div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary" style="color: white; width: 220px;">ส่งคำร้องลืมรหัสผ่าน</button>
+                                    </div>
+                                </form>
                             </div>
 
 
@@ -79,39 +89,40 @@
 
                 </div>
             </div>
-    </div>
+        </div>
 
-	<!-- End Page -->
+        <!-- End Page -->
 
-	<!-- Back-to-top -->
-	<a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
-    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/js/table-data.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
-    <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
-    <script src="{{asset('assets/js/sticky.js')}}"></script>
-    <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>
+        <!-- Back-to-top -->
+        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+        <script src="{{asset('assets/js/table-data.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+        <script src="{{asset('assets/js/sticky.js')}}"></script>
+        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+        <script src="{{asset('assets/js/custom.js')}}"></script>
 
 </body>
+
 </html>

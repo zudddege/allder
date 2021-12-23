@@ -15,6 +15,6 @@ class SearchController extends Controller {
         $cut_d_date = $cut_c_date[2] . "/" . $cut_c_date[1] . "/" . $cut_c_date[0];
         $orders = Order::whereDate('created_at', '>=', $cut_b_date)->whereDate('created_at', '<=', $cut_d_date)->get();
 
-        return view('order', compact('orders'));
+        return view('order.view-order', compact('orders'));
     }
 }

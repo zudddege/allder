@@ -55,9 +55,9 @@
                             </div>
 
                             <div class="d-flex justify-content-end" style="padding-right: 25px;">
-                                <a href="{{url('/forgot')}}" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
+                                <a href="{{ route('forget.password.get') }}" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
                             </div>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('login')}}">
                                 @csrf
                                 <div class="d-flex justify-content-center">
                                     <input id="email" placeholder="ชื่อผู้ใช้" style="width: 250;" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
