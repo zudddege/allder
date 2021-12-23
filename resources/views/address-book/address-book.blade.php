@@ -140,9 +140,9 @@
                                     <div class="tab-pane fade show active" id="nav-address-book" role="tabpanel" aria-labelledby="nav-address-book-tab">
                                         <div class="d-flex">
                                             <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                                    </svg> เพิ่มที่อยู่ </label>
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg> เพิ่มที่อยู่ </label>
                                             </a>
                                             <label class="btn btn-info mx-3" id='upload'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
@@ -214,9 +214,9 @@
                                     <div class="tab-pane fade" id="nav-address-storage" role="tabpanel" aria-labelledby="nav-address-storage-tab">
                                         <div class="d-flex">
                                             <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                                    </svg> เพิ่มที่อยู่ </label>
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg> เพิ่มที่อยู่ </label>
                                             </a>
                                             <label class="btn btn-info mx-3" id='upload'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
@@ -265,7 +265,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @foreach($addressBooks as $addressBook)
+                                                    @foreach($addressBooks as $addressBook)
                                                     <tr>
                                                         <td><input id='mainbox' type="checkbox"></td>
                                                         <td>{{$addressBook->book_name}}</td>
@@ -277,9 +277,11 @@
                                                             {{$addressBook->book_province}}
                                                             {{$addressBook->book_postal_code}}
                                                         </td>
+                                                        <td>aaaaaa</td>
+                                                        <td>1111111111</td>
                                                         <td class="shadow"><a href="{{url('#')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -358,11 +360,11 @@
             }, {
                 width: '20%',
             }, {
-                width: '25%',
+                width: '30%',
             }, {
                 width: '15%',
             }, {
-                width: '15%',
+                width: '10%',
             }, {
                 width: '13%',
             }, ],
