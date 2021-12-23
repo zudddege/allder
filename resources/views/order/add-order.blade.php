@@ -560,8 +560,8 @@
                     $('#send_city').val(res.book_city);
                     $('#send_province').val(res.book_province);
                     $('#send_postal_code').val(res.book_postal_code);
-                    $('#main_address').prop('checked', res.is_main_book);
-                    $('#save_send_address').prop('checked', true);
+                    $('#main_address').prop('indeterminate', res.is_main_book);
+                    $('#save_send_address').prop('indeterminate', true);
                 }
             })
         }
@@ -581,7 +581,7 @@
                     $('#recv_city').val(res.book_city);
                     $('#recv_province').val(res.book_province);
                     $('#recv_postal_code').val(res.book_postal_code);
-                    $('#save_recv_address').prop('checked', true);
+                    $('#save_recv_address').prop('indeterminate', true);
                 }
             })
         }

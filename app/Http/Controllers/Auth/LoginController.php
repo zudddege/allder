@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -18,9 +16,8 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
     use AuthenticatesUsers;
-
 
     /**
      * Where to redirect users after login.
@@ -34,13 +31,11 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $input = $request->all();
 
         $this->validate($request, [
@@ -48,17 +43,14 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('subacc');
-            }else{
+            } else {
                 return redirect()->route('order');
             }
-        }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+        } else {
+            return redirect()->route('login')->with('error', 'Email-Address And Password Are Wrong.');
         }
-
     }
 }

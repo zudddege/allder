@@ -41,7 +41,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/callcourier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
@@ -50,7 +50,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/bookaddress')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book/address')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>

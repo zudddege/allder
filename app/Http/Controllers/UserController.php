@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
@@ -37,19 +37,25 @@ class UserController extends Controller {
     }
 
     public function addSubAccount() {
-        return view('sub-account.add-sub-account');
+        $date = Carbon::now('Asia/Bangkok')->isoFormat('YYMM');
+        $number = User::select('id')->count();
+        $number = str_pad($number, 4, '0', STR_PAD_LEFT);
+        $close_id = "AE" . $date . $number;
+
+        return view('sub-account.add-sub-account', compact('close_id'));
     }
 
     protected function createSubAccount(Request $data) {
         User::create([
+            "close_id" => $data->close_id,
             "email" => $data->email,
             "name" => $data->name,
             "tel_no" => $data->tel_no,
             "discount" => $data->discount,
             "cod" => $data->cod,
+            'is_status_user' => $data->is_status_user ? 1 : 0,
             "username" => $data->username,
             "password" => Hash::make($data->password),
-            'is_status_user' => 1,
         ]);
 
         return redirect('/sub-account');

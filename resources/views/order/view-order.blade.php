@@ -203,7 +203,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
-                                                    <div class="d-flex ">
+                                                    <div class="d-flex">
                                                         <div class="">
                                                             <input class="form-control" type="text" value="" style="width:325px;">
                                                         </div>
@@ -267,19 +267,16 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
+                                                    @if($order->status == "รอปริ้น" || $order->status == "ปริ้นแล้ว")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox2'>
-                                                            @if($order->status == "รอจัดสรร")
+                                                            @if($order->status == "ปริ้นแล้ว")
                                                             <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ระหว่างจัดส่ง")
+                                                            @elseif($order->status == "รอปริ้น")
                                                             <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
-                                                            @elseif($order->status == "เสร็จสิ้น")
-                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ยกเลิก")
-                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox3'>{{$order->order_no}}</td>
@@ -301,11 +298,12 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod}}</td>
-                                                        <td class='subbox12'>{{$order->estimate_price}}</td>
+                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
+                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
+                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -409,6 +407,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
+                                                    @if($order->status == "เสร็จสิ้น" || $order->status == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
@@ -443,12 +442,13 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod}} ({{$order->cod_rate}})</td>
-                                                        <td class='subbox12'>{{$order->estimate_price}} ({{$order->estimate_price_rate}})</td>
+                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
+                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
                                                     </tr>
+                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>

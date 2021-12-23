@@ -222,7 +222,7 @@
                             <div class="card card-body">
                                 <div class="d-flex">
                                     <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
-                                    <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" readonly>
+                                    <input class="form-control" type="text" value="{{$close_id}}" name="close_id" style="width: 65%; height: 75%;" readonly>
                                 </div>
                                 <div class="">
                                     <div class="">
@@ -262,9 +262,7 @@
                                         <span class="px-1">%</span>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="col-xl-5">
                             <div class="card card-body">
@@ -273,7 +271,7 @@
                                     <div class="d-flex align-content-center" style="margin-left: 60%;">
                                         <p class="px-1">สถานะ</p>
                                         <label class="switch">
-                                            <input type="checkbox" checked>
+                                            <input type="checkbox" name="is_status_user" value="1" checked>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>

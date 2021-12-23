@@ -24,6 +24,7 @@ Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
 /* Courier Controller */
 Route::get('/courier', 'CourierController\CourierController@showCourier');
 
+
 /* Address Book Controller */
 Route::get('/book/address', 'AddressBookController\AddressBookController@showAddressBook');
 
