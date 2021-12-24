@@ -547,7 +547,7 @@
 
         function sendFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id
@@ -568,7 +568,7 @@
 
         function recvFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id

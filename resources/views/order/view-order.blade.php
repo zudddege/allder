@@ -77,7 +77,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/tracking')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book/address')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>

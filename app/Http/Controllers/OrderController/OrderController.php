@@ -143,10 +143,7 @@ class OrderController extends Controller {
             $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
 
             if ($request->main_address) {
-                $main_book = AddressBook::select('id')->where('is_main_book', 1)->first();
-                if ($main_book) {
-                    AddressBook::find($main_book->id)->update(['is_main_book' => false]);
-                }
+                AddressBook::where('is_main_book', 1)->update(['is_main_book' => false]);
             }
 
             if ($request->save_send_address) {

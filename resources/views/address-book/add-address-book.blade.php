@@ -18,13 +18,14 @@
     <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/sidemenu.css')}}">
+    <link href="{{asset('assets/css/sidemenu.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -124,68 +125,70 @@
                 <div class="row">
                     <div class="col-5">
                         {{-- card --}}
-                        <div class="card">
-                            <div class="px-4 py-4">
-                                <div class="d-flex align-items-center">
-                                    <span>รหัสที่อยู่ ผู้รับ / ผู้ส่ง</span>
-                                    <input class="form-control mx-2" type="text" style="width: 70%">
-                                </div>
-                                <div class="my-3">
-                                    <h5>ข้อมูลที่อยู่ ผู้รับ / ผู้ส่ง</h5>
-                                </div>
-                                <div class="my-2">
-                                    <span>ชื่อผู้ส่ง / ผู้รับ</span>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="my-2">
-                                    <span>เบอร์โทรศัพท์</span>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="my-2">
-                                    <span class="mt-2 mb-1">ที่อยู่</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="recv_detail" id="recv_detail"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">ตำบล / แขวง</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                        <form action="{{url('/api/book/address-book/create')}}" method="post">
+                            @csrf
+                            <div class="card">
+                                <div class="px-4 py-4">
+                                    <div class="d-flex align-items-center">
+                                        <span>รหัสที่อยู่ ผู้รับ / ผู้ส่ง</span>
+                                        <input class="form-control mx-2" type="text" style="width: 70%" name="book_no">
+                                    </div>
+                                    <div class="my-3">
+                                        <h5>ข้อมูลที่อยู่ ผู้รับ / ผู้ส่ง</h5>
+                                    </div>
+                                    <div class="my-2">
+                                        <span>ชื่อผู้ส่ง / ผู้รับ</span>
+                                        <input class="form-control" type="text" name="book_name">
+                                    </div>
+                                    <div class="my-2">
+                                        <span>เบอร์โทรศัพท์</span>
+                                        <input class="form-control" type="text" name="book_tel">
+                                    </div>
+                                    <div class="my-2">
+                                        <span class="mt-2 mb-1">ที่อยู่</span>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="book_detail"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">ตำบล / แขวง</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="book_district" id="book_district">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">จังหวัด</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="book_province" id="book_province">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">จังหวัด</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">อำเภอ / เขต</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="book_city" id="book_city">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="book_postal_code" id="book_postal_code">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">อำเภอ / เขต</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
-                                            </div>
-                                        </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
-                                            </div>
-                                        </div>
+                                    <div class="d-flex mt-3">
+                                        <input type="checkbox" class="mt-1" name="is_main_book" value="1">
+                                        <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                     </div>
-                                </div>
-                                <div class="d-flex mt-3">
-                                    <input type="checkbox" class="mt-1" name="save_recv_address"
-                                        value="1" id="save_recv_address">
-                                    <p class="px-1">บันทึกข้อมูลที่อยู่</p>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
-                                    <input class="btn btn-primary mx-2" type="submit" value="สร้างรายการ" id="submit-button">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         {{-- end card --}}
                     </div>
                 </div>
@@ -229,26 +232,18 @@
 
     <script>
         $.Thailand.setup({
-            autocomplete_size: 10,
+            autocomplete_size: 3,
         });
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#send_district'), // input ของตำบล
-            $amphoe: $('#send_city'), // input ของอำเภอ
-            $province: $('#send_province'), // input ของจังหวัด
-            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
+            $district: $('#book_district'), // input ของตำบล
+            $amphoe: $('#book_city'), // input ของอำเภอ
+            $province: $('#book_province'), // input ของจังหวัด
+            $zipcode: $('#book_postal_code'), // input ของรหัสไปรษณีย์
         });
 
-        $.Thailand({
-            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#recv_district'), // input ของตำบล
-            $amphoe: $('#recv_city'), // input ของอำเภอ
-            $province: $('#recv_province'), // input ของจังหวัด
-            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
-        });
     </script>
-
 </body>
 
 </html>

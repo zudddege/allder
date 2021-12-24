@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('/api/order/'.$order->id.'/modify')}}" method="POST">
+                <form action="{{ url('/api/order/'.$order->id.'/modify') }}" method="POST">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-sm-8">
@@ -601,7 +601,7 @@
 
         function sendFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id
@@ -619,7 +619,7 @@
 
         function recvFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id

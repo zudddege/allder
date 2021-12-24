@@ -21,11 +21,21 @@ Route::get('/order/{id}/detail', 'OrderController\OrderController@detailOrder');
 Route::get('/order/{id}/edit', 'OrderController\OrderController@editOrder');
 Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
 
+/** Order Controller API **/
+Route::post('/api/order/create', 'OrderController\OrderController@createOrder');
+
 /* Courier Controller */
 Route::get('/courier', 'CourierController\CourierController@showCourier');
 
 /* Address Book Controller */
-Route::get('/book/address', 'AddressBookController\AddressBookController@showAddressBook');
+Route::get('/book', 'AddressBookController\AddressBookController@showBook');
+Route::get('/book/address-book/create', 'AddressBookController\AddressBookController@addAddressBook');
+Route::get('/book/address-book/{id}/detail', 'AddressBookController\AddressBookController@detailAddressBook');
+Route::get('/book/address-book/{id}/edit', 'AddressBookController\AddressBookController@editAddressBook');
+
+Route::get('/book/warehouse/create', 'AddressBookController\AddressBookController@addWarehouse');
+Route::get('/book/warehouse/{id}/detail', 'AddressBookController\AddressBookController@detailWarehouse');
+Route::get('/book/warehouse/{id}/edit', 'AddressBookController\AddressBookController@editWarehouse');
 
 /* Sub Account Controller */
 Route::get('/sub-account', 'UserController@showSubAccount')->name('subacc');
@@ -46,6 +56,3 @@ Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordF
 Route::post('forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
-
-/** API **/
-Route::post('/api/order/create', 'OrderController\OrderController@createOrder');
