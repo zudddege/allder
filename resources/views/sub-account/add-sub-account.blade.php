@@ -223,6 +223,7 @@
                                 <div class="d-flex">
                                     <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
                                     <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" readonly>
+                                    <input class="form-control " type="hidden" value="123456" >
                                 </div>
                                 <div class="">
                                     <div class="">
