@@ -23,7 +23,6 @@ Route::post('/import/excel', 'ExcelController\ExcelController@import');
 Route::get('/export/excel', 'ExcelController\ExcelController@export');
 
 /* Order Controller */
-Route::post('/order/create', 'OrderController\OrderController@createOrder');
 Route::get('/order/gen-order-no', 'OrderController\OrderController@genOrderNo');
 Route::post('/order/{id}/modify', 'OrderController\OrderController@modifyOrder');
 Route::post('/order/{id}/cancel', 'OrderController\OrderController@cancelOrder');

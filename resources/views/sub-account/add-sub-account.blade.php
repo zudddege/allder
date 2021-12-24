@@ -251,15 +251,13 @@
                                 <div class="">
                                     <p class="my-1">ส่วนลดที่ได้รับ</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" name="discount" value="">
-                                        <span class="px-1">%</span>
+                                        <input class="form-control" type="text" name="discount" value=""><span class="px-1">%</span>
                                     </div>
                                 </div>
                                 <div class="my-2">
                                     <p class="my-1">COD</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" value="" name="cod">
-                                        <span class="px-1">%</span>
+                                        <input class="form-control" type="text" value="" name="cod"><span class="px-1">%</span>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +349,6 @@
         <script src="{{asset('assets/js/sticky.js')}}"></script>
         <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
-
 </body>
 
 </html>

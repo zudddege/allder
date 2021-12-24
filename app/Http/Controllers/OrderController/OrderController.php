@@ -76,7 +76,8 @@ class OrderController extends Controller {
             break;
         }
 
-        $accountRate = User::select('discount', 'cod')->find(1);
+        $id = auth()->user()->id;
+        $accountRate = User::select('discount', 'cod')->find($id);
 
         $create = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
@@ -250,12 +251,12 @@ class OrderController extends Controller {
             break;
         }
 
-        $dataId = Order::select('send_province', 'send_city', 'send_district', 'send_postal_code', 'tracking_no')->find($id);
+        $trackingNo = Order::select('tracking_no')->find($id);
 
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
-            'pno' => $dataId->tracking_no,
+            'pno' => $trackingNo->tracking_no,
             'expressCategory' => $request->is_express_transport == 1 ? "2" : "1",
             'srcName' => $request->send_name,
             'srcPhone' => $request->send_tel,
@@ -287,10 +288,10 @@ class OrderController extends Controller {
             $rate = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
                 'nonceStr' => time(),
-                'srcProvinceName' => $dataId->send_province,
-                'srcCityName' => $dataId->send_city,
-                'srcDistrictName' => $dataId->send_district,
-                'srcPostalCode' => $dataId->send_postal_code,
+                'srcProvinceName' => $request->send_province,
+                'srcCityName' => $request->send_city,
+                'srcDistrictName' => $request->send_district,
+                'srcPostalCode' => $request->send_postal_code,
                 'dstProvinceName' => $request->recv_province,
                 'dstCityName' => $request->recv_city,
                 'dstDistrictName' => $request->recv_district,

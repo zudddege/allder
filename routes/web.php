@@ -24,7 +24,6 @@ Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
 /* Courier Controller */
 Route::get('/courier', 'CourierController\CourierController@showCourier');
 
-
 /* Address Book Controller */
 Route::get('/book/address', 'AddressBookController\AddressBookController@showAddressBook');
 
@@ -46,4 +45,7 @@ Route::get('/forgot', 'UserController@forgot');
 Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');
 Route::post('forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
-Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm' )->name('reset.password.post');
+Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
+
+/** API **/
+Route::post('/api/order/create', 'OrderController\OrderController@createOrder');
