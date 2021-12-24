@@ -57,6 +57,14 @@
                             <div class="d-flex justify-content-end" style="padding-right: 25px;">
                                 <a href="{{ route('forget.password.get') }}" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
                             </div>
+                            @if (Session::has('errors'))
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                {{ $error }}<br />
+                                @endforeach
+                            </div>
+                            @endif
+
                             <form method="POST" action="{{ route('login')}}">
                                 @csrf
                                 <div class="d-flex justify-content-center">

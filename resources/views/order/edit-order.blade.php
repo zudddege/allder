@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('/api/order/'.$order->id.'/modify')}}" method="POST">
+                <form action="{{ url('/api/order/'.$order->id.'/modify') }}" method="POST">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-sm-8">
@@ -171,19 +171,19 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="{{ $order->send_district }}" readonly>
+                                                <input class="form-control" type="text" name="send_district" value="{{ $order->send_district }}" readonly>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="{{ $order->send_city }}" readonly>
+                                                <input class="form-control" type="text" name="send_city" value="{{ $order->send_city }}" readonly>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="{{ $order->send_province }}" readonly>
+                                                <input class="form-control" type="text" name="send_province" value="{{ $order->send_province }}" readonly>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="{{ $order->send_postal_code }}" readonly>
+                                                <input class="form-control" type="text" name="send_postal_code" value="{{ $order->send_postal_code }}" readonly>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
@@ -601,7 +601,7 @@
 
         function sendFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id
@@ -619,7 +619,7 @@
 
         function recvFetchBook(id) {
             $.ajax({
-                url: '/api/address-book/id',
+                url: '/api/book/get/id',
                 method: 'GET',
                 data: {
                     id: id

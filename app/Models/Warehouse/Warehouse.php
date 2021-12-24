@@ -4,16 +4,18 @@ namespace App\Models\Warehouse;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Warehouse extends Model
-{
+class Warehouse extends Model {
     protected $table = "dim_warehouse";
     protected $fillable = [
         "user_id",
-        "wh_no",
-        "wh_name",
+        "warehouse_no",
+        "warehouse_name",
         "contact_name",
-        "wh_tel",
-        "wh_area",
-        "wh_address"
+        "warehouse_tel",
+        "warehouse_detail",
+        "warehouse_district",
+        "warehouse_city",
+        "warehouse_province",
+        "warehouse_postal_code",
     ];
 }

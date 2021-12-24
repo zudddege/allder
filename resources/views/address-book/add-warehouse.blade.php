@@ -18,13 +18,14 @@
     <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/sidemenu.css')}}">
+    <link href="{{asset('assets/css/sidemenu.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -124,69 +125,70 @@
                 <div class="row">
                     <div class="col-5">
                         {{-- card --}}
-                        <div class="card">
-                            <div class="px-4 py-4">
-                                <div class="d-flex align-items-center">
-                                    <span>รหัสคลังสินค้า</span>
-                                    <input class="form-control mx-2" type="text" style="width: 70%">
-                                </div>
-                                <div class="my-3">
-                                    <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
-                                </div>
-                                <div class="my-2">
-                                    <span>ขื่อคลังสินค้า</span>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="my-2">
-                                    <span>ชื่อผู้ติดต่อ</span>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="my-2">
-                                    <span>เบอร์โทรศัพท์</span>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="my-2">
-                                    <span class="mt-2 mb-1">ที่อยู่</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="recv_detail" id="recv_detail"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">ตำบล / แขวง</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                        <form action="{{url('/api/book/warehouse/create')}}" method="post">
+                            @csrf
+                            <div class="card">
+                                <div class="px-4 py-4">
+                                    <div class="d-flex align-items-center">
+                                        <span>รหัสคลังสินค้า</span>
+                                        <input class="form-control mx-2" type="text" style="width: 70%" name="warehouse_no">
+                                    </div>
+                                    <div class="my-3">
+                                        <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
+                                    </div>
+                                    <div class="my-2">
+                                        <span>ขื่อคลังสินค้า</span>
+                                        <input class="form-control" type="text" name="warehouse_name">
+                                    </div>
+                                    <div class="my-2">
+                                        <span>ชื่อผู้ติดต่อ</span>
+                                        <input class="form-control" type="text" name="contact_name">
+                                    </div>
+                                    <div class="my-2">
+                                        <span>เบอร์โทรศัพท์</span>
+                                        <input class="form-control" type="text" name="warehouse_tel">
+                                    </div>
+                                    <div class="my-2">
+                                        <span class="mt-2 mb-1">ที่อยู่</span>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">ตำบล / แขวง</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_district" id="warehouse_district">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">จังหวัด</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_province" id="warehouse_province">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">จังหวัด</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">อำเภอ / เขต</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_city" id="warehouse_city">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_postal_code" id="warehouse_postal_code">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">อำเภอ / เขต</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
-                                            </div>
-                                        </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
-                                            </div>
-                                        </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('order/'.$order->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
-                                            <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
-                                    </svg> แก้ไข</a>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         {{-- end card --}}
                     </div>
                 </div>
@@ -230,24 +232,17 @@
 
     <script>
         $.Thailand.setup({
-            autocomplete_size: 10,
+            autocomplete_size: 3,
         });
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#send_district'), // input ของตำบล
-            $amphoe: $('#send_city'), // input ของอำเภอ
-            $province: $('#send_province'), // input ของจังหวัด
-            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
+            $district: $('#warehouse_district'), // input ของตำบล
+            $amphoe: $('#warehouse_city'), // input ของอำเภอ
+            $province: $('#warehouse_province'), // input ของจังหวัด
+            $zipcode: $('#warehouse_postal_code'), // input ของรหัสไปรษณีย์
         });
 
-        $.Thailand({
-            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#recv_district'), // input ของตำบล
-            $amphoe: $('#recv_city'), // input ของอำเภอ
-            $province: $('#recv_province'), // input ของจังหวัด
-            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
-        });
     </script>
 
 </body>
