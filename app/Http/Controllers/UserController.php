@@ -8,29 +8,37 @@ use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
-    protected function Validation(Request $data) {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => ['required', 'string', 'max:20'],
-            'close_id' => ['required', 'string', 'max:50'],
-            'tel_no' => ['required', 'string', 'max:20'],
-            'discount' => ['required', 'decimal', 'max:3,0'],
-            'cod' => ['required', 'decimal', 'max:3,0'],
-        ]);
+
+
+    protected function Validation(Request $data)
+    {
+
+         return Validator::make($data, [
+             'name' => ['required', 'string', 'max:20'],
+             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+             'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'username' => ['required', 'string', 'max:20'],
+             'close_id' => ['required', 'string', 'max:50'],
+             'tel_no' => ['required', 'string', 'max:20'],
+             'discount' => ['required', 'decimal', 'max:3,0'],
+             'cod' => ['required', 'decimal', 'max:3,0'],
+         ]);
     }
 
-    public function login() {
+    public function login()
+    {
         return view('Login_page.login');
     }
-    public function forgot() {
+    public function forgot()
+    {
         return view('Login_page.forget');
     }
 
-    public function showSubAccount() {
+    public function showSubAccount()
+    {
         $subaccount = User::all();
 
         return view('sub-account.view-sub-account', compact('subaccount'));
@@ -45,7 +53,8 @@ class UserController extends Controller {
         return view('sub-account.add-sub-account', compact('close_id'));
     }
 
-    protected function createSubAccount(Request $data) {
+    protected function createSubAccount(Request $data)
+    {
         User::create([
             "close_id" => $data->close_id,
             "email" => $data->email,
@@ -60,5 +69,10 @@ class UserController extends Controller {
 
         return redirect('/sub-account');
     }
-
+    public function genPassWord()
+    {
+        $password = "AE01";
+        $password .= "123456789";
+        return $password;
+    }
 }

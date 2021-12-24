@@ -42,3 +42,4 @@ Route::post('/book/warehouse/{id}/modify', 'AddressBookController\AddressBookCon
 
 /* Sub Account Controller */
 Route::post('/sub-account/create', 'UserController@createSubAccount');
+Route::get('/sub-account/gen-pass', 'UserController@genPassWord');

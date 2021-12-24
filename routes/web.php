@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ use \Illuminate\Support\Facades\Auth;
  */
 
 /* Order Controller */
-Route::get('/order', 'OrderController\OrderController@showOrder')->name('order');
+Route::get('/order', 'OrderController\OrderController@showOrder')->name('order')->middleware('checkstatus');
 Route::get('/order/create', 'OrderController\OrderController@addOrder');
 Route::get('/order/{id}/detail', 'OrderController\OrderController@detailOrder');
 Route::get('/order/{id}/edit', 'OrderController\OrderController@editOrder');
@@ -50,9 +51,11 @@ Route::get('/search', 'SearchController\SearchController@search');
 Auth::routes();
 Route::get('/', 'UserController@login');
 Route::get('/login', 'UserController@login')->name('login');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'OrderController\OrderController@showOrder')->name('home');
+//forget password
 Route::get('/forgot', 'UserController@forgot');
 Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');
 Route::post('forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
-Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
+Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm' )->name('reset.password.post');
+

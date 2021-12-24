@@ -182,7 +182,7 @@
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-
+                                        {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="sizelogout">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -283,19 +283,14 @@
                                 <div class="my-1">
                                     <p class="my-1">รหัสผ่าน <span class="text-muted">(8 - 16 ตัวอักษร)</span></p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control @error('password') is-invalid @enderror" type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password">
-                                        <button class="btn btn-link" type="button"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password">
+                                        <button class="btn btn-link" type="button" b id="auto_password"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
                                     </div>
                                 </div>
                                 <div class="">
                                     <p class="my-1">รหัสผ่านอีกครั้ง</p>
                                     <div class="">
-                                        <input class="form-control" type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm">
+                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm">
                                     </div>
                                 </div>
 
@@ -349,6 +344,20 @@
         <script src="{{asset('assets/js/sticky.js')}}"></script>
         <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
+        <script>
+            $('#auto_password').on('click', function () {
+                $.ajax({
+                    url: '/api/sub-account/gen-pass',
+                    method: "GET",
+                    success: function (data) {
+                        $('#password').val(data);
+                        $('#password-confirm').val(data);
+                    }
+                })
+            });
+
+        </script>
+
 </body>
 
 </html>

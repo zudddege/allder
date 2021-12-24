@@ -6,12 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
-use \Illuminate\Foundation\Auth\RedirectsUsers;
-use \Illuminate\Foundation\Auth\ThrottlesLogins;
 
 trait AuthenticatesUsers {
-    use RedirectsUsers, ThrottlesLogins;
 
     /**
      * Show the application's login form.
@@ -131,11 +127,12 @@ trait AuthenticatesUsers {
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function sendFailedLoginResponse(Request $request) {
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
-    }
+    // protected function sendFailedLoginResponse(Request $request)
+    // {
+    //     throw ValidationException::withMessages([
+    //         $this->username() => [trans('auth.failed')],
+    //     ]);
+    // }
 
     /**
      * Get the login username to be used by the controller.

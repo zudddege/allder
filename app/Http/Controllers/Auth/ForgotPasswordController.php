@@ -71,7 +71,7 @@ class ForgotPasswordController extends Controller
               'password_confirmation' => 'required'
           ]);
 
-          $updatePassword = DB::table('password_resets')
+          $updatePassword = User::table('password_resets')
                               ->where([
                                 'email' => $request->email,
                                 'token' => $request->token

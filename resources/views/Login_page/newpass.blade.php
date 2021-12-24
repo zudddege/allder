@@ -28,7 +28,7 @@
 
     <style>
         body {
-            background-image: url('./assets/img/login/bg-login.png');
+            background-image: url({{asset('assets/img/login/bg-login.png')}});
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -51,12 +51,12 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <img src="./assets/img/login/delivery.png" alt="" style="width: 900px;">
+                            <img src="{{asset('assets/img/login/delivery.png')}}" alt="" style="width: 900px;">
                         </div>
                         <div class="col">
                             <div class="" style="margin-right: 15px;">
                                 <div class="d-flex justify-content-center">
-                                    <img src="./assets/img/brand/allderExpress.png" alt="" sizes="w:350px" class="my-" style="padding-top: 45px; padding-bottom: 45px;">
+                                    <img src="{{asset('assets/img/brand/allderExpress.png')}}" alt="" sizes="w:350px" class="my-" style="padding-top: 45px; padding-bottom: 45px;">
                                 </div>
 
                                 <div class="d-flex justify-content-center">
