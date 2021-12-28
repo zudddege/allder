@@ -91,10 +91,12 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/')}}"><span
                                 class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
+                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span
                                 class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </aside>

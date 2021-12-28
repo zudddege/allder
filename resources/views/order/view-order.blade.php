@@ -71,8 +71,8 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="{{asset('assets/img/brand/allderExpress.png')}}" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
