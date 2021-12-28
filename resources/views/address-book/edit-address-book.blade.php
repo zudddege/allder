@@ -62,12 +62,9 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
-                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
-                    @endif
-
                 </ul>
             </div>
         </aside>
@@ -128,41 +125,39 @@
                 <div class="row">
                     <div class="col-5">
                         {{-- card --}}
-                        <form action="{{url('/api/book/address-book/create')}}" method="post">
+                        <form action="{{ url('/api/book/address-book/'.$addressBook->id.'/modify' )}}" method="post">
                             @csrf
                             <div class="card">
                                 <div class="px-4 py-4">
                                     <div class="d-flex align-items-center">
                                         <span>รหัสที่อยู่ ผู้รับ / ผู้ส่ง</span>
-                                        <input class="form-control mx-2" type="text" style="width: 70%" name="book_no">
+                                        <input class="form-control mx-2" type="text" style="width: 70%" name="book_no" value="{{ $addressBook->book_no }}">
                                     </div>
                                     <div class="my-3">
                                         <h5>ข้อมูลที่อยู่ ผู้รับ / ผู้ส่ง</h5>
                                     </div>
                                     <div class="my-2">
                                         <span>ชื่อผู้ส่ง / ผู้รับ</span>
-                                        <input class="form-control" type="text" name="book_name">
+                                        <input class="form-control" type="text" name="book_name" value="{{ $addressBook->book_name }}">
                                     </div>
                                     <div class="my-2">
                                         <span>เบอร์โทรศัพท์</span>
-                                        <input class="form-control" type="text" name="book_tel">
-                                    </div>
-                                    <div class="my-2">
+                                        <input class="form-control" type="text" name="book_tel" value="{{ $addressBook->book_tel }}" </div> <div class="my-2">
                                         <span class="mt-2 mb-1">ที่อยู่</span>
-                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="book_detail"></textarea>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="book_detail">{{ $addressBook->book_detail }}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">ตำบล / แขวง</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="" name="book_district" id="book_district">
+                                                    <input class="form-control" type="text" value="{{$addressBook->book_district}}" name="book_district" id="book_district">
                                                 </div>
                                             </div>
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">จังหวัด</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="" name="book_province" id="book_province">
+                                                    <input class="form-control" type="text" value="{{$addressBook->book_province}}" name="book_province" id="book_province">
                                                 </div>
                                             </div>
                                         </div>
@@ -170,24 +165,24 @@
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">อำเภอ / เขต</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="" name="book_city" id="book_city">
+                                                    <input class="form-control" type="text" value="{{$addressBook->book_city}}" name="book_city" id="book_city">
                                                 </div>
                                             </div>
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="" name="book_postal_code" id="book_postal_code">
+                                                    <input class="form-control" type="text" value="{{$addressBook->book_postal_code}}" name="book_postal_code" id="book_postal_code">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-flex mt-3">
-                                        <input type="checkbox" class="mt-1" name="is_main_book" value="1">
+                                        <input type="checkbox" class="mt-1" name="is_main_book" value="1" @if($addressBook->is_main_book ==1) checked @endif>
                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
-                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">บันทึกการแก้ไข</button>
                                     </div>
                                 </div>
                             </div>

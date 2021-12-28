@@ -18,13 +18,14 @@
     <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/perfect-scrollbar/p-scrollbar.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/sidemenu.css')}}">
+    <link href="{{asset('assets/css/sidemenu.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/dark-boxed.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -61,12 +62,9 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
-                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
-                    @endif
-
                 </ul>
             </div>
         </aside>
@@ -124,91 +122,74 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-sm">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header" style="background-color: white;">
-                                <ul class="nav main-nav-line">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/bookaddress')}}">ผู้ส่ง / ผู้รับ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">ที่อยู่เข้ารับพัสดุ</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="jumps-prevent" style="padding-top: 10px;"></div>
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <a href="{{url('/add_order')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                            </svg> เพิ่มที่อยู่ </label>
-                                    </a>
-                                    <label class="btn btn-info mx-3" id='upload'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                        </svg> นำเข้าข้อมูล
-                                    </label>
-                                    <form action="/import" method="post" enctype="multipart/form-data" id="main-form">
-                                        @csrf
-                                        <input type="file" style="display: none;" name="image" id='me'>
-                                    </form>
-                                    <a class="btn btn-link" href="{{url('/export')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                        </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                            <form action="/search" method="get" id="testform">
-                                <div class="row px-2 mb-3">
-
-                                    <div class="col-6">
-                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                                เบอร์โทรศัพท์</a></div>
-                                        <div class="d-flex ">
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
+                <div class="row">
+                    <div class="col-5">
+                        {{-- card --}}
+                        <form action="{{url('/api/book/warehouse/create')}}" method="post">
+                            @csrf
+                            <div class="card">
+                                <div class="px-4 py-4">
+                                    <div class="d-flex align-items-center">
+                                        <span>รหัสคลังสินค้า</span>
+                                        <input class="form-control mx-2" type="text" style="width: 70%" name="warehouse_no">
+                                    </div>
+                                    <div class="my-3">
+                                        <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
+                                    </div>
+                                    <div class="my-2">
+                                        <span>ขื่อคลังสินค้า</span>
+                                        <input class="form-control" type="text" name="warehouse_name">
+                                    </div>
+                                    <div class="my-2">
+                                        <span>ชื่อผู้ติดต่อ</span>
+                                        <input class="form-control" type="text" name="contact_name">
+                                    </div>
+                                    <div class="my-2">
+                                        <span>เบอร์โทรศัพท์</span>
+                                        <input class="form-control" type="text" name="warehouse_tel">
+                                    </div>
+                                    <div class="my-2">
+                                        <span class="mt-2 mb-1">ที่อยู่</span>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">ตำบล / แขวง</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_district" id="warehouse_district">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">จังหวัด</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_province" id="warehouse_province">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">อำเภอ / เขต</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_city" id="warehouse_city">
+                                                </div>
+                                            </div>
+                                            <div class="my-2">
+                                                <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="" name="warehouse_postal_code" id="warehouse_postal_code">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
+                                    </div>
                                 </div>
-                            </form>
-                            <div class="px-2 ">
-                                <table class="table table-striped position-relative" id="my-table">
-                                    <thead>
-                                        <tr>
-                                            <th><input id='mainbox' type="checkbox"></th>
-                                            <th class='subbox1'>ชื่อผู้ส่ง / ผู้รับ</th>
-                                            <th class='subbox2'>เบอร์โทรศัพท์</th>
-                                            <th class='subbox3'>ที่อยู่</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($addressBooks as $addressBook)
-                                        <tr>
-                                            <td><input id='mainbox' type="checkbox"></td>
-                                            <td>{{$addressBook->book_name}}</td>
-                                            <td>{{$addressBook->book_tel}}</td>
-                                            <td>
-                                                {{$addressBook->book_detail}}
-                                                {{$addressBook->book_district}}
-                                                {{$addressBook->book_city}}
-                                                {{$addressBook->book_province}}
-                                                {{$addressBook->book_postal_code}}
-                                            </td>
-                                            <td class="shadow"><a href="{{url('#')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                             </div>
-                        </div>
+                        </form>
+                        {{-- end card --}}
                     </div>
                 </div>
             </div>
@@ -245,51 +226,22 @@
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
 
-    <script>
-        $('#my-table').DataTable({
-            scrollX: false,
-            autoWidth: false,
-            columns: [{
-                width: "2%"
-            }, {
-                width: '20%',
-            }, {
-                width: '10%',
-            }, {
-                width: '55%',
-            }, {
-                width: '13%',
-            }, ],
-            ordering: false
-        });
-        $(".dataTables_length").css("display", "none");
-        $(".dataTables_filter").css("display", "none");
-
-    </script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
     <script>
-        $('#upload').click(function () {
-            $('#me').click();
+        $.Thailand.setup({
+            autocomplete_size: 3,
         });
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                $('#main-form').submit();
-            }
-        }
-
-        $('#me').on("change", function () {
-            readURL(this);
+        $.Thailand({
+            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+            $district: $('#warehouse_district'), // input ของตำบล
+            $amphoe: $('#warehouse_city'), // input ของอำเภอ
+            $province: $('#warehouse_province'), // input ของจังหวัด
+            $zipcode: $('#warehouse_postal_code'), // input ของรหัสไปรษณีย์
         });
-
-        $('#mainbox').on('change', function (e) {
-            if (this.checked == true) {
-                $('.subbox').prop('checked', true)
-            } else {
-                $('.subbox').prop('checked', false)
-            }
-            $('.subbox')
-        })
 
     </script>
 

@@ -131,35 +131,35 @@
                             <div class="px-4 py-4">
                                 <div class="d-flex align-items-center">
                                     <span>รหัสที่อยู่ ผู้รับ / ผู้ส่ง</span>
-                                    <input class="form-control mx-2" type="text" style="width: 70%">
+                                    <input class="form-control mx-2" type="text" style="width: 70%" value="{{$addressBook->book_no}}" readonly>
                                 </div>
                                 <div class="my-3">
                                     <h5>ข้อมูลที่อยู่ ผู้รับ / ผู้ส่ง</h5>
                                 </div>
                                 <div class="my-2">
                                     <span>ชื่อผู้ส่ง / ผู้รับ</span>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" value="{{$addressBook->book_name}}" readonly>
                                 </div>
                                 <div class="my-2">
                                     <span>เบอร์โทรศัพท์</span>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" value="{{$addressBook->book_tel}}" readonly>
                                 </div>
                                 <div class="my-2">
                                     <span class="mt-2 mb-1">ที่อยู่</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="recv_detail" id="recv_detail"></textarea>
+                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly>{{$addressBook->book_detail}}</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="my-2">
                                             <span class="mt-2 mb-1">ตำบล / แขวง</span>
                                             <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                                <input class="form-control" type="text" value="{{$addressBook->book_district}}" readonly>
                                             </div>
                                         </div>
                                         <div class="my-2">
                                             <span class="mt-2 mb-1">จังหวัด</span>
                                             <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                                <input class="form-control" type="text" value="{{$addressBook->book_province}}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -167,24 +167,19 @@
                                         <div class="my-2">
                                             <span class="mt-2 mb-1">อำเภอ / เขต</span>
                                             <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                                <input class="form-control" type="text" value="{{$addressBook->book_city}}" readonly>
                                             </div>
                                         </div>
                                         <div class="my-2">
                                             <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
                                             <div class="">
-                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                                <input class="form-control" type="text" value="{{$addressBook->book_postal_code}}" readonly>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex mt-3">
-                                    <input type="checkbox" class="mt-1" name="save_recv_address"
-                                        value="1" id="save_recv_address">
-                                    <p class="px-1">บันทึกข้อมูลที่อยู่</p>
-                                </div>
                                 <div class="d-flex justify-content-center">
-                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('order/'.$order->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('book/address-book/'.$addressBook->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
                                             <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
                                         </svg> แก้ไข</a>
@@ -227,33 +222,6 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-
-    <script>
-        $.Thailand.setup({
-            autocomplete_size: 10,
-        });
-
-        $.Thailand({
-            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#send_district'), // input ของตำบล
-            $amphoe: $('#send_city'), // input ของอำเภอ
-            $province: $('#send_province'), // input ของจังหวัด
-            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
-        });
-
-        $.Thailand({
-            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#recv_district'), // input ของตำบล
-            $amphoe: $('#recv_city'), // input ของอำเภอ
-            $province: $('#recv_province'), // input ของจังหวัด
-            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
-        });
-    </script>
-
 </body>
 
 </html>

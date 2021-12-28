@@ -23,7 +23,6 @@ Route::post('/import/excel', 'ExcelController\ExcelController@import');
 Route::get('/export/excel', 'ExcelController\ExcelController@export');
 
 /* Order Controller */
-Route::post('/order/create', 'OrderController\OrderController@createOrder');
 Route::get('/order/gen-order-no', 'OrderController\OrderController@genOrderNo');
 Route::post('/order/{id}/modify', 'OrderController\OrderController@modifyOrder');
 Route::post('/order/{id}/cancel', 'OrderController\OrderController@cancelOrder');
@@ -34,7 +33,13 @@ Route::post('/courier/notify-courier', 'CourierController\CourierController@noti
 Route::post('/courier/cancel-notify', 'CourierController\CourierController@cancelNotification');
 
 /* Address Book Controller */
-Route::get('/address-book/id', 'AddressBookController\AddressBookController@getAddressBookById');
+Route::get('/book/get/id', 'AddressBookController\AddressBookController@getAddressBookById');
+Route::post('/book/address-book/create', 'AddressBookController\AddressBookController@createAddressBook');
+Route::post('/book/address-book/{id}/modify', 'AddressBookController\AddressBookController@modifyAddressBook');
+
+Route::post('/book/warehouse/create', 'AddressBookController\AddressBookController@createWarehouse');
+Route::post('/book/warehouse/{id}/modify', 'AddressBookController\AddressBookController@modifyWarehouse');
 
 /* Sub Account Controller */
 Route::post('/sub-account/create', 'UserController@createSubAccount');
+Route::get('/sub-account/gen-pass', 'UserController@genPassWord');

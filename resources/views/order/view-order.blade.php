@@ -25,6 +25,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 
     <style>
         .table th:last-child,
@@ -52,6 +53,17 @@
         }
 
     </style>
+
+    <style>
+        .modal-lg {
+            max-width: 50% !important;
+            /* desired relative width */
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -77,7 +89,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/tracking')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book/address')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
@@ -89,7 +101,11 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
+<<<<<<< HEAD
                     <li class="slide">
+=======
+                      <li class="slide">
+>>>>>>> de29de3cc806c653051a7ccf55c25f1e735e44b9
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
@@ -109,8 +125,8 @@
 
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary mx-2">เรียกพนักงานเข้ามารับพัสดุ</button>
-                            <button type="button" class="btn btn-primary mx-2">ระบุพนักงานเข้ารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#callcourier-modal">เรียกพนักงานเข้ามารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#courier-modal">ระบุพนักงานเข้ารับพัสดุ</button>
                         </div>
                     </div>
                     <div>
@@ -206,7 +222,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
-                                                    <div class="d-flex ">
+                                                    <div class="d-flex">
                                                         <div class="">
                                                             <input class="form-control" type="text" value="" style="width:325px;">
                                                         </div>
@@ -270,19 +286,16 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
+                                                    @if($order->status == "รอปริ้น" || $order->status == "ปริ้นแล้ว")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox2'>
-                                                            @if($order->status == "รอจัดสรร")
+                                                            @if($order->status == "ปริ้นแล้ว")
                                                             <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ระหว่างจัดส่ง")
+                                                            @elseif($order->status == "รอปริ้น")
                                                             <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
-                                                            @elseif($order->status == "เสร็จสิ้น")
-                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ยกเลิก")
-                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox3'>{{$order->order_no}}</td>
@@ -304,11 +317,12 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod}}</td>
-                                                        <td class='subbox12'>{{$order->estimate_price}}</td>
+                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
+                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
+                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -412,6 +426,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
+                                                    @if($order->status == "เสร็จสิ้น" || $order->status == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
@@ -446,12 +461,13 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod}} ({{$order->cod_rate}})</td>
-                                                        <td class='subbox12'>{{$order->estimate_price}} ({{$order->estimate_price_rate}})</td>
+                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
+                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
                                                     </tr>
+                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -464,9 +480,219 @@
                             {{-- end card body --}}
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
+        {{-- modal เรียกรับพัสดุ --}}
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="callcourier-modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        <h6><b>เรียกพนักงานเข้ารับพัสดุ</b></h6>
+                        <div class="d-flex mx-2">
+                            <p class="my-2"><b>ที่อยู่เข้ารับ</b></p>
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv-modal"><u>เลือกจากสมุดที่อยู่</u></button>
+                        </div>
+                        <div class="row mx-2">
+                            <div class="col-6">
+                                <div class="my-1">
+                                    <span>รหัสคลัง</span>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <div class="my-1">
+                                    <span>ผู้ติดต่อ</span>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <div class="my-1">
+                                    <span>พื้นที่บริการ</span>
+                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
+                                </div>
+                                <div class="my-1">
+                                    <span>จังหวัด</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="my-1">
+                                    <span>ชื่อคลัง</span>
+                                    <div class="">
+
+                                    </div>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <div class="my-1">
+                                    <span>รหัสคลัง</span>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <div class="my-1">
+                                    <span>ตำบล / แขวง</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                    </div>
+                                </div>
+                                <div class="my-1">
+                                    <span>อำเภอ / เขต</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                    </div>
+                                </div>
+                                <div class="my-1">
+                                    <span>รหัสไปรษณีย์</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
+                            <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                            <h6><b>ฝากข้อความ</b></h6>
+                            <div class="mx-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="my-1">
+                                            <span>จำนวนพัสดุ</span>
+                                            <input class="form-control" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="my-1">
+                                            <span>ขนาดพัสดุ</span>
+                                            <input class="form-control" type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-1">
+                                    <span>หมายเหตุ</span>
+                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
+                                </div>
+                                <div class="container-fluid my-2">
+                                    <div class="d-flex my-1">
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สินค้าพัสดุแตกหักง่าย</button>
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                                    </div>
+                                    <div class="d-flex my-1">
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำซองเอกสารมาด้วย</button>
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำบรรจุภัณฑ์มาด้วย</button>
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">โปรดติดต่อก่อนเข้ารับ</button>
+                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สถานที่เป็นตึก / อาคาร</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center my-2">
+                                    <input type="checkbox" id="" >ฉันได้อ่านและยอมรับข้อกำหนดใน</input>
+                                    <a href="#"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
+                                </div>
+                                <div class="d-flex my-1" style="padding-top: 15px;">
+                                    <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
+                                    <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
+                                </div>
+                            </div>
+
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{-- end modal เรียกรับพัสดุ --}}
+        {{-- modal ระบุพนักงาน --}}
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="courier-modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        <h6><b>ระบุพนักงานเข้ารับพัสดุ</b></h6>
+                        <div class="rounded-lg mx-2" style="background-color: #e48383bd">
+                            <p class="mt-2" style="color: rgb(201, 61, 61); font-size: 12px; text-align: center;">คำแนะนำ: ในกรณีที่ลูกค้ามีจำนวนพัสดุที่ต้องการส่งเยอะ ลูกค้าสามารถแจ้งทางสาขาว่าต้องการพนักงานหลายท่านเข้ารับพัสดุ
+                                <br>จากนั้นสอบถามรหัสพนักงานเมื่อพนักงานมาถึง แล้วกรอกรหัสพนักงานนั้นในฟังก์ชั่น"ระบุพนักงานเข้ารับพัสดุ" เพื่อสร้างงานรับให้พนักงานตั้งกล่าว</p>
+                        </div>
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        <div class="my-1 mx-2">
+                            <span>รหัสพนักงานรับพัสดุ</span>
+                            <input class="form-control" type="text" value="" style="width: 50%">
+                        </div>
+                        <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        <div class="d-flex align-items-center">
+                            <span class="mx-2"><b>ที่อยู่เข้ารับพัสดุ</b></span>
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#aaa"><u>เลือกจากสมุดที่อยู่</u></button>
+                        </div>
+                        <div class="row mx-1">
+                            <div class="col-6">
+                                <div class="my-1">
+                                    <span>พื้นที่บริการ</span>
+                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
+                                </div>
+                                <div class="my-1">
+                                    <span>จังหวัด</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="my-1">
+                                    <span>ตำบล / แขวง</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                    </div>
+                                </div>
+                                <div class="my-1">
+                                    <span>อำเภอ / เขต</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                    </div>
+                                </div>
+                                <div class="my-1">
+                                    <span>รหัสไปรษณีย์</span>
+                                    <div class="">
+                                        <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p><b>ที่อยู่เข้ารับพัสดุ</b></p>
+                        <div class="my-1 mx-2">
+                            <span>จำนวนพัสดุ</span>
+                            <input class="form-control" type="text" value="" style="width: 50%">
+                        </div>
+                        <div class="my-1 mx-2">
+                            <span>หมายเหตุ</span>
+                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
+                        </div>
+                        <div class="container-fluid my-2 mx-2">
+                            <div class="d-flex my-1">
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สินค้าพัสดุแตกหักง่าย</button>
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                            </div>
+                            <div class="d-flex my-1">
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำซองเอกสารมาด้วย</button>
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำบรรจุภัณฑ์มาด้วย</button>
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">โปรดติดต่อก่อนเข้ารับ</button>
+                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สถานที่เป็นตึก / อาคาร</button>
+                            </div>
+                        </div>
+                        <div class="d-flex my-1 mx-2" style="padding-top: 15px;">
+                            <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
+                            <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
+                        </div>
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                    </div>
+                </div>
+            </div>
+        {{-- end modal ระบุพนักงาน --}}
+
+        {{-- modal สมุดที่อยู่คลัง --}}
+            {{-- ทำ 2 modal นะ --}}
+        {{-- end modal สมุดที่อยู่คลัง --}}
+
+
     </div>
 
     <!-- Back-to-top -->
@@ -498,6 +724,33 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
+
+    <script>
+        $.Thailand.setup({
+            autocomplete_size: 5,
+        });
+
+        $.Thailand({
+            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+            $district: $('#send_district'), // input ของตำบล
+            $amphoe: $('#send_city'), // input ของอำเภอ
+            $province: $('#send_province'), // input ของจังหวัด
+            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
+        });
+
+        $.Thailand({
+            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+            $district: $('#recv_district'), // input ของตำบล
+            $amphoe: $('#recv_city'), // input ของอำเภอ
+            $province: $('#recv_province'), // input ของจังหวัด
+            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
+        });
+    </script>
 
     <script>
         $('#my-table').DataTable({

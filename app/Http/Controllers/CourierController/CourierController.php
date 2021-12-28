@@ -38,6 +38,7 @@ class CourierController extends Controller {
         ]);
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notify", $notify);
+        dd($post);
     }
 
     public function cancelNotification() {

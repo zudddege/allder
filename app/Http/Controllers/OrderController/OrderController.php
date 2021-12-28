@@ -76,14 +76,14 @@ class OrderController extends Controller {
             break;
         }
 
-        $accountRate = User::select('discount', 'cod')->find(1);
+        $id = auth()->user()->id;
+        $accountRate = User::select('discount', 'cod')->find($id);
 
         $create = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
             'outTradeNo' => $request->order_no,
             'expressCategory' => $request->is_express_transport == 1 ? 2 : 1,
-            'warehouseNo' => $request->wh_no,
             'srcName' => $request->send_name,
             'srcPhone' => $request->send_tel,
             'srcProvinceName' => $request->send_province,
@@ -143,10 +143,7 @@ class OrderController extends Controller {
             $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
 
             if ($request->main_address) {
-                $main_book = AddressBook::select('id')->where('is_main_book', 1)->first();
-                if ($main_book) {
-                    AddressBook::find($main_book->id)->update(['is_main_book' => false]);
-                }
+                AddressBook::where('is_main_book', 1)->update(['is_main_book' => false]);
             }
 
             if ($request->save_send_address) {
@@ -181,7 +178,6 @@ class OrderController extends Controller {
 
             Order::create([
                 'user_id' => $request->user_id,
-                'wh_no' => $request->wh_no,
                 'order_no' => $request->order_no,
                 'send_name' => $request->send_name,
                 'send_tel' => $request->send_tel,
@@ -213,7 +209,7 @@ class OrderController extends Controller {
                 'is_damage_insurance' => $request->is_damage_insurance ? true : false,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
-                'status' => "รอจัดสรร",
+                'status' => "รอปริ้น",
             ]);
         } else {
             dd($post);
@@ -252,12 +248,12 @@ class OrderController extends Controller {
             break;
         }
 
-        $dataId = Order::select('send_province', 'send_city', 'send_district', 'send_postal_code', 'tracking_no')->find($id);
+        $trackingNo = Order::select('tracking_no')->find($id);
 
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
-            'pno' => $dataId->tracking_no,
+            'pno' => $trackingNo->tracking_no,
             'expressCategory' => $request->is_express_transport == 1 ? "2" : "1",
             'srcName' => $request->send_name,
             'srcPhone' => $request->send_tel,
@@ -289,10 +285,10 @@ class OrderController extends Controller {
             $rate = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
                 'nonceStr' => time(),
-                'srcProvinceName' => $dataId->send_province,
-                'srcCityName' => $dataId->send_city,
-                'srcDistrictName' => $dataId->send_district,
-                'srcPostalCode' => $dataId->send_postal_code,
+                'srcProvinceName' => $request->send_province,
+                'srcCityName' => $request->send_city,
+                'srcDistrictName' => $request->send_district,
+                'srcPostalCode' => $request->send_postal_code,
                 'dstProvinceName' => $request->recv_province,
                 'dstCityName' => $request->recv_city,
                 'dstDistrictName' => $request->recv_district,
@@ -366,7 +362,7 @@ class OrderController extends Controller {
 
     public function printLabel($id) {
         $tracking_no = Order::find($id)->tracking_no;
-        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/pre_print";
+        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/small/pre_print";
 
         $print = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
@@ -374,6 +370,7 @@ class OrderController extends Controller {
         ]);
 
         $post = FlashCoreFunction::postRequest($url, $print);
+        Order::find($id)->update(['status' => "ปริ้นแล้ว"]);
 
         return response($post)->header('Content-type', 'application/pdf');
     }
