@@ -7,28 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
-class UserController extends Controller {
-//
-    protected function Validation(Request $data) {
-        return Validator::make($data, [
-        'email' => 'required|string|max:50|unique:user',
-        'name' => 'required|string|max:50',
-        'tel_no'=> 'required|string|max:20',
-        'discount' => 'required|decimal|max:3,0',
-        'cod' => 'required|decimal|max:3,0',
-        'password' => ['required','string','confirmed', Password::min(8) ->mixedCase() ->letters() ->numbers() ->symbols() ->uncompromised() ],
-
-        ]);
-=======
-
 class UserController extends Controller
 {
-
-
 
     protected function Validation(Request $data)
     {
@@ -43,7 +26,6 @@ class UserController extends Controller
              'discount' => ['required', 'decimal', 'max:3,0'],
              'cod' => ['required', 'decimal', 'max:3,0'],
          ]);
->>>>>>> de29de3cc806c653051a7ccf55c25f1e735e44b9
     }
 
     public function login()
@@ -87,13 +69,12 @@ class UserController extends Controller
 
         return redirect('/sub-account');
     }
-<<<<<<< HEAD
-=======
+
     public function genPassWord()
     {
         $password = "AE01";
         $password .= "123456789";
         return $password;
     }
->>>>>>> de29de3cc806c653051a7ccf55c25f1e735e44b9
+
 }
