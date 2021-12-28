@@ -73,6 +73,7 @@
                                     @csrf
                                     <div class="d-flex justify-content-center">
                                         <input class="form-control mb-3" type="text" id="email_address" name="email" required autofocus value="" placeholder="อีเมลของท่าน" style="width: 250;">
+
                                     </div>
 
                                     <div class="jumps-prevent" style="padding-top: 45px;"></div>

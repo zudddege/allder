@@ -66,13 +66,14 @@
                                     <p style="font-size: small;">โปรดตรวจสอบอีเมลของท่าน</p>
                                     <p style="font-size: small;">เพื่อทำการเปลี่ยนรหัสผ่านใหม่</p>
                                 </div>
-
-                                <div class="d-flex flex-column justify-content-center align-items-center">
-                                    <a href="#" style="color: blue;"><u>ไม่ได้รับอีเมล</u></a>
-                                    <p class="mt-3">หรือ</p>
-                                    <a href="login.html" style="color: blue;"><u>กลับสู่หน้าหลัก</u></a>
-                                </div>
-
+                                <form action="{{ route('forget.password.post') }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
+                                        <button class="btn btn-link" type="submit" style="color: blue;"><u>ไม่ได้รับอีเมล</u></button>
+                                        <p class="mt-3">หรือ</p>
+                                        <a href="{{ route('login') }}" style="color: blue;"><u>กลับสู่หน้าหลัก</u></a>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
