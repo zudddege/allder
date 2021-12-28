@@ -7,11 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
-
-
 
     protected function Validation(Request $data)
     {
@@ -69,10 +69,12 @@ class UserController extends Controller
 
         return redirect('/sub-account');
     }
+
     public function genPassWord()
     {
         $password = "AE01";
         $password .= "123456789";
         return $password;
     }
+
 }

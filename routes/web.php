@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
 
@@ -60,3 +59,9 @@ Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPas
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm' )->name('reset.password.post');
 Route::get('/mailcon', 'Auth\ForgotPasswordController@mailcon')->name('mailcon');
 Route::get('/forgetpass', 'Auth\ForgotPasswordController@forgetpass')->name('forgetpass');
+Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
+
+//testform
+Route::get('/test', function () {
+    return view('test');
+});

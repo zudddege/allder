@@ -61,9 +61,12 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
+                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/subaccount')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
+                    @endif
+
                 </ul>
             </div>
         </aside>
@@ -176,7 +179,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a class="btn btn-primary mx-2" id="submit-button" disabled="true" href="{{url('book/address-book/'.$addressBook->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+                                    <a class="btn btn-primary my-2" id="submit-button" disabled="true" href="{{url('book/address-book/'.$addressBook->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
                                             <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
                                         </svg> แก้ไข</a>
