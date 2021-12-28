@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller {
-
+//
     protected function Validation(Request $data) {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => ['required', 'string', 'max:20'],
-            'close_id' => ['required', 'string', 'max:50'],
-            'tel_no' => ['required', 'string', 'max:20'],
-            'discount' => ['required', 'decimal', 'max:3,0'],
-            'cod' => ['required', 'decimal', 'max:3,0'],
+        'email' => 'required|string|max:50|unique:user',
+        'name' => 'required|string|max:50',
+        'tel_no'=> 'required|string|max:20',
+        'discount' => 'required|decimal|max:3,0',
+        'cod' => 'required|decimal|max:3,0',
+        'password' => ['required','string','confirmed', Password::min(8) ->mixedCase() ->letters() ->numbers() ->symbols() ->uncompromised() ],
+
         ]);
     }
 
@@ -54,5 +54,4 @@ class UserController extends Controller {
 
         return redirect('/sub-account');
     }
-
 }

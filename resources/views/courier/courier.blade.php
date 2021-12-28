@@ -65,9 +65,12 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
+                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
+                    @endif
+
                 </ul>
             </div>
         </aside>
@@ -107,24 +110,22 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="nav-item full-screen fullscreen-button">
-                                <a class="new nav-link full-screen-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
-                                        </path>
-                                    </svg></a>
-                            </div>
-                            <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                <a class="profile-user d-flex" href=""><img alt="" src="assets/images/91831124_p0.jpg"></a>
-                                <div class="dropdown-menu">
-                                    <div class="main-header-profile bg-primary p-3">
-                                        <div class="d-flex wd-100p">
-                                            <div class="main-img-user"><img alt="" src="assets/images/91831124_p0.jpg" class=""></div>
-                                            <div class="ml-3 my-auto">
-                                                <h6>Zudddege</h6><span>Super Admin</span>
-                                            </div>
+                            <div class="nav nav-item  navbar-nav-right ml-auto">
+                                <div class="dropdown main-profile-menu nav nav-item nav-link">
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
                                         </div>
-                                    </div>
-                                    <a class="dropdown-item" href="page-signin.html"><i class="bx bx-log-out"></i> Sign Out</a>
+                                    </li>
                                 </div>
                             </div>
                         </div>
