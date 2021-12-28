@@ -127,45 +127,45 @@
                 <div class="row">
                     <div class="col-5">
                         {{-- card --}}
-                        <form action="{{ url('/api/book/warehouse/'.$wareHouse->id.'/modify' )}}" method="post">
+                        <form action="{{ url('/api/book/warehouse/'.$warehouse->id.'/modify' )}}" method="post">
                             @csrf
                             <div class="card">
                                 <div class="px-4 py-4">
                                     <div class="d-flex align-items-center">
                                         <span>รหัสคลังสินค้า</span>
-                                        <input class="form-control mx-2" type="text" style="width: 70%" name="warehouse_no" value="{{$wareHouse->warehouse_no}}">
+                                        <input class="form-control mx-2" type="text" style="width: 70%" name="warehouse_no" value="{{$warehouse->warehouse_no}}">
                                     </div>
                                     <div class="my-3">
                                         <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
                                     </div>
                                     <div class="my-2">
                                         <span>ขื่อคลังสินค้า</span>
-                                        <input class="form-control" type="text" name="warehouse_name" value="{{$wareHouse->warehouse_name}}">
+                                        <input class="form-control" type="text" name="warehouse_name" value="{{$warehouse->warehouse_name}}">
                                     </div>
                                     <div class="my-2">
                                         <span>ชื่อผู้ติดต่อ</span>
-                                        <input class="form-control" type="text" name="contact_name" value="{{$wareHouse->contact_name}}">
+                                        <input class="form-control" type="text" name="contact_name" value="{{$warehouse->contact_name}}">
                                     </div>
                                     <div class="my-2">
                                         <span>เบอร์โทรศัพท์</span>
-                                        <input class="form-control" type="text" name="warehouse_tel" value="{{$wareHouse->warehouse_tel}}">
+                                        <input class="form-control" type="text" name="warehouse_tel" value="{{$warehouse->warehouse_tel}}">
                                     </div>
                                     <div class="my-2">
                                         <span class="mt-2 mb-1">ที่อยู่</span>
-                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail">{{$wareHouse->warehouse_detail}}</textarea>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail">{{$warehouse->warehouse_detail}}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">ตำบล / แขวง</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="{{$wareHouse->warehouse_district}}" name="warehouse_district" id="warehouse_district">
+                                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_district}}" name="warehouse_district" id="warehouse_district">
                                                 </div>
                                             </div>
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">จังหวัด</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="{{$wareHouse->warehouse_province}}" name="warehouse_province" id="warehouse_province">
+                                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_province}}" name="warehouse_province" id="warehouse_province">
                                                 </div>
                                             </div>
                                         </div>
@@ -173,13 +173,13 @@
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">อำเภอ / เขต</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="{{$wareHouse->warehouse_city}}" name="warehouse_city" id="warehouse_city">
+                                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_city}}" name="warehouse_city" id="warehouse_city">
                                                 </div>
                                             </div>
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="{{$wareHouse->warehouse_postal_code}}" name="warehouse_postal_code" id="warehouse_postal_code">
+                                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_postal_code}}" name="warehouse_postal_code" id="warehouse_postal_code">
                                                 </div>
                                             </div>
                                         </div>

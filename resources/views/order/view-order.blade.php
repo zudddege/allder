@@ -101,7 +101,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
-                      <li class="slide">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
@@ -118,11 +118,10 @@
                                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                             </div>
-
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#callcourier-modal">เรียกพนักงานเข้ามารับพัสดุ</button>
-                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#courier-modal">ระบุพนักงานเข้ารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#notify-courier-modal">เรียกพนักงานเข้ามารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#assign-courier-modal">ระบุพนักงานเข้ารับพัสดุ</button>
                         </div>
                     </div>
                     <div>
@@ -482,33 +481,34 @@
             </div>
         </div>
         {{-- modal เรียกรับพัสดุ --}}
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="callcourier-modal">
-                <div class="modal-dialog modal-lg">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="notify-courier-modal">
+            <div class="modal-dialog modal-lg">
+                <form action="{{url('/api/courier/notify-courier')}}" method="POST">
                     <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
                         <h6><b>เรียกพนักงานเข้ารับพัสดุ</b></h6>
                         <div class="d-flex mx-2">
                             <p class="my-2"><b>ที่อยู่เข้ารับ</b></p>
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#recv-modal"><u>เลือกจากสมุดที่อยู่</u></button>
+                            <button type="button" class="btn btn-link" data-dismiss="modal" data-toggle="modal" data-target="#warehouse-notify-modal"><u>เลือกจากสมุดที่อยู่</u></button>
                         </div>
                         <div class="row mx-2">
                             <div class="col-6">
                                 <div class="my-1">
                                     <span>รหัสคลัง</span>
-                                    <input class="form-control" type="text" value="">
+                                    <input class="form-control" type="text" name="warehouse_no" id="notify_warehouse_no">
                                 </div>
                                 <div class="my-1">
                                     <span>ผู้ติดต่อ</span>
-                                    <input class="form-control" type="text" value="">
+                                    <input class="form-control" type="text" name="contact_name" id="notify_contact_name">
                                 </div>
                                 <div class="my-1">
                                     <span>พื้นที่บริการ</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
+                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail" id="notify_warehouse_detail"></textarea>
                                 </div>
                                 <div class="my-1">
                                     <span>จังหวัด</span>
                                     <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                        <input class="form-control" type="text" value="" name="warehouse_province" id="notify_warehouse_province">
                                     </div>
                                 </div>
                             </div>
@@ -516,180 +516,264 @@
                                 <div class="my-1">
                                     <span>ชื่อคลัง</span>
                                     <div class="">
-
+                                        <input class="form-control" type="text" name="warehouse_name" id="notify_warehouse_name">
                                     </div>
-                                    <input class="form-control" type="text" value="">
                                 </div>
                                 <div class="my-1">
-                                    <span>รหัสคลัง</span>
-                                    <input class="form-control" type="text" value="">
+                                    <span>เบอร์โทรศัพท์</span>
+                                    <input class="form-control" type="text" name="warehouse_tel" id="notify_warehouse_tel">
                                 </div>
                                 <div class="my-1">
                                     <span>ตำบล / แขวง</span>
                                     <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                        <input class="form-control" type="text" value="" name="warehouse_district" id="notify_warehouse_district">
                                     </div>
                                 </div>
                                 <div class="my-1">
                                     <span>อำเภอ / เขต</span>
                                     <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                        <input class="form-control" type="text" value="" name="warehouse_city" id="notify_warehouse_city">
                                     </div>
                                 </div>
                                 <div class="my-1">
                                     <span>รหัสไปรษณีย์</span>
                                     <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                        <input class="form-control" type="text" value="" name="warehouse_postal_code" id="notify_warehouse_postal_code">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
-                            <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                            <h6><b>ฝากข้อความ</b></h6>
-                            <div class="mx-4">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="my-1">
-                                            <span>จำนวนพัสดุ</span>
-                                            <input class="form-control" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="my-1">
-                                            <span>ขนาดพัสดุ</span>
-                                            <input class="form-control" type="text" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="my-1">
-                                    <span>หมายเหตุ</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
-                                </div>
-                                <div class="container-fluid my-2">
-                                    <div class="d-flex my-1">
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สินค้าพัสดุแตกหักง่าย</button>
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
-                                    </div>
-                                    <div class="d-flex my-1">
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำซองเอกสารมาด้วย</button>
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำบรรจุภัณฑ์มาด้วย</button>
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">โปรดติดต่อก่อนเข้ารับ</button>
-                                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สถานที่เป็นตึก / อาคาร</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-center my-2">
-                                    <input type="checkbox" id="" >ฉันได้อ่านและยอมรับข้อกำหนดใน</input>
-                                    <a href="#"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
-                                </div>
-                                <div class="d-flex my-1" style="padding-top: 15px;">
-                                    <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
-                                    <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
-                                </div>
-                            </div>
-
                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{-- end modal เรียกรับพัสดุ --}}
-        {{-- modal ระบุพนักงาน --}}
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="courier-modal">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
-                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        <h6><b>ระบุพนักงานเข้ารับพัสดุ</b></h6>
-                        <div class="rounded-lg mx-2" style="background-color: #e48383bd">
-                            <p class="mt-2" style="color: rgb(201, 61, 61); font-size: 12px; text-align: center;">คำแนะนำ: ในกรณีที่ลูกค้ามีจำนวนพัสดุที่ต้องการส่งเยอะ ลูกค้าสามารถแจ้งทางสาขาว่าต้องการพนักงานหลายท่านเข้ารับพัสดุ
-                                <br>จากนั้นสอบถามรหัสพนักงานเมื่อพนักงานมาถึง แล้วกรอกรหัสพนักงานนั้นในฟังก์ชั่น"ระบุพนักงานเข้ารับพัสดุ" เพื่อสร้างงานรับให้พนักงานตั้งกล่าว</p>
-                        </div>
-                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        <div class="my-1 mx-2">
-                            <span>รหัสพนักงานรับพัสดุ</span>
-                            <input class="form-control" type="text" value="" style="width: 50%">
-                        </div>
-                        <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
-                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        <div class="d-flex align-items-center">
-                            <span class="mx-2"><b>ที่อยู่เข้ารับพัสดุ</b></span>
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#aaa"><u>เลือกจากสมุดที่อยู่</u></button>
-                        </div>
-                        <div class="row mx-1">
-                            <div class="col-6">
-                                <div class="my-1">
-                                    <span>พื้นที่บริการ</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
-                                </div>
-                                <div class="my-1">
-                                    <span>จังหวัด</span>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="my-1">
-                                    <span>ตำบล / แขวง</span>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                        <h6><b>ฝากข้อความ</b></h6>
+                        <div class="mx-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="my-1">
+                                        <span>จำนวนพัสดุ</span>
+                                        <input class="form-control" type="text" name="estimate_parcel_quantity">
                                     </div>
                                 </div>
-                                <div class="my-1">
-                                    <span>อำเภอ / เขต</span>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
-                                    </div>
-                                </div>
-                                <div class="my-1">
-                                    <span>รหัสไปรษณีย์</span>
-                                    <div class="">
-                                        <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                <div class="col-6">
+                                    <div class="my-1">
+                                        <span>ขนาดพัสดุ</span>
+                                        <input class="form-control" type="text" name="parcel size">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <p><b>ที่อยู่เข้ารับพัสดุ</b></p>
-                        <div class="my-1 mx-2">
-                            <span>จำนวนพัสดุ</span>
-                            <input class="form-control" type="text" value="" style="width: 50%">
-                        </div>
-                        <div class="my-1 mx-2">
-                            <span>หมายเหตุ</span>
-                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="" id=""></textarea>
-                        </div>
-                        <div class="container-fluid my-2 mx-2">
-                            <div class="d-flex my-1">
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สินค้าพัสดุแตกหักง่าย</button>
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                            <div class="my-1">
+                                <span>หมายเหตุ</span>
+                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="note_detail" id="notify_note_detail"></textarea>
                             </div>
-                            <div class="d-flex my-1">
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำซองเอกสารมาด้วย</button>
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">นำบรรจุภัณฑ์มาด้วย</button>
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">โปรดติดต่อก่อนเข้ารับ</button>
-                                <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;"">สถานที่เป็นตึก / อาคาร</button>
+                            <div class="container-fluid my-2">
+                                <div class="d-flex my-1">
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สินค้าพัสดุแตกหักง่าย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                                </div>
+                                <div class="d-flex my-1">
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำซองเอกสารมาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำบรรจุภัณฑ์มาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">โปรดติดต่อก่อนเข้ารับ</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สถานที่เป็นตึก / อาคาร</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex my-1 mx-2" style="padding-top: 15px;">
-                            <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
-                            <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
+                            <div class=" d-flex align-items-center my-2">
+                                <input type="checkbox" id="">ฉันได้อ่านและยอมรับข้อกำหนดใน</input>
+                                <a href="#"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
+                            </div>
+                            <div class="d-flex my-1" style="padding-top: 15px;">
+                                <button type="button" class="btn btn-danger mx-2" data-dismiss="modal">ยกเลิก</button>
+                                <button class="btn btn-primary mx-2" type="submit" id="submit-button">บันทึกการแก้ไข</button>
+                            </div>
                         </div>
                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
                     </div>
-                </div>
+                </form>
             </div>
-        {{-- end modal ระบุพนักงาน --}}
-
-        {{-- modal สมุดที่อยู่คลัง --}}
-            {{-- ทำ 2 modal นะ --}}
-        {{-- end modal สมุดที่อยู่คลัง --}}
-
-
+        </div>
     </div>
+    {{-- end modal เรียกรับพัสดุ --}}
+
+    {{-- modal ระบุพนักงาน --}}
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="assign-courier-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <h6><b>ระบุพนักงานเข้ารับพัสดุ</b></h6>
+                <div class="rounded-lg mx-2" style="background-color: #e48383bd">
+                    <p class="mt-2" style="color: rgb(201, 61, 61); font-size: 12px; text-align: center;">คำแนะนำ: ในกรณีที่ลูกค้ามีจำนวนพัสดุที่ต้องการส่งเยอะ ลูกค้าสามารถแจ้งทางสาขาว่าต้องการพนักงานหลายท่านเข้ารับพัสดุ
+                        <br>จากนั้นสอบถามรหัสพนักงานเมื่อพนักงานมาถึง แล้วกรอกรหัสพนักงานนั้นในฟังก์ชั่น"ระบุพนักงานเข้ารับพัสดุ" เพื่อสร้างงานรับให้พนักงานตั้งกล่าว</p>
+                </div>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <div class="my-1 mx-2">
+                    <span>รหัสพนักงานรับพัสดุ</span>
+                    <input class="form-control" type="text" style="width: 50%" name="staff_id">
+                </div>
+                <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <div class="d-flex align-items-center">
+                    <span class="mx-2"><b>ที่อยู่เข้ารับพัสดุ</b></span>
+                    <button type="button" class="btn btn-link" data-dismiss="modal" data-toggle="modal" data-target="#warehouse-assign-modal"><u>เลือกจากสมุดที่อยู่</u></button>
+                </div>
+                <div class="row mx-1">
+                    <div class="col-6">
+                        <div class="my-1">
+                            <span>พื้นที่บริการ</span>
+                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail" id="assign_warehouse_detail"></textarea>
+                        </div>
+                        <div class="my-1">
+                            <span>จังหวัด</span>
+                            <div class="">
+                                <input class="form-control" type="text" name="warehouse_province" id="assign_warehouse_province">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="my-1">
+                            <span>ตำบล / แขวง</span>
+                            <div class="">
+                                <input class="form-control" type="text" name="warehouse_district" id="assign_warehouse_district">
+                            </div>
+                        </div>
+                        <div class="my-1">
+                            <span>อำเภอ / เขต</span>
+                            <div class="">
+                                <input class="form-control" type="text" name="warehouse_city" id="assign_warehouse_city">
+                            </div>
+                        </div>
+                        <div class="my-1">
+                            <span>รหัสไปรษณีย์</span>
+                            <div class="">
+                                <input class="form-control" type="text" name="warehouse_postal_code" id="assign_warehouse_postal_code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p><b>ที่อยู่เข้ารับพัสดุ</b></p>
+                <div class="my-1 mx-2">
+                    <span>จำนวนพัสดุ</span>
+                    <input class="form-control" type="text" style="width: 50%">
+                </div>
+                <div class="my-1 mx-2">
+                    <span>หมายเหตุ</span>
+                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="note_detail" id="assign_note_detail"></textarea>
+                </div>
+                <div class="container-fluid my-2 mx-2">
+                    <div class="d-flex my-1">
+                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สินค้าพัสดุแตกหักง่าย</button>
+                        <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                    </div>
+                    <div class=" d-flex my-1">
+                        <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำซองเอกสารมาด้วย</button>
+                        <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำบรรจุภัณฑ์มาด้วย</button>
+                        <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">โปรดติดต่อก่อนเข้ารับ</button>
+                        <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สถานที่เป็นตึก / อาคาร</button>
+                    </div>
+                </div>
+                <div class=" d-flex my-1 mx-2" style="padding-top: 15px;">
+                    <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
+                    <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
+                </div>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal ระบุพนักงาน --}}
+
+    {{-- modal สมุดที่อยู่คลัง --}}
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="warehouse-notify-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                <div class=" ">
+                    <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                </div>
+                <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                <table class="table table-striped position-relative warehouse-table" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>รหัสคลังสินค้า</th>
+                            <th>ชื่อคลังสินค้า</th>
+                            <th>ที่อยู่</th>
+                            <th>ผู้ติดต่อ</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($warehouses as $warehouse)
+                        <tr>
+                            <td>{{$warehouse->warehouse_no}}</td>
+                            <td>{{$warehouse->warehouse_name}}</td>
+                            <td>
+                                {{$warehouse->warehouse_detail}}
+                                {{$warehouse->warehouse_district}}
+                                {{$warehouse->warehouse_city}}
+                                {{$warehouse->warehouse_province}}
+                                {{$warehouse->warehouse_postal_code}}
+                            </td>
+                            <td>{{$warehouse->contact_name}}</td>
+                            <td>{{$warehouse->warehouse_tel}}</td>
+                            <td><button type='button' class='btn btn-primary notify-wh-button' id="{{$warehouse->id}}" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="warehouse-assign-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <h5><b>เลือกจากสมุดที่อยู่</b></h5>
+                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
+                <div class=" ">
+                    <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                </div>
+                <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                <table class="table table-striped position-relative warehouse-table" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>รหัสคลังสินค้า</th>
+                            <th>ชื่อคลังสินค้า</th>
+                            <th>ที่อยู่</th>
+                            <th>ผู้ติดต่อ</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($warehouses as $warehouse)
+                        <tr>
+                            <td>{{$warehouse->warehouse_no}}</td>
+                            <td>{{$warehouse->warehouse_name}}</td>
+                            <td>
+                                {{$warehouse->warehouse_detail}}
+                                {{$warehouse->warehouse_district}}
+                                {{$warehouse->warehouse_city}}
+                                {{$warehouse->warehouse_province}}
+                                {{$warehouse->warehouse_postal_code}}
+                            </td>
+                            <td>{{$warehouse->contact_name}}</td>
+                            <td>{{$warehouse->warehouse_tel}}</td>
+                            <td><button type='button' class='btn btn-primary assign-wh-button' id="{{$warehouse->id}}" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal สมุดที่อยู่คลัง --}}
 
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
@@ -733,19 +817,12 @@
 
         $.Thailand({
             // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#send_district'), // input ของตำบล
-            $amphoe: $('#send_city'), // input ของอำเภอ
-            $province: $('#send_province'), // input ของจังหวัด
-            $zipcode: $('#send_postal_code'), // input ของรหัสไปรษณีย์
+            $district: $('#notify_warehouse_district'), // input ของตำบล
+            $amphoe: $('#notify_warehouse_city'), // input ของอำเภอ
+            $province: $('#notify_warehouse_province'), // input ของจังหวัด
+            $zipcode: $('#notify_warehouse_postal_code'), // input ของรหัสไปรษณีย์
         });
 
-        $.Thailand({
-            // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-            $district: $('#recv_district'), // input ของตำบล
-            $amphoe: $('#recv_city'), // input ของอำเภอ
-            $province: $('#recv_province'), // input ของจังหวัด
-            $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
-        });
     </script>
 
     <script>
@@ -790,12 +867,40 @@
         $(".dataTables_length").css("display", "none");
         $(".dataTables_filter").css("display", "none");
 
+        $('.warehouse-table').DataTable({
+            autoWidth: false,
+            searching: false,
+            filter: false,
+            ordering: false,
+            paging: false,
+            info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
+            columns: [{
+                "width": "15%"
+            }, {
+                "width": "15%"
+            }, {
+                "width": "23%",
+            }, {
+                "width": "20%"
+            }, {
+                "width": "15%"
+            }, {
+                "width": "12%"
+            }],
+            "ordering": false
+        });
+        $(".dataTables_length").css("display", "none");
+        $(".dataTables_filter").css("display", "none");
+
     </script>
 
     <script>
         $('#order-success-table').DataTable({
             scrollX: true,
-            "autoWidth": true,
+            autoWidth: true,
             language: {
                 emptyTable: "ไม่พบข้อมูล"
             },
@@ -974,6 +1079,59 @@
                 $('.subbox').prop('checked', false)
             }
             $('.subbox')
+        });
+
+    </script>
+
+    <script>
+        $('.notify-wh-button').on('click', function () {
+            var id = $(this).attr('id');
+            $.ajax({
+                url: '/api/book/warehouse/get',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    $('#notify_warehouse_no').val(res.warehouse_no);
+                    $('#notify_warehouse_name').val(res.warehouse_name);
+                    $('#notify_contact_name').val(res.contact_name);
+                    $('#notify_warehouse_tel').val(res.warehouse_tel);
+                    $('#notify_warehouse_detail').val(res.warehouse_detail);
+                    $('#notify_warehouse_district').val(res.warehouse_district);
+                    $('#notify_warehouse_city').val(res.warehouse_city);
+                    $('#notify_warehouse_province').val(res.warehouse_province);
+                    $('#notify_warehouse_postal_code').val(res.warehouse_postal_code);
+                    $('#notify-courier-modal').modal('show');
+                }
+            })
+        });
+
+        $('.assign-wh-button').on('click', function () {
+            var id = $(this).attr('id');
+            $.ajax({
+                url: '/api/book/warehouse/get',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    $('#assign_warehouse_detail').val(res.warehouse_detail);
+                    $('#assign_warehouse_district').val(res.warehouse_district);
+                    $('#assign_warehouse_city').val(res.warehouse_city);
+                    $('#assign_warehouse_province').val(res.warehouse_province);
+                    $('#assign_warehouse_postal_code').val(res.warehouse_postal_code);
+                    $('#assign-courier-modal').modal('show');
+                }
+            })
+        });
+
+        $('.hotkey-note-notify').on('click', function () {
+            var text = $(this).html();
+            $('#notify_note_detail').append(text + "   ");
+        });
+
+        $('.hotkey-note-assign').on('click', function () {
+            var text = $(this).html();
+            $('#assign_note_detail').append(text + "   ");
         });
 
     </script>

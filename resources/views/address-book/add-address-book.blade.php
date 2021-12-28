@@ -172,17 +172,17 @@
                                             </div>
                                             <div class="my-2">
                                                 <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
-                                                <div class="">
+                                                <div>
                                                     <input class="form-control" type="text" value="" name="book_postal_code" id="book_postal_code">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex mt-3">
+                                    <div class="d-flex my-3">
                                         <input type="checkbox" class="mt-1" name="is_main_book" value="1">
                                         <p class="px-1">ตั้งเป็นที่อยู่หลัก</p>
                                     </div>
-                                    <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center my-3">
                                         <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
                                         <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
                                     </div>

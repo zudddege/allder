@@ -182,7 +182,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center my-3">
                                         <a href="{{url('/book')}}"><button class="btn btn-danger mx-2" type="button">ยกเลิก</button></a>
                                         <button class="btn btn-primary mx-2" type="submit" id="submit-button">สร้างรายการ</button>
                                     </div>

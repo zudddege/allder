@@ -265,21 +265,21 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($wareHouses as $wareHouse)
+                                                    @foreach($warehouses as $warehouse)
                                                     <tr>
                                                         <td><input id='mainbox' type="checkbox"></td>
-                                                        <td>{{$wareHouse->warehouse_no}}</td>
-                                                        <td>{{$wareHouse->warehouse_name}}</td>
+                                                        <td>{{$warehouse->warehouse_no}}</td>
+                                                        <td>{{$warehouse->warehouse_name}}</td>
                                                         <td>
-                                                            {{$wareHouse->warehouse_detail}}
-                                                            {{$wareHouse->warehouse_district}}
-                                                            {{$wareHouse->warehouse_city}}
-                                                            {{$wareHouse->warehouse_province}}
-                                                            {{$wareHouse->warehouse_postal_code}}
+                                                            {{$warehouse->warehouse_detail}}
+                                                            {{$warehouse->warehouse_district}}
+                                                            {{$warehouse->warehouse_city}}
+                                                            {{$warehouse->warehouse_province}}
+                                                            {{$warehouse->warehouse_postal_code}}
                                                         </td>
-                                                        <td>{{$wareHouse->contact_name}}</td>
-                                                        <td>{{$wareHouse->warehouse_tel}}</td>
-                                                        <td class="shadow"><a href="{{url('/book/warehouse/'.$wareHouse->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                                        <td>{{$warehouse->contact_name}}</td>
+                                                        <td>{{$warehouse->warehouse_tel}}</td>
+                                                        <td class="shadow"><a href="{{url('/book/warehouse/'.$warehouse->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

@@ -12,11 +12,15 @@ class AddressBookController extends Controller {
         return AddressBook::select('book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code', 'is_main_book')->find($request->id);
     }
 
+    public function getWarehouseById(Request $request) {
+        return Warehouse::select('warehouse_no', 'warehouse_name', 'contact_name', 'warehouse_tel', 'warehouse_detail', 'warehouse_district', 'warehouse_city', 'warehouse_province', 'warehouse_postal_code')->find($request->id);
+    }
+
     public function showBook() {
         $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->get();
-        $wareHouses = Warehouse::select('id', 'warehouse_no', 'warehouse_name', 'contact_name', 'warehouse_tel', 'warehouse_detail', 'warehouse_district', 'warehouse_city', 'warehouse_province', 'warehouse_postal_code')->get();
+        $warehouses = Warehouse::select('id', 'warehouse_no', 'warehouse_name', 'contact_name', 'warehouse_tel', 'warehouse_detail', 'warehouse_district', 'warehouse_city', 'warehouse_province', 'warehouse_postal_code')->get();
 
-        return view('address-book.view-address-book', compact('addressBooks', 'wareHouses'));
+        return view('address-book.view-address-book', compact('addressBooks', 'warehouses'));
     }
 
     public function addAddressBook() {
@@ -34,9 +38,9 @@ class AddressBookController extends Controller {
     }
 
     public function detailWarehouse($id) {
-        $wareHouse = Warehouse::find($id);
+        $warehouse = Warehouse::find($id);
 
-        return view('address-book.detail-warehouse', compact('wareHouse'));
+        return view('address-book.detail-warehouse', compact('warehouse'));
     }
 
     public function editAddressBook($id) {
@@ -46,9 +50,9 @@ class AddressBookController extends Controller {
     }
 
     public function editWarehouse($id) {
-        $wareHouse = Warehouse::find($id);
+        $warehouse = Warehouse::find($id);
 
-        return view('address-book.edit-warehouse', compact('wareHouse'));
+        return view('address-book.edit-warehouse', compact('warehouse'));
     }
 
     public function createAddressBook(Request $request) {
