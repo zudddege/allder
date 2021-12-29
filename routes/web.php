@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
 
@@ -53,9 +52,16 @@ Route::get('/', 'UserController@login');
 Route::get('/login', 'UserController@login')->name('login');
 Route::get('/home', 'OrderController\OrderController@showOrder')->name('home');
 //forget password
-Route::get('/forgot', 'UserController@forgot');
+Route::get('/forgot', 'UserController@forgot')->name('forgot');
 Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');
 Route::post('forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm' )->name('reset.password.post');
+Route::get('/mailcon', 'Auth\ForgotPasswordController@mailcon')->name('mailcon');
+Route::get('/forgetpass', 'Auth\ForgotPasswordController@forgetpass')->name('forgetpass');
+Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
+//testform
+Route::get('/test', function () {
+    return view('test');
+});

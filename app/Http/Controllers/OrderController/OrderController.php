@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AddressBook\AddressBook;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Order\Order;
+use App\Models\Warehouse\Warehouse;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ use Illuminate\Http\Request;
 class OrderController extends Controller {
     public function showOrder() {
         $orders = Order::all();
+        $warehouses = Warehouse::all();
 
-        return view('order.view-order', compact('orders'));
+        return view('order.view-order', compact('orders', 'warehouses'));
     }
 
     public function addOrder() {
@@ -248,7 +250,7 @@ class OrderController extends Controller {
             break;
         }
 
-        $trackingNo = Order::select('tracking_no')->find($id);
+        $trackingNo = Order::find($id)->tracking_no;
 
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',

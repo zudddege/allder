@@ -29,9 +29,9 @@
     <style>
         body {
             background-image: url({{asset('assets/img/login/bg-login.png')}});
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
         }
 
     </style>
@@ -64,12 +64,28 @@
                                 </div>
                                 <form action="{{ route('reset.password.post') }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="token" value="{{ $token }}">
+                                    <div class="d-flex justify-content-center">
+
+                                            <input type="text" id="email_address" class="form-control mb-3" name="email" style="width: 250;" required autofocus placeholder="อีเมลล์ที่ใช้งาน">
+                                            @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
+
+                                    </div>
+
                                     <div class="d-flex justify-content-center">
                                         <input class="form-control mb-3" type="password" id="password" name="password" required autofocus value="" placeholder="รหัสผ่านใหม่" style="width: 250;">
+                                        @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
                                     </div>
 
                                     <div class="d-flex justify-content-center">
                                         <input class="form-control" type="password" id="password-confirm" name="password_confirmation" required autofocus value="" placeholder="รหัสผ่านใหม่อีกครั้ง" style="width: 250;">
+                                        @if ($errors->has('password_confirmation'))
+                                        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                        @endif
                                     </div>
 
                                     <div class="jumps-prevent" style="padding-top: 45px;"></div>

@@ -33,10 +33,11 @@ Route::post('/courier/notify-courier', 'CourierController\CourierController@noti
 Route::post('/courier/cancel-notify', 'CourierController\CourierController@cancelNotification');
 
 /* Address Book Controller */
-Route::get('/book/get/id', 'AddressBookController\AddressBookController@getAddressBookById');
+Route::get('/book/address-book/get', 'AddressBookController\AddressBookController@getAddressBookById');
 Route::post('/book/address-book/create', 'AddressBookController\AddressBookController@createAddressBook');
 Route::post('/book/address-book/{id}/modify', 'AddressBookController\AddressBookController@modifyAddressBook');
 
+Route::get('/book/warehouse/get', 'AddressBookController\AddressBookController@getWarehouseById');
 Route::post('/book/warehouse/create', 'AddressBookController\AddressBookController@createWarehouse');
 Route::post('/book/warehouse/{id}/modify', 'AddressBookController\AddressBookController@modifyWarehouse');
 

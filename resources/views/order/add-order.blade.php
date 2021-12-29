@@ -73,9 +73,12 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
+                    @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/sub-account') }}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
+                    @endif
+
                 </ul>
             </div>
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
@@ -365,7 +368,7 @@
                                     {{$addressBook->book_province}}
                                     {{$addressBook->book_postal_code}}
                                 </td>
-                                <td><button type='button' class='btn btn-primary' onclick="sendFetchBook({{$addressBook->id}});" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                                <td><button type='button' class='btn btn-primary send-button' id="{{$addressBook->id}}" data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -405,7 +408,7 @@
                                     {{$addressBook->book_province}}
                                     {{$addressBook->book_postal_code}}
                                 </td>
-                                <td><button type='button' class='btn btn-primary' onclick='recvFetchBook({{$addressBook->id}});' data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
+                                <td><button type='button' class='btn btn-primary recv-button' id='{{$addressBook->id}}' data-dismiss='modal'>ใช้ที่อยู่นี้</button></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -471,6 +474,17 @@
             $amphoe: $('#recv_city'), // input ของอำเภอ
             $province: $('#recv_province'), // input ของจังหวัด
             $zipcode: $('#recv_postal_code'), // input ของรหัสไปรษณีย์
+        });
+
+        $(document).ready(function () {
+            if ($('#main_address').prop('checked')) {
+                $('#main_address').prop('indeterminate', true);
+                $('#save_send_address').prop('indeterminate', true);
+            }
+
+            if ($('#save_send_address').prop('checked')) {
+                $('#save_send_address').prop('indeterminate', true);
+            }
         });
 
         $('#main_address').on('click', function (e) {
@@ -545,9 +559,10 @@
             }],
         });
 
-        function sendFetchBook(id) {
+        $('.send-button').on('click', function () {
+            var id = $(this).attr('id');
             $.ajax({
-                url: '/api/book/get/id',
+                url: '/api/book/address-book/get',
                 method: 'GET',
                 data: {
                     id: id
@@ -564,11 +579,12 @@
                     $('#save_send_address').prop('indeterminate', true);
                 }
             })
-        }
+        });
 
-        function recvFetchBook(id) {
+        $('.recv-button').on('click', function () {
+            var id = $(this).attr('id');
             $.ajax({
-                url: '/api/book/get/id',
+                url: '/api/book/address-book/get',
                 method: 'GET',
                 data: {
                     id: id
@@ -584,7 +600,7 @@
                     $('#save_recv_address').prop('indeterminate', true);
                 }
             })
-        }
+        });
 
     </script>
 </body>
