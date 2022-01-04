@@ -27,6 +27,15 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+
+    <style>
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">

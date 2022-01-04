@@ -26,6 +26,15 @@
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
+
+    <style>
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
+    </style>
+    
 </head>
 
 <body class="main-body app sidebar-mini">

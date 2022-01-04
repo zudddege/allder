@@ -51,6 +51,11 @@
             color: blue !important;
         }
 
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
     </style>
 
 </head>
@@ -114,7 +119,7 @@
 
         </aside>
         <div class="main-content app-content">
-            
+
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">

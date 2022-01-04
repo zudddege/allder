@@ -51,6 +51,11 @@
             color: blue !important;
         }
 
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
     </style>
 
 </head>

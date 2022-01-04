@@ -41,6 +41,11 @@
             background-color: white;
         }
 
+        .dropdown-menu {
+            width: 350px !important;
+            margin-right: 50% !important;
+        }
+
     </style>
 
 </head>
