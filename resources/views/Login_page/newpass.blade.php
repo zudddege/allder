@@ -28,7 +28,7 @@
 
     <style>
         body {
-            background-image: url({{asset('assets/img/login/bg-login.png')}});
+            background-image: url('/assets/img/login/bg-login.png');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -65,14 +65,7 @@
                                 <form action="{{ route('reset.password.post') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="token" value="{{ $token }}">
-                                    <div class="d-flex justify-content-center">
-
-                                            <input type="text" id="email_address" class="form-control mb-3" name="email" style="width: 250;" required autofocus placeholder="อีเมลล์ที่ใช้งาน">
-                                            @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                                            @endif
-
-                                    </div>
+                                    <input type="hidden" name="email" value="{{ $email }}">
 
                                     <div class="d-flex justify-content-center">
                                         <input class="form-control mb-3" type="password" id="password" name="password" required autofocus value="" placeholder="รหัสผ่านใหม่" style="width: 250;">
@@ -102,7 +95,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <!-- End Page -->
 
         <!-- Back-to-top -->

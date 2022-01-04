@@ -15,7 +15,7 @@ use \Illuminate\Support\Facades\Auth;
  */
 
 /* Order Controller */
-Route::get('/order', 'OrderController\OrderController@showOrder')->name('order')->middleware('checkstatus');
+Route::get('/order', 'OrderController\OrderController@showOrder')->name('order')->middleware('checkstatus','returnlogin');
 Route::get('/order/create', 'OrderController\OrderController@addOrder');
 Route::get('/order/{id}/detail', 'OrderController\OrderController@detailOrder');
 Route::get('/order/{id}/edit', 'OrderController\OrderController@editOrder');
@@ -50,7 +50,7 @@ Route::get('/search', 'SearchController\SearchController@search');
 Auth::routes();
 Route::get('/', 'UserController@login');
 Route::get('/login', 'UserController@login')->name('login');
-Route::get('/home', 'OrderController\OrderController@showOrder')->name('home');
+Route::get('/home', 'OrderController\OrderController@showOrder')->name('home')->middleware('checkstatus','returnlogin');
 //forget password
 Route::get('/forgot', 'UserController@forgot')->name('forgot');
 Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');

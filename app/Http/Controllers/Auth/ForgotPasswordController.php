@@ -44,14 +44,14 @@ class ForgotPasswordController extends Controller
           $request->validate([
               'email' => 'required|email|exists:users',
           ]);
-
+           $email = $request->email;
            $token = Str::random(64);
            DB::table('password_resets')->insert([
-               'email' => $request->email,
+               'email' => $email,
                'token' => $token,
                'created_at' => Carbon::now()
              ]);
-           Mail::send('Login_page.forgotpassword', ['token' => $token], function($message) use($request){
+           Mail::send('Login_page.forgotpassword', ['token' => $token,'email' => $email], function($message) use($request){
                $message->to($request->email);
                $message->subject('Reset Password');
            });
@@ -62,9 +62,9 @@ class ForgotPasswordController extends Controller
        *
        * @return response()
        */
-      public function showResetPasswordForm($token) {
+      public function showResetPasswordForm(Request $request) {
 
-         return view('Login_page.newpass', ['token' => $token]);
+         return view('Login_page.newpass', ['token' => $request->token,'email'=>$request->email]);
       }
 
       /**
