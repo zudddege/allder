@@ -209,25 +209,79 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    {{-- dropdown profile --}}
+                    <div>
                         <div class="nav nav-item  navbar-nav-right ml-auto">
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="sizelogout">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                {{ Auth::user()->close_id }}
+                                            </div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->name }}
+                                            </div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                อีเมล : {{ Auth::user()->email }}
+                                            </div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                เบอร์โทร : {{ Auth::user()->tel_no }}
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin: 15px 0px;">
+                                            {{-- ส่วนลด COD --}}
+                                            <div class="col-6">
+                                                <div>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+                                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+                                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
+                                                        </svg>
+                                                        <span class="mx-1">ส่วนลดที่ได้รับ</span>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <p style="color: #0275d8">{{ Auth::user()->discount }}%</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                                                        </svg>
+                                                        <span class="mx-1">COD</span>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <p style="color: #0275d8">{{ Auth::user()->cod }}%</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- ส่วนลด COD --}}
+                                        </div>
+                                        <div class="jumps-prevent border-top" style="padding-top: 15px;"></div>
+                                        {{-- ปุ่ม logout --}}
+                                        <div class="d-flex justify-content-center">
+                                            <a type="button" class="btn btn-danger rounded-10 mx-1 my-1" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();" style="width: 90%; height: 50%;">
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                        {{-- ปุ่ม logout --}}
+                                        <div class="jumps-prevent" style="padding-top: 15px;"></div>
                                     </div>
                                 </li>
                             </div>
                         </div>
                     </div>
+                    {{-- end dropdown profile --}}
                 </div>
             </div>
             <!-- /main-header -->
@@ -251,18 +305,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
-<<<<<<< HEAD
-                                    <a class="btn btn-primary mx-3" href="{{url('/sub-account/create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg> สร้างรายการ
-                                    </a>
-                                    <button type="button" class="btn btn-info mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                        </svg> นำเข้าข้อมูล</button>
-                                    <button type="button" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-=======
                                     <a href="{{url('/sub-account/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg> สร้างรายการ
@@ -273,19 +315,13 @@
                                     </label>
                                     <a class="btn btn-link" type="button" href="{{url('/api/export/excel')}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
->>>>>>> 40103814095f0bec6e80362fdea579d8b27cd7db
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                         </svg> <u>ดาวน์โหลด (Excel)</u>
                                     </a>
                                 </div>
-<<<<<<< HEAD
-                                <div class="jumps-prevent" style="padding-bottom: 35px;"></div>
-                                <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท</a></div>
-=======
                                 <div class="jumps-prevent" style="padding-bottom: 15px;"></div>
                                 <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
->>>>>>> 40103814095f0bec6e80362fdea579d8b27cd7db
                                 <div class="d-flex px-4 mb-2">
                                     <input class="form-control" type="text" value="" style="width: 300px;">
                                 </div>
