@@ -133,20 +133,18 @@
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <div class="container-fluid">
+                                        <div>
                                             <div class="d-flex justify-content-center my-2">
                                                 {{ Auth::user()->close_id }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
-                                                {{ Auth::user()->name }}
+                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->name }}
                                             </div>
-                                            <div class="d-flex justify-content-between mx-3 my-2">
-                                                <div>
-                                                    {{ Auth::user()->email }}
-                                                </div>
-                                                <div>
-                                                    tel.{{ Auth::user()->tel_no }}
-                                                </div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                อีเมล : {{ Auth::user()->email }}
+                                            </div>
+                                            <div class="d-flex justify-content-center my-2">
+                                                เบอร์โทร : {{ Auth::user()->tel_no }}
                                             </div>
                                         </div>
                                         <div class="row" style="margin: 15px 0px;">

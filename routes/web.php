@@ -65,3 +65,8 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPassword
 Route::get('/test', function () {
     return view('test');
 });
+
+
+Route::get('/cod', function () {
+    return view('cod-table.cod-table');
+});
