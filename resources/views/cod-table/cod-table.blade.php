@@ -27,30 +27,6 @@
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
     <style>
-        .table th:last-child,
-        .table td:last-child {
-            position: sticky;
-            right: 0px;
-        }
-
-        .td_detail_row:nth-child(odd) .td_detail {
-            background-color: #E3E8F7;
-        }
-
-        .td_detail_row:nth-child(even) .td_detail {
-            background-color: white;
-        }
-
-        .dropdown-menu {
-            width: 350px !important;
-            margin-right: 50% !important;
-        }
-
-        .dropend button:focus,
-        .dropdown button:focus {
-            color: blue !important;
-        }
-
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;

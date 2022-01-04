@@ -143,11 +143,6 @@
             border-radius: 50%;
         }
 
-        .dropdown-menu {
-            width: 350px !important;
-            margin-right: 50% !important;
-        }
-
     </style>
 
 </head>
