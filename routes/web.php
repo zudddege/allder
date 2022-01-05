@@ -66,7 +66,28 @@ Route::get('/test', function () {
     return view('test');
 });
 
-
+// ตาราง COD-table
 Route::get('/cod', function () {
     return view('cod-table.cod-table');
 });
+
+// ตาราง POD-table
+Route::get('/pod', function () {
+    return view('pod-table.pod-table');
+});
+
+// Problem-order
+Route::get('/problem-order', function () {
+    return view('problem-order.problem-order');
+});
+
+// Check-order
+Route::get('/check-order', function () {
+    return view('check-order.check-order');
+});
+
+// Affect-cost
+Route::get('/affect-cost', function () {
+    return view('affect-cost.affect-cost');
+});
+

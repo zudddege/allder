@@ -52,6 +52,12 @@
             color: blue !important;
         }
 
+        button:disabled,
+        button[disabled]{
+        background-color: #cccccc !important;
+        color: #666666 !important;
+        }
+
     </style>
 
     <style>
@@ -83,29 +89,28 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/problem-order')}}"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/tracking')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/check-order')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/affect-cost')}}"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
-
                 </ul>
             </div>
         </aside>
@@ -246,18 +251,18 @@
                                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                                 </svg> <u>ดาวน์โหลด (Excel)</u>
                                             </a>
-                                            <label class="btn btn-success mx-3">
+                                            <button class="btn btn-success mx-3" style="height: 40px;" data-toggle="modal" data-target="#print-modal"  disabled>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
                                                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
                                                 </svg> Print
-                                            </label>
-                                            <label class="btn btn-danger">
+                                            </button>
+                                            <button class="btn btn-danger" style="height: 40px;" disabled>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
                                                     <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
                                                     <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
                                                 </svg> Cancel Order
-                                            </label>
+                                            </button>
                                         </div>
                                         <div class="jumps-prevent" style="padding-top: 15px;"></div>
                                         <form action="/search" method="get" id="testform">
@@ -271,13 +276,23 @@
                                                 <div class="col-2">
                                                     <div class="mb-1">สถานะการทำรายการ</div>
                                                     <div class="">
-                                                        <input class="form-control" type="text" value="">
+                                                        <select class="custom-select form-control" style="width: 100%; height: 40px;">
+                                                            <option value="" selected>รับพัสดุแล้ว</option>
+                                                            <option value="">ระหว่างการขนส่ง</option>
+                                                            <option value="">ระหว่างการจัดส่ง</option>
+                                                            <option value="">พัสดุคงคลัง</option>
+                                                            <option value="">เซ็นรับแล้ว</option>
+                                                            <option value="">ระหว่างจัดการพัสดุมีปัญหา</option>
+                                                            <option value="">พัสดุตีกลับแล้ว</option>
+                                                            <option value="">ปิดงานมีปัญหา</option>
+                                                            <option value="">เรียกคืนพัสดุ</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
                                                     <div class="mb-1">แหล่งที่มา</div>
                                                     <div class="">
-                                                        <input class="form-control" type="text" value="">
+                                                        <input class="form-control" type="text" value="Allder Express">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -392,12 +407,26 @@
 
                                     {{-- order-suc-nav --}}
                                     <div class="tab-pane fade" id="nav-ordersuc" role="tabpanel" aria-labelledby="nav-ordersuc-tab">
-                                        <div class="d-flex">
+                                        <div class="d-flex justify-content-between">
                                             <a class="btn btn-link" href="{{url('/users/export')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                                 </svg> <u>ดาวน์โหลด (Excel)</u>
                                             </a>
+
+                                            <div>
+                                                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
+                                                        เบอร์โทรศัพท์</a></div>
+                                                <div class="d-flex ">
+                                                    <div class="">
+                                                        <input class="form-control" type="text" value="" style="width:325px;">
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="jumps-prevent" style="padding-top: 15px;"></div>
                                         <div class="row px-2 mb-3">
@@ -410,58 +439,79 @@
                                             <div class="col-2">
                                                 <div class="mb-1">สถานะการทำรายการ</div>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="">
+                                                    <select class="custom-select form-control" style="width: 100%; height: 40px;">
+                                                        <option value="" selected>รับพัสดุแล้ว</option>
+                                                        <option value="">ระหว่างการขนส่ง</option>
+                                                        <option value="">ระหว่างการจัดส่ง</option>
+                                                        <option value="">พัสดุคงคลัง</option>
+                                                        <option value="">เซ็นรับแล้ว</option>
+                                                        <option value="">ระหว่างจัดการพัสดุมีปัญหา</option>
+                                                        <option value="">พัสดุตีกลับแล้ว</option>
+                                                        <option value="">ปิดงานมีปัญหา</option>
+                                                        <option value="">เรียกคืนพัสดุ</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-2">
                                                 <div class="mb-1">แหล่งที่มา</div>
                                                 <div class="">
-                                                    <input class="form-control" type="text" value="">
+                                                    <input class="form-control" type="text" value="Allder Express">
                                                 </div>
                                             </div>
-                                            <div class="col-6">
-                                                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                                        เบอร์โทรศัพท์</a></div>
-                                                <div class="d-flex ">
-                                                    <div class="">
-                                                        <input class="form-control" type="text" value="" style="width:325px;">
-                                                    </div>
-                                                    <div class="dropdown ">
-                                                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
-                                                                <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
-                                                            </svg> <u>ตัวเลือกการแสดงผล</u>
-                                                        </button>
-                                                        <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="sizedrop">
-                                                            <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <div class="d-flexd align-content-center mx-1">
-                                                                        <div class=""><input type="checkbox" id='box1' checked><span>เวลาที่ทำรายการ</span></input></div>
-                                                                        <div class=""><input type="checkbox" id='box2' checked>สถานะจัดส่ง</input></div>
-                                                                        <div class=""><input type="checkbox" id='box3' checked>เลขออเดอร์</input></div>
-                                                                        <div class=""><input type="checkbox" id='box4' checked>เลขพัสดุ</input></div>
-                                                                        <div class=""><input type="checkbox" id='box5' checked>แหล่งที่มา</input></div>
-                                                                        <div class=""><input type="checkbox" id='box6' checked>ผู้ส่ง</input></div>
-                                                                        <div class=""><input type="checkbox" id='box7' checked>เบอร์โทรศัพท์ผู้ส่ง</input></div>
-                                                                    </div>
+                                            <div class="col-2">
+                                                <div class="mb-1">ประเภทพัสดุ</div>
+                                                <div class="">
+                                                    <select class="custom-select form-control" style="width: 100%; height: 40px;">
+                                                        <option value="" selected>PickUp</option>
+                                                        <option value="">Return</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="mb-1">ประเภทสินค้า</div>
+                                                <div class="">
+                                                    <select class="custom-select form-control" style="width: 100%; height: 40px;">
+                                                        <option value="" selected>พัสดุทั่วไป</option>
+                                                        <option value="">พัสดุCOD</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 pt-4">
+                                                <div class="dropdown ">
+                                                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
+                                                            <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
+                                                        </svg> <u>ตัวเลือกการแสดงผล</u>
+                                                    </button>
+                                                    <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="sizedrop">
+                                                        <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="d-flexd align-content-center mx-1">
+                                                                    <div class=""><input type="checkbox" id='box1' checked><span>เวลาที่ทำรายการ</span></input></div>
+                                                                    <div class=""><input type="checkbox" id='box2' checked>สถานะจัดส่ง</input></div>
+                                                                    <div class=""><input type="checkbox" id='box3' checked>เลขออเดอร์</input></div>
+                                                                    <div class=""><input type="checkbox" id='box4' checked>เลขพัสดุ</input></div>
+                                                                    <div class=""><input type="checkbox" id='box5' checked>แหล่งที่มา</input></div>
+                                                                    <div class=""><input type="checkbox" id='box6' checked>ผู้ส่ง</input></div>
+                                                                    <div class=""><input type="checkbox" id='box7' checked>เบอร์โทรศัพท์ผู้ส่ง</input></div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="d-flexd align-content-center mx-1">
-                                                                        <div class=""><input type="checkbox" id='box8' checked>ผู้รับ</input></div>
-                                                                        <div class=""><input type="checkbox" id='box9' checked>เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                        <div class=""><input type="checkbox" id='box10' checked>ประเภทสินค้า</input></div>
-                                                                        <div class=""><input type="checkbox" id='box11' checked>ยอดเก็บเงินปลายทาง</input></div>
-                                                                        <div class=""><input type="checkbox" id='box12' checked>ราคาโดยประมาณ</input></div>
-                                                                        <div class=""><input type="checkbox" id='box13' checked>หมายเหตุ</input></div>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="d-flexd align-content-center mx-1">
+                                                                    <div class=""><input type="checkbox" id='box8' checked>ผู้รับ</input></div>
+                                                                    <div class=""><input type="checkbox" id='box9' checked>เบอร์โทรศัพท์ผู้รับ</input></div>
+                                                                    <div class=""><input type="checkbox" id='box10' checked>ประเภทสินค้า</input></div>
+                                                                    <div class=""><input type="checkbox" id='box11' checked>ยอดเก็บเงินปลายทาง</input></div>
+                                                                    <div class=""><input type="checkbox" id='box12' checked>ราคาโดยประมาณ</input></div>
+                                                                    <div class=""><input type="checkbox" id='box13' checked>หมายเหตุ</input></div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="px-2 ">
                                             <table class="table table-striped position-relative" id="order-success-table">
@@ -540,11 +590,10 @@
                             {{-- end card body --}}
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
+
         {{-- modal เรียกรับพัสดุ --}}
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="notify-courier-modal">
             <div class="modal-dialog modal-lg">
@@ -839,6 +888,126 @@
         </div>
     </div>
     {{-- end modal สมุดที่อยู่คลัง --}}
+
+    {{-- modal print --}}
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="print-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <h5><b>ปริ้นออเดอร์</b></h5>
+                <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                <p>เลือกจำนวนบุ๊คกิ้งแล้ว : </p>
+                <table class="table table-striped mt-2" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>เลขออเดอร์</th>
+                            <th>เลขพัสดุ</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    {{-- end modal print --}}
+
+    {{-- modal ดูรายละเอียด ของรายการจัดส่งแล้ว --}}
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="detail-ordersuccess-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <h5><b>เรียกดู</b></h5>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary mx-1">ยื่นเคลม</button>
+                    <button type="button" class="btn btn-danger mx-1">เร่งติดตามพัสดุ</button>
+                </div>
+                <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-label-detail-tab" data-toggle="tab" href="#nav-label-detail" role="tab" aria-controls="nav-label-detail" aria-selected="true">รายละเอียดใบจ่าหน้า</a>
+                        <a class="nav-item nav-link" id="nav-send-detail-tab" data-toggle="tab" href="#nav-send-detail" role="tab" aria-controls="nav-send-detail" aria-selected="false">รายละเอียดการส่ง</a>
+                        <a class="nav-item nav-link" id="nav-signature-tab" data-toggle="tab" href="#nav-signature" role="tab" aria-controls="nav-signature" aria-selected="false">ลายเซ็นผู้รับพัสดุ</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-label-detail" role="tabpanel" aria-labelledby="nav-label-detail-tab">
+                        <div class="row">
+                            <div class="col-4">
+                                <p>เลขออเดอร์</p>
+                                <p>เลขพัสดุ</p>
+                                <p>ประเภทพัสดุ</p>
+                                <p>เลขพัสดุเดิม</p>
+                                <p>เลขพัสดุหลังจากตีกลับ</p>
+                                <p>ที่อยู่เข้ารับพัสดุ</p>
+                                <p>ผู้ส่ง</p>
+                                <p>ผู้รับ</p>
+                                <p>ประเภทสินค้า</p>
+                                <p>น้ำหนัก (กก.)</p>
+                                <p>ขนาด</p>
+                                <p>น้ำหนักของค่าขนส่ง</p>
+                                <p>ประเภทสินค้า</p>
+                                <p>ค่าสินค้าที่เรียกเก็บ COD</p>
+                                <p>ค่าขนส่ง(คิดค่าขนส่งตามขนาด)</p>
+                                <p>ค่าธรรมเนียม COD</p>
+                                <p>ค่าลาเบล</p>
+                                <p>ประกันพัสดุตีกลับ</p>
+                                <p>ค่าบรรจุภัณฑ์</p>
+                                <p>ประกันคุ้มครองพัสดุ</p>
+                                <p>ค่า Speed</p>
+                                <p>ประกันบรรจุภัณฑ์ภายนอกเสียหาย</p>
+                                <p>คำนวณค่าคุ้มครองพัสดุ</p>
+                                <p>ส่วนลดโปรโมชั่น</p>
+                                <p>ราคาสุทธิ</p>
+                                <p>วิธีชำระเงิน</p>
+                                <p>หมายเหตุ</p>
+                                <p>ค่าประกัน</p>
+                            </div>
+                            <div class="col-8">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-send-detail" role="tabpanel" aria-labelledby="nav-send-detail-tab">...</div>
+                    <div class="tab-pane fade" id="nav-signature" role="tabpanel" aria-labelledby="nav-signature-tab">...</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{-- end modal ดูรายละเอียด ของรายการจัดส่งแล้ว --}}
 
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>

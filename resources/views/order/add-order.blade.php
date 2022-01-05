@@ -40,6 +40,12 @@
             margin-right: 50% !important;
         }
 
+        button:disabled,
+        button[disabled]{
+        background-color: #cccccc !important;
+        color: #666666 !important;
+        }
+
     </style>
 
 </head>
@@ -55,35 +61,34 @@
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
                     <li class="slide is-expanded">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/order') }}"><span class="side-menu__label">จัดการออเดอร์</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/courier') }}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/problem-order')}}"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/check-order')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">สมุดที่อยู่</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/affect-cost')}}"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="#"><span class="side-menu__label">ตารางรายการ POD</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/sub-account') }}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
-
                 </ul>
             </div>
         </aside>
@@ -329,11 +334,11 @@
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" name="length_size">
+                                                <input class="form-control" type="text" value="" name="length_size" placeholder="ยาว">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="width_size">
+                                                <input class="form-control" type="text" value="" name="width_size" placeholder="กว้าง">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="height_size">
+                                                <input class="form-control" type="text" value="" name="height_size" placeholder="สูง">
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
