@@ -253,34 +253,34 @@
                 <!-- breadcrumb -->
 
                 <!-- row opened -->
-                <form method="POST" action="{{ url('/api/sub-account/create') }}">
+                <form method="POST" action="{{ url('') }}">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-xl-5">
                             <div class="card card-body">
                                 <div class="d-flex">
                                     <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
-                                    <input class="form-control" type="text" value="{{$close_id}}" name="close_id" style="width: 20%; height: 75%;" readonly>
+                                    <input class="form-control" type="text" value="{{ $subaccount->close_id}}" name="close_id" style="width: 20%; height: 75%;" readonly>
                                     <p class="px-2 mt-2 ml-5">ชื่อย่อ</p>
-                                    <input class="form-control mx-2" type="text" value="" name="short_id" style="width: 20%; height: 75%;" >
+                                    <input class="form-control mx-2" type="text" value="{{ $subaccount->short_id}}" name="short_id" style="width: 20%; height: 75%;"readonly >
                                 </div>
                                 <div class="">
                                     <div class="">
                                         <p class="my-1">อีเมล</p>
                                         <div class="">
-                                            <input class="form-control" name="email" type="text" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" name="email" value="{{ $subaccount->email}}" type="text"  style="width: 65%; height: 75%;" readonly>
                                         </div>
                                     </div>
                                     <div class="my-1">
                                         <p class="my-1">ชื่อผู้ใช้งาน / ชื่อธุรกิจ</p>
                                         <div class="">
-                                            <input class="form-control" name="name" type="text" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" name="name" type="text" value="{{ $subaccount->name}}" style="width: 65%; height: 75%;" readonly>
                                         </div>
                                     </div>
                                     <div class="">
                                         <p class="my-1">เบอร์ติดต่อ</p>
                                         <div class="">
-                                            <input class="form-control" type="text" name="tel_no" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" type="text" name="tel_no" value="{{ $subaccount->tel_no}}" style="width: 65%; height: 75%;" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -291,13 +291,13 @@
                                 <div class="">
                                     <p class="my-1">ส่วนลดที่ได้รับ</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" name="discount" value=""><span class="px-1">%</span>
+                                        <input class="form-control" type="text" name="discount" value="{{ $subaccount->discount}}" readonly><span class="px-1">%</span>
                                     </div>
                                 </div>
                                 <div class="my-2">
                                     <p class="my-1">COD</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" value="" name="cod"><span class="px-1">%</span>
+                                        <input class="form-control" type="text" value="{{ $subaccount->cod}}" name="cod" readonly><span class="px-1">%</span>
                                     </div>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@
                                     <div class="d-flex align-content-center" style="margin-left: 60%;">
                                         <p class="px-1">สถานะ</p>
                                         <label class="switch">
-                                            <input type="checkbox" name="is_status_user" value="1" checked>
+                                            <input type="checkbox" name="is_status_user" value="{{ $subaccount->is_status_user}}" checked>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -317,27 +317,16 @@
                                 <div class="">
                                     <p class="my-1">ID</p>
                                     <div class="">
-                                        <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" name="username">
+                                        <input class="form-control" type="text" value="{{ $subaccount->username}}" style="width: 65%; height: 75%;" name="username" readonly>
                                     </div>
                                 </div>
-                                <div class="my-1">
-                                    <p class="my-1">รหัสผ่าน <span class="text-muted">(8 - 16 ตัวอักษร)</span></p>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password">
-                                        <button class="btn btn-link" type="button" b id="auto_password"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <p class="my-1">รหัสผ่านอีกครั้ง</p>
-                                    <div class="">
-                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm">
-                                    </div>
-                                </div>
-
-                                <div class="jumps-prevent" style="padding-top: 130px;"></div>
+                                <div class="jumps-prevent" style="padding-top: 50px;"></div>
                                 <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-danger mx-1" style="width: 125px;" type="reset" value="ยกเลิก">
-                                    <input class="btn btn-primary mx-1" style="width: 125px;" type="submit" value="เพิ่มผู้ใช้งาน">
+                                    <a href="{{url('/sub-account')}}" class="btn btn-outline-danger mx-1" style="width: 125px;"  value="">ยกเลิก</a>
+                                    <button class="btn btn-primary mx-2" id="submit-button" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                                        <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
+                                    </svg> แก้ไข</button>
                                 </div>
 
                                 {{-- <div class="jumps-prevent" style="padding-top: 25px;"></div> --}}
@@ -384,19 +373,7 @@
         <script src="{{asset('assets/js/sticky.js')}}"></script>
         <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
-        <script>
-            $('#auto_password').on('click', function () {
-                $.ajax({
-                    url: '/api/sub-account/gen-pass',
-                    method: "GET",
-                    success: function (data) {
-                        $('#password').val(data);
-                        $('#password-confirm').val(data);
-                    }
-                })
-            });
 
-        </script>
 
 </body>
 

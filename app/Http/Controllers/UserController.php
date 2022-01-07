@@ -43,6 +43,13 @@ class UserController extends Controller
 
         return view('sub-account.view-sub-account', compact('subaccount'));
     }
+    public function detailsubAccount($id)
+    {
+
+        $subaccount = User::find($id);
+
+        return view('sub-account.detail-sub-account', compact('subaccount'));
+    }
 
     public function addSubAccount() {
         $date = Carbon::now('Asia/Bangkok')->isoFormat('YYMM');
@@ -57,6 +64,7 @@ class UserController extends Controller
     {
         User::create([
             "close_id" => $data->close_id,
+            "short_id" => $data->short_id,
             "email" => $data->email,
             "name" => $data->name,
             "tel_no" => $data->tel_no,
@@ -76,5 +84,11 @@ class UserController extends Controller
         $password .= "123456789";
         return $password;
     }
+    // public function editsubAccount($id)
+    // {
+    //     dd($id);
+    //     $subaccount = User::find($id);
 
+    //     return view('sub-account.edit-sub-account', compact('subaccount'));
+    // }
 }

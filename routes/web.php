@@ -40,6 +40,8 @@ Route::get('/book/warehouse/{id}/edit', 'AddressBookController\AddressBookContro
 /* Sub Account Controller */
 Route::get('/sub-account', 'UserController@showSubAccount')->name('subacc');
 Route::get('/sub-account/create', 'UserController@addSubAccount');
+Route::get('/sub-account/{id}/detail', 'UserController@detailsubAccount');
+// Route::get('/sub-account/{id}/edit', 'UserController@editsubAccount');
 
 /* Search Controller */
 Route::get('/search', 'SearchController\SearchController@search');
@@ -90,4 +92,5 @@ Route::get('/check-order', function () {
 Route::get('/affect-cost', function () {
     return view('affect-cost.affect-cost');
 });
+
 

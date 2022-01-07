@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password',100)->nullable();
             $table->string('email',50)->unique()->nullable();
             $table->string('close_id',50)->nullable();
+            $table->string('short_id',5)->nullable();
             $table->string('tel_no',20)->nullable();
             $table->decimal('discount',3,0)->nullable();
             $table->decimal('cod',3,0)->nullable();

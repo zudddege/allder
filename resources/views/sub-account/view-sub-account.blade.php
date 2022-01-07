@@ -333,6 +333,7 @@
                                                     <input type="checkbox" class="main-check">
                                                 </th>
                                                 <th>รหัสผู้ใช้งาน</th>
+                                                <th>ชื่อย่อ</th>
                                                 <th>ID</th>
                                                 <th>อีเมล</th>
                                                 <th>ชื่อผู้ใช้งาน / ชื่อธุรกิจ</th>
@@ -349,7 +350,8 @@
                                                 <td>
                                                     <input type="checkbox" class="sub-check">
                                                 </td>
-                                                <td>{{$account->close_id}}</td>
+                                                <td><u><a href="{{url('/sub-account/'.$account->id.'/detail')}}">{{$account->close_id}}</a></u></td>
+                                                <td>{{$account->short_id}}</td>
                                                 <td>{{$account->username}}</td>
                                                 <td>{{$account->email}}</td>
                                                 <td>{{$account->name}}</td>
