@@ -1,3 +1,7 @@
+<?php
+$fullcalendar_path = "assets/packages/";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,12 +30,35 @@
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
+    <link href='<?=$fullcalendar_path?>/core/main.css' rel='stylesheet' />
+    <link href='<?=$fullcalendar_path?>/daygrid/main.css' rel='stylesheet' />
+
+    <script src='<?=$fullcalendar_path?>/core/main.js'></script>
+    <script src='<?=$fullcalendar_path?>/daygrid/main.js'></script>
+    <!--   ส่วนที่เพิ่มเข้ามาใหม่-->
+    <link href='<?=$fullcalendar_path?>/timegrid/main.css' rel='stylesheet' />
+    <link href='<?=$fullcalendar_path?>/list/main.css' rel='stylesheet' />
+
+    <!--   ส่วนที่เพิ่มเข้ามาใหม่-->
+    <script src='<?=$fullcalendar_path?>/core/locales/th.js'></script>
+    <script src='<?=$fullcalendar_path?>/timegrid/main.js'></script>
+    <script src='<?=$fullcalendar_path?>/interaction/main.js'></script>
+    <script src='<?=$fullcalendar_path?>/list/main.js'></script>
+
+
+
     <style>
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
         }
 
+    </style>
+
+    <style type="text/css">
+        #calendar{
+            width: 90%;margin: auto;
+        }
     </style>
 
 </head>
@@ -50,7 +77,7 @@
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -69,7 +96,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/affect-cost')}}"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
+                        <a class="side-menu__item is-expanded" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
@@ -209,72 +236,7 @@
                                 </div>
                             </form>
                             <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                            <table  class="table table-bordered vh-100">
-                                <thead>
-
-                                      <tr class="text-center" id="weekHeader">
-                                        <th class="headerDay">Sun</th>
-                                        <th class="headerDay">Mon</th>
-                                        <th class="headerDay">Tues</th>
-                                        <th class="headerDay">Wed</th>
-                                        <th class="headerDay">Thur</th>
-                                        <th class="headerDay">Fri</th>
-                                        <th class="headerDay">Sat</th>
-                                      </tr>
-
-                                </thead>
-                                <tbody>
-                                      <tr>
-                                        <td class="day">1</td>
-                                        <td class="day">2</td>
-                                        <td class="day">3</td>
-                                        <td class="day">4</td>
-                                        <td class="day">5</td>
-                                        <td class="day">6</td>
-                                        <td class="day">7</td>
-                                      </tr>
-
-                                      <tr>
-                                        <td class="day">8</td>
-                                        <td class="day">9</td>
-                                        <td class="day">10</td>
-                                        <td class="day">11</td>
-                                        <td class="day">12</td>
-                                        <td class="day">13</td>
-                                        <td class="day">14</td>
-                                      </tr>
-
-                                      <tr>
-                                        <td class="day">15</td>
-                                        <td class="day">16</td>
-                                        <td class="day">17</td>
-                                        <td class="day">18</td>
-                                        <td class="day">19</td>
-                                        <td class="day">20</td>
-                                        <td class="day">21</td>
-                                      </tr>
-
-                                      <tr>
-                                        <td class="day">22</td>
-                                        <td class="day">23</td>
-                                        <td class="day">24</td>
-                                        <td class="day">25</td>
-                                        <td class="day">26</td>
-                                        <td class="day">27</td>
-                                        <td class="day">28</td>
-                                      </tr>
-
-                                      <tr>
-                                        <td class="day">29</td>
-                                        <td class="day">30</td>
-                                        <td class="day">31</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
-                                </tbody>
-                              </table>
+                            <div id='calendar'></div>
                         </div>
                     </div>
                 </div>
@@ -311,6 +273,42 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+
+    <script  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+        crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+        // กำหนด element ที่จะแสดงปฏิทิน
+        var calendarEl = $("#calendar")[0];
+
+        // กำหนดการตั้งค่า
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'interaction','dayGrid', 'timeGrid', 'list' ], // plugin ที่เราจะใช้งาน
+        defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        },
+        eventLimit: true, // allow "more" link when too many events
+        locale: 'th',    // กำหนดให้แสดงภาษาไทย
+        firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
+        showNonCurrentDates: false, // แสดงที่ของเดือนอื่นหรือไม่
+        eventTimeFormat: { // รูปแบบการแสดงของเวลา เช่น '14:30'
+            hour: '2-digit',
+            minute: '2-digit',
+            meridiem: false
+        }
+        });
+
+        // แสดงปฏิทิน
+        calendar.render();
+
+        });
+    </script>
 
 </body>
 

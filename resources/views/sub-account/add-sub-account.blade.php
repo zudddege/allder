@@ -335,7 +335,7 @@
                                 </div>
 
                                 <div class="jumps-prevent" style="padding-top: 130px;"></div>
-                                <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-center my-2">
                                     <input class="btn btn-outline-danger mx-1" style="width: 125px;" type="reset" value="ยกเลิก">
                                     <input class="btn btn-primary mx-1" style="width: 125px;" type="submit" value="เพิ่มผู้ใช้งาน">
                                 </div>
