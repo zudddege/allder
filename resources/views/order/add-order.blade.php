@@ -366,7 +366,7 @@
                                         </p>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" class="mt-1" name="is_return_insurance" value="1">
+                                        <input type="checkbox" class="mt-1" name="is_return_insurance" value="1" id="insurance-return">
                                         <p class="px-1">ประกันพัสดุดีดกลับ<br>
                                             <a class="text-muted">หากพัสดุถูกดีดกลับ
                                                 จะไม่คิดค่าขนส่งดีดกลับ<br>ฉันได้อ่านและยอมรับข้อกำหนดใน <br>
@@ -375,7 +375,7 @@
                                         </p>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" class="mt-1" name="is_protect_insurance" value="1">
+                                        <input type="checkbox" class="mt-1" name="is_protect_insurance" value="1" id="insurance-protection">
                                         <p class="px-1">ประกันคุ้มครองพัสดุ</p>
                                     </div>
                                     <div class="d-flex">
@@ -389,7 +389,7 @@
                                         </p>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" class="mt-1" name="is_damage_insurance" value="1">
+                                        <input type="checkbox" class="mt-1" name="is_damage_insurance" value="1" id="insurance-damaged">
                                         <p class="px-1">ประกันบรรจุภัณฑ์ภายนอกเสียหาย<br>
                                             <a class="text-muted">เมื่อบรรจุภัณฑ์ภายนอกเสียหายจะได้รับค่าชดเชย
                                                 <br>และเคลมเต็ม จำนวนเงินรับประกันที่บริษัทกำหนด<br>
@@ -492,6 +492,81 @@
         </div>
     </div>
 
+    {{-- modal ประกันพัสดุตีกลับ --}}
+    <div class="modal fade" id="Modal-return" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content px-4 py-4">
+                <h5>กรุณากรอกข้อมูลบริษัทผู้รับผลประโยชน์</h5>
+                <div class="modal-body">
+                    <p style="font-size: 12px; color: red;">หมายเหตุ: ข้อมูลผู้รับผลประโยชน์จะต้องสอดคล้องกับข้อมูลบัญชี Flash ข้อมูลนี้จะเป็นข้อมูลผู้รับผลประโยชน์ประกันหลังจากส่งข้อมูลแล้วไม่สามารถแก้ไขได้</p>
+                    <div class="my-1">
+                        <span>ชื่อบริษัท</span>
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="my-2">
+                        <span>เลขประจำตัวผู้เสียภาษี</span>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="close-return">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary">ยืนยัน</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal ประกันพัสดุตีกลับ --}}
+
+    {{-- modal ประกันพัสดุตีกลับ --}}
+    <div class="modal fade" id="Modal-protection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content px-4 py-4">
+                <h5>กรุณากรอกข้อมูลบริษัทผู้รับผลประโยชน์</h5>
+                <div class="modal-body">
+                    <p style="font-size: 12px; color: red;">หมายเหตุ: ข้อมูลผู้รับผลประโยชน์จะต้องสอดคล้องกับข้อมูลบัญชี Flash ข้อมูลนี้จะเป็นข้อมูลผู้รับผลประโยชน์ประกันหลังจากส่งข้อมูลแล้วไม่สามารถแก้ไขได้</p>
+                    <div class="my-1">
+                        <span>ชื่อบริษัท</span>
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="my-2">
+                        <span>เลขประจำตัวผู้เสียภาษี</span>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="close-protection">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary">ยืนยัน</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal ประกันพัสดุตีกลับ --}}
+
+    {{-- modal ประกันพัสดุตีกลับ --}}
+    <div class="modal fade" id="Modal-damaged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content px-4 py-4">
+                <h5>กรุณากรอกข้อมูลบริษัทผู้รับผลประโยชน์</h5>
+                <div class="modal-body">
+                    <p style="font-size: 12px; color: red;">หมายเหตุ: ข้อมูลผู้รับผลประโยชน์จะต้องสอดคล้องกับข้อมูลบัญชี Flash ข้อมูลนี้จะเป็นข้อมูลผู้รับผลประโยชน์ประกันหลังจากส่งข้อมูลแล้วไม่สามารถแก้ไขได้</p>
+                    <div class="my-1">
+                        <span>ชื่อบริษัท</span>
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="my-2">
+                        <span>เลขประจำตัวผู้เสียภาษี</span>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="close-damaged">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary">ยืนยัน</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal ประกันพัสดุตีกลับ --}}
+
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
@@ -529,6 +604,54 @@
     </script>
 
     <script>
+
+        // modal ประกัน
+        $("#Modal-return").modal({
+            show: false,
+            backdrop: 'static'
+        });
+
+        $('input[id="insurance-return"]').on('change', function(e){
+            if(e.target.checked){
+                $('#Modal-return').modal();
+            }
+        });
+
+        $('#close-return').click(function () {
+            $('#insurance-return').prop('checked', false);
+        });
+
+        $("#Modal-protection").modal({
+            show: false,
+            backdrop: 'static'
+        });
+
+        $('input[id="insurance-protection"]').on('change', function(e){
+            if(e.target.checked){
+                $('#Modal-protection').modal();
+            }
+        });
+
+        $('#close-protection').click(function () {
+            $('#insurance-protection').prop('checked', false);
+        });
+
+        $("#Modal-damaged").modal({
+            show: false,
+            backdrop: 'static'
+        });
+
+        $('input[id="insurance-damaged"]').on('change', function(e){
+            if(e.target.checked){
+                $('#Modal-damaged').modal();
+            }
+        });
+
+        $('#close-damaged').click(function () {
+            $('#insurance-damaged').prop('checked', false);
+        });
+        // modal ประกัน
+
         $.Thailand.setup({
             autocomplete_size: 10,
         });
