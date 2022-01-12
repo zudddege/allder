@@ -46,7 +46,7 @@
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -58,7 +58,7 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/check-order')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">

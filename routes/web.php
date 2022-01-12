@@ -90,4 +90,3 @@ Route::get('/check-order', function () {
 Route::get('/affect-cost', function () {
     return view('affect-cost.affect-cost');
 });
-

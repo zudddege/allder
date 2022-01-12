@@ -45,6 +45,44 @@ $fullcalendar_path = "assets/packages/";
     <script src='<?=$fullcalendar_path?>/interaction/main.js'></script>
     <script src='<?=$fullcalendar_path?>/list/main.js'></script>
 
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+        });
+    </script>
+
+    <style>
+        .loader {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .loader > img {
+        width: 100px;
+        }
+
+        .loader.hidden {
+        animation: fadeOut 0.1s;
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+        }
+    </style>
+
 
 
     <style>
@@ -65,6 +103,9 @@ $fullcalendar_path = "assets/packages/";
 
 <body class="main-body app sidebar-mini">
 
+    <div class="loader">
+        <img src="https://boychawin.com/irms/images/VAyR.gif" alt="Loading..." />
+    </div>
 
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
@@ -216,27 +257,133 @@ $fullcalendar_path = "assets/packages/";
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-header" style="background-color: white;">
-                                <ul class="nav main-nav-line">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/cod_table')}}">เวลาการรับเงินค่า COD</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">รายละเอียด COD งานส่งสำเร็จ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">ยอดเงินควรรับ</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                            <form action="#" method="" id="">
-                                <div class="px-5">
-                                    <label for="startDate">เลือกเดือนที่แสดง</label>
-                                    <input type="month" class="mx-2">
+                                <nav>
+                                    <div class="nav main-nav-line" id="nav-tab" role="tablist">
+                                      <a class="nav-item nav-link active" id="nav-cod-table-tab" data-toggle="tab" href="#nav-cod-table" role="tab" aria-controls="nav-cod-table" aria-selected="true">เวลาการรับเงินค่า COD</a>
+                                      <a class="nav-item nav-link" id="nav-cod-detail-tab" data-toggle="tab" href="#nav-cod-detail" role="tab" aria-controls="nav-cod-detail" aria-selected="false">รายละเอียด COD งานส่งสำเร็จ</a>
+                                      <a class="nav-item nav-link" id="nav-cod-get-tab" data-toggle="tab" href="#nav-cod-get" role="tab" aria-controls="nav-cod-get" aria-selected="false">ยอดเงินควรรับ</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    {{-- ปฏิทิน COD --}}
+                                    <div class="tab-pane fade show active" id="nav-cod-table" role="tabpanel" aria-labelledby="nav-cod-table-tab">
+                                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        <form action="#" method="" id="">
+                                            <div class="d-flex px-5">
+                                                <label for="startDate" class="mt-2">เลือกเดือนที่แสดง</label>
+                                                <input type="month" class="form-control mx-2" style="width: 200px;">
+                                            </div>
+                                        </form>
+                                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        <div id='calendar'></div>
+                                    </div>
+                                    {{-- end ปฏิทิน COD --}}
+                                    {{-- รายละเอียด COD ส่งสำเร็จ --}}
+                                    <div class="tab-pane fade" id="nav-cod-detail" role="tabpanel" aria-labelledby="nav-cod-detail-tab">
+                                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        <a class="btn btn-link" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                            </svg> <u>ดาวน์โหลด (Excel)</u>
+                                        </a>
+                                        <div class="row px-2 my-3">
+                                            <div class="col-4">
+                                                <div class="mb-1 ">วันที่ส่งพัสดุ</div>
+                                                <div>
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-1">เลขพัสดุ</div>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-1">ID บุ๊คงาน</div>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="table table-striped position-relative my-3" id="my-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ชื่อลูกค้า</th>
+                                                    <th>ID บุ๊คงาน</th>
+                                                    <th>วันที่ส่งพัสดุ</th>
+                                                    <th>เลขพัสดุ</th>
+                                                    <th>ค่าสินค้าที่เรียกเก็บ COD</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{-- end รายละเอียด COD ส่งสำเร็จ --}}
+                                    {{-- ยอดเงินควรรับ --}}
+                                    <div class="tab-pane fade" id="nav-cod-get" role="tabpanel" aria-labelledby="nav-cod-get-tab">
+                                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        <a class="btn btn-link" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                            </svg> <u>ดาวน์โหลด (Excel)</u>
+                                        </a>
+                                        <div class="row px-2 my-3">
+                                            <div class="col-4">
+                                                <div class="mb-1 ">วันที่ส่งพัสดุ</div>
+                                                <div>
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="mb-1">วันที่ชำระ</div>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-1">สถานะชำระเงิน</div>
+                                                <div class="">
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="table table-striped position-relative my-3" id="my-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ชื่อลูกค้า</th>
+                                                    <th>วันที่ส่งพัสดุ</th>
+                                                    <th>จำนวนพัสดุ</th>
+                                                    <th>ค่าสินค้าที่เรียกเก็บ COD</th>
+                                                    <th>สถานะชำระเงิน</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{-- end ยอดเงินควรรับ --}}
                                 </div>
-                            </form>
-                            <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                            <div id='calendar'></div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -50,7 +50,7 @@
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -65,7 +65,7 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/affect-cost')}}"><span class="side-menu__label">กระทบค่าขนส่ง</span></a>
                     </li>
                     <li class="slide">
@@ -186,7 +186,214 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <nav>
+                                    <div class="nav main-nav-line" id="nav-tab" role="tablist">
+                                      <a class="nav-item nav-link active" id="nav-today-tab" data-toggle="tab" href="#nav-today" role="tab" aria-controls="nav-today" aria-selected="true">ข้อมูลวันนี้</a>
+                                      <a class="nav-item nav-link" id="nav-lastday-tab" data-toggle="tab" href="#nav-lastday" role="tab" aria-controls="nav-lastday" aria-selected="false">ข้อมูลวันที่ผ่านมา</a>
+                                      <a class="nav-item nav-link" id="nav-paid-tab" data-toggle="tab" href="#nav-paid" role="tab" aria-controls="nav-paid" aria-selected="false">บัญชีที่ควรชำระ</a>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="nav-tabContent">
+                                    {{-- nav ข้อมูลวันนี้ --}}
+                                    <div class="tab-pane fade show active" id="nav-today" role="tabpanel" aria-labelledby="nav-today-tab">
+                                        <div class="mx-2 my-2">
+                                            <h6>ทั้งหมด</h6>
+                                            <table class="table table-striped position-relative my-4" id="my-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>จำนวนพัสดุ</th>
+                                                        <th>ค่าขนส่งที่ควรได้รับ</th>
+                                                        <th>ส่วนลดโปรโมชั่น</th>
+                                                        <th>ค่าขนส่งจริง</th>
+                                                        <th>ค่าลาเบลงานรับ (รวมภาษี)</th>
+                                                        <th>ค่าบรรจุภัณฑ์</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav>
+                                                <div class="nav main-nav-line" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link active" id="nav-receive-tab" data-toggle="tab" href="#nav-receive" role="tab" aria-controls="nav-receive" aria-selected="true">วันที่เข้ารับพัสดุ</a>
+                                                    <a class="nav-item nav-link" id="nav-bounce-tab" data-toggle="tab" href="#nav-bounce" role="tab" aria-controls="nav-bounce" aria-selected="false">พัสดุที่ถูกตีกลับวันนี้</a>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                {{-- nav วันที่เข้ารับพัสดุ --}}
+                                                <div class="tab-pane fade show active" id="nav-receive" role="tabpanel" aria-labelledby="nav-receive-tab">
+                                                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                                                    <div>
+                                                        <table class="table table-striped position-relative my-4" id="my-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>จำนวนพัสดุ</th>
+                                                                    <th>ค่าขนส่งที่ควรได้รับ</th>
+                                                                    <th>ส่วนลดโปรโมชั่น</th>
+                                                                    <th>ค่าขนส่งจริง</th>
+                                                                    <th>ค่าลาเบลงานรับ (รวมภาษี)</th>
+                                                                    <th>ค่าบรรจุภัณฑ์</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                {{-- end nav วันที่เข้ารับพัสดุ --}}
+                                                {{-- nav พัสดุที่ถูกตีกลับวันนี้ --}}
+                                                <div class="tab-pane fade" id="nav-bounce" role="tabpanel" aria-labelledby="nav-bounce-tab">
+                                                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                                                    <div>
+                                                        <table class="table table-striped position-relative my-4" id="my-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>จำนวนพัสดุ</th>
+                                                                    <th>ค่าขนส่งที่ควรได้รับ</th>
+                                                                    <th>ส่วนลดโปรโมชั่น</th>
+                                                                    <th>ค่าขนส่งจริง</th>
+                                                                    <th>ค่าลาเบลงานรับ (รวมภาษี)</th>
+                                                                    <th>ค่าบรรจุภัณฑ์</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                {{-- end nav พัสดุที่ถูกตีกลับวันนี้ --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end nav ข้อมูลวันนี้ --}}
+                                    {{-- nav ข้อมูลวันที่ผ่านมา --}}
+                                    <div class="tab-pane fade" id="nav-lastday" role="tabpanel" aria-labelledby="nav-lastday-tab">
+                                        <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                                        <div class="d-flex">
+                                            <a class="btn btn-link" href="#">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                                </svg> <u>ดาวน์โหลด (Excel)</u>
+                                            </a>
+                                            <div class="mt-2 mx-2">วันที่ส่งพัสดุ</div>
+                                            <div>
+                                                <input class="form-control" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="mx-2 my-2">
+                                            <table class="table table-striped position-relative my-4" id="my-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>เวลาทำการ</th>
+                                                        <th>จำนวนพัสดุ</th>
+                                                        <th>ค่าขนส่งที่ควรได้รับ</th>
+                                                        <th>ส่วนลดโปรโมชั่น</th>
+                                                        <th>ค่าขนส่งจริง</th>
+                                                        <th>ค่าลาเบลงานรับ (รวมภาษี)</th>
+                                                        <th>ค่าบรรจุภัณฑ์</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- end nav ข้อมูลวันที่ผ่านมา --}}
+                                    {{-- nav บัญชีที่ควรชำระ --}}
+                                    <div class="tab-pane fade" id="nav-paid" role="tabpanel" aria-labelledby="nav-paid-tab">
+                                        <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                                        <div class="row mx-2 mb-3">
+                                            <div class="col-2">
+                                                <div class="mb-1 ">สถานะชำระเงิน</div>
+                                                <div>
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-1 ">วันที่ทำรายการ</div>
+                                                <div>
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="mb-1 ">วันที่ชำระ</div>
+                                                <div>
+                                                    <input class="form-control" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mx-2 my-2">
+                                            <table class="table table-striped position-relative my-4" id="my-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>เวลาทำการ</th>
+                                                        <th>จำนวนพัสดุ</th>
+                                                        <th>ค่าขนส่งที่ควรได้รับ</th>
+                                                        <th>ส่วนลดโปรโมชั่น</th>
+                                                        <th>ค่าขนส่งจริง</th>
+                                                        <th>ค่าลาเบลงานรับ (รวมภาษี)</th>
+                                                        <th>ค่าบรรจุภัณฑ์</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- end nav บัญชีที่ควรชำระ --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {{-- end page --}}
         </div>
