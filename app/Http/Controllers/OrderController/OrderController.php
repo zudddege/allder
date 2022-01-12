@@ -255,7 +255,7 @@ class OrderController extends Controller {
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
-            'pno' => $trackingNo->tracking_no,
+            'pno' => $trackingNo,
             'expressCategory' => $request->is_express_transport == 1 ? "2" : "1",
             'srcName' => $request->send_name,
             'srcPhone' => $request->send_tel,
