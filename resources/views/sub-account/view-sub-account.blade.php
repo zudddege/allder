@@ -161,7 +161,7 @@
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -186,7 +186,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif

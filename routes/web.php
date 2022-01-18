@@ -95,10 +95,3 @@ Route::get('/check-order', function () {
 Route::get('/affect-cost', function () {
     return view('affect-cost.affect-cost');
 });
-
-// Affect-cost
-Route::get('/testcod', function () {
-    return view('testcod');
-});
-
-

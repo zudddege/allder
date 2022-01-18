@@ -64,13 +64,13 @@
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/courier')}}"><span class="side-menu__label">เรียกคูเรียร์รับพัสดุ</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/problem-order')}}"><span class="side-menu__label">ระหว่างจัดการพัสดุที่มีปัญหา</span></a>
                     </li>
                     <li class="slide">
@@ -201,80 +201,86 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-header" style="background-color: white;">
-                                <ul class="nav main-nav-line">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{url('/')}}">รอจัดการ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/')}}">จัดการแล้ว</a>
-                                    </li>
-                                </ul>
+                                <nav>
+                                    <div class="nav main-nav-line" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-wait-tab" data-toggle="tab" href="#nav-wait" role="tab" aria-controls="nav-wait" aria-selected="true">รอจัดการ</a>
+                                        <a class="nav-item nav-link" id="nav-gone-tab" data-toggle="tab" href="#nav-gone" role="tab" aria-controls="nav-gone" aria-selected="false">จัดการแล้ว</a>
+                                    </div>
+                                </nav>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 10px;"></div>
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <a class="btn btn-link" href="{{url('/export')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path
-                                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                        </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="jumps-prevent" style="padding-top: 10px;"></div>
-                            <form action="/search" method="get" id="testform">
-                                <div class="row px-4 mb-1">
+                                <div class="tab-content" id="nav-tabContent">
+                                    {{-- nav รอจัดการ --}}
+                                    <div class="tab-pane fade show active" id="nav-wait" role="tabpanel" aria-labelledby="nav-wait-tab">
+                                        <div class="d-flex">
+                                            <a class="btn btn-link" href="{{url('/export')}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                    <path
+                                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                                </svg> <u>ดาวน์โหลด (Excel)</u>
+                                            </a>
+                                        </div>
+                                        <div class="jumps-prevent" style="padding-top: 10px;"></div>
+                                        <form action="/search" method="get" id="testform">
+                                            <div class="row px-4 mb-1">
 
-                                    <div class="col-3">
-                                        <div class="mb-1">เหตุผลที่พัสดุมีปัญหา</div>
-                                        <div class="d-flex ">
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
+                                                <div class="col-3">
+                                                    <div class="mb-1">เหตุผลที่พัสดุมีปัญหา</div>
+                                                    <div class="d-flex ">
+                                                        <div class="">
+                                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col" style="margin-left: 10%">
+                                                    <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขพัสดุ</a></div>
+                                                    <div class="d-flex ">
+                                                        <div class="">
+                                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
+                                        </form>
+                                        <div class="px-2 ">
+                                            <table class="table table-striped position-relative" id="my-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class=""><input id='mainbox' type="checkbox"></th>
+                                                        <th class='subbox1'>กรุณาจัดการพัสดุก่อนเวลา</th>
+                                                        <th class='subbox2'>เลขพัสดุ</th>
+                                                        <th class='subbox3'>เหตุผลพัสดุมีปัญหา</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr class="td_detail_row">
+                                                        <td><input class='subbox' type="checkbox"></td>
+                                                        <td>111111111</td>
+                                                        <td>222222222</td>
+                                                        <td>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
+                                                        <td class="td_detail shadow"><a href="{{url('/')}}"
+                                                                class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-
-                                    <div class="col" style="margin-left: 10%">
-                                        <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขพัสดุ</a></div>
-                                        <div class="d-flex ">
-                                            <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    {{-- end nav รอจัดการ --}}
+                                    {{-- nav จัดการแล้ว --}}
+                                    <div class="tab-pane fade" id="nav-gone" role="tabpanel" aria-labelledby="nav-gone-tab">...</div>
+                                    {{-- end nav จัดการแล้ว --}}
                                 </div>
-                            </form>
-                            <div class="px-2 ">
-                                <table class="table table-striped position-relative" id="my-table">
-                                    <thead>
-                                        <tr>
-                                            <th class=""><input id='mainbox' type="checkbox"></th>
-                                            <th class='subbox1'>กรุณาจัดการพัสดุก่อนเวลา</th>
-                                            <th class='subbox2'>เลขพัสดุ</th>
-                                            <th class='subbox3'>เหตุผลพัสดุมีปัญหา</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr class="td_detail_row">
-                                            <td><input class='subbox' type="checkbox"></td>
-                                            <td>111111111</td>
-                                            <td>222222222</td>
-                                            <td>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
-                                            <td class="td_detail shadow"><a href="{{url('/')}}"
-                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
