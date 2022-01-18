@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,12 @@ Route::get('/book/warehouse/{id}/edit', 'AddressBookController\AddressBookContro
 Route::get('/sub-account', 'UserController@showSubAccount')->name('subacc');
 Route::get('/sub-account/create', 'UserController@addSubAccount');
 Route::get('/sub-account/{id}/detail', 'UserController@detailsubAccount');
-// Route::get('/sub-account/{id}/edit', 'UserController@editsubAccount');
+Route::get('/sub-account/{id}/edit', 'UserController@editsubAccount');
+Route::get('/searchsubacc', 'UserController@search');
 
 /* Search Controller */
 Route::get('/search', 'SearchController\SearchController@search');
+Route::get('/testcod', 'SearchController\SearchController@testcod');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

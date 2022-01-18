@@ -260,7 +260,7 @@
                             <div class="card card-body">
                                 <div class="d-flex">
                                     <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
-                                    <input class="form-control" type="text" value="{{$close_id}}" name="close_id" style="width: 20%; height: 75%;" readonly>
+                                    <input class="form-control" type="text" value="{{$close_id}}" name="close_id" style="width: 25%; height: 75%;" readonly>
                                     <p class="px-2 mt-2 ml-5">ชื่อย่อ</p>
                                     <input class="form-control mx-2" type="text" value="" name="short_id" style="width: 20%; height: 75%;" >
                                 </div>

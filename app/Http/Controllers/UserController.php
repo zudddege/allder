@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order\Order;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -84,11 +85,47 @@ class UserController extends Controller
         $password .= "123456789";
         return $password;
     }
-    // public function editsubAccount($id)
-    // {
-    //     dd($id);
-    //     $subaccount = User::find($id);
+    public function editsubAccount($id)
+    {
 
-    //     return view('sub-account.edit-sub-account', compact('subaccount'));
+        $subaccount = User::find($id);
+
+        return view('sub-account.edit-sub', compact('subaccount'));
+    }
+    public function modifySubaccount(Request $request,$id)
+    {
+// dd($id,$request);
+        User::find($id)->update([
+            "close_id" => $request->close_id,
+            "short_id" => $request->short_id,
+            "email" => $request->email,
+            "name" => $request->name,
+            "tel_no" => $request->tel_no,
+            "discount" => $request->discount,
+            "cod" => $request->cod,
+            'is_status_user' => $request->is_status_user ? 1 : 0,
+            "username" => $request->username,
+        ]);
+
+
+        return redirect('/sub-account');
+    }
+    // public function search(Request $request){
+    //     $search = $request->input('search');
+
+    //     $Users = User::query()
+    //         ->where('email', 'LIKE', "%{$search}%")
+    //         ->orWhere('name', 'LIKE', "%{$search}%")
+    //         ->orWhere('tel_no', 'LIKE', "%{$search}%")
+    //         ->get();
+
+    //         return view('sub-account.view-sub-account', compact('Users'));
     // }
+    public function turnoffuser(Request $request){
+        // dd($request->id);
+        $user=User::find($request->id);
+        $status=!($user->is_status_user);
+        $user->update(["is_status_user"=>$status]);
+        return $user->is_status_user;
+    }
 }
