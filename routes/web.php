@@ -20,6 +20,7 @@ Route::get('/order/create', 'OrderController\OrderController@addOrder');
 Route::get('/order/{id}/detail', 'OrderController\OrderController@detailOrder');
 Route::get('/order/{id}/edit', 'OrderController\OrderController@editOrder');
 Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
+Route::get('/event', 'OrderController\OrderController@event');
 
 /** Order Controller API **/
 Route::post('/api/order/create', 'OrderController\OrderController@createOrder');

@@ -1,7 +1,3 @@
-<?php
-$fullcalendar_path = "assets/packages/";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,20 +26,20 @@ $fullcalendar_path = "assets/packages/";
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
-    <link href='<?=$fullcalendar_path?>/core/main.css' rel='stylesheet' />
-    <link href='<?=$fullcalendar_path?>/daygrid/main.css' rel='stylesheet' />
+    <link href='{{asset("assets/packages/core/main.css")}}' rel='stylesheet' />
+    <link href='{{asset("assets/packages/daygrid/main.css")}}' rel='stylesheet' />
 
-    <script src='<?=$fullcalendar_path?>/core/main.js'></script>
-    <script src='<?=$fullcalendar_path?>/daygrid/main.js'></script>
+    <script src='{{asset("assets/packages/core/main.js")}}'></script>
+    <script src='{{asset("assets/packages/daygrid/main.js")}}'></script>
     <!--   ส่วนที่เพิ่มเข้ามาใหม่-->
-    <link href='<?=$fullcalendar_path?>/timegrid/main.css' rel='stylesheet' />
-    <link href='<?=$fullcalendar_path?>/list/main.css' rel='stylesheet' />
+    <link href='{{asset("assets/packages/timegrid/main.css")}}' rel='stylesheet' />
+    <link href='{{asset("assets/packages/list/main.css")}}' rel='stylesheet' />
 
     <!--   ส่วนที่เพิ่มเข้ามาใหม่-->
-    <script src='<?=$fullcalendar_path?>/core/locales/th.js'></script>
-    <script src='<?=$fullcalendar_path?>/timegrid/main.js'></script>
-    <script src='<?=$fullcalendar_path?>/interaction/main.js'></script>
-    <script src='<?=$fullcalendar_path?>/list/main.js'></script>
+    <script src='{{asset("assets/packages/core/locales/th.js")}}'></script>
+    <script src='{{asset("assets/packages/timegrid/main.js")}}'></script>
+    <script src='{{asset("assets/packages/interaction/main.js")}}'></script>
+    <script src='{{asset("assets/packages/list/main.js")}}'></script>
 
     <script>
         window.addEventListener("load", function() {
@@ -97,6 +93,9 @@ $fullcalendar_path = "assets/packages/";
         #calendar{
             width: 90%;margin: auto;
         }
+
+        #ui-datepicker-div { z-index: 9999; }
+
     </style>
 
 </head>
@@ -104,7 +103,7 @@ $fullcalendar_path = "assets/packages/";
 <body class="main-body app sidebar-mini">
 
     <div class="loader">
-        <img src="https://boychawin.com/irms/images/VAyR.gif" alt="Loading..." />
+        <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
     </div>
 
     <div class="page">
@@ -270,8 +269,9 @@ $fullcalendar_path = "assets/packages/";
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
                                         <form action="#" method="" id="">
                                             <div class="d-flex px-5">
-                                                <label for="startDate" class="mt-2">เลือกเดือนที่แสดง</label>
-                                                <input type="month" class="form-control mx-2" style="width: 200px;">
+                                                <label class="mt-2">เลือกเดือนที่แสดง</label>
+                                                <input type="month" class="form-control mx-2" style="width: 200px;" id="month">
+                                                <input type="submit" id="submit" value="submit"/>
                                             </div>
                                         </form>
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -426,6 +426,7 @@ $fullcalendar_path = "assets/packages/";
         crossorigin="anonymous">
     </script>
 
+
     <script type="text/javascript">
         $(function(){
         // กำหนด element ที่จะแสดงปฏิทิน
@@ -436,10 +437,16 @@ $fullcalendar_path = "assets/packages/";
         plugins: [ 'interaction','dayGrid', 'timeGrid', 'list' ], // plugin ที่เราจะใช้งาน
         defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
         header: {
-            left: 'prev,next today',
+            left: 'prev',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            right: 'today next '
         },
+        events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
+           url: '/event',
+           error: function() {
+
+           }
+       },
         eventLimit: true, // allow "more" link when too many events
         locale: 'th',    // กำหนดให้แสดงภาษาไทย
         firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
@@ -451,11 +458,27 @@ $fullcalendar_path = "assets/packages/";
         }
         });
 
+        $(".fc-right").append('<select class="select_month form-control"><option value="">Select Month</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mrch</option><option value="4">Aprl</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>');
+        $(".fc-left").append('<select class="select_year form-control"><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option></select>');
+
+        $(".select_month").on("change", function(event) {
+            $('#calendar').fullCalendar('changeView', 'month', this.value);
+            $('#calendar').fullCalendar('gotoDate', $(".select_year").val()+"-"+this.value+"-1");
+        });
+        $(".select_year").on("change", function(event) {
+            $('#calendar').fullCalendar('changeView', 'month', this.value);
+            $('#calendar').fullCalendar('gotoDate', this.value+"-"+$(".select_month").val()+"-1");
+        });
         // แสดงปฏิทิน
         calendar.render();
 
         });
+
+
+
     </script>
+
+
 
 </body>
 

@@ -324,56 +324,96 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach($orders as $order)
                                         <tr class="td_detail_row">
-                                            <td><input class='subbox' type="checkbox"></td>
-                                            <td class='subbox1'>
-                                                {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td class='subbox2'>{{$order->status}}</td>
-                                            <td class='subbox2'>
-                                                @if($order->status == "รอรับพัสดุ")
-                                                <span class="border border-primary rounded-10"
-                                                    style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
-                                                @elseif($order->status == "ระหว่างจัดส่ง")
-                                                <span class="border border-warning rounded-10"
-                                                    style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
-                                                @elseif($order->status == "เสร็จสิ้น")
-                                                <span class="border border-success rounded-10"
-                                                    style="padding: 5px 10px; color: #5cb85c;">{{$order->status}}</span>
-                                                @elseif($order->status == "ยกเลิก")
-                                                <span class="border border-danger rounded-10"
-                                                    style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
-                                                @endif
-                                            </td>
-                                            <td class='subbox3'>{{$order->order_no}}</td>
-                                            <td class='subbox4'>{{$order->tracking_no}}</td>
-                                            <td class='subbox5'>Allder Express</td>
-                                            <td class='subbox6'>{{$order->send_name}}<br>
-                                                <a class="text-muted">{{$order->send_detail}}</a>
-                                                <a class="text-muted">{{$order->send_district}}</a>
-                                                <a class="text-muted">{{$order->send_city}}</a>
-                                                <a class="text-muted">{{$order->send_province}}</a>
-                                                <a class="text-muted">{{$order->send_postal_code}}</a></td>
-                                            <td class='subbox7'>{{$order->send_tel}}</td>
-                                            <td class='subbox8'>{{$order->recv_name}}<br>
-                                                <a class="text-muted">{{$order->recv_detail}}</a>
-                                                <a class="text-muted">{{$order->recv_district}}</a>
-                                                <a class="text-muted">{{$order->recv_city}}</a>
-                                                <a class="text-muted">{{$order->recv_province}}</a>
-                                                <a class="text-muted">{{$order->recv_postal_code}}</a></td>
-                                            </td>
-                                            <td class='subbox9'>{{$order->recv_tel}}</td>
-                                            <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg /
-                                                {{$order->width_size}} x {{$order->length_size}} x
-                                                {{$order->height_size}} cm</td>
-                                            <td class='subbox11'>{{$order->cod}}</td>
-                                            <td class='subbox12'>{{$order->estimate_price}}</td>
-                                            <td class='subbox13'>{{$order->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/edit/'.$order->id)}}"
-                                                    class="btn btn-link"><u>ดูรายละเอียด</u></a>
-                                            </td>
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="60%;" height="100%;" alt=""> </td>
+                                            <td class="td_detail shadow"><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
-                                        @endforeach --}}
+                                        <tr class="td_detail_row">
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="td_detail_row">
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="td_detail_row">
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="td_detail_row">
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="td_detail_row">
+                                            <td></td>
+                                            <td>bbbbbbbbbbbbbbbbbbb</td>
+                                            <td>ccccccccccccccccccc</td>
+                                            <td>dddddddddddddddddd</td>
+                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <td>efrthdyjgfd</td>
+                                            <td>agrhtjyh</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td>aertyjukgjfdrthy</td>
+                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
+                                            <td></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -428,9 +468,9 @@
             }, {
                 "width": "100px"
             }, {
-                "width": "60px"
-            }, {
                 "width": "600px"
+            }, {
+                "width": "100px"
             }, {
                 "width": "120px"
             }, {
@@ -438,9 +478,9 @@
             }, {
                 "width": "120px"
             }, {
-                "width": "300px"
+                "width": "120px"
             }, {
-                "width": "150px"
+                "width": "200px"
             }, {
                 "width": "120px"
             }, ],
