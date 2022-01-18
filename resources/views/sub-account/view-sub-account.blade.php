@@ -321,10 +321,13 @@
                                     </a>
                                 </div>
                                 <div class="jumps-prevent" style="padding-bottom: 15px;"></div>
-                                <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
-                                <div class="d-flex px-4 mb-2">
-                                    <input class="form-control" type="text" value="" style="width: 300px;">
-                                </div>
+                                <form action="" method="GET">
+                                    <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">อีเมล, ชื่อผู้ใช้งาน / ชื่อธุรกิจ, เบอร์โทรศัพท์</a></div>
+                                        <div class="d-flex px-4 mb-2">
+                                            <input class="form-control" type="text" name="search" value="" style="width: 300px;"/>
+                                            <button type="submit">Search</button>
+                                        </div>
+                                </form>
                                 <div class="px-1">
                                     <table class="table table-striped position-relative" id="my-table">
                                         <thead>
@@ -358,7 +361,7 @@
                                                 <td>{{$account->tel_no}}</td>
                                                 <td>{{$account->discount}} %</td>
                                                 <td>{{$account->cod}} %</td>
-                                                <td><label class="switch"><input type="checkbox" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
+                                                <td><label class="switch" ><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif
                                             @endforeach
@@ -455,7 +458,18 @@
         })
 
     </script>
-
+    <script>
+        $('.switchstatus').on('click', function () {
+            var id = $(this).attr('id');
+            console.log(id);
+            $.ajax({
+                url: '/api/sub-account/turnoffuser',
+                data: {
+                    id: id
+                },
+            })
+        });
+    </script>
 </body>
 
 </html>
