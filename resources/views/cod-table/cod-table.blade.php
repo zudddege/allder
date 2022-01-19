@@ -79,8 +79,6 @@
         }
     </style>
 
-
-
     <style>
         .dropdown-menu {
             width: 350px !important;
@@ -93,8 +91,6 @@
         #calendar{
             width: 90%;margin: auto;
         }
-
-        #ui-datepicker-div { z-index: 9999; }
 
     </style>
 
@@ -271,7 +267,6 @@
                                             <div class="d-flex px-5">
                                                 <label class="mt-2">เลือกเดือนที่แสดง</label>
                                                 <input type="month" class="form-control mx-2" style="width: 200px;" id="month">
-                                                <input type="submit" id="submit" value="submit"/>
                                             </div>
                                         </form>
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -428,6 +423,7 @@
 
 
     <script type="text/javascript">
+
         $(function(){
         // กำหนด element ที่จะแสดงปฏิทิน
         var calendarEl = $("#calendar")[0];
@@ -446,7 +442,7 @@
            error: function() {
 
            }
-       },
+        },
         eventLimit: true, // allow "more" link when too many events
         locale: 'th',    // กำหนดให้แสดงภาษาไทย
         firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
@@ -457,24 +453,10 @@
             meridiem: false
         }
         });
-
-        $(".fc-right").append('<select class="select_month form-control"><option value="">Select Month</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mrch</option><option value="4">Aprl</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>');
-        $(".fc-left").append('<select class="select_year form-control"><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option></select>');
-
-        $(".select_month").on("change", function(event) {
-            $('#calendar').fullCalendar('changeView', 'month', this.value);
-            $('#calendar').fullCalendar('gotoDate', $(".select_year").val()+"-"+this.value+"-1");
-        });
-        $(".select_year").on("change", function(event) {
-            $('#calendar').fullCalendar('changeView', 'month', this.value);
-            $('#calendar').fullCalendar('gotoDate', this.value+"-"+$(".select_month").val()+"-1");
-        });
         // แสดงปฏิทิน
         calendar.render();
 
         });
-
-
 
     </script>
 

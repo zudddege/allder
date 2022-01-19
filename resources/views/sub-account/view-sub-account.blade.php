@@ -28,6 +28,44 @@
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+        });
+    </script>
+
+    <style>
+        .loader {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .loader > img {
+        width: 100px;
+        }
+
+        .loader.hidden {
+        animation: fadeOut 0.1s;
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+        }
+    </style>
+
     <style data-styles="">
         ion-icon {
             visibility: hidden
@@ -145,9 +183,36 @@
 
     </style>
 
+    <style>
+        div.pager {
+        text-align: center;
+        margin: 1em 0;
+        }
+
+        div.pager span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #2196F3;
+        color: #ffff;
+        margin-right: 0.5em;
+        }
+
+        div.pager span.active {
+        background: #BBE0FF;
+        }
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
+
+    <div class="loader">
+        <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
+    </div>
 
     <!-- Page -->
     <div class="page">
@@ -323,13 +388,12 @@
                                 <div class="jumps-prevent" style="padding-bottom: 15px;"></div>
                                 <form action="" method="GET">
                                     <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">อีเมล, ชื่อผู้ใช้งาน / ชื่อธุรกิจ, เบอร์โทรศัพท์</a></div>
-                                        <div class="d-flex px-4 mb-2">
-                                            <input class="form-control" type="text" name="search" value="" style="width: 300px;"/>
-                                            <button type="submit">Search</button>
+                                        <div class="search-container px-4 mb-2">
+                                            <input class="form-control" type="text" id="search" style="width: 300px;">
                                         </div>
                                 </form>
                                 <div class="px-1">
-                                    <table class="table table-striped position-relative" id="my-table">
+                                    <table class="table table-striped position-relative paginated" id="my-table">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -410,6 +474,81 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+
+    <script>
+        $('#search').on("keyup", function() {
+        $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function() {
+        var currentPage = 0;
+        var numPerPage = 7;
+        var $table = $(this);
+        var $pager = $('<div class="pager"></div>');
+        var $previous = $('<span class="previous"><<</spnan>');
+        var $next = $('<span class="next">>></spnan>');
+
+        $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+
+        $table.bind('repaginate', function() {
+            $table.find('tbody tr').hide();
+
+            $filteredRows = $table.find('tbody tr').filter(function(i, tr) {
+            return $('#search').val() != "" ? $(tr).find("td").get().map(function(td) {
+                return $(td).text();
+            }).filter(function(td){
+                return td.indexOf($('#search').val()) != -1;
+            }).length > 0 : true;
+            });
+
+            $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+            var numRows = $filteredRows.length;
+            var numPages = Math.ceil(numRows / numPerPage);
+
+            $pager.find('.page-number, .previous, .next').remove();
+            for (var page = 0; page < numPages; page++) {
+            var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                newPage: page
+            }, function(event) {
+                currentPage = event.data['newPage'];
+                $table.trigger('repaginate');
+            })
+            if(page == currentPage){
+                $newPage.addClass('clickable active');
+                }else{
+                $newPage.addClass('clickable');
+            }
+            $newPage.appendTo($pager)
+            }
+
+            $previous.insertBefore('span.page-number:first');
+            $next.insertAfter('span.page-number:last');
+
+            $next.click(function(e) {
+            $previous.addClass('clickable');
+            $pager.find('.active').next('.page-number.clickable').click();
+            });
+            $previous.click(function(e) {
+            $next.addClass('clickable');
+            $pager.find('.active').prev('.page-number.clickable').click();
+            });
+
+            $next.addClass('clickable');
+            $previous.addClass('clickable');
+
+            setTimeout(function() {
+            var $active = $pager.find('.page-number.active');
+            if ($active.next('.page-number.clickable').length === 0) {
+                $next.removeClass('clickable');
+            } else if ($active.prev('.page-number.clickable').length === 0) {
+                $previous.removeClass('clickable');
+            }
+            });
+        });
+        $table.trigger('repaginate');
+        });
+    </script>
 
     <script>
         $('#my-table').DataTable({

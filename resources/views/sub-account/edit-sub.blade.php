@@ -27,6 +27,44 @@
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
 
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+        });
+    </script>
+
+    <style>
+        .loader {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .loader > img {
+        width: 100px;
+        }
+
+        .loader.hidden {
+        animation: fadeOut 0.1s;
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+        }
+    </style>
+
     <style>
         .switch {
             position: relative;
@@ -98,6 +136,10 @@
 </head>
 
 <body class="main-body app sidebar-mini">
+
+    <div class="loader">
+        <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
+    </div>
 
     <!-- Page -->
     <div class="page">

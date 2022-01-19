@@ -27,6 +27,44 @@
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
 
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+        });
+    </script>
+
+    <style>
+        .loader {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .loader > img {
+        width: 100px;
+        }
+
+        .loader.hidden {
+        animation: fadeOut 0.1s;
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+        }
+    </style>
+
     <style>
         .table th:last-child,
         .table td:last-child {
@@ -73,6 +111,11 @@
 </head>
 
 <body class="main-body app sidebar-mini">
+
+    <div class="loader">
+        <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
+    </div>
+
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
@@ -681,15 +724,15 @@
                             </div>
                             <div class="container-fluid my-2">
                                 <div class="d-flex my-1">
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สินค้าพัสดุแตกหักง่าย</button>
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำเทปกาวมาด้วย" >นำเทปกาวมาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สินค้าพัสดุแตกหักง่าย" >สินค้าพัสดุแตกหักง่าย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ" >พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
                                 </div>
                                 <div class="d-flex my-1">
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำซองเอกสารมาด้วย</button>
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำบรรจุภัณฑ์มาด้วย</button>
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">โปรดติดต่อก่อนเข้ารับ</button>
-                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สถานที่เป็นตึก / อาคาร</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำซองเอกสารมาด้วย" >นำซองเอกสารมาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำบรรจุภัณฑ์มาด้วย" >นำบรรจุภัณฑ์มาด้วย</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="โปรดติดต่อก่อนเข้ารับ" >โปรดติดต่อก่อนเข้ารับ</button>
+                                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สถานที่เป็นตึก / อาคาร" >สถานที่เป็นตึก / อาคาร</button>
                                 </div>
                             </div>
                             <div class=" d-flex align-items-center my-2">
@@ -1359,7 +1402,7 @@
         });
 
         $('.hotkey-note-notify').on('click', function () {
-            var text = $(this).html();
+            var text = $(this).val();
             $('#notify_note_detail').append(text + "   ");
         });
 
