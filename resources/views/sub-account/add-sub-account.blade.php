@@ -8,6 +8,7 @@
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
     <title>Allder Express</title>
+    <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">

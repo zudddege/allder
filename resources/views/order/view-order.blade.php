@@ -80,7 +80,7 @@
             background-color: white;
         }
 
-        .dropdown-menu {
+        .dropdown-menu-right {
             width: 350px !important;
             margin-right: 50% !important;
         }
@@ -344,34 +344,39 @@
                                                         <div class="">
                                                             <input class="form-control" type="text" value="" style="width:325px;">
                                                         </div>
-                                                        <div class="dropdown ">
+                                                        <div class="dropdown closedropdownoutside">
                                                             <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
                                                                     <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                                 </svg> <u>ตัวเลือกการแสดงผล</u>
                                                             </button>
-                                                            <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="sizedrop">
-                                                                <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                            <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" style="width: 550px;">
+                                                                <h5 class='dropdown-header'>เลือกรายการเพื่อแสดงผล</h5>
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="d-flexd align-content-center mx-1">
-                                                                            <div class=""><input type="checkbox" id='box1' checked><span>เวลาที่ทำรายการ</span></input></div>
-                                                                            <div class=""><input type="checkbox" id='box2' checked>สถานะจัดส่ง</input></div>
-                                                                            <div class=""><input type="checkbox" id='box3' checked>เลขออเดอร์</input></div>
-                                                                            <div class=""><input type="checkbox" id='box4' checked>เลขพัสดุ</input></div>
-                                                                            <div class=""><input type="checkbox" id='box5' checked>แหล่งที่มา</input></div>
-                                                                            <div class=""><input type="checkbox" id='box6' checked>ผู้ส่ง</input></div>
-                                                                            <div class=""><input type="checkbox" id='box7' checked>เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box1' checked></input><label for='box1' style="height: 0px;">เวลาที่ทำรายการ</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box2' checked></input><label for='box2' style="height: 0px;">สถานะจัดส่ง</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box3' checked></input><label for='box3' style="height: 0px;">เลขออเดอร์</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box4' checked></input><label for='box4' style="height: 0px;">เลขพัสดุ</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box5' checked></input><label for='box5' style="height: 0px;">แหล่งที่มา</label></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
                                                                         <div class="d-flexd align-content-center mx-1">
-                                                                            <div class=""><input type="checkbox" id='box8' checked>ผู้รับ</input></div>
-                                                                            <div class=""><input type="checkbox" id='box9' checked>เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                            <div class=""><input type="checkbox" id='box10' checked>ประเภทสินค้า</input></div>
-                                                                            <div class=""><input type="checkbox" id='box11' checked>ยอดเก็บเงินปลายทาง</input></div>
-                                                                            <div class=""><input type="checkbox" id='box12' checked>ราคาโดยประมาณ</input></div>
-                                                                            <div class=""><input type="checkbox" id='box13' checked>หมายเหตุ</input></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box6' checked></input><label for='box6' style="height: 0px;">ผู้ส่ง</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box7' checked></input><label for='box7' style="height: 0px;">เบอร์โทรศัพท์ผู้ส่ง</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box8' checked></input><label for='box8' style="height: 0px;">ผู้รับ</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box9' checked></input><label for='box9' style="height: 0px;">เบอร์โทรศัพท์ผู้รับ</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box10' checked></input><label for='box10' style="height: 0px;">ประเภทสินค้า</label></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="d-flexd align-content-center mx-1">
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box11' checked></input><label for='box11' style="height: 0px;">ยอดเก็บเงินปลายทาง</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box12' checked></input><label for='box12' style="height: 0px;">ราคาโดยประมาณ</label></div>
+                                                                            <div><input class="dropsubbox" type="checkbox" id='box13' checked></input><label for='box13' style="height: 0px;">หมายเหตุ</label></div>
+                                                                            <div><input class="dropall" type="checkbox" id='box0' checked></input><label for='box0' style="height: 0px;">ทั้งหมด</label></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -520,34 +525,39 @@
                                                 </div>
                                             </div>
                                             <div class="col-2 pt-4">
-                                                <div class="dropdown ">
+                                                <div class="dropdown closedropdownoutside">
                                                     <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
                                                             <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                         </svg> <u>ตัวเลือกการแสดงผล</u>
                                                     </button>
-                                                    <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="sizedrop">
-                                                        <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                    <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" style="width: 550px;">
+                                                        <h5 class='dropdown-header'>เลือกรายการเพื่อแสดงผล</h5>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="d-flexd align-content-center mx-1">
-                                                                    <div class=""><input type="checkbox" id='box1' checked><span>เวลาที่ทำรายการ</span></input></div>
-                                                                    <div class=""><input type="checkbox" id='box2' checked>สถานะจัดส่ง</input></div>
-                                                                    <div class=""><input type="checkbox" id='box3' checked>เลขออเดอร์</input></div>
-                                                                    <div class=""><input type="checkbox" id='box4' checked>เลขพัสดุ</input></div>
-                                                                    <div class=""><input type="checkbox" id='box5' checked>แหล่งที่มา</input></div>
-                                                                    <div class=""><input type="checkbox" id='box6' checked>ผู้ส่ง</input></div>
-                                                                    <div class=""><input type="checkbox" id='box7' checked>เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box14' checked></input><label for='box14' style="height: 0px;">เวลาที่ทำรายการ</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box15' checked></input><label for='box15' style="height: 0px;">สถานะจัดส่ง</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box16' checked></input><label for='box16' style="height: 0px;">เลขออเดอร์</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box17' checked></input><label for='box17' style="height: 0px;">เลขพัสดุ</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box18' checked></input><label for='box18' style="height: 0px;">แหล่งที่มา</label></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="d-flexd align-content-center mx-1">
-                                                                    <div class=""><input type="checkbox" id='box8' checked>ผู้รับ</input></div>
-                                                                    <div class=""><input type="checkbox" id='box9' checked>เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                    <div class=""><input type="checkbox" id='box10' checked>ประเภทสินค้า</input></div>
-                                                                    <div class=""><input type="checkbox" id='box11' checked>ยอดเก็บเงินปลายทาง</input></div>
-                                                                    <div class=""><input type="checkbox" id='box12' checked>ราคาโดยประมาณ</input></div>
-                                                                    <div class=""><input type="checkbox" id='box13' checked>หมายเหตุ</input></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box19' checked></input><label for='box19' style="height: 0px;">ผู้ส่ง</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box20' checked></input><label for='box20' style="height: 0px;">เบอร์โทรศัพท์ผู้ส่ง</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box21' checked></input><label for='box21' style="height: 0px;">ผู้รับ</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box22' checked></input><label for='box22' style="height: 0px;">เบอร์โทรศัพท์ผู้รับ</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box23' checked></input><label for='box23' style="height: 0px;">ประเภทสินค้า</label></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="d-flexd align-content-center mx-1">
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box24' checked></input><label for='box24' style="height: 0px;">ยอดเก็บเงินปลายทาง</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box25' checked></input><label for='box25' style="height: 0px;">ราคาโดยประมาณ</label></div>
+                                                                    <div><input class="dropsubbox2" type="checkbox" id='box26' checked></input><label for='box26' style="height: 0px;">หมายเหตุ</label></div>
+                                                                    <div><input class="dropall2" type="checkbox" id='box00' checked></input><label for='box00' style="height: 0px;">ทั้งหมด</label></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -561,19 +571,19 @@
                                                 <thead>
                                                     <tr>
                                                         <th class=""><input id='mainbox' type="checkbox"></th>
-                                                        <th class='subbox1'>เวลาที่ทำรายการ</th>
-                                                        <th class='subbox2'>สถานะจัดส่ง</th>
-                                                        <th class='subbox3'>เลขออเดอร์</th>
-                                                        <th class='subbox4'>เลขพัสดุ</th>
-                                                        <th class='subbox5'>แหล่งที่มา</th>
-                                                        <th class='subbox6'>ผู้ส่ง</th>
-                                                        <th class='subbox7'>เบอร์โทรศัพท์ผู้ส่ง</th>
-                                                        <th class='subbox8'>ผู้รับ </th>
-                                                        <th class='subbox9'>เบอร์โทรศัพท์ผู้รับ</th>
-                                                        <th class='subbox10'>ประเภทสินค้า</th>
-                                                        <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
-                                                        <th class='subbox12'>ราคาโดยประมาณ</th>
-                                                        <th class='subbox13'>หมายเหตุ</th>
+                                                        <th class='subbox14'>เวลาที่ทำรายการ</th>
+                                                        <th class='subbox15'>สถานะจัดส่ง</th>
+                                                        <th class='subbox16'>เลขออเดอร์</th>
+                                                        <th class='subbox17'>เลขพัสดุ</th>
+                                                        <th class='subbox18'>แหล่งที่มา</th>
+                                                        <th class='subbox19'>ผู้ส่ง</th>
+                                                        <th class='subbox20'>เบอร์โทรศัพท์ผู้ส่ง</th>
+                                                        <th class='subbox21'>ผู้รับ </th>
+                                                        <th class='subbox22'>เบอร์โทรศัพท์ผู้รับ</th>
+                                                        <th class='subbox23'>ประเภทสินค้า</th>
+                                                        <th class='subbox24'>ยอดเก็บเงินปลายทาง</th>
+                                                        <th class='subbox25'>ราคาโดยประมาณ</th>
+                                                        <th class='subbox26'>หมายเหตุ</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -582,9 +592,9 @@
                                                     @if($order->status == "เสร็จสิ้น" || $order->status == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
-                                                        <td class='subbox1'>
+                                                        <td class='subbox14'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                                        <td class='subbox2'>
+                                                        <td class='subbox15'>
                                                             @if($order->status == "รอจัดสรร")
                                                             <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
                                                             @elseif($order->status == "ระหว่างจัดส่ง")
@@ -595,28 +605,28 @@
                                                             <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
                                                             @endif
                                                         </td>
-                                                        <td class='subbox3'>{{$order->order_no}}</td>
-                                                        <td class='subbox4'>{{$order->tracking_no}}</td>
-                                                        <td class='subbox5'>Allder Express</td>
-                                                        <td class='subbox6'>{{$order->send_name}}<br>
+                                                        <td class='subbox16'>{{$order->order_no}}</td>
+                                                        <td class='subbox17'>{{$order->tracking_no}}</td>
+                                                        <td class='subbox18'>Allder Express</td>
+                                                        <td class='subbox19'>{{$order->send_name}}<br>
                                                             <a class="text-muted">{{$order->send_detail}}</a>
                                                             <a class="text-muted">{{$order->send_district}}</a>
                                                             <a class="text-muted">{{$order->send_city}}</a>
                                                             <a class="text-muted">{{$order->send_province}}</a>
                                                             <a class="text-muted">{{$order->send_postal_code}}</a></td>
-                                                        <td class='subbox7'>{{$order->send_tel}}</td>
-                                                        <td class='subbox8'>{{$order->recv_name}}<br>
+                                                        <td class='subbox20'>{{$order->send_tel}}</td>
+                                                        <td class='subbox21'>{{$order->recv_name}}<br>
                                                             <a class="text-muted">{{$order->recv_detail}}</a>
                                                             <a class="text-muted">{{$order->recv_district}}</a>
                                                             <a class="text-muted">{{$order->recv_city}}</a>
                                                             <a class="text-muted">{{$order->recv_province}}</a>
                                                             <a class="text-muted">{{$order->recv_postal_code}}</a></td>
                                                         </td>
-                                                        <td class='subbox9'>{{$order->recv_tel}}</td>
-                                                        <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
-                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
-                                                        <td class='subbox13'>{{$order->note_detail}}</td>
+                                                        <td class='subbox22'>{{$order->recv_tel}}</td>
+                                                        <td class='subbox23'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
+                                                        <td class='subbox24'>{{$order->cod_rate}} ({{$order->cod}})</td>
+                                                        <td class='subbox25'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
+                                                        <td class='subbox26'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
                                                     </tr>
@@ -1257,6 +1267,74 @@
 
     </script>
     <script>
+        $(".dropall").click(function () {
+            if ($(this).prop("checked")) {
+                $('.dropsubbox').prop('checked', true)
+                $(".subbox1").show();
+                $(".subbox2").show();
+                $(".subbox3").show();
+                $(".subbox4").show();
+                $(".subbox5").show();
+                $(".subbox6").show();
+                $(".subbox7").show();
+                $(".subbox8").show();
+                $(".subbox9").show();
+                $(".subbox10").show();
+                $(".subbox11").show();
+                $(".subbox12").show();
+                $(".subbox13").show();
+            } else {
+                $('.dropsubbox').prop('checked', false)
+                $(".subbox1").hide();
+                $(".subbox2").hide();
+                $(".subbox3").hide();
+                $(".subbox4").hide();
+                $(".subbox5").hide();
+                $(".subbox6").hide();
+                $(".subbox7").hide();
+                $(".subbox8").hide();
+                $(".subbox9").hide();
+                $(".subbox10").hide();
+                $(".subbox11").hide();
+                $(".subbox12").hide();
+                $(".subbox13").hide();
+            }
+        });
+
+        $(".dropall2").click(function () {
+            if ($(this).prop("checked")) {
+                $('.dropsubbox2').prop('checked', true)
+                $(".subbox14").show();
+                $(".subbox15").show();
+                $(".subbox16").show();
+                $(".subbox17").show();
+                $(".subbox18").show();
+                $(".subbox19").show();
+                $(".subbox20").show();
+                $(".subbox21").show();
+                $(".subbox22").show();
+                $(".subbox23").show();
+                $(".subbox24").show();
+                $(".subbox25").show();
+                $(".subbox26").show();
+            } else {
+                $('.dropsubbox2').prop('checked', false)
+                $(".subbox14").hide();
+                $(".subbox15").hide();
+                $(".subbox16").hide();
+                $(".subbox17").hide();
+                $(".subbox18").hide();
+                $(".subbox19").hide();
+                $(".subbox20").hide();
+                $(".subbox21").hide();
+                $(".subbox22").hide();
+                $(".subbox23").hide();
+                $(".subbox24").hide();
+                $(".subbox25").hide();
+                $(".subbox26").hide();
+            }
+        });
+
         $("#box1").click(function () {
             if ($(this).prop("checked")) {
                 $(".subbox1").show();
@@ -1346,6 +1424,97 @@
                 $(".subbox13").show();
             } else {
                 $(".subbox13").hide();
+            }
+        });
+        $("#box14").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox14").show();
+            } else {
+                $(".subbox14").hide();
+            }
+        });
+        $("#box15").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox15").show();
+            } else {
+                $(".subbox15").hide();
+            }
+        });
+        $("#box16").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox16").show();
+            } else {
+                $(".subbox16").hide();
+            }
+        });
+        $("#box17").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox17").show();
+            } else {
+                $(".subbox17").hide();
+            }
+        });
+        $("#box18").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox18").show();
+            } else {
+                $(".subbox18").hide();
+            }
+        });
+        $("#box19").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox19").show();
+            } else {
+                $(".subbox19").hide();
+            }
+        });
+        $("#box20").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox20").show();
+            } else {
+                $(".subbox20").hide();
+            }
+        });
+        $("#box21").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox21").show();
+            } else {
+                $(".subbox21").hide();
+            }
+        });
+        $("#box22").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox22").show();
+            } else {
+                $(".subbox22").hide();
+            }
+        });
+        $("#box23").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox23").show();
+            } else {
+                $(".subbox23").hide();
+            }
+        });
+        $("#box24").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox24").show();
+            } else {
+                $(".subbox24").hide();
+            }
+        });
+        $("#box25").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox25").show();
+            } else {
+                $(".subbox25").hide();
+            }
+        });
+        $("#box26").click(function () {
+            if ($(this).prop("checked")) {
+                $(".subbox26").show();
+            } else {
+                $(".subbox26").hide();
             }
         });
 
@@ -1471,6 +1640,14 @@
             cb(start, end);
         });
 
+    </script>
+
+    <script>
+        $('.closedropdownoutside').on('hide.bs.dropdown', function (e) {
+            if (e.clickEvent) {
+            e.preventDefault();
+            }
+        });
     </script>
 </body>
 

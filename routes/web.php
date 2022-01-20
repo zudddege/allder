@@ -77,9 +77,13 @@ Route::get('/cod', function () {
     return view('cod-table.cod-table');
 });
 
+
 // ตาราง POD-table
 Route::get('/pod', function () {
     return view('pod-table.pod-table');
+});
+Route::get('/detail-pod', function () {
+    return view('pod-table.detail-pod');
 });
 
 // Problem-order

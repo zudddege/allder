@@ -8,6 +8,7 @@
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
     <title>Allder Express</title>
+    <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
@@ -154,7 +155,7 @@
             <div class="main-sidemenu is-expanded">
 
                 <ul class="side-menu open">
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
                     </li>
                     <li class="slide">
@@ -179,7 +180,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
@@ -348,13 +349,6 @@
                             <div class="card card-body">
                                 <div class="d-flex align-content-center">
                                     <p>การเข้าสู่ระบบ</p>
-                                    <div class="d-flex align-content-center" style="margin-left: 60%;">
-                                        <p class="px-1">สถานะ</p>
-                                        <label class="switch">
-                                            <input type="checkbox" name="is_status_user" value="{{ $subaccount->is_status_user}}" checked>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
                                 </div>
                                 <div class="">
                                     <p class="my-1">ID</p>

@@ -66,55 +66,6 @@
         }
     </style>
 
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-    <style data-styles="">
-        ion-icon {
-            visibility: hidden
-        }
-
-        .hydrated {
-            visibility: inherit
-        }
-
-    </style>
-
-
-
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-
-    </style>
-
     <style>
         .switch {
             position: relative;
@@ -172,38 +123,15 @@
             border-radius: 34px;
         }
 
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
         }
 
-        .slider.round:before {
-            border-radius: 50%;
-        }
-
-    </style>
-
-    <style>
-        div.pager {
-        text-align: center;
-        margin: 1em 0;
-        }
-
-        div.pager span {
-        display: inline-block;
-        width: 1.8em;
-        height: 1.8em;
-        line-height: 1.8;
-        text-align: center;
-        cursor: pointer;
-        background: #2196F3;
-        color: #ffff;
-        margin-right: 0.5em;
-        }
-
-        div.pager span.active {
-        background: #0036e7;
-        }
     </style>
 
 </head>
@@ -225,6 +153,7 @@
                 <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
+
                 <ul class="side-menu open">
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
@@ -247,11 +176,11 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/sub-account')}}"><span class="side-menu__label">จัดการ Sub-Account</span></a>
                     </li>
                     @endif
@@ -266,6 +195,7 @@
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">
+
                     <div class="d-flex">
                         <div>
                             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
@@ -273,7 +203,12 @@
                                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                             </div>
                         </div>
+                        <div>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#notify-courier-modal">เรียกพนักงานเข้ามารับพัสดุ</button>
+                            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#assign-courier-modal">ระบุพนักงานเข้ารับพัสดุ</button>
+                        </div>
                     </div>
+
                     {{-- dropdown profile --}}
                     <div>
                         <div class="nav nav-item  navbar-nav-right ml-auto">
@@ -353,12 +288,11 @@
 
             <!-- container -->
             <div class="container-fluid">
-
                 <!-- breadcrumb -->
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
-                        <div class="d-flex">
-                            <h5 class="content-title mb-0 my-auto">จัดการ Sub - Account</h5>
+                        <div class="d-flex px-2">
+                            <h5 class="content-title mb-0 my-auto">รายละเอียด POD</h5>
                         </div>
                     </div>
                 </div>
@@ -366,249 +300,140 @@
 
                 <!-- row opened -->
                 <div class="row row-sm">
-                    <div class="col-xl-12">
+                    <div class="col-sm-8">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <a href="{{url('/sub-account/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg> สร้างรายการ
-                                        </label></a>
-                                    <label class="btn btn-info mx-3" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" /></svg> นำเข้าข้อมูล
-                                    </label>
-                                    <a class="btn btn-link" type="button" href="{{url('/api/export/excel')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                        </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
+                                <div class="d-flex flex-row align-self-center">
+                                    <h6 class="px-2 mt-2">เลขออเดอร์</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-2 mt-2">เลขพัสดุ</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-2 mt-2">เวลาเข้ารับพัสดุ</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
                                 </div>
-                                <div class="jumps-prevent" style="padding-bottom: 15px;"></div>
-                                <form action="" method="GET">
-                                    <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">อีเมล, ชื่อผู้ใช้งาน / ชื่อธุรกิจ, เบอร์โทรศัพท์</a></div>
-                                        <div class="search-container px-4 mb-2">
-                                            <input class="form-control" type="text" id="search" style="width: 300px;">
+                                <br>
+                                <div class="row row-cols-12">
+                                    <div class="col-6 bd-r bd-2">
+                                        <div class="d-flex">
+                                            <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
                                         </div>
-                                </form>
-                                <div class="px-1">
-                                    <table class="table table-striped position-relative paginated" id="my-table">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <input type="checkbox" class="main-check">
-                                                </th>
-                                                <th>รหัสผู้ใช้งาน</th>
-                                                <th>ชื่อย่อ</th>
-                                                <th>ID</th>
-                                                <th>อีเมล</th>
-                                                <th>ชื่อผู้ใช้งาน / ชื่อธุรกิจ</th>
-                                                <th>เบอร์ติดต่อ</th>
-                                                <th>ส่วนลดที่ได้รับ</th>
-                                                <th>COD</th>
-                                                <th>สถานะ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($subaccount as $account)
-                                            @if ($account->is_admin === 0)
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="sub-check">
-                                                </td>
-                                                <td><u><a href="{{url('/sub-account/'.$account->id.'/detail')}}">{{$account->close_id}}</a></u></td>
-                                                <td>{{$account->short_id}}</td>
-                                                <td>{{$account->username}}</td>
-                                                <td>{{$account->email}}</td>
-                                                <td>{{$account->name}}</td>
-                                                <td>{{$account->tel_no}}</td>
-                                                <td>{{$account->discount}} %</td>
-                                                <td>{{$account->cod}} %</td>
-                                                <td><label class="switch" ><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
-                                            </tr>
-                                            @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex">
+                                            <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ชื่อผู้รับ</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jumps-prevent" style="padding-top: 20px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">ประเภทผู้เซ็นรับ</p>
+                                    <input class="form-control" type="text" value="" readonly>
+                                </div>
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">ชื่อผู้เซ็นรับ</p>
+                                    <input class="form-control" type="text" value="" readonly>
+                                </div>
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">เซ็นชื่อด้วยตัวบรรจง</p>
+                                    <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="100%;" height="100%;" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/div-->
                 </div>
                 <!-- /row -->
             </div>
             <!-- Container closed -->
         </div>
         <!-- main-content closed -->
-    </div>
-    <!-- End Page -->
 
-    <!-- Back-to-top -->
-    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
-    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/js/table-data.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
-    <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
-    <script src="{{asset('assets/js/sticky.js')}}"></script>
-    <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>
+        <!-- End Page -->
 
-    <script>
-        $('#search').on("keyup", function() {
-        $('table.paginated').trigger('repaginate');
-        })
+        <!-- Back-to-top -->
+        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+        <script src="{{asset('assets/js/table-data.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+        <script src="{{asset('assets/js/sticky.js')}}"></script>
+        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+        <script src="{{asset('assets/js/custom.js')}}"></script>
 
-        $('table.paginated').each(function() {
-        var currentPage = 0;
-        var numPerPage = 7;
-        var $table = $(this);
-        var $pager = $('<div class="pager"></div>');
-        var $previous = $('<span class="previous"><<</spnan>');
-        var $next = $('<span class="next">>></spnan>');
 
-        $pager.insertAfter($table).find('span.page-number:first').addClass('active');
-
-        $table.bind('repaginate', function() {
-            $table.find('tbody tr').hide();
-
-            $filteredRows = $table.find('tbody tr').filter(function(i, tr) {
-            return $('#search').val() != "" ? $(tr).find("td").get().map(function(td) {
-                return $(td).text();
-            }).filter(function(td){
-                return td.indexOf($('#search').val()) != -1;
-            }).length > 0 : true;
-            });
-
-            $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
-
-            var numRows = $filteredRows.length;
-            var numPages = Math.ceil(numRows / numPerPage);
-
-            $pager.find('.page-number, .previous, .next').remove();
-            for (var page = 0; page < numPages; page++) {
-            var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
-                newPage: page
-            }, function(event) {
-                currentPage = event.data['newPage'];
-                $table.trigger('repaginate');
-            })
-            if(page == currentPage){
-                $newPage.addClass('clickable active');
-                }else{
-                $newPage.addClass('clickable');
-            }
-            $newPage.appendTo($pager)
-            }
-
-            $previous.insertBefore('span.page-number:first');
-            $next.insertAfter('span.page-number:last');
-
-            $next.click(function(e) {
-            $previous.addClass('clickable');
-            $pager.find('.active').next('.page-number.clickable').click();
-            });
-            $previous.click(function(e) {
-            $next.addClass('clickable');
-            $pager.find('.active').prev('.page-number.clickable').click();
-            });
-
-            $next.addClass('clickable');
-            $previous.addClass('clickable');
-
-            setTimeout(function() {
-            var $active = $pager.find('.page-number.active');
-            if ($active.next('.page-number.clickable').length === 0) {
-                $next.removeClass('clickable');
-            } else if ($active.prev('.page-number.clickable').length === 0) {
-                $previous.removeClass('clickable');
-            }
-            });
-        });
-        $table.trigger('repaginate');
-        });
-    </script>
-
-    <script>
-        $('#my-table').DataTable({
-            scrollX: false,
-            language: {
-                emptyTable: "ไม่พบข้อมูล"
-            },
-            "columns": [{
-                "width": "2%"
-            }, {
-                "width": "10%"
-            }, {
-                "width": "10%"
-            }, {
-                "width": "22%"
-            }, {
-                "width": "22%"
-            }, {
-                "width": "10%"
-            }, {
-                "width": "10%"
-            }, {
-                "width": "8%"
-            }, {
-                "width": "5%"
-            }, ],
-            "ordering": false
-        });
-        $(".dataTables_length").css("display", "none");
-        $(".dataTables_filter").css("display", "none");
-
-        // $('.app-sidebar__toggle').click(function () {
-        //     setTimeout(function () {
-        //         table.columns.adjust().draw();
-        //     }, 230);
-        // });
-
-    </script>
-    <script>
-        $('.main-check').on("change", function (e) {
-            if (this.checked) {
-                $('.sub-check').prop('checked', true)
-            } else {
-                $('.sub-check').prop('checked', false)
-            }
-        })
-
-    </script>
-    <script>
-        $('.switchstatus').on('click', function () {
-            var id = $(this).attr('id');
-            console.log(id);
-            $.ajax({
-                url: '/api/sub-account/turnoffuser',
-                data: {
-                    id: id
-                },
-            })
-        });
-    </script>
 </body>
 
 </html>

@@ -98,7 +98,7 @@
     <div class="loader">
         <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
     </div>
-    
+
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
@@ -661,66 +661,5 @@
 
     </script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-    <script type="text/javascript">
-        $(function () {
-
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                }
-            });
-
-            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format(
-                    'DD/MM/YYYY'));
-            });
-
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                $(this).val('');
-            });
-
-        });
-        $(function () {
-            var start = moment().subtract(15, 'days');
-            var end = moment();
-
-            function cb(start, end) {
-                $('.daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                    'MMMM D, YYYY'));
-            }
-
-            $('.daterange').daterangepicker({
-                startDate: start,
-                endDate: end,
-                autoUpdateInput: true,
-                alwaysShowCalendars: true,
-                locale: {
-                    format: 'DD/MM/YYYY',
-                },
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment()
-                        .subtract(1, 'month').endOf('month')
-                    ]
-                }
-            }, cb);
-
-            $('.daterange').on('apply.daterangepicker', function (ev, picker) {
-                $('#testform').submit();
-            });
-            cb(start, end);
-        });
-
-    </script>
 </body>
-
 </html>
