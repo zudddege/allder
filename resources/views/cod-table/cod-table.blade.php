@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Allder Express</title>
     <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
@@ -25,6 +26,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <link href='{{asset("assets/packages/core/main.css")}}' rel='stylesheet' />
     <link href='{{asset("assets/packages/daygrid/main.css")}}' rel='stylesheet' />
@@ -42,41 +44,43 @@
     <script src='{{asset("assets/packages/list/main.js")}}'></script>
 
     <script>
-        window.addEventListener("load", function() {
+        window.addEventListener("load", function () {
             const loader = document.querySelector(".loader");
             loader.className += " hidden"; // class "loader hidden"
         });
+
     </script>
 
     <style>
         .loader {
-        position: fixed;
-        z-index: 99;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .loader > img {
-        width: 100px;
+        .loader>img {
+            width: 100px;
         }
 
         .loader.hidden {
-        animation: fadeOut 0.1s;
-        animation-fill-mode: forwards;
+            animation: fadeOut 0.1s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes fadeOut {
-        100% {
-            opacity: 0;
-            visibility: hidden;
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
-        }
+
     </style>
 
     <style>
@@ -85,11 +89,16 @@
             margin-right: 50% !important;
         }
 
+        body {
+            font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
+        }
+
     </style>
 
     <style type="text/css">
-        #calendar{
-            width: 90%;margin: auto;
+        #calendar {
+            width: 90%;
+            margin: auto;
         }
 
     </style>
@@ -106,10 +115,8 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png"
-                        class="main-logo" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png"
-                        class="logo-icon" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="#"><img src="assets/img/brand/allderExpress.png" class="main-logo" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="#"><img src="assets/img/brand/icon.png" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
                 <ul class="side-menu open">
@@ -192,8 +199,8 @@
                                                 <div>
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
-                                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
+                                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
+                                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
                                                         </svg>
                                                         <span class="mx-1">ส่วนลดที่ได้รับ</span>
                                                     </div>
@@ -206,7 +213,7 @@
                                                 <div>
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
                                                         </svg>
                                                         <span class="mx-1">COD</span>
                                                     </div>
@@ -254,9 +261,9 @@
                             <div class="card-header" style="background-color: white;">
                                 <nav>
                                     <div class="nav main-nav-line" id="nav-tab" role="tablist">
-                                      <a class="nav-item nav-link active" id="nav-cod-table-tab" data-toggle="tab" href="#nav-cod-table" role="tab" aria-controls="nav-cod-table" aria-selected="true">เวลาการรับเงินค่า COD</a>
-                                      <a class="nav-item nav-link" id="nav-cod-detail-tab" data-toggle="tab" href="#nav-cod-detail" role="tab" aria-controls="nav-cod-detail" aria-selected="false">รายละเอียด COD งานส่งสำเร็จ</a>
-                                      <a class="nav-item nav-link" id="nav-cod-get-tab" data-toggle="tab" href="#nav-cod-get" role="tab" aria-controls="nav-cod-get" aria-selected="false">ยอดเงินควรรับ</a>
+                                        <a class="nav-item nav-link active" id="nav-cod-table-tab" data-toggle="tab" href="#nav-cod-table" role="tab" aria-controls="nav-cod-table" aria-selected="true">เวลาการรับเงินค่า COD</a>
+                                        <a class="nav-item nav-link" id="nav-cod-detail-tab" data-toggle="tab" href="#nav-cod-detail" role="tab" aria-controls="nav-cod-detail" aria-selected="false">รายละเอียด COD งานส่งสำเร็จ</a>
+                                        <a class="nav-item nav-link" id="nav-cod-get-tab" data-toggle="tab" href="#nav-cod-get" role="tab" aria-controls="nav-cod-get" aria-selected="false">ยอดเงินควรรับ</a>
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
@@ -416,45 +423,42 @@
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
 
-    <script  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous">
     </script>
 
 
     <script type="text/javascript">
+        $(function () {
+            // กำหนด element ที่จะแสดงปฏิทิน
+            var calendarEl = $("#calendar")[0];
 
-        $(function(){
-        // กำหนด element ที่จะแสดงปฏิทิน
-        var calendarEl = $("#calendar")[0];
+            // กำหนดการตั้งค่า
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'], // plugin ที่เราจะใช้งาน
+                defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
+                header: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'today next '
+                },
+                events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
+                    url: '/event',
+                    error: function () {
 
-        // กำหนดการตั้งค่า
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: [ 'interaction','dayGrid', 'timeGrid', 'list' ], // plugin ที่เราจะใช้งาน
-        defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
-        header: {
-            left: 'prev',
-            center: 'title',
-            right: 'today next '
-        },
-        events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
-           url: '/event',
-           error: function() {
-
-           }
-        },
-        eventLimit: true, // allow "more" link when too many events
-        locale: 'th',    // กำหนดให้แสดงภาษาไทย
-        firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
-        showNonCurrentDates: false, // แสดงที่ของเดือนอื่นหรือไม่
-        eventTimeFormat: { // รูปแบบการแสดงของเวลา เช่น '14:30'
-            hour: '2-digit',
-            minute: '2-digit',
-            meridiem: false
-        }
-        });
-        // แสดงปฏิทิน
-        calendar.render();
+                    }
+                },
+                eventLimit: true, // allow "more" link when too many events
+                locale: 'th', // กำหนดให้แสดงภาษาไทย
+                firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
+                showNonCurrentDates: false, // แสดงที่ของเดือนอื่นหรือไม่
+                eventTimeFormat: { // รูปแบบการแสดงของเวลา เช่น '14:30'
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    meridiem: false
+                }
+            });
+            // แสดงปฏิทิน
+            calendar.render();
 
         });
 
