@@ -16,11 +16,10 @@ class CheckStatus
      */
     public function handle($request, Closure $next)
     {
-        $response = $next($request);
         if(Auth::check() && Auth::user()->is_status_user == 0){
             Auth::logout();
             return redirect('/login')->withErrors('Your Account Disabled !');
         }
-        return $response;
+        return $next($request);
     }
 }
