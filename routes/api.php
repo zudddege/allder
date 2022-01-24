@@ -51,3 +51,11 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('/sub-account/turnoffuser', 'UserController@turnoffuser');
     });
 });
+
+Route::middleware(['webhook'])->prefix('/webhooks')->group(function () {
+    Route::post('/service', 'WebhookController\ServiceController@webhookService');
+    Route::post('/status', 'WebhookController\StatusController@statusRequestVerify');
+    Route::post('/weight', 'WebhookController\WeightController@weightRequestVerify');
+    Route::post('/price', 'WebhookController\PriceController@priceRequestVerify');
+    Route::post('/courier', 'WebhookController\CourierController@courierRequestVerify');
+});
