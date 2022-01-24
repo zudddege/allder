@@ -2,12 +2,14 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\AddressBook\AddressBook;
+use App\Models\Courier\Courier;
+use App\Models\Order\Order;
+use App\Models\Warehouse\Warehouse;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Notifiable;
 
     /**
@@ -15,9 +17,26 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $with = [
+        'books',
+        'warehouses',
+        'couriers',
+        'orders',
+    ];
+
+    protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password','is_admin', 'is_status_user', 'username','close_id', 'tel_no',
-        'discount','cod','email_verified_at','token','short_id'
+        'is_admin',
+        'is_status',
+        'close_id',
+        'short_id',
+        'email',
+        'username',
+        'account_name',
+        'tel_no',
+        'discount_rate',
+        'cod_rate',
     ];
 
     /**
@@ -38,4 +57,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function books() {
+        return $this->hasMany(AddressBook::class);
+    }
+
+    public function warehouses() {
+        return $this->hasMany(Warehouse::class);
+    }
+
+    public function couriers() {
+        return $this->hasMany(Courier::class);
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }
