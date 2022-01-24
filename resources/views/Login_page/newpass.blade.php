@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Allder Express</title>
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -26,51 +25,55 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <script>
-        window.addEventListener("load", function() {
+        window.addEventListener("load", function () {
             const loader = document.querySelector(".loader");
             loader.className += " hidden"; // class "loader hidden"
         });
+
     </script>
 
     <style>
         .loader {
-        position: fixed;
-        z-index: 99;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .loader > img {
-        width: 100px;
+        .loader>img {
+            width: 100px;
         }
 
         .loader.hidden {
-        animation: fadeOut 0.1s;
-        animation-fill-mode: forwards;
+            animation: fadeOut 0.1s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes fadeOut {
-        100% {
-            opacity: 0;
-            visibility: hidden;
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
-        }
+
     </style>
 
     <style>
         body {
             background-image: url('/assets/img/login/bg-login.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
         }
 
     </style>
@@ -83,7 +86,7 @@
     <div class="loader">
         <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
     </div>
-    
+
     <!-- Page -->
     <div class="page">
         <div>
@@ -139,37 +142,37 @@
             </div>
         </div>
     </div>
-        <!-- End Page -->
+    <!-- End Page -->
 
-        <!-- Back-to-top -->
-        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
-        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
-        <script src="{{asset('assets/js/table-data.js')}}"></script>
-        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
-        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
-        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
-        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
-        <script src="{{asset('assets/js/sticky.js')}}"></script>
-        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
-        <script src="{{asset('assets/js/custom.js')}}"></script>
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+    <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('assets/js/table-data.js')}}"></script>
+    <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+    <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+    <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+    <script src="{{asset('assets/js/sticky.js')}}"></script>
+    <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 
 </body>
 

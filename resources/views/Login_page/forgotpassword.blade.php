@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -24,11 +25,18 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
+        }
+
+    </style>
 </head>
 
 <body>
     <h1>Forget Password Email</h1>
-    <form action="{{ route('reset.password.get', $token,$email) }}" >
+    <form action="{{ route('reset.password.get', $token,$email) }}">
         <input type="hidden" name="token" value="{{ $token }}">
         <input type="hidden" name="email" value="{{ $email }}">
         You can reset password from bellow link:

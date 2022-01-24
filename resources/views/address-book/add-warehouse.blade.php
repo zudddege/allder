@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Allder Express</title>
     <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
@@ -26,6 +27,7 @@
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <script>
         window.addEventListener("load", function() {
@@ -71,6 +73,10 @@
             margin-right: 50% !important;
         }
 
+        body{
+            font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
+        }
+
     </style>
 
 </head>
@@ -80,7 +86,7 @@
     <div class="loader">
         <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
     </div>
-    
+
     <div class="page">
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
