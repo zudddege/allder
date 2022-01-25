@@ -4,12 +4,12 @@ namespace App\Http\Controllers\CourierController;
 
 use App\Http\Controllers\Controller;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
-use App\Models\Notify\Notify;
+use App\Models\Courier\Courier;
 use Illuminate\Http\Request;
 
 class CourierController extends Controller {
     public function showCourier() {
-        $notifications = Notify::all();
+        $notifications = Courier::all();
 
         return view('courier.courier', compact('notifications'));
     }
@@ -40,11 +40,11 @@ class CourierController extends Controller {
             'remark' => $request->note_detail,
         ]);
 
-        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notify", $notify);
+        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/Courier", $notify);
         $response = json_decode($post, true);
 
         if ($response['message'] == "success") {
-            Notify::create([
+            Courier::create([
                 'pickup_id' => $response['data']['ticketPickupId'],
                 'warehouse_no' => $request->warehouse_no,
                 'warehouse_name' => $request->warehouse_name,
@@ -72,8 +72,8 @@ class CourierController extends Controller {
     }
 
     public function cancelNotification(Request $request) {
-        $pickupId = $request->id; /* Notify::find($request->id)->pickup_id; */
-        $url = "https://open-api.flashexpress.com/open/v1/notify/" . $pickupId . "/cancel";
+        $pickupId = $request->id; /* Courier::find($request->id)->pickup_id; */
+        $url = "https://open-api.flashexpress.com/open/v1/Courier/" . $pickupId . "/cancel";
 
         $cancel = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
