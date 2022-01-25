@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
     <title>Allder Express</title>
     <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
@@ -69,6 +71,66 @@
     </style>
 
     <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 17px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(13px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
@@ -88,7 +150,10 @@
         <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
     </div>
 
+    <!-- Page -->
     <div class="page">
+
+        <!-- main-sidebar -->
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll ps">
             <div class="main-sidebar-header active">
@@ -96,6 +161,7 @@
                 <a class="logo-icon mobile-logo icon-light active" href="#"><img src="{{asset('assets/img/brand/icon.png')}}" class="logo-icon" alt="logo"></a>
             </div>
             <div class="main-sidemenu is-expanded">
+
                 <ul class="side-menu open">
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/order')}}"><span class="side-menu__label">จัดการออเดอร์</span></a>
@@ -109,7 +175,7 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/check-order')}}"><span class="side-menu__label">ตรวจเช็คพัสดุ</span></a>
                     </li>
-                    <li class="slide is-expanded">
+                    <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/book')}}"><span class="side-menu__label">สมุดที่อยู่</span></a>
                     </li>
                     <li class="slide">
@@ -118,7 +184,7 @@
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/cod')}}"><span class="side-menu__label">เก็บเงินพัสดุปลายทาง</span></a>
                     </li>
-                    <li class="slide">
+                    <li class="slide is-expanded">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{url('/pod')}}"><span class="side-menu__label">ตารางรายการ POD</span></a>
                     </li>
                     @if (auth()->user()->is_admin==1)
@@ -129,12 +195,15 @@
                 </ul>
             </div>
         </aside>
+        <!-- main-sidebar -->
 
+        <!-- main-content -->
         <div class="main-content app-content">
 
             <!-- main-header -->
             <div class="main-header sticky side-header nav nav-item" style="margin-bottom: -63px;">
                 <div class="container-fluid">
+
                     <div class="d-flex">
                         <div>
                             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
@@ -147,6 +216,7 @@
                             <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#assign-courier-modal">ระบุพนักงานเข้ารับพัสดุ</button>
                         </div>
                     </div>
+
                     {{-- dropdown profile --}}
                     <div>
                         <div class="nav nav-item  navbar-nav-right ml-auto">
@@ -224,116 +294,154 @@
             </div>
             <!-- /main-header -->
 
+            <!-- container -->
             <div class="container-fluid">
+                <!-- breadcrumb -->
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
-                        <div class="d-flex">
-                            <h5 class="content-title mb-0 my-auto">สมุดที่อยู่</h5>
+                        <div class="d-flex px-2">
+                            <h5 class="content-title mb-0 my-auto">รายละเอียด POD</h5>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-5">
-                        {{-- card --}}
+                <!-- breadcrumb -->
+
+                <!-- row opened -->
+                <div class="row row-sm">
+                    <div class="col-sm-8">
                         <div class="card">
-                            <div class="px-4 py-4">
-                                <div class="d-flex align-items-center">
-                                    <span>รหัสคลังสินค้า</span>
-                                    <input class="form-control mx-2" type="text" style="width: 70%" value="{{$warehouse->warehouse_no}}" readonly>
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-self-center">
+                                    <h6 class="px-2 mt-2">เลขออเดอร์</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-2 mt-2">เลขพัสดุ</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-2 mt-2">เวลาเข้ารับพัสดุ</h6>
+                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
                                 </div>
-                                <div class="my-3">
-                                    <h5>ข้อมูลที่อยู่คลังสินค้า</h5>
-                                </div>
-                                <div class="my-2">
-                                    <span>ขื่อคลังสินค้า</span>
-                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_name}}" readonly>
-                                </div>
-                                <div class="my-2">
-                                    <span>ชื่อผู้ติดต่อ</span>
-                                    <input class="form-control" type="text" value="{{$warehouse->contact_name}}" readonly>
-                                </div>
-                                <div class="my-2">
-                                    <span>เบอร์โทรศัพท์</span>
-                                    <input class="form-control" type="text" value="{{$warehouse->warehouse_tel}}" readonly>
-                                </div>
-                                <div class="my-2">
-                                    <span class="mt-2 mb-1">ที่อยู่</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly>{{$warehouse->warehouse_detail}}</textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">ตำบล / แขวง</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="{{$warehouse->warehouse_district}}" readonly>
-                                            </div>
+                                <br>
+                                <div class="row row-cols-12">
+                                    <div class="col-6 bd-r bd-2">
+                                        <div class="d-flex">
+                                            <h5 class="px-2 mt-2"><b>ข้อมูลผู้ส่ง</b></h5>
                                         </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">จังหวัด</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="{{$warehouse->warehouse_province}}" readonly>
-                                            </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
+                                            <input class="form-control" type="text" value="" readonly>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">อำเภอ / เขต</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="{{$warehouse->warehouse_city}}" readonly>
-                                            </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
                                         </div>
-                                        <div class="my-2">
-                                            <span class="mt-2 mb-1">รหัสไปรษณีย์</span>
-                                            <div class="">
-                                                <input class="form-control" type="text" value="{{$warehouse->warehouse_postal_code}}" readonly>
-                                            </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text" value="" readonly>
                                         </div>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="d-flex">
+                                            <h5 class="px-2 mt-2"><b>ข้อมูลผู้รับ</b></h5>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ชื่อผู้รับ</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ที่อยู่</p>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">ตำบล / แขวง</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">อำเภอ / เขต</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">จังหวัด</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                        <div class="px-4">
+                                            <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
+                                            <input class="form-control" type="text" value="" readonly>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <a class="btn btn-primary my-2" id="submit-button" disabled="true" href="{{url('book/warehouse/'.$warehouse->id.'/edit')}}" style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M9.636 2.5a.5.5 0 0 0-.5-.5H2.5A1.5 1.5 0 0 0 1 3.5v10A1.5 1.5 0 0 0 2.5 15h10a1.5 1.5 0 0 0 1.5-1.5V6.864a.5.5 0 0 0-1 0V13.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
-                                            <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H6.707l8.147-8.146a.5.5 0 0 0-.708-.708L6 9.293V5.5a.5.5 0 0 0-1 0v5z" />
-                                        </svg> แก้ไข</a>
+                                <div class="jumps-prevent" style="padding-top: 20px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">ประเภทผู้เซ็นรับ</p>
+                                    <input class="form-control" type="text" value="" readonly>
+                                </div>
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">ชื่อผู้เซ็นรับ</p>
+                                    <input class="form-control" type="text" value="" readonly>
+                                </div>
+                                <div class="px-4">
+                                    <p class="mt-2 mb-1">เซ็นชื่อด้วยตัวบรรจง</p>
+                                    <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="100%;" height="100%;" alt="">
                                 </div>
                             </div>
                         </div>
-                        {{-- end card --}}
                     </div>
                 </div>
+                <!-- /row -->
             </div>
+            <!-- Container closed -->
         </div>
-    </div>
+        <!-- main-content closed -->
 
-    <!-- Back-to-top -->
-    <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
-    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
-    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/js/table-data.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-    <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
-    <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
-    <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
-    <script src="{{asset('assets/js/sticky.js')}}"></script>
-    <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>
+        <!-- End Page -->
+
+        <!-- Back-to-top -->
+        <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
+        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/datatables.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+        <script src="{{asset('assets/js/table-data.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+        <script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+        <script src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+        <script src="{{asset('assets/js/sticky.js')}}"></script>
+        <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+        <script src="{{asset('assets/js/custom.js')}}"></script>
+
+
 </body>
 
 </html>

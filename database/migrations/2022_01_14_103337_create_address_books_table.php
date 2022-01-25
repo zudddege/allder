@@ -4,17 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDimAddressBookTable extends Migration {
+class CreateAddressBooksTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create('dim_address_book', function (Blueprint $table) {
+        Schema::create('address_books', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->length(10)->nullable();
-            $table->string('book_no', 10)->nullable();
+            $table->foreignId('user_id')->constrained('users');
+            $table->boolean('is_main')->nullable();
+            $table->string('book_no', 10)->unique()->nullable();
             $table->string('book_name', 50)->nullable();
             $table->string('book_tel', 20)->nullable();
             $table->string('book_detail', 200)->nullable();
@@ -22,7 +23,6 @@ class CreateDimAddressBookTable extends Migration {
             $table->string('book_city', 50)->nullable();
             $table->string('book_province', 50)->nullable();
             $table->string('book_postal_code', 5)->nullable();
-            $table->boolean('is_main_book')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateDimAddressBookTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('dim_address_book');
+        Schema::dropIfExists('address_books');
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models\Notify;
+namespace App\Models\Courier;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Notify extends Model {
-    protected $table = "dim_notify";
+class Courier extends Model {
+    protected $table = 'couriers';
     protected $fillable = [
         'user_id',
         'pickup_id',
@@ -18,15 +19,21 @@ class Notify extends Model {
         'warehouse_city',
         'warehouse_province',
         'warehouse_postal_code',
-        'estimate_parcel_quantity',
         'parcel_quantity',
-        'status',
+        'status_code',
+        'status_text',
         'note_detail',
-        'staff_id',
-        'staff_name',
-        'staff_tel',
+        'operator_id',
+        'operator_name',
+        'operator_tel',
+        'operation_branch',
         'timeout_text',
         'ticket_message',
-        'notice',
+        'cancel_operator',
+        'cancel_reason',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

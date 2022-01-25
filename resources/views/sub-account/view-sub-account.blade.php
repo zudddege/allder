@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Allder Express</title>
     <link rel="icon" href="{{asset('assets/img/brand/icon.png')}}" type="image/x-icon">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
@@ -27,6 +26,47 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+    <script>
+        window.addEventListener("load", function () {
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden"; // class "loader hidden"
+        });
+
+    </script>
+
+    <style>
+        .loader {
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader>img {
+            width: 100px;
+        }
+
+        .loader.hidden {
+            animation: fadeOut 0.1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+    </style>
 
     <style data-styles="">
         ion-icon {
@@ -144,31 +184,42 @@
         }
 
     </style>
+
     <style>
         div.pager {
-  text-align: right;
-  margin: 1em 0;
-}
+            text-align: center;
+            margin: 1em 0;
+        }
 
-div.pager span {
-  display: inline-block;
-  width: 1.8em;
-  height: 1.8em;
-  line-height: 1.8;
-  text-align: center;
-  cursor: pointer;
-  background: #000;
-  color: #fff;
-  margin-right: 0.5em;
-}
+        div.pager span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
 
-div.pager span.active {
-  background: #c00;
-}
+        div.pager span.active {
+            background: #0036e7;
+        }
+
+        body {
+            font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
+        }
+
     </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
+
+    <div class="loader">
+        <img src="{{asset("assets/img/loader.gif")}}" alt="Loading..." />
+    </div>
 
     <!-- Page -->
     <div class="page">
@@ -259,8 +310,8 @@ div.pager span.active {
                                                 <div>
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
-                                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
+                                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
+                                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
                                                         </svg>
                                                         <span class="mx-1">ส่วนลดที่ได้รับ</span>
                                                     </div>
@@ -273,7 +324,7 @@ div.pager span.active {
                                                 <div>
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
                                                         </svg>
                                                         <span class="mx-1">COD</span>
                                                     </div>
@@ -335,7 +386,7 @@ div.pager span.active {
                                 <form action="" >
                                     <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">อีเมล, ชื่อผู้ใช้งาน / ชื่อธุรกิจ, เบอร์โทรศัพท์</a></div>
                                     <div class="search-container px-4 mb-2">
-                                        <input class="form-control " type="text" id="search" style="width: 300px;">
+                                        <input class="form-control" type="text" id="search" style="width: 300px;">
                                     </div>
                                 </form>
                                 <div class="px-1">
@@ -371,7 +422,7 @@ div.pager span.active {
                                                 <td>{{$account->tel_no}}</td>
                                                 <td>{{$account->discount}} %</td>
                                                 <td>{{$account->cod}} %</td>
-                                                <td><label class="switch" ><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
+                                                <td><label class="switch"><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif
                                             @endforeach
@@ -421,6 +472,82 @@ div.pager span.active {
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+
+    <script>
+        $('#search').on("keyup", function () {
+            $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager"></div>');
+            var $previous = $('<span class="previous"><<</spnan>');
+            var $next = $('<span class="next">>></spnan>');
+
+            $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number, .previous, .next').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number:first');
+                $next.insertAfter('span.page-number:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number.active');
+                    if ($active.next('.page-number.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
+
+    </script>
 
     <script>
         $('#my-table').DataTable({
@@ -480,6 +607,7 @@ div.pager span.active {
                 },
             })
         });
+
     </script>
  <script>
      $('#search').on("keyup", function() {
