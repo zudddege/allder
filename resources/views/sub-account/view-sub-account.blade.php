@@ -144,7 +144,28 @@
         }
 
     </style>
+    <style>
+        div.pager {
+  text-align: right;
+  margin: 1em 0;
+}
 
+div.pager span {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8;
+  text-align: center;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+  margin-right: 0.5em;
+}
+
+div.pager span.active {
+  background: #c00;
+}
+    </style>
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -309,27 +330,16 @@
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg> สร้างรายการ
                                         </label></a>
-                                    <label class="btn btn-info mx-3" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" /></svg> นำเข้าข้อมูล
-                                    </label>
-                                    <a class="btn btn-link" type="button" href="{{url('/api/export/excel')}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                        </svg> <u>ดาวน์โหลด (Excel)</u>
-                                    </a>
                                 </div>
                                 <div class="jumps-prevent" style="padding-bottom: 15px;"></div>
-                                <form action="" method="GET">
+                                <form action="" >
                                     <div class="mb-1 px-4">ค้นหา<a class="text-muted px-2">อีเมล, ชื่อผู้ใช้งาน / ชื่อธุรกิจ, เบอร์โทรศัพท์</a></div>
-                                        <div class="d-flex px-4 mb-2">
-                                            <input class="form-control" type="text" name="search" value="" style="width: 300px;"/>
-                                            <button type="submit">Search</button>
-                                        </div>
+                                    <div class="search-container px-4 mb-2">
+                                        <input class="form-control " type="text" id="search" style="width: 300px;">
+                                    </div>
                                 </form>
                                 <div class="px-1">
-                                    <table class="table table-striped position-relative" id="my-table">
+                                    <table class="table table-striped position-relative paginated" id="my-table">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -367,6 +377,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -470,6 +481,80 @@
             })
         });
     </script>
+ <script>
+     $('#search').on("keyup", function() {
+        $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function() {
+        var currentPage = 0;
+        var numPerPage = 7;
+        var $table = $(this);
+        var $pager = $('<div class="pager"></div>');
+        var $previous = $('<span class="previous"><<</spnan>');
+        var $next = $('<span class="next">>></spnan>');
+
+        $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+
+        $table.bind('repaginate', function() {
+            $table.find('tbody tr').hide();
+
+            $filteredRows = $table.find('tbody tr').filter(function(i, tr) {
+            return $('#search').val() != "" ? $(tr).find("td").get().map(function(td) {
+                return $(td).text();
+            }).filter(function(td){
+                return td.indexOf($('#search').val()) != -1;
+            }).length > 0 : true;
+            });
+
+            $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+            var numRows = $filteredRows.length;
+            var numPages = Math.ceil(numRows / numPerPage);
+$pager.find('.page-number, .previous, .next').remove();
+            for (var page = 0; page < numPages; page++) {
+            var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                newPage: page
+            }, function(event) {
+                currentPage = event.data['newPage'];
+                $table.trigger('repaginate');
+            })
+            if(page == currentPage){
+                $newPage.addClass('clickable active');
+                }else{
+                $newPage.addClass('clickable');
+            }
+            $newPage.appendTo($pager)
+            }
+
+            $previous.insertBefore('span.page-number:first');
+            $next.insertAfter('span.page-number:last');
+
+            $next.click(function(e) {
+            $previous.addClass('clickable');
+            $pager.find('.active').next('.page-number.clickable').click();
+            });
+            $previous.click(function(e) {
+            $next.addClass('clickable');
+            $pager.find('.active').prev('.page-number.clickable').click();
+            });
+
+            $next.addClass('clickable');
+            $previous.addClass('clickable');
+
+            setTimeout(function() {
+            var $active = $pager.find('.page-number.active');
+            if ($active.next('.page-number.clickable').length === 0) {
+                $next.removeClass('clickable');
+            } else if ($active.prev('.page-number.clickable').length === 0) {
+                $previous.removeClass('clickable');
+            }
+            });
+        });
+        $table.trigger('repaginate');
+        });
+ </script>
+
 </body>
 
 </html>

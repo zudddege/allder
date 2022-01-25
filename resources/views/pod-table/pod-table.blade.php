@@ -324,96 +324,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($orders as $order)
                                         <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
+                                            <th class=""><input id='mainbox' type="checkbox"></th>
+                                            <td>{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                            <td>{{$order->tracking_no}}</td>
+                                            <td>{{$order->order_no}}</td>
+                                            <td>{{$order->send_name}}</td>
+                                            <td>{{$order->send_detail}}</td>
                                             <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
+                                            <td>{{$order->recv_name}}</td>
+                                            <td>{{$order->recv_detail}}</td>
                                             <td>aertyjukgjfdrthy</td>
                                             <td>aertyjukgjfdrthy</td>
                                             <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="60%;" height="100%;" alt=""> </td>
                                             <td class="td_detail shadow"><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
-                                        <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
-                                            <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
-                                            <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
-                                            <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
-                                            <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr class="td_detail_row">
-                                            <td></td>
-                                            <td>bbbbbbbbbbbbbbbbbbb</td>
-                                            <td>ccccccccccccccccccc</td>
-                                            <td>dddddddddddddddddd</td>
-                                            <td>eeeeeeeeeeeeeeee</td>
-                                            <td>efrthdyjgfd</td>
-                                            <td>agrhtjyh</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="50%;" height="50%;" alt=""> </td>
-                                            <td></td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

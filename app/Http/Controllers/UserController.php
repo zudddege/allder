@@ -113,13 +113,13 @@ class UserController extends Controller
     // public function search(Request $request){
     //     $search = $request->input('search');
 
-    //     $Users = User::query()
+    //     $subaccount = User::query()
     //         ->where('email', 'LIKE', "%{$search}%")
     //         ->orWhere('name', 'LIKE', "%{$search}%")
     //         ->orWhere('tel_no', 'LIKE', "%{$search}%")
-    //         ->get();
+    //         ->paginate(10);
 
-    //         return view('sub-account.view-sub-account', compact('Users'));
+    //         return view('sub-account.view-sub-account', compact('subaccount'));
     // }
     public function turnoffuser(Request $request){
         // dd($request->id);

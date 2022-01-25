@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order\Order;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
@@ -48,7 +49,7 @@ Route::get('/searchsubacc', 'UserController@search');
 
 /* Search Controller */
 Route::get('/search', 'SearchController\SearchController@search');
-Route::get('/testcod', 'SearchController\SearchController@testcod');
+// Route::get('/searchsubacc', 'UserController@search' );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -79,7 +80,8 @@ Route::get('/cod', function () {
 
 // ตาราง POD-table
 Route::get('/pod', function () {
-    return view('pod-table.pod-table');
+    $orders = Order::all();
+    return view('pod-table.pod-table', compact('orders'));
 });
 
 // Problem-order
