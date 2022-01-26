@@ -307,9 +307,9 @@
 
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
-                                                        <td>111111111</td>
-                                                        <td>222222222</td>
-                                                        <td>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
                                                         <td class="td_detail shadow"><a href="{{url('/')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
                                                     </tr>

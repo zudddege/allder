@@ -54,6 +54,7 @@ class UserController extends Controller {
     }
 
     protected function createSubAccount(Request $data) {
+
         User::create([
             "close_id" => $data->close_id,
             "short_id" => $data->short_id,
@@ -62,7 +63,8 @@ class UserController extends Controller {
             "tel_no" => $data->tel_no,
             "discount" => $data->discount,
             "cod" => $data->cod,
-            'is_status_user' => $data->is_status_user ? 1 : 0,
+            'is_status' => $data->is_status ? 1 : 0,
+            "is_admin" => "0",
             "username" => $data->username,
             "password" => Hash::make($data->password),
         ]);

@@ -20,7 +20,7 @@ class OrderController extends Controller {
     }
 
     public function addOrder() {
-        $mainBook = AddressBook::select('book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code', 'is_main_book')->where('is_main_book', true)->first();
+        $mainBook = AddressBook::select('book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code', 'is_main')->where('is_main', true)->first();
         $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->get();
 
         return view('order.add-order', compact('addressBooks', 'mainBook'));
@@ -145,7 +145,7 @@ class OrderController extends Controller {
             $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
 
             if ($request->main_address) {
-                AddressBook::where('is_main_book', 1)->update(['is_main_book' => false]);
+                AddressBook::where('is_main', 1)->update(['is_main' => false]);
             }
 
             if ($request->save_send_address) {
@@ -159,7 +159,7 @@ class OrderController extends Controller {
                     'book_city' => $request->send_city,
                     'book_province' => $request->send_province,
                     'book_postal_code' => $request->send_postal_code,
-                    'is_main_book' => $request->main_address ? true : false,
+                    'is_main' => $request->main_address ? true : false,
                 ]);
             }
 
@@ -174,7 +174,7 @@ class OrderController extends Controller {
                     'book_city' => $request->recv_city,
                     'book_province' => $request->recv_province,
                     'book_postal_code' => $request->recv_postal_code,
-                    'is_main_book' => false,
+                    'is_main' => false,
                 ]);
             }
 

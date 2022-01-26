@@ -422,7 +422,7 @@
                                                 <td>{{$account->tel_no}}</td>
                                                 <td>{{$account->discount}} %</td>
                                                 <td>{{$account->cod}} %</td>
-                                                <td><label class="switch"><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status_user === 1) checked @endif><span class="slider round"></span></label></td>
+                                                <td><label class="switch"><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif
                                             @endforeach

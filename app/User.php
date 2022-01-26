@@ -37,6 +37,7 @@ class User extends Authenticatable {
         'tel_no',
         'discount_rate',
         'cod_rate',
+        'password',
     ];
 
     /**
