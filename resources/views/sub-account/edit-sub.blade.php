@@ -323,7 +323,7 @@
                                     <div class="my-1">
                                         <p class="my-1">ชื่อผู้ใช้งาน / ชื่อธุรกิจ</p>
                                         <div class="">
-                                            <input class="form-control" name="name" type="text" value="{{ $subaccount->name}}" style="width: 65%; height: 75%;">
+                                            <input class="form-control" name="account_name" type="text" value="{{ $subaccount->account_name}}" style="width: 65%; height: 75%;">
                                         </div>
                                     </div>
                                     <div class="">
@@ -340,13 +340,13 @@
                                 <div class="">
                                     <p class="my-1">ส่วนลดที่ได้รับ</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" name="discount" value="{{ $subaccount->discount}}"><span class="px-1">%</span>
+                                        <input class="form-control" type="text" name="discount_rate" value="{{ $subaccount->discount_rate}}"><span class="px-1">%</span>
                                     </div>
                                 </div>
                                 <div class="my-2">
                                     <p class="my-1">COD</p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" value="{{ $subaccount->cod}}" name="cod"><span class="px-1">%</span>
+                                        <input class="form-control" type="text" value="{{ $subaccount->cod_rate}}" name="cod_rate"><span class="px-1">%</span>
                                     </div>
                                 </div>
                             </div>
@@ -358,7 +358,7 @@
                                     <div class="d-flex align-content-center" style="margin-left: 60%;">
                                         <p class="px-1">สถานะ</p>
                                         <label class="switch">
-                                            <input type="checkbox" name="is_status_user" value="{{ $subaccount->is_status_user}}" checked>
+                                            <input type="checkbox" name="is_status" value="{{ $subaccount->is_status}}" checked>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>

@@ -418,10 +418,10 @@
                                                 <td>{{$account->short_id}}</td>
                                                 <td>{{$account->username}}</td>
                                                 <td>{{$account->email}}</td>
-                                                <td>{{$account->name}}</td>
+                                                <td>{{$account->account_name}}</td>
                                                 <td>{{$account->tel_no}}</td>
-                                                <td>{{$account->discount}} %</td>
-                                                <td>{{$account->cod}} %</td>
+                                                <td>{{$account->discount_rate}} %</td>
+                                                <td>{{$account->cod_rate}} %</td>
                                                 <td><label class="switch"><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
                                             @endif

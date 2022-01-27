@@ -166,7 +166,7 @@
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->account_name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <div>
@@ -174,7 +174,7 @@
                                                 {{ Auth::user()->close_id }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
-                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->name }}
+                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->account_name }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
                                                 อีเมล : {{ Auth::user()->email }}
@@ -195,7 +195,7 @@
                                                         <span class="mx-1">ส่วนลดที่ได้รับ</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->discount }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->discount_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,7 +208,7 @@
                                                         <span class="mx-1">COD</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->cod }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->cod_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>

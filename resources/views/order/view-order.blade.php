@@ -186,7 +186,7 @@
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->account_name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <div>
@@ -194,7 +194,7 @@
                                                 {{ Auth::user()->close_id }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
-                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->name }}
+                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->account_name }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
                                                 อีเมล : {{ Auth::user()->email }}
@@ -215,7 +215,7 @@
                                                         <span class="mx-1">ส่วนลดที่ได้รับ</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->discount }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->discount_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,7 +228,7 @@
                                                         <span class="mx-1">COD</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->cod }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->cod_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -417,16 +417,16 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status == "รอปริ้น" || $order->status == "ปริ้นแล้ว")
+                                                    @if($order->status_text == "รอปริ้น" || $order->status_text == "ปริ้นแล้ว")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox2'>
-                                                            @if($order->status == "ปริ้นแล้ว")
-                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
-                                                            @elseif($order->status == "รอปริ้น")
-                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
+                                                            @if($order->status_text == "ปริ้นแล้ว")
+                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "รอปริ้น")
+                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox3'>{{$order->order_no}}</td>
@@ -597,20 +597,20 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status == "เสร็จสิ้น" || $order->status == "ยกเลิก")
+                                                    @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox14'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox15'>
-                                                            @if($order->status == "รอจัดสรร")
-                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ระหว่างจัดส่ง")
-                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status}}</span>
-                                                            @elseif($order->status == "เสร็จสิ้น")
-                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status}}</span>
-                                                            @elseif($order->status == "ยกเลิก")
-                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status}}</span>
+                                                            @if($order->status_text == "รอจัดสรร")
+                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "ระหว่างจัดส่ง")
+                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "เสร็จสิ้น")
+                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "ยกเลิก")
+                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox16'>{{$order->order_no}}</td>

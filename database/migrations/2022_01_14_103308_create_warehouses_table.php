@@ -13,7 +13,7 @@ class CreateWarehousesTable extends Migration {
     public function up() {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->string('warehouse_no', 20)->unique()->nullable();
             $table->string('warehouse_name', 50)->nullable();
             $table->string('contact_name', 50)->nullable();

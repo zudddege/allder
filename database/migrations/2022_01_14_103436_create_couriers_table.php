@@ -13,7 +13,7 @@ class CreateCouriersTable extends Migration {
     public function up() {
         Schema::create('couriers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->string('pickup_id', 20)->unique()->nullable();
             $table->string('warehouse_no', 20)->nullable();
             $table->string('warehouse_name', 50)->nullable();

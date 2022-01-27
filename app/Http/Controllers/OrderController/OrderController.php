@@ -10,6 +10,7 @@ use App\Models\Warehouse\Warehouse;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller {
     public function showOrder() {
@@ -49,6 +50,7 @@ class OrderController extends Controller {
     }
 
     public function createOrder(Request $request) {
+
         switch ($request->category) {
         case ('0'): $category_text = "เอกสาร";
             break;
@@ -79,7 +81,7 @@ class OrderController extends Controller {
         }
 
         $id = auth()->user()->id;
-        $accountRate = User::select('discount', 'cod')->find($id);
+        $accountRate = User::select('discount_rate', 'cod_rate')->find($id);
 
         $create = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
@@ -141,8 +143,8 @@ class OrderController extends Controller {
             $response = json_decode($post, true);
             $estimatePrice = $response['data']['estimatePrice'];
 
-            $estimateRate = round($estimatePrice * (1 - (($accountRate->discount) / 100)) / 100, 2);
-            $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
+            $estimateRate = round($estimatePrice * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
+            $codRate = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
 
             if ($request->main_address) {
                 AddressBook::where('is_main', 1)->update(['is_main' => false]);
@@ -150,7 +152,7 @@ class OrderController extends Controller {
 
             if ($request->save_send_address) {
                 AddressBook::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => Auth::id(),
                     'book_no' => $request->book_no,
                     'book_name' => $request->send_name,
                     'book_tel' => $request->send_tel,
@@ -165,7 +167,7 @@ class OrderController extends Controller {
 
             if ($request->save_recv_address) {
                 AddressBook::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => auth()->user()->id,
                     'book_no' => $request->book_no,
                     'book_name' => $request->recv_name,
                     'book_tel' => $request->recv_tel,
@@ -179,7 +181,7 @@ class OrderController extends Controller {
             }
 
             Order::create([
-                'user_id' => $request->user_id,
+                'user_id' => auth()->user()->id,
                 'order_no' => $request->order_no,
                 'send_name' => $request->send_name,
                 'send_tel' => $request->send_tel,
@@ -200,7 +202,7 @@ class OrderController extends Controller {
                 'width_size' => $request->width_size,
                 'length_size' => $request->length_size,
                 'height_size' => $request->height_size,
-                'cod' => $request->cod,
+                'cod' => $request->order_cod,
                 'cod_rate' => $codRate,
                 'estimate_price' => $estimatePrice / 100,
                 'estimate_price_rate' => $estimateRate,
@@ -211,7 +213,7 @@ class OrderController extends Controller {
                 'is_damage_insurance' => $request->is_damage_insurance ? true : false,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
-                'status' => "รอปริ้น",
+                'status_text' => "รอปริ้น",
             ]);
         } else {
             dd($post);
@@ -352,7 +354,7 @@ class OrderController extends Controller {
 
         if ($response['message'] == 'success') {
             Order::find($id)->update([
-                'status' => "ยกเลิก",
+                'status_text' => "ยกเลิก",
                 'cancel_reason' => $request->cancel_reason,
             ]);
         } else {
@@ -372,7 +374,7 @@ class OrderController extends Controller {
         ]);
 
         $post = FlashCoreFunction::postRequest($url, $print);
-        Order::find($id)->update(['status' => "ปริ้นแล้ว"]);
+        Order::find($id)->update(['status_text' => "ปริ้นแล้ว"]);
 
         return response($post)->header('Content-type', 'application/pdf');
     }
