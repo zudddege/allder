@@ -223,6 +223,7 @@ class OrderController extends Controller {
     }
 
     public function modifyOrder(Request $request, $id) {
+
         switch ($request->category) {
         case ('0'): $category_text = "เอกสาร";
             break;
@@ -254,6 +255,7 @@ class OrderController extends Controller {
 
         $trackingNo = Order::find($id)->tracking_no;
 
+
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
@@ -278,12 +280,13 @@ class OrderController extends Controller {
             'freightInsureEnabled' => $request->is_return_insurance ? 1 : 0,
             'opdInsureEnabled' => $request->is_damage_insurance ? 1 : 0,
             'codEnabled' => $request->cod == "0" ? 0 : 1,
-            'codAmount' => ($request->cod) * 100,
+            'codAmount' => ($request->order_cod) * 100,
             'remark' => $request->note_detail,
         ]);
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/modify", $edit);
         $response = json_decode($post, true);
+
 
         if ($response['message'] == 'success') {
             $rate = FlashCoreFunction::buildRequestParam([
@@ -307,7 +310,38 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $user_cod = $response['data']['user_cod'];
+            $user_cod = $response['data']['estimatePrice'];
+
+
+            if ($request->save_send_address) {
+                AddressBook::create([
+                    'user_id' => Auth::id(),
+                    'book_no' => $request->book_no,
+                    'book_name' => $request->send_name,
+                    'book_tel' => $request->send_tel,
+                    'book_detail' => $request->send_detail,
+                    'book_district' => $request->send_district,
+                    'book_city' => $request->send_city,
+                    'book_province' => $request->send_province,
+                    'book_postal_code' => $request->send_postal_code,
+                    'is_main' => $request->main_address ? true : false,
+                ]);
+            }
+
+            if ($request->save_recv_address) {
+                AddressBook::create([
+                    'user_id' => auth()->user()->id,
+                    'book_no' => $request->book_no,
+                    'book_name' => $request->recv_name,
+                    'book_tel' => $request->recv_tel,
+                    'book_detail' => $request->recv_detail,
+                    'book_district' => $request->recv_district,
+                    'book_city' => $request->recv_city,
+                    'book_province' => $request->recv_province,
+                    'book_postal_code' => $request->recv_postal_code,
+                    'is_main' => false,
+                ]);
+            }
 
             Order::find($id)->update([
                 'send_name' => $request->send_name,
@@ -322,10 +356,10 @@ class OrderController extends Controller {
                 'recv_postal_code' => $request->recv_postal_code,
                 'category' => $category_text,
                 'weight' => $request->weight,
-                'length_size' => $request->length_size,
-                'weight_type' => $request->weight_type,
+                'length' => $request->length,
+                'width' => $request->width,
                 'height' => $request->height,
-                'cod' => $request->cod,
+                'order_cod' => $request->order_cod,
                 'user_cod' => $user_cod / 100,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
