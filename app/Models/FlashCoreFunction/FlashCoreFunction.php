@@ -12,10 +12,6 @@ class FlashCoreFunction extends Model {
     }
 
     public static function buildRequestParam($data_arr) {
-        // $data_arr = [
-        //     "mchId" => "AA0610",
-        //     "nonceStr" => time()
-        // ];
         $sign = '';
         ksort($data_arr);
         foreach ($data_arr as $k => $v) {

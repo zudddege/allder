@@ -18,13 +18,6 @@ class User extends Authenticatable {
      * @var array
      */
 
-    protected $with = [
-        'books',
-        'warehouses',
-        'couriers',
-        'orders',
-    ];
-
     protected $table = 'users';
     protected $fillable = [
         'is_admin',
