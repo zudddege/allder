@@ -52,8 +52,9 @@ Route::middleware(['auth', 'status'])->group(function () {
     });
 });
 
+Route::post('/webhooks/service', 'WebhookController\ServiceController@webhookServiceRequest')->middleware(['auth', 'status', 'admin']);
+
 Route::middleware(['webhook'])->prefix('/webhooks')->group(function () {
-    Route::post('/service', 'WebhookController\ServiceController@webhookServiceRequest');
     Route::post('/status', 'WebhookController\StatusController@webhookStatusRequest');
     Route::post('/weight', 'WebhookController\WeightController@webhookWeightRequest');
     Route::post('/price', 'WebhookController\PriceController@webhookPriceRequest');

@@ -17,22 +17,28 @@ class WebhookRequest {
     }
 
     public static function webhookRequestVerify($request) {
-        $data_arr = [
-            'mchId' => 'AA0594',
-            'nonceStr' => time(),
-        ];
         $sign = '';
-        ksort($data_arr);
-        foreach ($data_arr as $key => $value) {
-            if ((($value != null) || $value === 0) && ($key != 'sign')) {
-                $sign .= $key . '=' . $value . '&';
-            } else {
-                unset($data_arr[$key]);
+        $timeRequest = intval($request->nonceStr / 1000);
+        $timeServer = intval(microtime(true));
+        $timeoutRequest = 180;
+        if ($timeServer - $timeRequest <= $timeoutRequest) {
+            $data_arr = [
+                'mchId' => 'AA0594',
+                'nonceStr' => $request->nonceStr,
+            ];
+
+            ksort($data_arr);
+            foreach ($data_arr as $key => $value) {
+                if ((($value != null) || $value === 0) && ($key != 'sign')) {
+                    $sign .= $key . '=' . $value . '&';
+                } else {
+                    unset($data_arr[$key]);
+                }
             }
+            $sign .= "key=" . "d50185f8cc11882a61b286ce622db9e1c2b33a57fed365f1539ff70f71bb33bc";
+            $sign = self::signParam($sign);
         }
-        $sign .= "key=" . "d50185f8cc11882a61b286ce622db9e1c2b33a57fed365f1539ff70f71bb33bc";
-        $sign = self::signParam($sign);
-        return $sign === $request['sign'];
+        return $sign === $request->sign;
     }
 
     public function handle($request, Closure $next) {
