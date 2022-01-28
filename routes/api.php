@@ -53,9 +53,9 @@ Route::middleware(['auth', 'status'])->group(function () {
 });
 
 Route::middleware(['webhook'])->prefix('/webhooks')->group(function () {
-    Route::post('/service', 'WebhookController\ServiceController@webhookService');
-    Route::post('/status', 'WebhookController\StatusController@statusRequestVerify');
-    Route::post('/weight', 'WebhookController\WeightController@weightRequestVerify');
-    Route::post('/price', 'WebhookController\PriceController@priceRequestVerify');
-    Route::post('/courier', 'WebhookController\CourierController@courierRequestVerify');
+    Route::post('/service', 'WebhookController\ServiceController@webhookServiceRequest');
+    Route::post('/status', 'WebhookController\StatusController@webhookStatusRequest');
+    Route::post('/weight', 'WebhookController\WeightController@webhookWeightRequest');
+    Route::post('/price', 'WebhookController\PriceController@webhookPriceRequest');
+    Route::post('/courier', 'WebhookController\CourierController@webhookCourierRequest');
 });

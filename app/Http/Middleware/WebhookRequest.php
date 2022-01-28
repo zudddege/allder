@@ -32,13 +32,13 @@ class WebhookRequest {
         }
         $sign .= "key=" . "d50185f8cc11882a61b286ce622db9e1c2b33a57fed365f1539ff70f71bb33bc";
         $sign = self::signParam($sign);
-        return dd($sign === $request['sign']);
+        return $sign === $request['sign'];
     }
 
     public function handle($request, Closure $next) {
         if (self::webhookRequestVerify($request)) {
             return $next($request);
         }
-        return abort(403);
+        return response()->json(['errorCode' => '0'], 403);
     }
 }

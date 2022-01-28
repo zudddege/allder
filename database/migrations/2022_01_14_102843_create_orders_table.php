@@ -13,8 +13,8 @@ class CreateOrdersTable extends Migration {
     public function up() {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->nullable();
-            $table->string('order_no', 20)->unique()->nullable();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('order_no', 20)->nullable();
             $table->string('tracking_no', 20)->nullable();
             $table->string('original_no', 20)->nullable();
             $table->string('return_no', 20)->nullable();
