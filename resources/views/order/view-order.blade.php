@@ -447,9 +447,9 @@
                                                             <a class="text-muted">{{$order->recv_postal_code}}</a></td>
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
-                                                        <td class='subbox10'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox11'>{{$order->cod_rate}} ({{$order->cod}})</td>
-                                                        <td class='subbox12'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
+                                                        <td class='subbox10'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
+                                                        <td class='subbox11'>{{$order->order_price}} ({{$order->order_cod}})</td>
+                                                        <td class='subbox12'>{{$order->user_price}} ({{$order->user_cod}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
@@ -631,9 +631,9 @@
                                                             <a class="text-muted">{{$order->recv_postal_code}}</a></td>
                                                         </td>
                                                         <td class='subbox22'>{{$order->recv_tel}}</td>
-                                                        <td class='subbox23'>{{$order->category}} <br> {{$order->weight}} kg / {{$order->length_size}} x {{$order->width_size}} x {{$order->height_size}} cm</td>
-                                                        <td class='subbox24'>{{$order->cod_rate}} ({{$order->cod}})</td>
-                                                        <td class='subbox25'>{{$order->estimate_price_rate}} ({{$order->estimate_price}})</td>
+                                                        <td class='subbox23'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
+                                                        <td class='subbox24'>{{$order->order_price}} ({{$order->order_cod}})</td>
+                                                        <td class='subbox25'>{{$order->user_price}} ({{$order->user_cod}})</td>
                                                         <td class='subbox26'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>

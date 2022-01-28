@@ -363,19 +363,19 @@
                                             <p class="mb-1">ประเภทสินค้า</p>
                                             <select class="custom-select my-1 mr-sm-2 border-light" id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;" name="category">
                                                 <option disabled>ประเภทสินค้า</option>
-                                                <option value="0" @if($order->category == "เอกสาร")selected @endif>เอกสาร</option>
-                                                <option value="1" @if($order->category == "อาหารแห้ง")selected @endif>อาหารแห้ง</option>
-                                                <option value="2" @if($order->category == "ของใช้ทั่วไป")selected @endif>ของใช้ทั่วไป</option>
-                                                <option value="3" @if($order->category == "อุปกรณ์ไอที")selected @endif>อุปกรณ์ไอที</option>
-                                                <option value="4" @if($order->category == "เสื้อผ้า")selected @endif>เสื้อผ้า</option>
-                                                <option value="5" @if($order->category == "สื่อบันเทิง")selected @endif>สื่อบันเทิง</option>
-                                                <option value="6" @if($order->category == "อะไหล่ยนต์")selected @endif>อะไหล่ยนต์</option>
-                                                <option value="7" @if($order->category == "รองเท้า/กระเป๋า")selected @endif>รองเท้า/กระเป๋า</option>
-                                                <option value="8" @if($order->category == "อุปกรณ์กีฬา")selected @endif>อุปกรณ์กีฬา</option>
-                                                <option value="9" @if($order->category == "เครื่องสำอางค์")selected @endif>เครื่องสำอางค์</option>
-                                                <option value="10" @if($order->category == "เฟอร์นิเจอร์")selected @endif>เฟอร์นิเจอร์</option>
-                                                <option value="11" @if($order->category == "ผลไม้")selected @endif>ผลไม้</option>
-                                                <option value="99" @if($order->category == "อื่นๆ")selected @endif>อื่นๆ</option>
+                                                <option value="0" @if($order->category_text == "เอกสาร")selected @endif>เอกสาร</option>
+                                                <option value="1" @if($order->category_text == "อาหารแห้ง")selected @endif>อาหารแห้ง</option>
+                                                <option value="2" @if($order->category_text == "ของใช้ทั่วไป")selected @endif>ของใช้ทั่วไป</option>
+                                                <option value="3" @if($order->category_text == "อุปกรณ์ไอที")selected @endif>อุปกรณ์ไอที</option>
+                                                <option value="4" @if($order->category_text == "เสื้อผ้า")selected @endif>เสื้อผ้า</option>
+                                                <option value="5" @if($order->category_text == "สื่อบันเทิง")selected @endif>สื่อบันเทิง</option>
+                                                <option value="6" @if($order->category_text == "อะไหล่ยนต์")selected @endif>อะไหล่ยนต์</option>
+                                                <option value="7" @if($order->category_text == "รองเท้า/กระเป๋า")selected @endif>รองเท้า/กระเป๋า</option>
+                                                <option value="8" @if($order->category_text == "อุปกรณ์กีฬา")selected @endif>อุปกรณ์กีฬา</option>
+                                                <option value="9" @if($order->category_text == "เครื่องสำอางค์")selected @endif>เครื่องสำอางค์</option>
+                                                <option value="10" @if($order->category_text == "เฟอร์นิเจอร์")selected @endif>เฟอร์นิเจอร์</option>
+                                                <option value="11" @if($order->category_text == "ผลไม้")selected @endif>ผลไม้</option>
+                                                <option value="99" @if($order->category_text == "อื่นๆ")selected @endif>อื่นๆ</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
@@ -388,11 +388,11 @@
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="{{ $order->length_size}}" name="length_size">
+                                                <input class="form-control" type="text" value="{{ $order->length}}" name="length_size">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="{{ $order->width_size}}" name="width_size">
+                                                <input class="form-control" type="text" value="{{ $order->width}}" name="width_size">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="{{ $order->height_size }}" name="height_size">
+                                                <input class="form-control" type="text" value="{{ $order->height }}" name="height_size">
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
@@ -401,7 +401,7 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-4">
                                             <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                            <input class="form-control" type="text" value="{{$order->cod}}" name="cod">
+                                            <input class="form-control" type="text" value="{{$order->order_cod}}" name="cod">
                                         </div>
                                         <div class="col">
                                             <p class="mb-1">หมายเหตุ</p>
