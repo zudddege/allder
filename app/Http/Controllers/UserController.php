@@ -54,15 +54,15 @@ class UserController extends Controller {
     }
 
     protected function createSubAccount(Request $data) {
-
+//  dd($data);
         User::create([
             "close_id" => $data->close_id,
             "short_id" => $data->short_id,
             "email" => $data->email,
-            "name" => $data->name,
+            "account_name" => $data->account_name,
             "tel_no" => $data->tel_no,
-            "discount" => $data->discount,
-            "cod" => $data->cod,
+            "discount_rate" => $data->discount_rate,
+            "cod_rate" => $data->cod_rate,
             'is_status' => $data->is_status ? 1 : 0,
             "is_admin" => "0",
             "username" => $data->username,
@@ -89,11 +89,11 @@ class UserController extends Controller {
             "close_id" => $request->close_id,
             "short_id" => $request->short_id,
             "email" => $request->email,
-            "name" => $request->name,
+            "account_name" => $request->account_name,
             "tel_no" => $request->tel_no,
-            "discount" => $request->discount,
-            "cod" => $request->cod,
-            'is_status_user' => $request->is_status_user ? 1 : 0,
+            "discount_rate" => $request->discount_rate,
+            "cod_rate" => $request->cod_rate,
+            'is_status' => $request->is_status ? 1 : 0,
             "username" => $request->username,
         ]);
 
@@ -114,7 +114,7 @@ class UserController extends Controller {
         // dd($request->id);
         $user = User::find($request->id);
         $status = !($user->is_status_user);
-        $user->update(["is_status_user" => $status]);
-        return $user->is_status_user;
+        $user->update(["is_status" => $status]);
+        return $user->is_status;
     }
 }

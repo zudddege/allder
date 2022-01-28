@@ -166,7 +166,7 @@
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->account_name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <div>
@@ -174,7 +174,7 @@
                                                 {{ Auth::user()->close_id }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
-                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->name }}
+                                                ชื่อผู้ใช้งาน / ชื่อธุรกิจ : {{ Auth::user()->account_name }}
                                             </div>
                                             <div class="d-flex justify-content-center my-2">
                                                 อีเมล : {{ Auth::user()->email }}
@@ -195,7 +195,7 @@
                                                         <span class="mx-1">ส่วนลดที่ได้รับ</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->discount }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->discount_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,7 +208,7 @@
                                                         <span class="mx-1">COD</span>
                                                     </div>
                                                     <div class="d-flex justify-content-center">
-                                                        <p style="color: #0275d8">{{ Auth::user()->cod }}%</p>
+                                                        <p style="color: #0275d8">{{ Auth::user()->cod_rate }}%</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -385,11 +385,11 @@
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" name="length_size" placeholder="ยาว">
+                                                <input class="form-control" type="text" value="" name="length" placeholder="ยาว">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="width_size" placeholder="กว้าง">
+                                                <input class="form-control" type="text" value="" name="width" placeholder="กว้าง">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="height_size" placeholder="สูง">
+                                                <input class="form-control" type="text" value="" name="height" placeholder="สูง">
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
@@ -397,7 +397,7 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-4">
                                             <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                            <input class="form-control" type="text" value="" name="cod">
+                                            <input class="form-control" type="text" value="" name="order_cod">
                                         </div>
                                         <div class="col">
                                             <p class="mb-1">หมายเหตุ</p>

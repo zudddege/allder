@@ -50,6 +50,7 @@ class OrderController extends Controller {
     }
 
     public function createOrder(Request $request) {
+
         switch ($request->category) {
         case ('0'): $category_text = "เอกสาร";
             break;
@@ -80,7 +81,7 @@ class OrderController extends Controller {
         }
 
         $id = auth()->user()->id;
-        $accountRate = User::select('discount', 'cod')->find($id);
+        $accountRate = User::select('discount_rate', 'cod_rate')->find($id);
 
         $create = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
@@ -110,7 +111,7 @@ class OrderController extends Controller {
             'freightInsureEnabled' => $request->is_return_insurance ? 1 : 0,
             'opdInsureEnabled' => $request->is_damage_insurance ? 1 : 0,
             'codEnabled' => $request->cod == "0" ? 0 : 1,
-            'codAmount' => ($request->cod) * 100,
+            'codAmount' => ($request->order_cod) * 100,
             'remark' => $request->note_detail,
         ]);
 
@@ -140,10 +141,10 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $estimatePrice = $response['data']['estimatePrice'];
+            $user_cod = $response['data']['estimatePrice'];
 
-            $estimateRate = round($estimatePrice * (1 - (($accountRate->discount) / 100)) / 100, 2);
-            $codRate = round($request->cod * (1 - (($accountRate->cod) / 100)), 2);
+            $user_price = round($user_cod * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
+            $order_price = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
 
             if ($request->main_address) {
                 AddressBook::where('is_main', 1)->update(['is_main' => false]);
@@ -151,7 +152,7 @@ class OrderController extends Controller {
 
             if ($request->save_send_address) {
                 AddressBook::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => Auth::id(),
                     'book_no' => $request->book_no,
                     'book_name' => $request->send_name,
                     'book_tel' => $request->send_tel,
@@ -166,7 +167,7 @@ class OrderController extends Controller {
 
             if ($request->save_recv_address) {
                 AddressBook::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => auth()->user()->id,
                     'book_no' => $request->book_no,
                     'book_name' => $request->recv_name,
                     'book_tel' => $request->recv_tel,
@@ -180,7 +181,7 @@ class OrderController extends Controller {
             }
 
             Order::create([
-                'user_id' => $request->user_id,
+                'user_id' => auth()->user()->id,
                 'order_no' => $request->order_no,
                 'send_name' => $request->send_name,
                 'send_tel' => $request->send_tel,
@@ -196,15 +197,15 @@ class OrderController extends Controller {
                 'recv_city' => $request->recv_city,
                 'recv_province' => $request->recv_province,
                 'recv_postal_code' => $request->recv_postal_code,
-                'category' => $category_text,
+                'category_text' => $category_text,
                 'weight' => $request->weight,
-                'width_size' => $request->width_size,
-                'length_size' => $request->length_size,
-                'height_size' => $request->height_size,
-                'cod' => $request->cod,
-                'cod_rate' => $codRate,
-                'estimate_price' => $estimatePrice / 100,
-                'estimate_price_rate' => $estimateRate,
+                'width' => $request->width,
+                'length' => $request->length,
+                'height' => $request->height,
+                'order_cod' => $request->order_cod,
+                'order_price' => $order_price,
+                'user_cod' => $user_cod / 100,
+                'user_price' => $user_price,
                 'note_detail' => $request->note_detail,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
@@ -212,7 +213,7 @@ class OrderController extends Controller {
                 'is_damage_insurance' => $request->is_damage_insurance ? true : false,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
-                'status' => "รอปริ้น",
+                'status_text' => "รอปริ้น",
             ]);
         } else {
             dd($post);
@@ -306,7 +307,7 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $estimatePrice = $response['data']['estimatePrice'];
+            $user_cod = $response['data']['user_cod'];
 
             Order::find($id)->update([
                 'send_name' => $request->send_name,
@@ -325,7 +326,7 @@ class OrderController extends Controller {
                 'weight_type' => $request->weight_type,
                 'height' => $request->height,
                 'cod' => $request->cod,
-                'estimate_price' => $estimatePrice / 100,
+                'user_cod' => $user_cod / 100,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
                 'is_express_transport' => $request->is_express_transport ? true : false,
@@ -353,7 +354,7 @@ class OrderController extends Controller {
 
         if ($response['message'] == 'success') {
             Order::find($id)->update([
-                'status' => "ยกเลิก",
+                'status_text' => "ยกเลิก",
                 'cancel_reason' => $request->cancel_reason,
             ]);
         } else {
@@ -373,7 +374,7 @@ class OrderController extends Controller {
         ]);
 
         $post = FlashCoreFunction::postRequest($url, $print);
-        Order::find($id)->update(['status' => "ปริ้นแล้ว"]);
+        Order::find($id)->update(['status_text' => "ปริ้นแล้ว"]);
 
         return response($post)->header('Content-type', 'application/pdf');
     }

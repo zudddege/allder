@@ -13,7 +13,7 @@ class CreateAddressBooksTable extends Migration {
     public function up() {
         Schema::create('address_books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->boolean('is_main')->nullable();
             $table->string('book_no', 10)->unique()->nullable();
             $table->string('book_name', 50)->nullable();
