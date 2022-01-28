@@ -341,7 +341,7 @@
                                 <div class="row px-2 mt-3">
                                     <div class="col-3">
                                         <p class="mb-1">ประเภทสินค้า</p>
-                                        <input class="form-control" type="text" value="{{ $order->category_text }}" readonly>
+                                        <input class="form-control" type="text" value="{{ $order->category_text}}" readonly>
                                     </div>
                                     <div class="col-3">
                                         <p class="mb-1">น้ำหนัก</p>

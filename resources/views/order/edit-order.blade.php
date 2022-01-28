@@ -388,11 +388,11 @@
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="{{ $order->length}}" name="length_size">
+                                                <input class="form-control" type="text" value="{{ $order->length}}" name="length">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="{{ $order->width}}" name="width_size">
+                                                <input class="form-control" type="text" value="{{ $order->width}}" name="width">
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="{{ $order->height }}" name="height_size">
+                                                <input class="form-control" type="text" value="{{ $order->height }}" name="height">
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
@@ -401,7 +401,7 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-4">
                                             <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                            <input class="form-control" type="text" value="{{$order->order_cod}}" name="cod">
+                                            <input class="form-control" type="text" value="{{$order->order_cod}}" name="order_cod">
                                         </div>
                                         <div class="col">
                                             <p class="mb-1">หมายเหตุ</p>
