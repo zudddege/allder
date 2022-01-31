@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\CourierController;
 
 use App\Http\Controllers\Controller;
-use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Courier\Courier;
+use App\Models\FlashCoreFunction\FlashCoreFunction;
 use Illuminate\Http\Request;
 
 class CourierController extends Controller {
     public function showCourier() {
-        $notifications = Courier::all();
+        $couriers = Courier::all();
 
-        return view('courier.courier', compact('notifications'));
+        return view('courier.courier', compact('couriers'));
     }
 
     public function getNotification() {

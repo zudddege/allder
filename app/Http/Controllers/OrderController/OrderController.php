@@ -21,8 +21,8 @@ class OrderController extends Controller {
     }
 
     public function addOrder() {
-        $mainBook = AddressBook::select('book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code', 'is_main')->where('is_main', true)->first();
-        $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->get();
+        $addressBooks = AddressBook::orderBy('updated_at', 'desc')->where('user_id', Auth::id())->get();
+        $mainBook = $addressBooks->where('is_main', '1')->first();
 
         return view('order.add-order', compact('addressBooks', 'mainBook'));
     }
@@ -50,6 +50,7 @@ class OrderController extends Controller {
     }
 
     public function createOrder(Request $request) {
+        dd($request);
 
         switch ($request->category) {
         case ('0'): $category_text = "เอกสาร";
@@ -255,7 +256,6 @@ class OrderController extends Controller {
 
         $trackingNo = Order::find($id)->tracking_no;
 
-
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
@@ -287,7 +287,6 @@ class OrderController extends Controller {
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/modify", $edit);
         $response = json_decode($post, true);
 
-
         if ($response['message'] == 'success') {
             $rate = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
@@ -311,7 +310,6 @@ class OrderController extends Controller {
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
             $user_cod = $response['data']['estimatePrice'];
-
 
             if ($request->save_send_address) {
                 AddressBook::create([

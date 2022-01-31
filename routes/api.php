@@ -19,36 +19,42 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth', 'status'])->group(function () {
-/* Import and Export */
-    Route::post('/import/excel', 'ExcelController\ExcelController@import');
-    Route::get('/export/excel', 'ExcelController\ExcelController@export');
+    Route::prefix('/excel')->group(function () {
+        Route::post('/import', 'ExcelController\ExcelController@import');
+        Route::get('/export', 'ExcelController\ExcelController@export');
+    });
 
-/* Order Controller */
-    Route::get('/order/gen-order-no', 'OrderController\OrderController@genOrderNo');
-    Route::post('/order/create', 'OrderController\OrderController@createOrder');
-    Route::post('/order/{id}/modify', 'OrderController\OrderController@modifyOrder');
-    Route::post('/order/{id}/cancel', 'OrderController\OrderController@cancelOrder');
+    Route::prefix('/orders')->group(function () {
+        Route::post('/gen-order-no', 'OrderController\OrderController@genOrderNo');
+        Route::post('/create', 'OrderController\OrderController@createOrder');
+        Route::post('/edit/{id}', 'OrderController\OrderController@modifyOrder');
+        Route::post('/cancel/{id}', 'OrderController\OrderController@cancelOrder');
+    });
 
-/* Courier Controller */
-    Route::get('/courier/get-notify', 'CourierController\CourierController@getNotification');
-    Route::post('/courier/notify-courier', 'CourierController\CourierController@notifyCourier');
-    Route::post('/courier/cancel-notify', 'CourierController\CourierController@cancelNotification');
+    Route::prefix('/couriers')->group(function () {
+        Route::post('/get-notify', 'CourierController\CourierController@getNotification');
+        Route::post('/notify-courier', 'CourierController\CourierController@notifyCourier');
+        Route::post('/cancel-notify', 'CourierController\CourierController@cancelNotification');
+    });
 
-/* Address Book Controller */
-    Route::get('/book/address-book/get', 'AddressBookController\AddressBookController@getAddressBookById');
-    Route::post('/book/address-book/create', 'AddressBookController\AddressBookController@createAddressBook');
-    Route::post('/book/address-book/{id}/modify', 'AddressBookController\AddressBookController@modifyAddressBook');
+    Route::prefix('/books')->group(function () {
+        Route::get('/address', 'AddressBookController\AddressController@getAddress');
+        Route::get('/address/{id}', 'AddressBookController\AddressController@getAddressById');
+        Route::post('/address/create', 'AddressBookController\AddressController@createAddress');
+        Route::post('/address/edit/{id}', 'AddressBookController\AddressController@updateAddress');
 
-    Route::get('/book/warehouse/get', 'AddressBookController\AddressBookController@getWarehouseById');
-    Route::post('/book/warehouse/create', 'AddressBookController\AddressBookController@createWarehouse');
-    Route::post('/book/warehouse/{id}/modify', 'AddressBookController\AddressBookController@modifyWarehouse');
+        Route::get('/warehouse', 'AddressBookController\WarehouseController@getWarehouse');
+        Route::get('/warehouse/{id}', 'AddressBookController\WarehouseController@getWarehouseById');
+        Route::post('/warehouse/create', 'AddressBookController\WarehouseController@createWarehouse');
+        Route::post('/warehouse/edit/{id}', 'AddressBookController\WarehouseController@updateWarehouse');
+    });
 
 /* Sub Account Controller */
-    Route::middleware(['admin'])->group(function () {
-        Route::post('/sub-account/create', 'UserController@createSubAccount');
-        Route::get('/sub-account/gen-pass', 'UserController@genPassWord');
-        Route::post('/sub-account/{id}/modifySubaccount', 'UserController@modifySubaccount');
-        Route::get('/sub-account/turnoffuser', 'UserController@turnoffuser');
+    Route::middleware(['admin'])->prefix('/sub-accounts')->group(function () {
+        Route::post('/create', 'UserController@createSubAccount');
+        Route::get('/gen-pass', 'UserController@genPassword');
+        Route::post('/edit/{id}', 'UserController@modifySubaccount');
+        Route::post('/status', 'UserController@turnoffuser');
     });
 });
 

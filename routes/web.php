@@ -16,34 +16,33 @@ use \Illuminate\Support\Facades\Auth;
  */
 
 Route::middleware(['auth', 'status'])->group(function () {
-/* Order Controller */
-    Route::get('/order', 'OrderController\OrderController@showOrder')->name('order');
-    Route::get('/order/create', 'OrderController\OrderController@addOrder');
-    Route::get('/order/{id}/detail', 'OrderController\OrderController@detailOrder');
-    Route::get('/order/{id}/edit', 'OrderController\OrderController@editOrder');
-    Route::get('/order/{id}/print', 'OrderController\OrderController@printLabel');
+    Route::prefix('/orders')->group(function () {
+        Route::get('/', 'OrderController\OrderController@showOrder');
+        Route::get('/create', 'OrderController\OrderController@addOrder');
+        Route::get('/detail', 'OrderController\OrderController@detailOrder');
+        Route::get('/edit', 'OrderController\OrderController@editOrder');
+        Route::get('/print', 'OrderController\OrderController@printLabel');
+    });
 
-    Route::get('/event', 'OrderController\OrderController@event');
+    Route::prefix('/couriers')->group(function () {
+        Route::get('/', 'CourierController\CourierController@showCourier');
+    });
 
-/* Courier Controller */
-    Route::get('/courier', 'CourierController\CourierController@showCourier');
-
-/* Address Book Controller */
-    Route::get('/book', 'AddressBookController\AddressBookController@showBook');
-    Route::get('/book/address-book/create', 'AddressBookController\AddressBookController@addAddressBook');
-    Route::get('/book/address-book/{id}/detail', 'AddressBookController\AddressBookController@detailAddressBook');
-    Route::get('/book/address-book/{id}/edit', 'AddressBookController\AddressBookController@editAddressBook');
-
-    Route::get('/book/warehouse/create', 'AddressBookController\AddressBookController@addWarehouse');
-    Route::get('/book/warehouse/{id}/detail', 'AddressBookController\AddressBookController@detailWarehouse');
-    Route::get('/book/warehouse/{id}/edit', 'AddressBookController\AddressBookController@editWarehouse');
-
+    Route::prefix('/books')->group(function () {
+        Route::get('/', 'AddressBookController\AddressController@showAddressBook');
+        Route::get('/address/create', 'AddressBookController\AddressController@addAddress');
+        Route::get('/address/detail', 'AddressBookController\AddressController@detailAddress');
+        Route::get('/address/edit', 'AddressBookController\AddressController@editAddress');
+        Route::get('/warehouse/create', 'AddressBookController\WarehouseController@addWarehouse');
+        Route::get('/warehouse/detail', 'AddressBookController\WarehouseController@detailWarehouse');
+        Route::get('/warehouse/edit', 'AddressBookController\WarehouseController@editWarehouse');
+    });
 /* Sub Account Controller */
-    Route::middleware(['admin'])->group(function () {
-        Route::get('/sub-account', 'UserController@showSubAccount')->name('subacc');
-        Route::get('/sub-account/create', 'UserController@addSubAccount');
-        Route::get('/sub-account/{id}/detail', 'UserController@detailsubAccount');
-        Route::get('/sub-account/{id}/edit', 'UserController@editsubAccount');
+    Route::middleware(['admin'])->prefix('/sub-accounts')->group(function () {
+        Route::get('/', 'UserController@showSubAccount');
+        Route::get('/create', 'UserController@addSubAccount');
+        Route::get('/detail', 'UserController@detailsubAccount');
+        Route::get('/edit', 'UserController@editsubAccount');
         Route::get('/searchsubacc', 'UserController@search');
     });
 
@@ -51,6 +50,8 @@ Route::middleware(['auth', 'status'])->group(function () {
     Route::get('/search', 'SearchController\SearchController@search');
     Route::get('/testcod', 'SearchController\SearchController@testcod');
 });
+
+Route::get('/event', 'OrderController\OrderController@event');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,11 +70,6 @@ Route::get('/mailcon', 'Auth\ForgotPasswordController@mailcon')->name('mailcon')
 Route::get('/forgetpass', 'Auth\ForgotPasswordController@forgetpass')->name('forgetpass');
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
-//testform
-Route::get('/test', function () {
-    return view('test');
-});
-
 // ตาราง COD-table
 Route::get('/cod', function () {
     return view('cod-table.cod-table');
@@ -89,16 +85,16 @@ Route::get('/detail-pod', function () {
 });
 
 // Problem-order
-Route::get('/problem-order', function () {
+Route::get('/problem-orders', function () {
     return view('problem-order.problem-order');
 });
 
 // Check-order
-Route::get('/check-order', function () {
-    return view('check-order.check-order');
+Route::get('/tracking', function () {
+    return view('tracking.check-order');
 });
 
 // Affect-cost
-Route::get('/affect-cost', function () {
+Route::get('/affect-costs', function () {
     return view('affect-cost.affect-cost');
 });

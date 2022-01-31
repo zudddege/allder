@@ -18,10 +18,11 @@ class WebhookRequest {
 
     public static function webhookRequestVerify($request) {
         $sign = '';
-        $timeRequest = intval($request->nonceStr / 1000);
-        $timeServer = intval(microtime(true));
-        $timeoutRequest = 180;
-        if ($timeServer - $timeRequest <= $timeoutRequest) {
+        $offset = 60;
+        $requestTime = intval($request->nonceStr / 1000) + $offset;
+        $serverTime = intval(microtime(true));
+        $timeout = 30;
+        if ($serverTime - $requestTime <= $timeout) {
             $data_arr = [
                 'mchId' => 'AA0594',
                 'nonceStr' => $request->nonceStr,
