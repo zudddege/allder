@@ -405,12 +405,12 @@ class OrderController extends Controller {
             }
             $json_data[$key] = array(
                 "id" => $i,
-                "groupId" => date("Ymd",strtotime($demo_start_date)),
+                // "groupId" => date("Ymd",strtotime($demo_start_date)),
                 "start" => date("Y-m-d",strtotime($demo_start_date)),
                 "title" => "รูปแบบกิจกรรม {$i}",
                 "url" => "",
                 "textColor" => "#FFFFFF",
-                "backgroundColor" => $arr_color_demo[$i],
+                // "backgroundColor" => $arr_color_demo[$i],
                 "borderColor" => "transparent",
             );
             if($i==2){

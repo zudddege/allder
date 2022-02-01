@@ -450,12 +450,7 @@
                 eventLimit: true, // allow "more" link when too many events
                 locale: 'th', // กำหนดให้แสดงภาษาไทย
                 firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
-                showNonCurrentDates: false, // แสดงที่ของเดือนอื่นหรือไม่
-                eventTimeFormat: { // รูปแบบการแสดงของเวลา เช่น '14:30'
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    meridiem: false
-                }
+                showNonCurrentDates: true, // แสดงที่ของเดือนอื่นหรือไม่
             });
             // แสดงปฏิทิน
             calendar.render();
