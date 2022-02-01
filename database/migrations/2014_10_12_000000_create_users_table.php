@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
             $table->boolean('is_admin')->nullable();
             $table->boolean('is_status')->nullable();
             $table->string('close_id', 20)->unique()->nullable();
-            $table->string('short_id', 10)->nullable();
+            $table->string('short_id', 10)->unique()->nullable();
             $table->string('email', 50)->unique()->nullable();
             $table->string('username', 50)->unique()->nullable();
             $table->string('password', 100)->nullable();

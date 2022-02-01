@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AddressBookController\WarehouseController;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
+use App\Models\Warehouse\Warehouse;
+use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
+use \Illuminate\Support\Str;
 
 class UserController extends Controller {
 
@@ -26,35 +29,36 @@ class UserController extends Controller {
     }
 
     public function login() {
-        return view('Login_page.login');
+        return view('auth.login');
     }
     public function forgot() {
-        return view('Login_page.forget');
+        return view('auth.forget');
     }
 
     public function showSubAccount() {
-        $subaccount = User::all();
+        $subaccount = User::query()->get();
+        $warehouses = (new WarehouseController)->getWarehouse();
 
-        return view('sub-account.view-sub-account', compact('subaccount'));
+        return view('sub-account.view-sub-account', compact('subaccount', 'warehouses'));
     }
-    public function detailsubAccount($id) {
+    public function detailsubAccount(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        $subaccount = User::find($request->id);
 
-        $subaccount = User::find($id);
-
-        return view('sub-account.detail-sub-account', compact('subaccount'));
+        return view('sub-account.detail-sub-account', compact('subaccount','warehouses'));
     }
 
     public function addSubAccount() {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $date = Carbon::now('Asia/Bangkok')->isoFormat('YYMM');
         $number = User::select('id')->count();
         $number = str_pad($number, 4, '0', STR_PAD_LEFT);
         $close_id = "AE" . $date . $number;
 
-        return view('sub-account.add-sub-account', compact('close_id'));
+        return view('sub-account.add-sub-account', compact('close_id','warehouses'));
     }
 
     protected function createSubAccount(Request $data) {
-//  dd($data);
         User::create([
             "close_id" => $data->close_id,
             "short_id" => $data->short_id,
@@ -69,23 +73,21 @@ class UserController extends Controller {
             "password" => Hash::make($data->password),
         ]);
 
-        return redirect('/sub-account');
+        return redirect('/sub-accounts');
     }
 
-    public function genPassWord() {
-        $password = "AE01";
-        $password .= "123456789";
+    public function genPassword() {
+        $password = Str::random(8);
         return $password;
     }
-    public function editsubAccount($id) {
-
-        $subaccount = User::find($id);
-
-        return view('sub-account.edit-sub', compact('subaccount'));
+    public function editsubAccount(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        $subaccount = User::find($request->id);
+        return view('sub-account.edit-sub', compact('subaccount','warehouses'));
     }
-    public function modifySubaccount(Request $request, $id) {
+    public function modifySubaccount(Request $request) {
 // dd($id,$request);
-        User::find($id)->update([
+        User::find($request->id)->update([
             "close_id" => $request->close_id,
             "short_id" => $request->short_id,
             "email" => $request->email,
@@ -97,7 +99,7 @@ class UserController extends Controller {
             "username" => $request->username,
         ]);
 
-        return redirect('/sub-account');
+        return redirect('/sub-accounts');
     }
     // public function search(Request $request){
     //     $search = $request->input('search');
@@ -111,10 +113,8 @@ class UserController extends Controller {
     //         return view('sub-account.view-sub-account', compact('subaccount'));
     // }
     public function turnoffuser(Request $request) {
-        // dd($request->id);
         $user = User::find($request->id);
-        $status = !($user->is_status_user);
+        $status = !$user->is_status;
         $user->update(["is_status" => $status]);
-        return $user->is_status;
     }
 }

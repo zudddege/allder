@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\CourierController;
 
 use App\Http\Controllers\Controller;
-use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Courier\Courier;
+use App\Models\Warehouse\Warehouse;
+use App\Models\FlashCoreFunction\FlashCoreFunction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourierController extends Controller {
     public function showCourier() {
-        $notifications = Courier::all();
-
-        return view('courier.courier', compact('notifications'));
+        $couriers = Courier::all();
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('courier.courier', compact('couriers','warehouses'));
     }
 
     public function getNotification() {

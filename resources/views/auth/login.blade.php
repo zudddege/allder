@@ -2,11 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Allder Express</title>
+    @include('layouts.main.header')
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/plugins/datatable/datatables.min.css')}}" rel="stylesheet">
@@ -100,7 +96,7 @@
                                 <img src="assets/img/brand/allderExpress.png" alt="" sizes="w:350px" class="my-" style="padding-top: 45px; padding-bottom: 45px;">
                             </div>
 
-                            <div class="d-flex justify-content-end" style="padding-right: 25px;">
+                            <div class="d-flex justify-content-end pb-3" style="padding-right: 25px;">
                                 <a href="{{ route('forget.password.get') }}" style="color: blue; text-align:end;"><u>ลืมรหัสผ่าน</u></a>
                             </div>
                             @if (Session::has('errors'))
@@ -113,17 +109,17 @@
 
                             <form method="POST" action="{{ route('login')}}">
                                 @csrf
-                                <div class="d-flex justify-content-center">
-                                    <input id="email" placeholder="ชื่อผู้ใช้" style="width: 250;" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <div class="form-group d-flex justify-content-center">
+                                    <input id="email" placeholder="ชื่อผู้ใช้" style="width: 250;" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                                    @error('email')
+                                    @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
 
-                                <div class="d-flex justify-content-center">
+                                <div class="form-group d-flex justify-content-center">
                                     <input id="password" placeholder="รหัสผ่าน" style="width: 250;" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
