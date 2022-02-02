@@ -149,7 +149,7 @@
                                     {{-- order-nav --}}
                                     <div class="tab-pane fade show active" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">
                                         <div class="d-flex">
-                                            <a href="{{url('/order/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                            <a href="{{url('/orders/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                                     </svg> สร้างรายการ </label>
@@ -170,13 +170,13 @@
                                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                                 </svg> <u>ดาวน์โหลด (Excel)</u>
                                             </a>
-                                            <button class="btn btn-success mx-3" style="height: 40px;" data-toggle="modal" data-target="#print-modal" disabled>
+                                            <button class="btn btn-success mx-3" style="height: 40px;" data-toggle="modal" id="printlabel" data-target="#print-modal"  disabled>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
                                                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
                                                 </svg> Print
                                             </button>
-                                            <button class="btn btn-danger" style="height: 40px;" disabled>
+                                            <button class="btn btn-danger" id="cancelorder" style="height: 40px;" disabled>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
                                                     <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z" />
                                                     <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
@@ -319,7 +319,7 @@
                                                         <td class='subbox11'>{{$order->order_price}} ({{$order->order_cod}})</td>
                                                         <td class='subbox12'>{{$order->user_price}} ({{$order->user_cod}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
-                                                        <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                                        <td class="td_detail shadow"><a href="{{url('/orders/detail/'.$order->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
                                                     @endif
                                                     @endforeach
@@ -465,7 +465,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก")
+                                                    {{-- @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก") --}}
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox14'>
@@ -475,9 +475,9 @@
                                                             <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
                                                             @elseif($order->status_text == "ระหว่างจัดส่ง")
                                                             <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
-                                                            @elseif($order->status_text == "เสร็จสิ้น")
+                                                            @elseif($order->status_code == "5")
                                                             <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status_text}}</span>
-                                                            @elseif($order->status_text == "ยกเลิก")
+                                                            @elseif($order->status_code == "9")
                                                             <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
@@ -506,7 +506,7 @@
                                                         <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
                                                         </td>
                                                     </tr>
-                                                    @endif
+                                                    {{-- @endif --}}
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -526,31 +526,44 @@
         @include('layouts.main.modal-courier')
 
         {{-- modal print --}}
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="print-modal">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
-                    <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                    <h5><b>ปริ้นออเดอร์</b></h5>
-                    <div class="jumps-prevent" style="padding-top: 15px;"></div>
-                    <p>เลือกจำนวนบุ๊คกิ้งแล้ว : </p>
-                    <table class="table table-striped mt-2" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>เลขออเดอร์</th>
-                                <th>เลขพัสดุ</th>
-                                <th>สถานะ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
+        <form action="/orders/print/{id}" method="get" target="_blank">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="print-modal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
+                        <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                        <h5><b>ปริ้นออเดอร์</b></h5>
+                        <div class="jumps-prevent" style="padding-top: 15px;"></div>
+                        <p>เลือกจำนวนบุ๊คกิ้งแล้ว : </p>
+                        <table class="table table-striped mt-2" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>เลขออเดอร์</th>
+                                    <th>เลขพัสดุ</th>
+                                    <th>สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($orders as $order)
+                                @if($order->status_text == "รอปริ้น")
+                                <tr>
 
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <th>{{$order->order_no}}</th>
+                                    <th>{{$order->tracking_no}}</th>
+                                    <th>{{$order->status_text}}</th>
 
+                                </tr>
+                                @endif
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                        <div>
+                            <input type="submit">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         {{-- end modal print --}}
 
         {{-- modal ดูรายละเอียด ของรายการจัดส่งแล้ว --}}
@@ -1067,7 +1080,18 @@
         });
 
     </script>
+    <script>
+        $(".subbox").click(function() {
+        $("#printlabel").attr("disabled", !this.checked);
+        $("#cancelorder").attr("disabled", !this.checked);
+        });
+    </script>
+    <script>
+        $("#printlabel").click(function(){
+        var closestTr = $(':checkbox:checked').closest('tr').attr('{{$order->id}}');
 
+        });
+    </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -1136,6 +1160,7 @@
         });
 
     </script>
+
 </body>
 
 </html>

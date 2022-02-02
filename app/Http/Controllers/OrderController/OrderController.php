@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller {
     public function showOrder() {
-        $orders = Order::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
-        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        $orders = Order::orderBy('id', 'desc')->when(Auth::user()->is_admin == 1,function($query){
+            return $query;
+        })->when(Auth::user()->is_admin == 0,function($query){
+            return $query->where('user_id', Auth::id());
+        })->get();
+        $warehouses = Warehouse::orderBy('id', 'desc')->when(Auth::user()->is_admin == 1,function($query){
+            return $query;
+        })->when(Auth::user()->is_admin == 0,function($query){
+            return $query->where('user_id', Auth::id());
+        })->get();
 
         return view('order.view-order', compact('orders', 'warehouses'));
     }
@@ -50,7 +58,7 @@ class OrderController extends Controller {
     }
 
     public function createOrder(Request $request) {
-        dd($request);
+
 
         switch ($request->category) {
         case ('0'): $category_text = "เอกสาร";
@@ -80,6 +88,7 @@ class OrderController extends Controller {
         case ('99'): $category_text = "อื่นๆ";
             break;
         }
+
 
         $id = auth()->user()->id;
         $accountRate = User::select('discount_rate', 'cod_rate')->find($id);
@@ -220,7 +229,7 @@ class OrderController extends Controller {
             dd($post);
         }
 
-        return redirect('/order');
+        return redirect('/orders');
     }
 
     public function modifyOrder(Request $request, $id) {
@@ -255,6 +264,7 @@ class OrderController extends Controller {
         }
 
         $trackingNo = Order::find($id)->tracking_no;
+
 
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
@@ -310,6 +320,11 @@ class OrderController extends Controller {
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
             $user_cod = $response['data']['estimatePrice'];
+            Auth::id();
+            $cod = Auth::user()->cod_rate;
+            $discount = Auth::user()->discount_rate;
+            $order_price = round($request->order_cod * (1 - (($cod) / 100)), 2);
+            $user_price = round($user_cod * (1 - (($discount) / 100)) / 100, 2);
 
             if ($request->save_send_address) {
                 AddressBook::create([
@@ -358,7 +373,9 @@ class OrderController extends Controller {
                 'width' => $request->width,
                 'height' => $request->height,
                 'order_cod' => $request->order_cod,
+                'order_price' => $order_price,
                 'user_cod' => $user_cod / 100,
+                'user_price' => $user_price,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
                 'is_express_transport' => $request->is_express_transport ? true : false,
@@ -369,7 +386,7 @@ class OrderController extends Controller {
             dd($post);
         }
 
-        return redirect('order/' . $id . '/detail');
+        return redirect('/orders');
     }
 
     public function cancelOrder(Request $request, $id) {
@@ -393,7 +410,7 @@ class OrderController extends Controller {
             dd($post);
         }
 
-        return redirect('order/' . $id . '/detail');
+        return redirect('orders/' . $id . '/detail');
     }
 
     public function printLabel($id) {

@@ -103,8 +103,6 @@
     </div>
 
     <div class="page">
-
-        <div class="main-content app-content">
             @include('layouts.main.sidebar')
             <div class="main-content app-content">
                 @include('layouts.main.navbar')

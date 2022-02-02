@@ -19,9 +19,9 @@ Route::middleware(['auth', 'status'])->group(function () {
     Route::prefix('/orders')->group(function () {
         Route::get('/', 'OrderController\OrderController@showOrder');
         Route::get('/create', 'OrderController\OrderController@addOrder');
-        Route::get('/detail', 'OrderController\OrderController@detailOrder');
-        Route::get('/edit', 'OrderController\OrderController@editOrder');
-        Route::get('/print', 'OrderController\OrderController@printLabel');
+        Route::get('/detail/{id}', 'OrderController\OrderController@detailOrder');
+        Route::get('/edit/{id}', 'OrderController\OrderController@editOrder');
+        Route::get('/print/{id}', 'OrderController\OrderController@printLabel');
     });
 
     Route::prefix('/couriers')->group(function () {

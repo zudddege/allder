@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('/api/order/'.$order->id.'/modify') }}" method="POST">
+                <form action="{{ url('/api/orders/edit/'.$order->id) }}" method="POST">
                     @csrf
                     <div class="row row-sm">
                         <div class="col-sm-8">
@@ -321,7 +321,7 @@
                                     </div>
                                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{url('/order')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
+                                        <a href="{{url('/orders')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
                                         <button class="btn btn-primary mx-2" type="submit" id="submit-button">บันทึกการแก้ไข</button>
                                     </div>
                                 </div>
