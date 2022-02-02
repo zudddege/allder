@@ -21,6 +21,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <link href='{{asset("assets/packages/core/main.css")}}' rel='stylesheet' />
@@ -109,7 +110,7 @@
     <div class="page">
         @include('layouts.main.sidebar')
         <div class="main-content app-content">
-            @include('layouts.main.navbar')
+            @include('layouts.main.topbar')
             <div class="container-fluid">
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
@@ -256,6 +257,7 @@
         </div>
     </div>
 
+    @include('layouts.main.modal-courier')
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
@@ -285,10 +287,12 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous">
-    </script>
-
+    @include('layouts.main.courier')
 
     <script type="text/javascript">
         $(function () {
@@ -313,12 +317,7 @@
                 eventLimit: true, // allow "more" link when too many events
                 locale: 'th', // กำหนดให้แสดงภาษาไทย
                 firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
-                showNonCurrentDates: false, // แสดงที่ของเดือนอื่นหรือไม่
-                eventTimeFormat: { // รูปแบบการแสดงของเวลา เช่น '14:30'
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    meridiem: false
-                }
+                showNonCurrentDates: true, // แสดงที่ของเดือนอื่นหรือไม่
             });
             // แสดงปฏิทิน
             calendar.render();

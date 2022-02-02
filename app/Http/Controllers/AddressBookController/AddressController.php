@@ -8,6 +8,8 @@ use App\Models\Warehouse\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function GuzzleHttp\Promise\all;
+
 class AddressController extends Controller {
     public function showAddressBook() {
         $addresses = AddressBook::when(Auth::user()->is_admin == 1, function ($query) {
@@ -26,7 +28,8 @@ class AddressController extends Controller {
     }
 
     public function addAddress() {
-        return view('address-book.add-address-book');
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('address-book.add-address-book', compact('warehouses'));
     }
 
     public function createAddress(Request $request) {
@@ -51,22 +54,24 @@ class AddressController extends Controller {
     }
 
     public function detailAddress(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $address = AddressBook::where('id', $request->query('id'))->when(Auth::user()->is_admin == 1, function ($query) {
             return $query;
         })->when(AddressBook::find($request->query('id'))->user_id == Auth::id(), function ($query) {
             return $query->where('user_id', Auth::id());
         })->firstOrFail();
 
-        return view('address-book.detail-address-book', compact('address'));
+        return view('address-book.detail-address-book', compact('address','warehouses'));
     }
 
     public function editAddress(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $address = AddressBook::where('id', $request->query('id'))->when(Auth::user()->is_admin == 1, function ($query) {
             return $query;
         })->when(AddressBook::find($request->query('id'))->user_id == Auth::id(), function ($query) {
             return $query->where('user_id', Auth::id());
         })->firstOrFail();
-        return view('address-book.edit-address-book', compact('address'));
+        return view('address-book.edit-address-book', compact('address','warehouses'));
     }
 
     public function updateAddress(Request $request, $id) {

@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class WarehouseController extends Controller {
     public function addWarehouse() {
-        return view('address-book.add-warehouse');
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('address-book.add-warehouse', compact('warehouses'));
     }
 
     public function createWarehouse(Request $request) {
@@ -30,23 +31,25 @@ class WarehouseController extends Controller {
     }
 
     public function detailWarehouse(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $warehouse = Warehouse::where('id', $request->query('id'))->when(Auth::user()->is_admin == 1, function ($query) {
             return $query;
         })->when(Warehouse::find($request->query('id'))->user_id == Auth::id(), function ($query) {
             return $query->where('user_id', Auth::id());
         })->firstOrFail();
 
-        return view('address-book.detail-warehouse', compact('warehouse'));
+        return view('address-book.detail-warehouse', compact('warehouse','warehouses'));
     }
 
     public function editWarehouse(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $warehouse = Warehouse::where('id', $request->query('id'))->when(Auth::user()->is_admin == 1, function ($query) {
             return $query;
         })->when(Warehouse::find($request->query('id'))->user_id == Auth::id(), function ($query) {
             return $query->where('user_id', Auth::id());
         })->firstOrFail();
 
-        return view('address-book.edit-warehouse', compact('warehouse'));
+        return view('address-book.edit-warehouse', compact('warehouse','warehouses'));
     }
 
     public function updateWarehouse(Request $request, $id) {

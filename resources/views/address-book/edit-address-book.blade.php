@@ -87,7 +87,7 @@
     <div class="page">
         @include('layouts.main.sidebar')
         <div class="main-content app-content">
-            @include('layouts.main.navbar')
+            @include('layouts.main.topbar')
             <div class="container-fluid">
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
@@ -168,6 +168,8 @@
         </div>
     </div>
 
+    @include('layouts.main.modal-courier')
+
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
@@ -214,8 +216,10 @@
             $province: $('#book_province'), // input ของจังหวัด
             $zipcode: $('#book_postal_code'), // input ของรหัสไปรษณีย์
         });
-
     </script>
+
+    @include('layouts.main.courier')
+
 </body>
 
 </html>

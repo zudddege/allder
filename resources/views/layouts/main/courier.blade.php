@@ -1,4 +1,15 @@
-(function ($) {
+<script>
+   $.Thailand.setup({
+        autocomplete_size: 10,
+    });
+
+    $.Thailand({
+        // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
+        $district: $('#notify_warehouse_district'), // input ของตำบล
+        $amphoe: $('#notify_warehouse_city'), // input ของอำเภอ
+        $province: $('#notify_warehouse_province'), // input ของจังหวัด
+        $zipcode: $('#notify_warehouse_postal_code'), // input ของรหัสไปรษณีย์
+    });
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -40,25 +51,13 @@
     });
 
     $('.hotkey-note-notify').on('click', function () {
-        var text = $(this).val();
-        $('#notify_note_detail').append(text + " ");
+        var value = $(this).attr('value');
+        $('#notify_note_detail').val($('#notify_note_detail').val() + value);
     });
 
     $('.hotkey-note-assign').on('click', function () {
-        var text = $(this).html();
-        $('#assign_note_detail').append(text + " ");
-    });
-
-    $.Thailand.setup({
-        autocomplete_size: 5,
-    });
-
-    $.Thailand({
-        // database: './jquery.Thailand.js/database/db.zip', // ฐานข้อมูลเป็นไฟล์ zip
-        $district: $('#notify_warehouse_district'), // input ของตำบล
-        $amphoe: $('#notify_warehouse_city'), // input ของอำเภอ
-        $province: $('#notify_warehouse_province'), // input ของจังหวัด
-        $zipcode: $('#notify_warehouse_postal_code'), // input ของรหัสไปรษณีย์
+        var value = $(this).attr('value');
+        $('#assign_note_detail').val($('#assign_note_detail').val() + value);
     });
 
     $('.warehouse-table').DataTable({
@@ -88,4 +87,8 @@
     });
     $(".dataTables_length").css("display", "none");
     $(".dataTables_filter").css("display", "none");
-})
+</script>
+
+
+
+

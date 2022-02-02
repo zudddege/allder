@@ -6,6 +6,7 @@ use App\Http\Controllers\AddressBookController\WarehouseController;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Warehouse\Warehouse;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Hash;
 use \Illuminate\Support\Facades\Validator;
@@ -35,24 +36,26 @@ class UserController extends Controller {
     }
 
     public function showSubAccount() {
-        $subaccount = User::where('id', '!=', Auth::id())->get();
+        $subaccount = User::query()->get();
         $warehouses = (new WarehouseController)->getWarehouse();
 
         return view('sub-account.view-sub-account', compact('subaccount', 'warehouses'));
     }
     public function detailsubAccount(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $subaccount = User::find($request->id);
 
-        return view('sub-account.detail-sub-account', compact('subaccount'));
+        return view('sub-account.detail-sub-account', compact('subaccount','warehouses'));
     }
 
     public function addSubAccount() {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $date = Carbon::now('Asia/Bangkok')->isoFormat('YYMM');
         $number = User::select('id')->count();
         $number = str_pad($number, 4, '0', STR_PAD_LEFT);
         $close_id = "AE" . $date . $number;
 
-        return view('sub-account.add-sub-account', compact('close_id'));
+        return view('sub-account.add-sub-account', compact('close_id','warehouses'));
     }
 
     protected function createSubAccount(Request $data) {
@@ -78,8 +81,9 @@ class UserController extends Controller {
         return $password;
     }
     public function editsubAccount(Request $request) {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $subaccount = User::find($request->id);
-        return view('sub-account.edit-sub', compact('subaccount'));
+        return view('sub-account.edit-sub', compact('subaccount','warehouses'));
     }
     public function modifySubaccount(Request $request) {
 // dd($id,$request);

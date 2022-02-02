@@ -122,7 +122,7 @@
     <div class="page">
         @include('layouts.main.sidebar')
         <div class="main-content app-content">
-            @include('layouts.main.navbar')
+            @include('layouts.main.topbar')
             <div class="container-fluid">
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
@@ -152,7 +152,7 @@
                                             <a href="{{url('/orders/create')}}"><label class="btn btn-primary mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                                    </svg> สร้างรายการ </label>
+                                                </svg> สร้างรายการ </label>
                                             </a>
                                             <label class="btn btn-info mx-3" id='upload'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
@@ -687,11 +687,11 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-    <script src="{{asset('js/courier.js')}}"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
+    @include('layouts.main.courier')
     <script>
         $('#my-table').DataTable({
             scrollX: true,

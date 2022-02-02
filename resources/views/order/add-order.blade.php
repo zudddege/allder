@@ -29,7 +29,6 @@
             const loader = document.querySelector(".loader");
             loader.className += " hidden"; // class "loader hidden"
         });
-
     </script>
 
     <style>
@@ -100,7 +99,7 @@
     <div class="page">
         @include('layouts.main.sidebar')
         <div class="main-content app-content">
-            @include('layouts.main.navbar')
+            @include('layouts.main.topbar')
             <div class="container-fluid">
                 <div class="breadcrumb-header justify-content-between">
                     <div class="my-auto">
@@ -481,6 +480,8 @@
         </div>
     </div>
     {{-- end modal ประกันพัสดุตีกลับ --}}
+
+    
 
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top" style="display: none;"><i class="las la-angle-double-up"></i></a>

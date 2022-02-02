@@ -84,15 +84,15 @@
                     </div>
                     <div class="container-fluid my-2">
                         <div class="d-flex my-1">
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำเทปกาวมาด้วย">นำเทปกาวมาด้วย</button>
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สินค้าพัสดุแตกหักง่าย">สินค้าพัสดุแตกหักง่าย</button>
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำเทปกาวมาด้วย ">นำเทปกาวมาด้วย</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สินค้าพัสดุแตกหักง่าย ">สินค้าพัสดุแตกหักง่าย</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ ">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
                         </div>
                         <div class="d-flex my-1">
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำซองเอกสารมาด้วย">นำซองเอกสารมาด้วย</button>
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำบรรจุภัณฑ์มาด้วย">นำบรรจุภัณฑ์มาด้วย</button>
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="โปรดติดต่อก่อนเข้ารับ">โปรดติดต่อก่อนเข้ารับ</button>
-                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สถานที่เป็นตึก / อาคาร">สถานที่เป็นตึก / อาคาร</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำซองเอกสารมาด้วย ">นำซองเอกสารมาด้วย</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำบรรจุภัณฑ์มาด้วย ">นำบรรจุภัณฑ์มาด้วย</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="โปรดติดต่อก่อนเข้ารับ ">โปรดติดต่อก่อนเข้ารับ</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-notify" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สถานที่เป็นตึก / อาคาร ">สถานที่เป็นตึก / อาคาร</button>
                         </div>
                     </div>
                     <div class=" d-flex align-items-center my-2">
@@ -109,9 +109,6 @@
         </form>
     </div>
 </div>
-</div>
-
-
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="assign-courier-modal">
     <div class="modal-dialog modal-lg">
@@ -179,19 +176,19 @@
             </div>
             <div class="container-fluid my-2 mx-2">
                 <div class="d-flex my-1">
-                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำเทปกาวมาด้วย</button>
-                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สินค้าพัสดุแตกหักง่าย</button>
-                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
+                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำเทปกาวมาด้วย ">นำเทปกาวมาด้วย</button>
+                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สินค้าพัสดุแตกหักง่าย ">สินค้าพัสดุแตกหักง่าย</button>
+                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ ">พัสดุจำนวนมาก / ขนาดใหญ่ต้องการรถบรรทุกของ VAN เข้ารับ</button>
                 </div>
                 <div class=" d-flex my-1">
-                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำซองเอกสารมาด้วย</button>
-                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">นำบรรจุภัณฑ์มาด้วย</button>
-                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">โปรดติดต่อก่อนเข้ารับ</button>
-                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;">สถานที่เป็นตึก / อาคาร</button>
+                    <button type="button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำซองเอกสารมาด้วย ">นำซองเอกสารมาด้วย</button>
+                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="นำบรรจุภัณฑ์มาด้วย ">นำบรรจุภัณฑ์มาด้วย</button>
+                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="โปรดติดต่อก่อนเข้ารับ ">โปรดติดต่อก่อนเข้ารับ</button>
+                    <button type=" button" class="btn btn-outline-secondary rounded-10 mx-1 my-1 hotkey-note-assign" style="padding: 0px 10px; height: 25px; font-size: 12px; text-align: center;" value="สถานที่เป็นตึก / อาคาร ">สถานที่เป็นตึก / อาคาร</button>
                 </div>
             </div>
             <div class=" d-flex my-1 mx-2" style="padding-top: 15px;">
-                <input class="btn btn-danger mx-2" type="reset" value="ยกเลิก">
+                <input class="btn btn-danger mx-2" type="reset" data-dismiss="modal" value="ยกเลิก">
                 <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
             </div>
             <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -289,3 +286,5 @@
         </div>
     </div>
 </div>
+
+

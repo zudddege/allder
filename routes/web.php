@@ -16,6 +16,7 @@ use \Illuminate\Support\Facades\Auth;
  */
 
 Route::middleware(['auth', 'status'])->group(function () {
+// Order
     Route::prefix('/orders')->group(function () {
         Route::get('/', 'OrderController\OrderController@showOrder');
         Route::get('/create', 'OrderController\OrderController@addOrder');
@@ -27,7 +28,7 @@ Route::middleware(['auth', 'status'])->group(function () {
     Route::prefix('/couriers')->group(function () {
         Route::get('/', 'CourierController\CourierController@showCourier');
     });
-
+// สมุดที่อยู่
     Route::prefix('/books')->group(function () {
         Route::get('/', 'AddressBookController\AddressController@showAddressBook');
         Route::get('/address/create', 'AddressBookController\AddressController@addAddress');
@@ -51,8 +52,6 @@ Route::middleware(['auth', 'status'])->group(function () {
     Route::get('/testcod', 'SearchController\SearchController@testcod');
 });
 
-Route::get('/event', 'OrderController\OrderController@event');
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //login
@@ -71,30 +70,18 @@ Route::get('/forgetpass', 'Auth\ForgotPasswordController@forgetpass')->name('for
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
 // ตาราง COD-table
-Route::get('/cod', function () {
-    return view('cod-table.cod-table');
-});
+Route::get('/cod','CodController\CodController@showCOD');
+Route::get('/event','CodController\CodController@event');
 
 // ตาราง POD-table
-Route::get('/pod', function () {
-    $orders = Order::all();
-    return view('pod-table.pod-table', compact('orders'));
-});
-Route::get('/detail-pod', function () {
-    return view('pod-table.detail-pod');
-});
+Route::get('/pod','PodController\PodController@showPOD');
+Route::get('/detail-pod','PodController\PodController@detailPOD');
 
 // Problem-order
-Route::get('/problem-orders', function () {
-    return view('problem-order.problem-order');
-});
+Route::get('/problem-orders','ProblemOrderController\ProblemOrderController@showProlemOrder');
 
 // Check-order
-Route::get('/tracking', function () {
-    return view('tracking.check-order');
-});
+Route::get('/tracking','TrackingController\TrackingController@showTracking');
 
 // Affect-cost
-Route::get('/affect-costs', function () {
-    return view('affect-cost.affect-cost');
-});
+Route::get('/affect-costs','AffectCostsController\AffectCostsController@showaffectcosts');
