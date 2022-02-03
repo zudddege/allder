@@ -316,8 +316,8 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                        <td class='subbox11'>{{$order->order_price}} ({{$order->order_cod}})</td>
-                                                        <td class='subbox12'>{{$order->user_price}} ({{$order->user_cod}})</td>
+                                                        <td class='subbox11'>{{$order->user_cod}} ({{$order->order_cod}})</td>
+                                                        <td class='subbox12'>{{$order->user_price }} ({{$order->order_price}})</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/orders/detail/'.$order->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
