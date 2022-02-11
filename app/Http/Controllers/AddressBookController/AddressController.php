@@ -33,7 +33,7 @@ class AddressController extends Controller {
     }
 
     public function createAddress(Request $request) {
-        if ($request->is_main) {
+        if ($request->is_main == 1) {
             (new AddressController)->updateMainAddress(Auth::id());
         }
 

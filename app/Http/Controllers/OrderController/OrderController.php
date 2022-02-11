@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\OrderController;
 
+use App\Http\Controllers\AddressBookController\AddressController;
 use App\Http\Controllers\Controller;
 use App\Models\AddressBook\AddressBook;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
@@ -122,7 +123,7 @@ class OrderController extends Controller {
             'insured' => $request->is_protect_insurance ? 1 : 0,
             'freightInsureEnabled' => $request->is_return_insurance ? 1 : 0,
             'opdInsureEnabled' => $request->is_damage_insurance ? 1 : 0,
-            'codEnabled' => $request->cod == "0" ? 0 : 1,
+            'codEnabled' => $request->order_cod == "0" ? 0 : 1,
             'codAmount' => ($request->order_cod) * 100,
             'remark' => $request->note_detail,
         ]);
@@ -153,13 +154,13 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $user_cod = $response['data']['estimatePrice'];
+            $order_price = $response['data']['estimatePrice'];
 
-            $user_price = round($user_cod * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
-            $order_price = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
+            $user_price = round($order_price * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
+            $user_cod = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
 
-            if ($request->main_address) {
-                AddressBook::where('is_main', 1)->update(['is_main' => false]);
+            if ($request->main_address == 1) {
+                (new AddressController)->updateMainAddress(Auth::id());
             }
 
             if ($request->save_send_address) {
@@ -215,8 +216,8 @@ class OrderController extends Controller {
                 'length' => $request->length,
                 'height' => $request->height,
                 'order_cod' => $request->order_cod,
-                'order_price' => $order_price,
-                'user_cod' => $user_cod / 100,
+                'order_price' => $order_price /100,
+                'user_cod' => $user_cod ,
                 'user_price' => $user_price,
                 'note_detail' => $request->note_detail,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
@@ -268,6 +269,7 @@ class OrderController extends Controller {
         $trackingNo = Order::find($id)->tracking_no;
 
 
+
         $edit = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
@@ -291,14 +293,14 @@ class OrderController extends Controller {
             'insured' => $request->is_protect_insurance ? 1 : 0,
             'freightInsureEnabled' => $request->is_return_insurance ? 1 : 0,
             'opdInsureEnabled' => $request->is_damage_insurance ? 1 : 0,
-            'codEnabled' => $request->cod == "0" ? 0 : 1,
-            'codAmount' => ($request->order_cod) * 100,
+            'codEnabled' => $request->order_cod == "0" ? 0 : 1,
+            'codAmount' => $request->order_cod * 100, //บัคใส่0ได้ไม่ไดแต่ใส่0.ได้หรือ0.00,0.0
             'remark' => $request->note_detail,
         ]);
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/modify", $edit);
-        $response = json_decode($post, true);
 
+        $response = json_decode($post, true);
         if ($response['message'] == 'success') {
             $rate = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
@@ -321,12 +323,13 @@ class OrderController extends Controller {
 
             $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
             $response = json_decode($post, true);
-            $user_cod = $response['data']['estimatePrice'];
+            $order_price = $response['data']['estimatePrice'];
             Auth::id();
             $cod = Auth::user()->cod_rate;
             $discount = Auth::user()->discount_rate;
-            $order_price = round($request->order_cod * (1 - (($cod) / 100)), 2);
-            $user_price = round($user_cod * (1 - (($discount) / 100)) / 100, 2);
+            $user_cod = round($request->order_cod * (1 - (($cod) / 100)), 2);
+            $user_price = round($order_price * (1 - (($discount) / 100)) / 100, 2);
+
 
             if ($request->save_send_address) {
                 AddressBook::create([
@@ -375,8 +378,8 @@ class OrderController extends Controller {
                 'width' => $request->width,
                 'height' => $request->height,
                 'order_cod' => $request->order_cod,
-                'order_price' => $order_price,
-                'user_cod' => $user_cod / 100,
+                'order_price' => $order_price /100,
+                'user_cod' => $user_cod,
                 'user_price' => $user_price,
                 'is_return_insurance' => $request->is_return_insurance ? true : false,
                 'is_protect_insurance' => $request->is_protect_insurance ? true : false,
