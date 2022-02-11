@@ -24,11 +24,6 @@ class CodController extends Controller
     // ปฏิทิน COD
     public function event() {
 
-        header("Content-type:application/json; charset=UTF-8");
-        header("Cache-Control: no-store, no-cache, must-revalidate");
-        header("Cache-Control: post-check=0, pre-check=0", false);
-        // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-        // require_once("dbconnect.php");
         $json_data = array();
 
         $arr_color_demo = array(
@@ -103,7 +98,7 @@ class CodController extends Controller
             }
         }
 
-            }
-            // END ปฏิทิน COD
+    }
+    // END ปฏิทิน COD
 
 }

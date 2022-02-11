@@ -53,7 +53,7 @@ class OrderController extends Controller {
 
     public function genOrderNo() {
         $order_no = Carbon::now('Asia/Bangkok')->isoFormat('YYMMDD');
-        $order_no .= "PY01";
+        $order_no .= Auth::user()->short_id;
         $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count() + 1;
         $order_no .= str_pad($order_today, 3, '0', STR_PAD_LEFT);
 

@@ -35,6 +35,7 @@
                                     เบอร์โทร : {{ Auth::user()->tel_no }}
                                 </div>
                             </div>
+                            @if(Auth::user()->is_admin==0)
                             <div class="row" style="margin: 15px 0px;">
                                 {{-- ส่วนลด COD --}}
                                 <div class="col-6">
@@ -66,6 +67,7 @@
                                 </div>
                                 {{-- ส่วนลด COD --}}
                             </div>
+                            @endif
                             <div class="jumps-prevent border-top" style="padding-top: 15px;"></div>
                             {{-- ปุ่ม logout --}}
                             <div class="d-flex justify-content-center">
