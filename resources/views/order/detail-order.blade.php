@@ -21,6 +21,7 @@
     <link href="{{ asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <script>
@@ -64,8 +65,10 @@
     </style>
 
     <style>
+
         .modal-lg {
-            max-width: 70% !important;
+            max-width: 50% !important;
+            /* desired relative width */
             margin-left: auto !important;
             margin-right: auto !important;
         }
@@ -302,7 +305,7 @@
             <!-- Container closed -->
         </div>
         <!-- main-content closed -->
-
+        @include('layouts.main.modal-courier')
         <!-- End Page -->
 
         <!-- Back-to-top -->
@@ -334,6 +337,11 @@
         <script src="/assets/js/sticky.js"></script>
         <script src="/assets/js/eva-icons.min.js"></script>
         <script src="/assets/js/custom.js"></script>
+        <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+        <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+        <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
+        @include('layouts.main.courier')
 
         <script>
             $('#accept').on('click', function (e) {

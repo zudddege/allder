@@ -75,6 +75,48 @@
             font-family: 'Kanit', 'Helvetica', 'Arial', sans-serif;
         }
 
+        div.pager {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager span.active {
+            background: #0036e7;
+        }
+
+        div.pager-warehouse {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager-warehouse span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager-warehouse span.active {
+            background: #0036e7;
+        }
+
     </style>
 
 </head>
@@ -147,14 +189,14 @@
                                                             เบอร์โทรศัพท์</a></div>
                                                     <div class="d-flex ">
                                                         <div class="">
-                                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                                            <input class="form-control" type="text" id="search" style="width:325px;">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="px-2 ">
-                                            <table class="table table-striped position-relative" id="my-table">
+                                            <table class="table table-striped position-relative paginated" id="my-table">
                                                 <thead>
                                                     <tr>
                                                         <th><input id='mainbox' type="checkbox"></th>
@@ -221,14 +263,14 @@
                                                             เบอร์โทรศัพท์</a></div>
                                                     <div class="d-flex ">
                                                         <div class="">
-                                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                                            <input class="form-control" type="text" id="search-warehouse" style="width:325px;">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="px-2 ">
-                                            <table class="table table-striped position-relative" id="address-storage-table">
+                                            <table class="table table-striped position-relative paginated-warehouse" id="address-storage-table">
                                                 <thead>
                                                     <tr>
                                                         <th><input id='mainbox' type="checkbox"></th>
@@ -314,6 +356,9 @@
         $('#my-table').DataTable({
             scrollX: false,
             autoWidth: false,
+            paging: false,
+            ordering: false,
+            info: false,
             language: {
                 emptyTable: "ไม่พบข้อมูล"
             },
@@ -339,6 +384,9 @@
         $('#address-storage-table').DataTable({
             scrollX: false,
             autoWidth: false,
+            paging: false,
+            ordering: false,
+            info: false,
             language: {
                 emptyTable: "ไม่พบข้อมูล"
             },
@@ -388,6 +436,154 @@
             $('.subbox')
         })
 
+    </script>
+
+    <script>
+        $('#search').on("keyup", function () {
+            $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager"></div>');
+            var $previous = $('<span class="previous"><<</span>');
+            var $next = $('<span class="next">>></span>');
+
+            $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number, .previous, .next').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number:first');
+                $next.insertAfter('span.page-number:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number.active');
+                    if ($active.next('.page-number.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
+
+        $('#search-warehouse').on("keyup", function () {
+            $('table.paginated-warehouse').trigger('repaginate');
+        })
+
+        $('table.paginated-warehouse').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager-warehouse"></div>');
+            var $previous = $('<span class="previous-warehouse"><<</span>');
+            var $next = $('<span class="next-warehouse">>></span>');
+
+            $pager.insertAfter($table).find('span.page-number-warehouse:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search-warehouse').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search-warehouse').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number-warehouse, .previous-warehouse, .next-warehouse').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number-warehouse"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number-warehouse:first');
+                $next.insertAfter('span.page-number-warehouse:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number-warehouse.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number-warehouse.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number-warehouse.active');
+                    if ($active.next('.page-number-warehouse.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number-warehouse.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
     </script>
 
 </body>

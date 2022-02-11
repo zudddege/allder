@@ -113,7 +113,8 @@ class AddressController extends Controller {
     }
 
     public function getAddressById($id) {
-        $address = AddressBook::where(['user_id' => Auth::id(), 'id' => $id])->get();
+
+        $address = AddressBook::where(['user_id' => Auth::id(), 'id' => $id])->first();
         return $address;
     }
 }

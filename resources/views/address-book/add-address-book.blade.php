@@ -206,7 +206,7 @@
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
-    @include('layouts.main.courier')
+
 
     <script>
         $.Thailand.setup({
@@ -222,6 +222,9 @@
         });
 
     </script>
+
+    @include('layouts.main.courier')
+
 </body>
 
 </html>

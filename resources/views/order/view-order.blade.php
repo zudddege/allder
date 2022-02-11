@@ -111,6 +111,51 @@
 
     </style>
 
+    <style>
+        div.pager {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager span.active {
+            background: #0036e7;
+        }
+
+        div.pager-suc {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager-suc span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager-suc span.active {
+            background: #0036e7;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -218,7 +263,7 @@
                                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
                                                     <div class="d-flex">
                                                         <div class="">
-                                                            <input class="form-control" type="text" value="" style="width:325px;">
+                                                            <input class="form-control" type="text" value="" style="width:325px;" id="search">
                                                         </div>
                                                         <div class="dropdown closedropdownoutside">
                                                             <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -263,7 +308,7 @@
                                             </div>
                                         </form>
                                         <div class="px-2 ">
-                                            <table class="table table-striped position-relative" id="my-table">
+                                            <table class="table table-striped position-relative paginated" id="my-table">
                                                 <thead>
                                                     <tr>
                                                         <th class=""><input id='mainbox' type="checkbox"></th>
@@ -325,6 +370,7 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="paginated"></div>
                                         </div>
                                     </div>
                                     {{-- end order-nav --}}
@@ -341,13 +387,10 @@
                                             <div>
                                                 <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
                                                         เบอร์โทรศัพท์</a></div>
-                                                <div class="d-flex ">
-                                                    <div class="">
-                                                        <input class="form-control" type="text" value="" style="width:325px;">
+                                                <div>
+                                                    <div>
+                                                        <input class="form-control" type="text" value="" style="width:325px;" id="search-suc">
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
 
@@ -443,7 +486,7 @@
 
                                         </div>
                                         <div class="px-2 ">
-                                            <table class="table table-striped position-relative" id="order-success-table">
+                                            <table class="table table-striped position-relative paginated-suc" id="order-success-table">
                                                 <thead>
                                                     <tr>
                                                         <th class=""><input id='mainbox' type="checkbox"></th>
@@ -510,6 +553,7 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="paginated-suc"></div>
                                         </div>
                                     </div>
                                     {{-- end order-suc-nav --}}
@@ -695,6 +739,9 @@
     <script>
         $('#my-table').DataTable({
             scrollX: true,
+            paging: false,
+            ordering: false,
+            info: false,
             language: {
                 emptyTable: "ไม่พบข้อมูล"
             },
@@ -740,6 +787,9 @@
         $('#order-success-table').DataTable({
             scrollX: true,
             autoWidth: true,
+            paging: false,
+            ordering: false,
+            info: false,
             language: {
                 emptyTable: "ไม่พบข้อมูล"
             },
@@ -1154,6 +1204,154 @@
             }
         });
 
+    </script>
+
+    <script>
+        $('#search').on("keyup", function () {
+            $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager"></div>');
+            var $previous = $('<span class="previous"><<</span>');
+            var $next = $('<span class="next">>></span>');
+
+            $pager.appendTo('div.paginated').find('span.page-number:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number, .previous, .next').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number:first');
+                $next.insertAfter('span.page-number:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number.active');
+                    if ($active.next('.page-number.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
+
+        $('#search-suc').on("keyup", function () {
+            $('table.paginated-suc').trigger('repaginate');
+        })
+
+        $('table.paginated-suc').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager-suc"></div>');
+            var $previous = $('<span class="previous-suc"><<</span>');
+            var $next = $('<span class="next-suc">>></span>');
+
+            $pager.appendTo('div.paginated-suc').find('span.page-number-suc:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search-suc').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search-suc').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number-suc, .previous-suc, .next-suc').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number-suc"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number-suc:first');
+                $next.insertAfter('span.page-number-suc:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number-suc.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number-suc.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number-suc.active');
+                    if ($active.next('.page-number-suc.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number-suc.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
     </script>
 
 </body>

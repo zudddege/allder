@@ -141,6 +141,7 @@
                                             </div>
                                         </form>
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        {{-- ปฏิทิน --}}
                                         <div id='calendar'></div>
                                     </div>
                                     {{-- end ปฏิทิน COD --}}
