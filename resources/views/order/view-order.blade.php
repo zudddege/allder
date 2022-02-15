@@ -546,7 +546,7 @@
                                                         <td class='subbox24'>{{$order->order_price}} ({{$order->order_cod}})</td>
                                                         <td class='subbox25'>{{$order->user_price}} ({{$order->user_cod}})</td>
                                                         <td class='subbox26'>{{$order->note_detail}}</td>
-                                                        <td class="td_detail shadow"><a href="{{url('/order/'.$order->id.'/detail')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a>
+                                                        <td class="td_detail shadow"><button data-toggle="modal" data-target="#detail-ordersuccess-modal"  class="btn btn-link">ดูรายละเอียด</button>
                                                         </td>
                                                     </tr>
                                                     {{-- @endif --}}
@@ -612,7 +612,7 @@
 
         {{-- modal ดูรายละเอียด ของรายการจัดส่งแล้ว --}}
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="detail-ordersuccess-modal">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                     <h5><b>เรียกดู</b></h5>
@@ -622,12 +622,13 @@
                     </div>
                     <div class="jumps-prevent" style="padding-top: 25px;"></div>
                     <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div class="nav main-nav-line" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-label-detail-tab" data-toggle="tab" href="#nav-label-detail" role="tab" aria-controls="nav-label-detail" aria-selected="true">รายละเอียดใบจ่าหน้า</a>
                             <a class="nav-item nav-link" id="nav-send-detail-tab" data-toggle="tab" href="#nav-send-detail" role="tab" aria-controls="nav-send-detail" aria-selected="false">รายละเอียดการส่ง</a>
                             <a class="nav-item nav-link" id="nav-signature-tab" data-toggle="tab" href="#nav-signature" role="tab" aria-controls="nav-signature" aria-selected="false">ลายเซ็นผู้รับพัสดุ</a>
                         </div>
                     </nav>
+                    <div class="jumps-prevent" style="padding-top: 30px;"></div>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-label-detail" role="tabpanel" aria-labelledby="nav-label-detail-tab">
                             <div class="row">
@@ -662,6 +663,20 @@
                                     <p>ค่าประกัน</p>
                                 </div>
                                 <div class="col-8">
+
+                                    <p>{{$order->order_no}}</p>
+                                    <p>{{$order->tracking_no}}</p>
+                                    <p>--------</p>
+                                    <p>{{$order->original_no}}</p>
+                                    <p>{{$order->return_no}}</p>
+                                    <p>---------</p>
+                                    <p>---------</p>
+                                    <p>---------</p>
+                                    <p>{{$order->send_name}} {{$order->send_tel}} {{$order->send_detail}} {{$order->send_district}} {{$order->send_city}} {{$order->send_province}} {{$order->send_postal_code}}</p>
+                                    <p>{{$order->recv_name}} {{$order->recv_tel}} {{$order->recv_detail}} {{$order->recv_district}} {{$order->recv_city}} {{$order->recv_province}} {{$order->recv_postal_code}}</p>
+                                    <p>{{$order->category_text}}</p>
+                                    <p>{{$order->weight}} kg</p>
+                                    <p>{{$order->length}} x {{$order->width}} x {{$order->height}} cm</p>
                                     <p></p>
                                     <p></p>
                                     <p></p>
@@ -677,19 +692,7 @@
                                     <p></p>
                                     <p></p>
                                     <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
+
                                 </div>
                             </div>
                         </div>

@@ -21,7 +21,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
-    {{-- <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet"> --}}
+    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <link href='{{asset("assets/packages/core/main.css")}}' rel='stylesheet' />
@@ -137,7 +137,7 @@
                                         <form action="#" method="" id="">
                                             <div class="d-flex px-5">
                                                 <label class="mt-2">เลือกเดือนที่แสดง</label>
-                                                <input type="month" class="form-control mx-2" style="width: 200px;" id="month">
+                                                <input type="month" class="form-control mx-2" style="width: 200px;" id="month" value="{{$tomonth}}">
                                             </div>
                                         </form>
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -288,45 +288,49 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-    {{-- <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script> --}}
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
     @include('layouts.main.courier')
 
-    <script  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-              integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-              crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(function () {
-            // กำหนด element ที่จะแสดงปฏิทิน
-            var calendarEl = $("#calendar")[0];
 
-            // กำหนดการตั้งค่า
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'], // plugin ที่เราจะใช้งาน
-                defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
-                header: {
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var monthControl =  $('input[type="month"]').val();
+    $('input[type="month"]').on('change',function(e){
+        var monthControl = $(this).val();
+
+    });
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ], // plugin ที่จะใช้งาน
+            defaultView: 'dayGridMonth', // ค้าเริ่มร้นเมื่อโหลดแสดงปฏิทิน
+            header: {
                     left: 'prev',
                     center: 'title',
-                    right: 'today next '
-                },
-                events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
-                    url: '/event',
-                    error: function() {
+                    right: 'today next'
+            },
+            defaultDate: monthControl,
+            dateClick: this.handleDateClick,
+            events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
+                url: '/event',
+                error: function() {
 
-                    }
-                },
-                eventLimit: true, // allow "more" link when too many events
-                locale: 'th',    // กำหนดให้แสดงภาษาไทย
-                firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
-                showNonCurrentDates: true, // แสดงที่ของเดือนอื่นหรือไม่
-            });
-            // แสดงปฏิทิน
-            calendar.render();
+                }
+            },
+            locale: 'th',    // กำหนดให้แสดงภาษาไทย
+            firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
+            showNonCurrentDates: true, // แสดงที่ของเดือนอื่นหรือไม่
+
         });
+        calendar.render();
+    });
 
-    </script>
+</script>
 
 </body>
 
