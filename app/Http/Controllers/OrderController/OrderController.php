@@ -31,29 +31,30 @@ class OrderController extends Controller {
     }
 
     public function addOrder() {
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         $addressBooks = AddressBook::orderBy('updated_at', 'desc')->where('user_id', Auth::id())->get();
         $mainBook = $addressBooks->where('is_main', '1')->first();
 
 
-        return view('order.add-order', compact('addressBooks','mainBook'));
+        return view('order.add-order', compact('addressBooks','mainBook','warehouses'));
     }
 
     public function detailOrder($id) {
         $order = Order::find($id);
-
-        return view('order.detail-order', compact('order'));
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('order.detail-order', compact('order','warehouses'));
     }
 
     public function editOrder($id) {
         $order = Order::find($id);
         $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->get();
-
-        return view('order.edit-order', compact('order', 'addressBooks'));
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('order.edit-order', compact('order', 'addressBooks','warehouses'));
     }
 
     public function genOrderNo() {
         $order_no = Carbon::now('Asia/Bangkok')->isoFormat('YYMMDD');
-        $order_no .= "PY01";
+        $order_no .= Auth::user()->short_id;
         $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count() + 1;
         $order_no .= str_pad($order_today, 3, '0', STR_PAD_LEFT);
 

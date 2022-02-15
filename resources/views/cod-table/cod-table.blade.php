@@ -21,7 +21,7 @@
     <link href="{{asset('assets/css/style-dark.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
-    <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet">
+    {{-- <link href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <link href='{{asset("assets/packages/core/main.css")}}' rel='stylesheet' />
@@ -141,6 +141,7 @@
                                             </div>
                                         </form>
                                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
+                                        {{-- ปฏิทิน --}}
                                         <div id='calendar'></div>
                                     </div>
                                     {{-- end ปฏิทิน COD --}}
@@ -287,13 +288,15 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    {{-- <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script> --}}
 
     @include('layouts.main.courier')
 
+    <script  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+              integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+              crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(function () {
             // กำหนด element ที่จะแสดงปฏิทิน
@@ -310,23 +313,20 @@
                 },
                 events: { // เรียกใช้งาน event จาก json ไฟล์ ที่สร้างด้วย php
                     url: '/event',
-                    error: function () {
+                    error: function() {
 
                     }
                 },
                 eventLimit: true, // allow "more" link when too many events
-                locale: 'th', // กำหนดให้แสดงภาษาไทย
+                locale: 'th',    // กำหนดให้แสดงภาษาไทย
                 firstDay: 0, // กำหนดวันแรกในปฏิทินเป็นวันอาทิตย์ 0 เป็นวันจันทร์ 1
                 showNonCurrentDates: true, // แสดงที่ของเดือนอื่นหรือไม่
             });
             // แสดงปฏิทิน
             calendar.render();
-
         });
 
     </script>
-
-
 
 </body>
 

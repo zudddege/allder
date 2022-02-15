@@ -141,7 +141,6 @@
                         <div class="">
                             <input class="form-control" type="text" name="warehouse_province" id="assign_warehouse_province">
                         </div>
-
                     </div>
                 </div>
                 <div class="col-6">
@@ -204,10 +203,10 @@
             <h5><b>เลือกจากสมุดที่อยู่</b></h5>
             <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
             <div class=" ">
-                <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                <input class="form-control form-control-sm" type="text" id="search-ware" style="width : 25%;">
             </div>
             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-            <table class="table table-striped position-relative warehouse-table" style="width: 100%;">
+            <table class="table table-striped position-relative warehouse-table paginated-ware" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>รหัสคลังสินค้า</th>
@@ -249,10 +248,10 @@
             <h5><b>เลือกจากสมุดที่อยู่</b></h5>
             <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
             <div class=" ">
-                <input class="form-control form-control-sm" type="text" value="" style="width : 25%;">
+                <input class="form-control form-control-sm" type="text" id="search-ware2" style="width : 25%;">
             </div>
             <div class="jumps-prevent" style="padding-top: 15px;"></div>
-            <table class="table table-striped position-relative warehouse-table" style="width: 100%;">
+            <table class="table table-striped position-relative warehouse-table paginated-ware2" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>รหัสคลังสินค้า</th>
@@ -287,4 +286,48 @@
     </div>
 </div>
 
+<style>
+    div.pager-ware {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    div.pager-ware span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #2196F3;
+        color: #ffff;
+        margin-right: 0.5em;
+    }
+
+    div.pager-ware span.active {
+        background: #0036e7;
+    }
+
+    div.pager-ware2 {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    div.pager-ware2 span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #2196F3;
+        color: #ffff;
+        margin-right: 0.5em;
+    }
+
+    div.pager-ware2 span.active {
+        background: #0036e7;
+    }
+
+</style>
 

@@ -420,8 +420,8 @@
             var numPerPage = 7;
             var $table = $(this);
             var $pager = $('<div class="pager"></div>');
-            var $previous = $('<span class="previous"><<</spnan>');
-            var $next = $('<span class="next">>></spnan>');
+            var $previous = $('<span class="previous"><<</span>');
+            var $next = $('<span class="next">>></span>');
 
             $pager.insertAfter($table).find('span.page-number:first').addClass('active');
 
