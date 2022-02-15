@@ -5,7 +5,9 @@ namespace App\Http\Controllers\ExcelController;
 use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -22,6 +24,8 @@ class ExcelController extends Controller {
     }
 
     public function export() {
+        Auth::user()->id ;
         return Excel::download(new UsersExport, 'order.xlsx');
     }
+
 }

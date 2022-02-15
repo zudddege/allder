@@ -209,19 +209,19 @@
                                                 @csrf
                                                 <input type="file" style="display: none;" name="image" id='me'>
                                             </form>
-                                            <a class="btn btn-link" href="{{url('/api/export/excel')}}">
+                                            <a class="btn btn-link" href="{{url('/api/excel/export')}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                                 </svg> <u>ดาวน์โหลด (Excel)</u>
                                             </a>
-                                            <button class="btn btn-success mx-3" style="height: 40px;" data-toggle="modal" id="printlabel" data-target="#print-modal"  disabled>
+                                            <button class="btn btn-success mx-3" style="height: 40px;" data-toggle="modal" id="printlabel" data-target="#print-modal"   >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
                                                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
                                                 </svg> Print
                                             </button>
-                                            <button class="btn btn-danger" id="cancelorder" style="height: 40px;" disabled>
+                                            <button class="btn btn-danger" id="cancelorder" style="height: 40px;" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
                                                     <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z" />
                                                     <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
@@ -346,7 +346,7 @@
                                                         <td class='subbox4'>{{$order->tracking_no}}</td>
                                                         <td class='subbox5'>Allder Express</td>
                                                         <td class='subbox6'>{{$order->send_name}}<br>
-                                                            <a class="text-muted">{{$order->send_detail}}</a>
+                                               {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}             <a class="text-muted">{{$order->send_detail}}</a>
                                                             <a class="text-muted">{{$order->send_district}}</a>
                                                             <a class="text-muted">{{$order->send_city}}</a>
                                                             <a class="text-muted">{{$order->send_province}}</a>
@@ -361,8 +361,8 @@
                                                         </td>
                                                         <td class='subbox9'>{{$order->recv_tel}}</td>
                                                         <td class='subbox10'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                        <td class='subbox11'>{{$order->user_cod}} ({{$order->order_cod}})</td>
-                                                        <td class='subbox12'>{{$order->user_price }} ({{$order->order_price}})</td>
+                                                        <td class='subbox11'>{{$order->user_cod}} </td>
+                                                        <td class='subbox12'>{{$order->user_price }}</td>
                                                         <td class='subbox13'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><a href="{{url('/orders/detail/'.$order->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
@@ -508,7 +508,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    {{-- @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก") --}}
+                                                    @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox14'>
@@ -543,13 +543,13 @@
                                                         </td>
                                                         <td class='subbox22'>{{$order->recv_tel}}</td>
                                                         <td class='subbox23'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                        <td class='subbox24'>{{$order->order_price}} ({{$order->order_cod}})</td>
-                                                        <td class='subbox25'>{{$order->user_price}} ({{$order->user_cod}})</td>
+                                                        <td class='subbox24'>{{$order->order_price}} </td>
+                                                        <td class='subbox25'>{{$order->user_price}} </td>
                                                         <td class='subbox26'>{{$order->note_detail}}</td>
                                                         <td class="td_detail shadow"><button data-toggle="modal" data-target="#detail-ordersuccess-modal"  class="btn btn-link">ดูรายละเอียด</button>
                                                         </td>
                                                     </tr>
-                                                    {{-- @endif --}}
+                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -570,7 +570,7 @@
         @include('layouts.main.modal-courier')
 
         {{-- modal print --}}
-        <form action="/orders/print/{id}" method="get" target="_blank">
+
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="print-modal">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
@@ -594,20 +594,18 @@
                                     <th>{{$order->order_no}}</th>
                                     <th>{{$order->tracking_no}}</th>
                                     <th>{{$order->status_text}}</th>
-
+                                    <th><button class="printOrder" type="button" value="{{$order->user_id}}" target="_blank" >ปริ้น</button></th>
                                 </tr>
                                 @endif
                                 @endforeach
-
                             </tbody>
                         </table>
                         <div>
-                            <input type="submit">
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+
         {{-- end modal print --}}
 
         {{-- modal ดูรายละเอียด ของรายการจัดส่งแล้ว --}}
@@ -1133,12 +1131,7 @@
         });
 
     </script>
-    <script>
-        $(".subbox").click(function() {
-        $("#printlabel").attr("disabled", !this.checked);
-        $("#cancelorder").attr("disabled", !this.checked);
-        });
-    </script>
+
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -1208,6 +1201,17 @@
         });
 
     </script>
+    <script>
+        $('.printorder').on('click', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/orders/print/{id}',
+                    method: 'post',
+                    data: {
+                        id: id
+                        },
+                })
+            });
 
     <script>
         $('#search').on("keyup", function () {

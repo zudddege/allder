@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Order\Order;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -21,7 +22,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
     public function map($order): array{
         return [
             $order->created_at->addYear(543)->format('d/m/Y - h:i a'),
-            $order->status,
+            $order->status_text,
             $order->order_no,
             $order->tracking_no,
             "Allder Express",
@@ -29,13 +30,13 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
             $order->send_tel,
             $order->recv_name,
             $order->recv_tel,
-            $order->category,
+            $order->category_text,
             $order->weight,
-            $order->width_size,
-            $order->length_size,
-            $order->height_size,
-            $order->cod,
-            $order->estimate_price,
+            $order->width,
+            $order->length,
+            $order->height,
+            $order->order_price,
+            $order->user_price,
             $order->note_detail,
         ];
     }

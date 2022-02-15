@@ -21,7 +21,7 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('/', 'OrderController\OrderController@showOrder');
         Route::get('/create', 'OrderController\OrderController@addOrder');
         Route::get('/detail/{id}', 'OrderController\OrderController@detailOrder');
-        Route::get('/edit/{id}', 'OrderController\OrderController@editOrder');
+        Route::get('/edit/{id}  ', 'OrderController\OrderController@editOrder');
         Route::get('/print/{id}', 'OrderController\OrderController@printLabel');
     });
 
@@ -58,7 +58,7 @@ Route::middleware(['auth', 'status'])->group(function () {
 Auth::routes();
 Route::get('/', 'UserController@login');
 Route::get('/login', 'UserController@login')->name('login');
-Route::get('/home', 'OrderController\OrderController@showOrder')->name('home')->middleware('checkstatus', 'returnlogin');
+Route::get('/home', 'OrderController\OrderController@showOrder')->name('home')->middleware('checkstatus');
 //forget password
 Route::get('/forgot', 'UserController@forgot')->name('forgot');
 Route::get('forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');
@@ -85,3 +85,9 @@ Route::get('/tracking','TrackingController\TrackingController@showTracking');
 
 // Affect-cost
 Route::get('/affect-costs','AffectCostsController\AffectCostsController@showaffectcosts');
+
+
+Route::get('/get-warehouse-data', 'AddressBookController\WarehouseController@getWarehouseDataListing');
+Route::get('/create-order','OrderController\OrderController@authoCreateOrder');
+Route::get('/edit-order','OrderController\OrderController@authoeditOrder');
+Route::get('/cancel-order','OrderController\OrderController@authocancelOrder');

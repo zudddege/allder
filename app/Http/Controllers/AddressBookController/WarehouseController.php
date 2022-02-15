@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AddressBookController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Warehouse\Warehouse;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,6 +76,7 @@ class WarehouseController extends Controller {
     }
 
     public function getWarehouse() {
+
         $warehouses = Warehouse::where('user_id', Auth::id())->get();
         return $warehouses;
     }
@@ -82,5 +84,49 @@ class WarehouseController extends Controller {
     public function getWarehouseById($id) {
         $warehouse = Warehouse::where(['id' => $id, 'user_id' => Auth::id()])->first();
         return $warehouse;
+    }
+
+    public function getWarehouseDataListing(Request $request){
+        $header = $request->header();
+        if(!array_key_exists('authorization', $header)){
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+
+        $authorization = $header['authorization'][0];
+        $token = explode(' ', $authorization);
+        if($token != ""){
+            try {
+                $codeReturn = "success";
+                $msg = "";
+                $warehouses =   Warehouse::select('user_id','warehouse_no')->orderBy('id', 'desc')->get();
+
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $msg,
+                    'data' => $warehouses,
+                ]);
+            } catch (\Throwable $th) {
+                $codeReturn = "fail";
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $th
+                ]);
+            }
+
+        }else{
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
     }
 }

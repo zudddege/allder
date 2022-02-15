@@ -224,12 +224,12 @@
                                             <td>{{$order->order_no}}</td>
                                             <td>{{$order->send_name}}</td>
                                             <td>{{$order->send_detail}}</td>
-                                            <td>efrthdyjgfd</td>
+                                            <td>{{$order->updated_at}}</td>
                                             <td>{{$order->recv_name}}</td>
                                             <td>{{$order->recv_detail}}</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td>aertyjukgjfdrthy</td>
-                                            <td> <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="60%;" height="100%;" alt=""> </td>
+                                            <td>{{$order->signer_type}}</td>
+                                            <td>{{$order->signer_name}}</td>
+                                            <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt=""> </td>
                                             <td class="td_detail shadow"><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
