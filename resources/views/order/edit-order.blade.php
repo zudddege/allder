@@ -337,7 +337,7 @@
         <!-- End Page -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <form action="{{url('/api/order/'.$order->id.'/cancel')}}" method="POST">
+                <form action="{{url('/api/orders/cancel/'.$order->id.'')}}" method="POST">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">

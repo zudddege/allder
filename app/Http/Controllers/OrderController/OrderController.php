@@ -12,6 +12,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class OrderController extends Controller {
     public function showOrder() {
@@ -409,6 +410,7 @@ class OrderController extends Controller {
             Order::find($id)->update([
                 'status_text' => "ยกเลิก",
                 'cancel_reason' => $request->cancel_reason,
+                'status_code' => "9"
             ]);
         } else {
             dd($post);
@@ -432,4 +434,208 @@ class OrderController extends Controller {
         return response($post)->header('Content-type', 'application/pdf');
     }
 
+    public function authoCreateOrder(Request $request){
+
+        $header = $request->header();
+        if(!array_key_exists('authorization', $header)){
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+        $authorization = $header['authorization'][0];
+        $token = explode(' ', $authorization);
+        if($token != ""){
+            try {
+                $codeReturn = "success";
+                $msg = "เย้เข้าได้แล้ว";
+                $create =  Order::create([
+                'user_id' => '1',
+                'order_no' => '1.1',
+                'send_name' => '1.1',
+                'send_tel' => $request->send_tel,
+                'send_detail' => '1.1',
+                'send_district' => '1.1',
+                'send_city' => '1.1',
+                'send_province' => '1.1',
+                'send_postal_code' => '1.1',
+                'recv_name' => '1.1',
+                'recv_tel' => '1.1',
+                'recv_detail' => '1.1',
+                'recv_district' =>'1.1',
+                'recv_city' => '1.1',
+                'recv_province' => '1.1',
+                'recv_postal_code' => '1.1',
+                'category_text' => 'เอกสาร',
+                'weight' => '1.1',
+                'width' => '1.1',
+                'length' => '1.1',
+                'height' => '1.1',
+                'order_cod' => '1.1',
+                'order_price' => '1.1',
+                'user_cod' => '1.1' ,
+                'user_price' => '1.1',
+                'note_detail' => '1.1',
+                'is_return_insurance' => $request->is_return_insurance ? true : false,
+                'is_protect_insurance' => $request->is_protect_insurance ? true : false,
+                'is_express_transport' => $request->is_express_transport ? true : false,
+                'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                'tracking_no' => '1.1',
+                'original_tracking' => '1.1',
+                'status_text' => "รอปริ้น",
+                ]);
+
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $msg,
+                    'data' => $create,
+                ]);
+            } catch (\Throwable $th) {
+                $codeReturn = "fail";
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $th
+                ]);
+            }
+
+        }else{
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+
+    }
+
+    public function authoeditOrder(Request $request){
+
+        $header = $request->header();
+        if(!array_key_exists('authorization', $header)){
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+        $authorization = $header['authorization'][0];
+        $token = explode(' ', $authorization);
+        if($token != ""){
+            try {
+
+                $codeReturn = "success";
+                $msg = "เย้เข้าได้แล้ว";
+                $edit =Order::create([
+                    'user_id' => '2',
+                    'order_no' => '1.2',
+                    'send_name' => '1.21',
+                    'send_tel' => $request->send_tel,
+                    'send_detail' => '1.51',
+                    'send_district' => '1.71',
+                    'send_city' => '1.17',
+                    'send_province' => '1.157',
+                    'send_postal_code' => '17.1',
+                    'recv_name' => '1.15',
+                    'recv_tel' => '1.15',
+                    'recv_detail' => '1.17',
+                    'recv_district' =>'1.18',
+                    'recv_city' => '1.81',
+                    'recv_province' => '1.19',
+                    'recv_postal_code' => '1.18',
+                    'category_text' => 'เอกสาร',
+                    'weight' => '18.1',
+                    'width' => '19.1',
+                    'length' => '1.18',
+                    'height' => '17.1',
+                    'order_cod' => '15.1',
+                    'order_price' => '1.1',
+                    'user_cod' => '1.1' ,
+                    'user_price' => '1.1',
+                    'note_detail' => '1.1',
+                    'is_return_insurance' => $request->is_return_insurance ? true : false,
+                    'is_protect_insurance' => $request->is_protect_insurance ? true : false,
+                    'is_express_transport' => $request->is_express_transport ? true : false,
+                    'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                    'tracking_no' => '1.1',
+                    'original_tracking' => '1.1',
+                    'status_text' => "รอปริ้น",
+                    ]);
+
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $msg,
+                    'data' => $edit,
+                ]);
+            } catch (\Throwable $th) {
+                $codeReturn = "fail";
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $th
+                ]);
+            }
+
+        }else{
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+
+    }
+
+    public function authocancelOrder(Request $request){
+
+        $header = $request->header();
+        if(!array_key_exists('authorization', $header)){
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+        $authorization = $header['authorization'][0];
+        $token = explode(' ', $authorization);
+        if($token != ""){
+            try {
+
+                $codeReturn = "success";
+                $msg = "เย้เข้าได้แล้ว";
+                $cancel = 'ยกเลิกรายการออเดอร์แล้วเย้แปะๆ' ;
+
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $msg,
+                    'data' => $cancel,
+                ]);
+            } catch (\Throwable $th) {
+                $codeReturn = "fail";
+                return response()->json([
+                    'status' => $codeReturn,
+                    'message' => $th
+                ]);
+            }
+
+        }else{
+            $codeReturn = "error";
+            $msg = "unauthorized";
+
+            return response()->json([
+                'status' => $codeReturn,
+                'message' => $msg
+            ],401);
+        }
+
+    }
 }

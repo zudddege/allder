@@ -273,6 +273,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($subaccount as $account)
+                                            @if ($account->is_admin === 0)
                                             <tr>
                                                 <td>
                                                     <input type="checkbox" class="sub-check">
@@ -287,6 +288,7 @@
                                                 <td>{{$account->cod_rate}} %</td>
                                                 <td><label class="switch"><input type="checkbox" class="switchstatus" id="{{$account->id}}" @if($account->is_status === 1) checked @endif><span class="slider round"></span></label></td>
                                             </tr>
+                                            @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -339,7 +341,7 @@
     <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
 
     @include('layouts.main.courier')
-    
+
     <script>
         $('#my-table').DataTable({
             scrollX: false,
