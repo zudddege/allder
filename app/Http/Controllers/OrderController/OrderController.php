@@ -229,7 +229,7 @@ class OrderController extends Controller {
                 'status_text' => "รอปริ้น",
             ]);
         } else {
-            dd($post);
+            // dd($post);
         }
 
         return redirect('/orders');
@@ -432,5 +432,7 @@ class OrderController extends Controller {
 
         return response($post)->header('Content-type', 'application/pdf');
     }
+
+
 
 }

@@ -14,19 +14,35 @@ use \Illuminate\Support\Str;
 
 class UserController extends Controller {
 
-    protected function Validation(Request $data) {
+    protected function Validation(Request $request) {
 
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => ['required', 'string', 'max:20'],
-            'close_id' => ['required', 'string', 'max:50'],
-            'tel_no' => ['required', 'string', 'max:20'],
-            'discount' => ['required', 'decimal', 'max:3,0'],
-            'cod' => ['required', 'decimal', 'max:3,0'],
+        $this->validate($request,[
+            'email' => 'required|string|email|max:50|unique:users',
+            'account_name' => 'required|string|max:20',
+            'tel_no' => 'required|string|max:20',
+            'discount_rate' => 'required|decimal|max:3,0',
+            'cod_rate' => 'required|decimal|max:3,0',
+            'username' => 'required|string|max:20',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required',
+        ],
+        //Custom Error Messages
+        [
+            'email.required' => 'อีเมลนี้ถูกใช้สมัครแล้ว',
+            'account_name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน / ชื่อธุรกิจ',
+            'tel_no.required' => 'กรุณาใส่เบอร์ติดต่อ',
+            'discount_rate.required' => 'กรุณาใส่ส่วนลดที่ได้รับ',
+            'cod_rate.required' => 'กรุณาใส่COD',
+            'username.exists' => 'กรุณาใส่ชื่อผู้ใช้หรืออีเมล',
+            'password.min' => ' รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัว',
+            'password.confirmed' => 'การยืนยันรหัสผ่านไม่ตรงกัน',
         ]);
+        $user = User::find($request->email);
+        $email = !$user->email;
+        $user->update(["email" => $email]);
+
     }
+
 
     public function login() {
         return view('auth.login');
@@ -59,6 +75,7 @@ class UserController extends Controller {
     }
 
     protected function createSubAccount(Request $data) {
+
         User::create([
             "close_id" => $data->close_id,
             "short_id" => $data->short_id,

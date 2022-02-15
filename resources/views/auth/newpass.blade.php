@@ -106,21 +106,22 @@
                                 </div>
                                 <form action="{{ route('reset.password.post') }}" method="POST">
                                     @csrf
+                                    @if (Session::has('errors'))
+                                    <div class="alert alert-danger">
+                                        @foreach ($errors->all() as $error)
+                                        {{ $error }}<br />
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                    <div class="d-flex justify-content-center">
+                                        <input class="form-control mb-3" type="password" id="password" name="password" required autofocus value="" placeholder="รหัสผ่านใหม่" style="width: 250;">
+                                    </div>
                                     <input type="hidden" name="token" value="{{ $token }}">
                                     <input type="hidden" name="email" value="{{ $email }}">
 
-                                    <div class="d-flex justify-content-center">
-                                        <input class="form-control mb-3" type="password" id="password" name="password" required autofocus value="" placeholder="รหัสผ่านใหม่" style="width: 250;">
-                                        @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                    </div>
 
                                     <div class="d-flex justify-content-center">
                                         <input class="form-control" type="password" id="password-confirm" name="password_confirmation" required autofocus value="" placeholder="รหัสผ่านใหม่อีกครั้ง" style="width: 250;">
-                                        @if ($errors->has('password_confirmation'))
-                                        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
-                                        @endif
                                     </div>
 
                                     <div class="jumps-prevent" style="padding-top: 45px;"></div>
