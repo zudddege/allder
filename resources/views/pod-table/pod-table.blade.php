@@ -229,8 +229,8 @@
                                             <td>{{$order->recv_detail}}</td>
                                             <td>{{$order->signer_type}}</td>
                                             <td>{{$order->signer_name}}</td>
-                                            <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt=""> </td>
-                                            <td class="td_detail shadow"><a href="#" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                            <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="img-empty" > </td>
+                                            <td class="td_detail shadow"><a href="{{url('/detail-pod?id='.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -443,6 +443,15 @@
             }
             $('.subbox')
         });
+
+        if ($('img.photoPreview', this).attr('src') != '') {
+
+            $('.img-empty').attr({
+                src:"{{asset("assets/img/img-empty.png")}}",
+                width:"25%;",
+                height:"25%;"
+            });
+        }
 
     </script>
 

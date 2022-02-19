@@ -289,6 +289,11 @@
                                     <a>{{$order->cancel_reason}}</a>
                                 </div>
                                 @else
+                                <div class="jumps-prevent d-flex justify-content-center" style="padding-top: 100px;">
+                                    <a type="button" data-toggle="modal" data-target="#exampleModalCenter" style="color: red;">
+                                        <u>ยกเลิกรายการ</u>
+                                    </a>
+                                </div>
                                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
                                 <div class="d-flex justify-content-center">
 
@@ -307,6 +312,32 @@
         </div>
         <!-- main-content closed -->
         @include('layouts.main.modal-courier')
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <form action="{{url('/api/orders/cancel/'.$order->id.'')}}" method="POST">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">
+                                ต้องการยกเลิกรายการใช่หรือไม่
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            เหตุผลที่ทำการยกเลิก
+                            <input class="form-control" type="text" value="" name="cancel_reason" id="cancel_reason">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">ยกเลิกรายการ</button>
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">เก็บไว้ก่อน</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- End Page -->
 
         <!-- Back-to-top -->

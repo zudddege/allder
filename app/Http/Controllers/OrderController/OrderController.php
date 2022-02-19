@@ -417,7 +417,7 @@ dd($request);
             dd($post);
         }
 
-        return redirect('orders/detail/' . $id . '');
+        return redirect('orders/detail/' . $id );
     }
 
     public function printLabel($id) {
