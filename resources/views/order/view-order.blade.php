@@ -330,7 +330,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status_text == "รอปริ้น" || $order->status_text == "ปริ้นแล้ว")
+                                                    @if($order->status_text == "รอปริ้น" || $order->status_text == "ปริ้นแล้ว" || $order->status_text == "ยกเลิก")
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox1'>
@@ -340,6 +340,8 @@
                                                             <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
                                                             @elseif($order->status_text == "รอปริ้น")
                                                             <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_code == "9")
+                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox3'>{{$order->order_no}}</td>
@@ -508,7 +510,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ยกเลิก")
+                                                    @if($order->status_text == "เสร็จสิ้น" )
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox14'>
@@ -520,8 +522,6 @@
                                                             <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
                                                             @elseif($order->status_code == "5")
                                                             <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status_text}}</span>
-                                                            @elseif($order->status_code == "9")
-                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox16'>{{$order->order_no}}</td>
@@ -629,6 +629,9 @@
                     <div class="jumps-prevent" style="padding-top: 30px;"></div>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-label-detail" role="tabpanel" aria-labelledby="nav-label-detail-tab">
+
+
+
                             <div class="row">
                                 <div class="col-4">
                                     <p>เลขออเดอร์</p>
@@ -661,7 +664,7 @@
                                     <p>ค่าประกัน</p>
                                 </div>
                                 <div class="col-8">
-
+@foreach ( $orders as $order )
                                     <p>{{$order->order_no}}</p>
                                     <p>{{$order->tracking_no}}</p>
                                     <p>--------</p>
@@ -690,7 +693,7 @@
                                     <p></p>
                                     <p></p>
                                     <p></p>
-
+@endforeach
                                 </div>
                             </div>
                         </div>
@@ -1213,7 +1216,7 @@
                 })
             });
 
-    <script>
+
         $('#search').on("keyup", function () {
             $('table.paginated').trigger('repaginate');
         })
@@ -1318,7 +1321,7 @@
                 var numPages = Math.ceil(numRows / numPerPage);
 
                 $pager.find('.page-number-suc, .previous-suc, .next-suc').remove();
-                for (var page = 0; page < numPages; page++) {
+                for (var page = 0; page <script numPages; page++) {
                     var $newPage = $('<span class="page-number-suc"></span>').text(page + 1).bind('click', {
                         newPage: page
                     }, function (event) {

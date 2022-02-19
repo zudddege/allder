@@ -5,6 +5,7 @@ namespace App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddressBookController\AddressController;
 use App\Http\Controllers\Controller;
 use App\Models\AddressBook\AddressBook;
+use App\Models\FlashCategoryCode\FlashCategoryCode;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
 use App\Models\Order\Order;
 use App\Models\Warehouse\Warehouse;
@@ -12,7 +13,6 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\VarDumper\Cloner\Data;
 
 class OrderController extends Controller {
     public function showOrder() {
@@ -159,7 +159,7 @@ class OrderController extends Controller {
 
             $user_price = round($order_price * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
             $user_cod = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
-
+dd($user_price);
             if ($request->main_address == 1) {
                 (new AddressController)->updateMainAddress(Auth::id());
             }
@@ -417,7 +417,7 @@ class OrderController extends Controller {
             dd($post);
         }
 
-        return redirect('orders/' . $id . '/detail');
+        return redirect('orders/detail/' . $id . '');
     }
 
     public function printLabel($id) {
@@ -435,6 +435,8 @@ class OrderController extends Controller {
         return response($post)->header('Content-type', 'application/pdf');
     }
 
+
+
     public function authoCreateOrder(Request $request){
 
         $header = $request->header();
@@ -449,45 +451,14 @@ class OrderController extends Controller {
         }
         $authorization = $header['authorization'][0];
         $token = explode(' ', $authorization);
+
+
+
         if($token != ""){
             try {
                 $codeReturn = "success";
                 $msg = "เย้เข้าได้แล้ว";
-                $create =  Order::create([
-                'user_id' => '1',
-                'order_no' => '1.1',
-                'send_name' => '1.1',
-                'send_tel' => $request->send_tel,
-                'send_detail' => '1.1',
-                'send_district' => '1.1',
-                'send_city' => '1.1',
-                'send_province' => '1.1',
-                'send_postal_code' => '1.1',
-                'recv_name' => '1.1',
-                'recv_tel' => '1.1',
-                'recv_detail' => '1.1',
-                'recv_district' =>'1.1',
-                'recv_city' => '1.1',
-                'recv_province' => '1.1',
-                'recv_postal_code' => '1.1',
-                'category_text' => 'เอกสาร',
-                'weight' => '1.1',
-                'width' => '1.1',
-                'length' => '1.1',
-                'height' => '1.1',
-                'order_cod' => '1.1',
-                'order_price' => '1.1',
-                'user_cod' => '1.1' ,
-                'user_price' => '1.1',
-                'note_detail' => '1.1',
-                'is_return_insurance' => $request->is_return_insurance ? true : false,
-                'is_protect_insurance' => $request->is_protect_insurance ? true : false,
-                'is_express_transport' => $request->is_express_transport ? true : false,
-                'is_damage_insurance' => $request->is_damage_insurance ? true : false,
-                'tracking_no' => '1.1',
-                'original_tracking' => '1.1',
-                'status_text' => "รอปริ้น",
-                ]);
+                $create = (new OrderController)->apiCreateOrder($request);
 
                 return response()->json([
                     'status' => $codeReturn,
@@ -514,6 +485,116 @@ class OrderController extends Controller {
 
     }
 
+    public function apiCreateOrder(Request $request){
+
+
+            $category_text = FlashCategoryCode::category($request->category);
+            $id = auth()->user()->id;
+            $accountRate = User::select('discount_rate', 'cod_rate')->find($id);
+
+            $create = FlashCoreFunction::buildRequestParam([
+                'nonceStr' => time(),
+                'outTradeNo' => $request->order_no,
+                'expressCategory' => $request->is_express_transport == 1 ? 2 : 1,
+                'srcName' => $request->send_name,
+                'srcPhone' => $request->send_tel,
+                'srcProvinceName' => $request->send_province,
+                'srcCityName' => $request->send_city,
+                'srcDistrictName' => $request->send_district,
+                'srcPostalCode' => $request->send_postal_code,
+                'srcDetailAddress' => $request->send_detail,
+                'dstName' => $request->recv_name,
+                'dstPhone' => $request->recv_tel,
+                'dstProvinceName' => $request->recv_province,
+                'dstCityName' => $request->recv_city,
+                'dstDistrictName' => $request->recv_district,
+                'dstPostalCode' => $request->recv_postal_code,
+                'dstDetailAddress' => $request->recv_detail,
+                'articleCategory' => intval($request->category),
+                'weight' => ($request->weight) * 1000,
+                'width' => $request->width_size,
+                'length' => $request->length_size,
+                'height' => $request->height_size,
+                'insured' => $request->is_protect_insurance ? 1 : 0,
+                'freightInsureEnabled' => $request->is_return_insurance ? 1 : 0,
+                'opdInsureEnabled' => $request->is_damage_insurance ? 1 : 0,
+                'codEnabled' => $request->order_cod == "0" ? 0 : 1,
+                'codAmount' => ($request->order_cod) * 100,
+                'remark' => $request->note_detail,
+            ]);
+
+            $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v3/orders", $create);
+            $response = json_decode($post, true);
+
+            if ($response['message'] == "success") {
+                $tracking_no = $response['data']['pno'];
+                $rate = FlashCoreFunction::buildRequestParam([
+                    'nonceStr' => time(),
+                    'srcProvinceName' => $request->send_province,
+                    'srcCityName' => $request->send_city,
+                    'srcDistrictName' => $request->send_district,
+                    'srcPostalCode' => $request->send_postal_code,
+                    'dstProvinceName' => $request->recv_province,
+                    'dstCityName' => $request->recv_city,
+                    'dstDistrictName' => $request->recv_district,
+                    'dstPostalCode' => $request->recv_postal_code,
+                    'weight' => ($request->weight) * 1000,
+                    'width' => $request->width_size,
+                    'length' => $request->length_size,
+                    'height' => $request->height_size,
+                    'expressCategory' => $request->is_express_transport == 1 ? 2 : 1,
+                    'pricingTable' => 0,
+                ]);
+
+                $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/orders/estimate_rate", $rate);
+                $response = json_decode($post, true);
+                $order_price = $response['data']['estimatePrice'];
+
+                $user_price = round($order_price * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
+                $user_cod = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
+
+
+                Order::create([
+                    'user_id' => auth()->user()->id,
+                    'order_no' => $request->order_no,
+                    'send_name' => $request->send_name,
+                    'send_tel' => $request->send_tel,
+                    'send_detail' => $request->send_detail,
+                    'send_district' => $request->send_district,
+                    'send_city' => $request->send_city,
+                    'send_province' => $request->send_province,
+                    'send_postal_code' => $request->send_postal_code,
+                    'recv_name' => $request->recv_name,
+                    'recv_tel' => $request->recv_tel,
+                    'recv_detail' => $request->recv_detail,
+                    'recv_district' => $request->recv_district,
+                    'recv_city' => $request->recv_city,
+                    'recv_province' => $request->recv_province,
+                    'recv_postal_code' => $request->recv_postal_code,
+                    'category_text' => $category_text,
+                    'weight' => $request->weight,
+                    'width' => $request->width,
+                    'length' => $request->length,
+                    'height' => $request->height,
+                    'order_cod' => $request->order_cod,
+                    'order_price' => $order_price /100,
+                    'user_cod' => $user_cod ,
+                    'user_price' => $user_price,
+                    'note_detail' => $request->note_detail,
+                    'is_return_insurance' => $request->is_return_insurance ? true : false,
+                    'is_protect_insurance' => $request->is_protect_insurance ? true : false,
+                    'is_express_transport' => $request->is_express_transport ? true : false,
+                    'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                    'tracking_no' => $tracking_no,
+                    'original_tracking' => $request->original_tracking,
+                    'status_text' => "รอปริ้น",
+                ]);
+            } else {
+                dd($post);
+            }
+
+    }
+
     public function authoeditOrder(Request $request){
 
         $header = $request->header();
@@ -533,41 +614,8 @@ class OrderController extends Controller {
 
                 $codeReturn = "success";
                 $msg = "เย้เข้าได้แล้ว";
-                $edit =Order::create([
-                    'user_id' => '2',
-                    'order_no' => '1.2',
-                    'send_name' => '1.21',
-                    'send_tel' => $request->send_tel,
-                    'send_detail' => '1.51',
-                    'send_district' => '1.71',
-                    'send_city' => '1.17',
-                    'send_province' => '1.157',
-                    'send_postal_code' => '17.1',
-                    'recv_name' => '1.15',
-                    'recv_tel' => '1.15',
-                    'recv_detail' => '1.17',
-                    'recv_district' =>'1.18',
-                    'recv_city' => '1.81',
-                    'recv_province' => '1.19',
-                    'recv_postal_code' => '1.18',
-                    'category_text' => 'เอกสาร',
-                    'weight' => '18.1',
-                    'width' => '19.1',
-                    'length' => '1.18',
-                    'height' => '17.1',
-                    'order_cod' => '15.1',
-                    'order_price' => '1.1',
-                    'user_cod' => '1.1' ,
-                    'user_price' => '1.1',
-                    'note_detail' => '1.1',
-                    'is_return_insurance' => $request->is_return_insurance ? true : false,
-                    'is_protect_insurance' => $request->is_protect_insurance ? true : false,
-                    'is_express_transport' => $request->is_express_transport ? true : false,
-                    'is_damage_insurance' => $request->is_damage_insurance ? true : false,
-                    'tracking_no' => '1.1',
-                    'original_tracking' => '1.1',
-                    'status_text' => "รอปริ้น",
-                    ]);
+                $id = Order::id();
+                $edit = (new OrderController)->modifyOrder($request,$id);
 
                 return response()->json([
                     'status' => $codeReturn,
@@ -613,7 +661,7 @@ class OrderController extends Controller {
 
                 $codeReturn = "success";
                 $msg = "เย้เข้าได้แล้ว";
-                $cancel = 'ยกเลิกรายการออเดอร์แล้วเย้แปะๆ' ;
+                $cancel = '' ;
 
                 return response()->json([
                     'status' => $codeReturn,
