@@ -38,11 +38,15 @@ class LoginController extends Controller {
     public function login(Request $request) {
         $input = $request->all();
 
-        $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required',
+        $this->validate($request,[
+            'username' => 'required|exists:users',
+            'password' => 'required|string|min:8',
+        ],
+        //Custom Error Messages
+        [
+            'username.exists' => 'ชื่อผู้ใช้หรืออีเมลไม่ถูกต้อง',
+            'password.min' => ' รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัว',
         ]);
-
         if (auth()->attempt(array('username' => $input['username'], 'password' => $input['password']))) {
             if (auth()->user()->is_admin == 1) {
                 return redirect('/sub-accounts');
@@ -50,7 +54,7 @@ class LoginController extends Controller {
                 return redirect('/orders');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Email-Address And Password Are Wrong.');
+            return redirect()->route('login')->withErrors('รหัสผ่านไม่ถูกต้อง');
         }
     }
 }

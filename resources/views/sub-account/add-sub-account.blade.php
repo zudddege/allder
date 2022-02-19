@@ -162,6 +162,13 @@
                         </div>
                     </div>
                 </div>
+                @if (Session::has('errors'))
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                    {{ $error }}<br/>
+                    @endforeach
+                </div>
+                @endif
                 <!-- breadcrumb -->
 
                 <!-- row opened -->
@@ -169,6 +176,7 @@
                     @csrf
                     <div class="row row-sm">
                         <div class="col-xl-5">
+
                             <div class="card card-body">
                                 <div class="d-flex">
                                     <p class="px-2 mt-2">รหัสผู้ใช้งาน</p>
@@ -180,20 +188,29 @@
                                     <div class="">
                                         <p class="my-1">อีเมล</p>
                                         <div class="">
-                                            <input class="form-control" name="email" type="text" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" name="email" type="text" id="email" value="" style="width: 65%; height: 75%;">
                                         </div>
+                                        @error('email')
+                                        <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <p class="my-1">ชื่อผู้ใช้งาน / ชื่อธุรกิจ</p>
                                         <div class="">
-                                            <input class="form-control" name="account_name" type="text" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" name="account_name" type="text" id="account_name" value="" style="width: 65%; height: 75%;">
                                         </div>
+                                        @error('account_name')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="">
                                         <p class="my-1">เบอร์ติดต่อ</p>
                                         <div class="">
-                                            <input class="form-control" type="text" name="tel_no" value="" style="width: 65%; height: 75%;">
+                                            <input class="form-control" type="text" name="tel_no" id=tel_no value="" style="width: 65%; height: 75%;">
                                         </div>
+                                        @error('tel_no')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -205,12 +222,18 @@
                                     <div class="d-flex align-items-center">
                                         <input class="form-control" type="text" name="discount_rate" value=""><span class="px-1">%</span>
                                     </div>
+                                    @error('discount_rate')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="my-2">
                                     <p class="my-1">COD</p>
                                     <div class="d-flex align-items-center">
                                         <input class="form-control" type="text" value="" name="cod_rate"><span class="px-1">%</span>
                                     </div>
+                                    @error('cod_rate')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -231,6 +254,9 @@
                                     <div class="">
                                         <input class="form-control" type="text" value="" style="width: 65%; height: 75%;" name="username">
                                     </div>
+                                    @error('username')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="my-1">
                                     <p class="my-1">รหัสผ่าน <span class="text-muted">(8 - 16 ตัวอักษร)</span></p>
@@ -238,12 +264,19 @@
                                         <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password">
                                         <button class="btn btn-link" type="button" b id="auto_password"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
                                     </div>
+                                    @error('password')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="">
                                     <p class="my-1">รหัสผ่านอีกครั้ง</p>
                                     <div class="">
-                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm">
+                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password_confirmation">
                                     </div>
+                                    @error('password_confirmation')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
+
                                 </div>
 
                                 <div class="jumps-prevent" style="padding-top: 130px;"></div>

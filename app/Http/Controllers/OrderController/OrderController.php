@@ -230,7 +230,7 @@ dd($user_price);
                 'status_text' => "รอปริ้น",
             ]);
         } else {
-            dd($post);
+            // dd($post);
         }
 
         return redirect('/orders');
@@ -436,9 +436,7 @@ dd($user_price);
     }
 
 
-
     public function authoCreateOrder(Request $request){
-
         $header = $request->header();
         if(!array_key_exists('authorization', $header)){
             $codeReturn = "error";
