@@ -136,6 +136,7 @@
                         <span>พื้นที่บริการ</span>
                         <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail" id="assign_warehouse_detail"></textarea>
                     </div>
+                    <div class="jumps-prevent" style="padding-top: 3.5px;"></div>
                     <div class="my-1">
                         <span>จังหวัด</span>
                         <div class="">

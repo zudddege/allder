@@ -16,8 +16,9 @@ class CodController extends Controller
 
     public function showCOD()
     {
+        $tomonth = now()->format('Y-m');
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
-        return view('cod-table.cod-table', compact('warehouses'));
+        return view('cod-table.cod-table', compact('warehouses','tomonth'));
     }
 
 
@@ -88,15 +89,7 @@ class CodController extends Controller
             }
         }
 
-        // แปลง array เป็นรูปแบบ json string
-        if(isset($json_data)){
-            $json= json_encode($json_data);
-            if(isset($_GET['callback']) && $_GET['callback']!=""){
-            echo $_GET['callback']."(".$json.");";
-            }else{
-            echo $json;
-            }
-        }
+        return response()->json($json_data);
 
     }
     // END ปฏิทิน COD
