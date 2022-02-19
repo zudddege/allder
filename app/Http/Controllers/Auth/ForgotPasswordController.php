@@ -75,10 +75,14 @@ class ForgotPasswordController extends Controller
       public function submitResetPasswordForm(Request $request)
       {
 
-        $request->validate([
+        $this->validate($request,[
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required'
+            'password' => 'required|string|confirmed|min:8',
+            'password_confirmation' => 'required',
+        ],[
+            'email.exists' => 'อีเมลไม่ถูกต้อง',
+            'password.confirmed' => 'การยืนยันรหัสผ่านไม่ตรงกัน',
+            'password.min' => 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัว',
         ]);
 
         $updatePassword = DB::table('password_resets')
@@ -96,7 +100,7 @@ class ForgotPasswordController extends Controller
 
         DB::table('password_resets')->where(['email'=> $request->email])->delete();
 
-        return redirect('/login')->with('message', 'Your password has been changed!');
+        // return redirect('/login')->with('message', 'Your password has been changed!');
       }
 
 }

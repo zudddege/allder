@@ -91,7 +91,6 @@
                     </div>
                     <div class="col">
                         <div class="" style="margin-right: 15px;">
-
                             <div class="d-flex justify-content-center">
                                 <img src="assets/img/brand/allderExpress.png" alt="" sizes="w:350px" class="my-" style="padding-top: 45px; padding-bottom: 45px;">
                             </div>
@@ -106,27 +105,15 @@
                                 @endforeach
                             </div>
                             @endif
-
                             <form method="POST" action="{{ route('login')}}">
                                 @csrf
                                 <div class="form-group d-flex justify-content-center">
                                     <input id="email" placeholder="ชื่อผู้ใช้" style="width: 250;" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                    @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
 
                                 <div class="form-group d-flex justify-content-center">
                                     <input id="password" placeholder="รหัสผ่าน" style="width: 250;" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                                 <div class="jumps-prevent" style="padding-top: 45px;"></div>
                                 <div class="d-flex justify-content-center">
