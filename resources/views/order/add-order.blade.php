@@ -291,11 +291,11 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
+                                            <p class="mb-1">ขนาด<a class="text-muted px-2">กว้าง x ยาว  x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" name="length" placeholder="ยาว">
-                                                <a class="mt-2 px-2">x</a>
                                                 <input class="form-control" type="text" value="" name="width" placeholder="กว้าง">
+                                                <a class="mt-2 px-2">x</a>
+                                                <input class="form-control" type="text" value="" name="length" placeholder="ยาว">
                                                 <a class="mt-2 px-2">x</a>
                                                 <input class="form-control" type="text" value="" name="height" placeholder="สูง">
                                                 <a class="mt-2 px-2">cm.</a>

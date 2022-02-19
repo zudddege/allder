@@ -1215,8 +1215,8 @@
                         },
                 })
             });
-
-
+            </script>
+    <script>
         $('#search').on("keyup", function () {
             $('table.paginated').trigger('repaginate');
         })
@@ -1321,7 +1321,7 @@
                 var numPages = Math.ceil(numRows / numPerPage);
 
                 $pager.find('.page-number-suc, .previous-suc, .next-suc').remove();
-                for (var page = 0; page <script numPages; page++) {
+                for (var page = 0; page < numPages; page++) {
                     var $newPage = $('<span class="page-number-suc"></span>').text(page + 1).bind('click', {
                         newPage: page
                     }, function (event) {
@@ -1362,7 +1362,7 @@
             });
             $table.trigger('repaginate');
         });
-    </script>
+        </script>
 
 </body>
 
