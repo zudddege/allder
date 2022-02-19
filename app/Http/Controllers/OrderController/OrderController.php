@@ -417,7 +417,7 @@ class OrderController extends Controller {
             dd($post);
         }
 
-        return redirect('orders/' . $id . '/detail');
+        return redirect('orders/detail/' . $id );
     }
 
     public function printLabel($id) {

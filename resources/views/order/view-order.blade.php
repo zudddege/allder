@@ -346,7 +346,7 @@
                                                         <td class='subbox4'>{{$order->tracking_no}}</td>
                                                         <td class='subbox5'>Allder Express</td>
                                                         <td class='subbox6'>{{$order->send_name}}<br>
-                                               {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}             <a class="text-muted">{{$order->send_detail}}</a>
+                                                            <a class="text-muted">{{$order->send_detail}}</a>
                                                             <a class="text-muted">{{$order->send_district}}</a>
                                                             <a class="text-muted">{{$order->send_city}}</a>
                                                             <a class="text-muted">{{$order->send_province}}</a>
@@ -385,8 +385,7 @@
                                             </a>
 
                                             <div>
-                                                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ,
-                                                        เบอร์โทรศัพท์</a></div>
+                                                <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
                                                 <div>
                                                     <div>
                                                         <input class="form-control" type="text" value="" style="width:325px;" id="search-suc">
@@ -1212,6 +1211,7 @@
                         },
                 })
             });
+    </script>
 
     <script>
         $('#search').on("keyup", function () {
