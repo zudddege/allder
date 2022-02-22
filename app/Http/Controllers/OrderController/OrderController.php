@@ -159,7 +159,7 @@ class OrderController extends Controller {
 
             $user_price = round($order_price * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
             $user_cod = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
-dd($request);
+
             if ($request->main_address == 1) {
                 (new AddressController)->updateMainAddress(Auth::id());
             }
