@@ -670,7 +670,7 @@
                                     <p>ค่าประกัน</p>
                                 </div>
                                 <div class="col-8">
-@foreach ( $orders as $order )
+                                @foreach ( $orders as $order )
                                     <p>{{$order->order_no}}</p>
                                     <p>{{$order->tracking_no}}</p>
                                     <p>--------</p>
@@ -699,7 +699,7 @@
                                     <p></p>
                                     <p></p>
                                     <p></p>
-@endforeach
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -1231,7 +1231,6 @@
         });
 
     </script>
-
     <script>
         $('#search').on("keyup", function () {
             $('table.paginated').trigger('repaginate');
@@ -1378,7 +1377,7 @@
             });
             $table.trigger('repaginate');
         });
-    </script>
+        </script>
 
 </body>
 
