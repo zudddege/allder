@@ -332,7 +332,7 @@
                                                     @foreach($orders as $order)
                                                     @if($order->status_text == "รอปริ้น" || $order->status_text == "ปริ้นแล้ว" || $order->status_text == "ยกเลิก")
                                                     <tr class="td_detail_row">
-                                                        <td><input class='subbox' type="checkbox"></td>
+                                                        <td><input class='subbox' type="checkbox" value="{{$order->id}}"></td>
                                                         <td class='subbox1'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox2'>
@@ -574,7 +574,15 @@
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        <h5><b>ปริ้นออเดอร์</b></h5>
+                        <div class="d-flex">
+                            <h5><b>ปริ้นออเดอร์</b></h5>
+                            <select id="sizeprint">
+                                <option selected disabled>..เลือกขนาด</option>
+                                <option value="1">ขนาดเล็ก</option>
+                                <option value="2">ขนาดใหญ่</option>
+                            </select>
+                        </div>
+
                         <div class="jumps-prevent" style="padding-top: 15px;"></div>
                         <p>เลือกจำนวนบุ๊คกิ้งแล้ว : </p>
                         <table class="table table-striped mt-2" style="width: 100%;">
@@ -587,15 +595,14 @@
                             </thead>
                             <tbody>
                                 @foreach($orders as $order)
-                                @if($order->status_text == "รอปริ้น")
+                                {{-- @if() --}}
                                 <tr>
-
                                     <th>{{$order->order_no}}</th>
                                     <th>{{$order->tracking_no}}</th>
                                     <th>{{$order->status_text}}</th>
-                                    <th><button class="printOrder" type="button" value="{{$order->user_id}}" target="_blank" >ปริ้น</button></th>
+                                    <th><button class="btn btn-primary printorder" type="button" value="{{$order->id}}" target="_blank" >ปริ้น</button></th>
                                 </tr>
-                                @endif
+                                {{-- @endif --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -761,11 +768,11 @@
             }, {
                 "width": "60px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
@@ -809,11 +816,11 @@
             }, {
                 "width": "60px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
@@ -861,14 +868,7 @@
             readURL(this);
         });
 
-        $('#mainbox').on('change', function (e) {
-            if (this.checked == true) {
-                $('.subbox').prop('checked', true)
-            } else {
-                $('.subbox').prop('checked', false)
-            }
-            $('.subbox')
-        })
+
 
     </script>
     <script>
@@ -1132,6 +1132,34 @@
             $('.subbox')
         });
 
+
+        $('.printorder').on('click', function () {
+            var sizeprint = $('#sizeprint').val();
+            var id = $(this).attr('value');
+            if (sizeprint == 1) {
+                $.ajax({
+                    success: function(){
+                        window.open('/orders/print-S/' +id);
+                    },
+                });
+            }
+            if (sizeprint == 2) {
+                $.ajax({
+                    success: function(){
+                        window.open('/orders/print-L/' +id);
+                    },
+                });
+            }
+        });
+
+
+        $('#printlabel').on('click', function (e) {
+            var checkboxID = [];
+            $('.subbox:checked').each(function(i){
+                checkboxID[i] = $(this).attr('value');
+            });
+        });
+
     </script>
 
 
@@ -1202,18 +1230,6 @@
             }
         });
 
-    </script>
-    <script>
-        $('.printorder').on('click', function () {
-                var id = $(this).attr('id');
-                $.ajax({
-                    url: '/orders/print/{id}',
-                    method: 'post',
-                    data: {
-                        id: id
-                        },
-                })
-            });
     </script>
 
     <script>

@@ -22,7 +22,9 @@ Route::middleware(['auth', 'status'])->group(function () {
         Route::get('/create', 'OrderController\OrderController@addOrder');
         Route::get('/detail/{id}', 'OrderController\OrderController@detailOrder');
         Route::get('/edit/{id}  ', 'OrderController\OrderController@editOrder');
-        Route::get('/print/{id}', 'OrderController\OrderController@printLabel');
+        Route::get('/print-S/{id}', 'OrderController\OrderController@printLabel_S');
+        Route::get('/print-L/{id}', 'OrderController\OrderController@printLabel_L');
+
     });
 
     Route::prefix('/couriers')->group(function () {

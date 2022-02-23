@@ -65,23 +65,13 @@
     </style>
 
     <style>
-        .table th:last-child,
-        .table td:last-child {
-            position: sticky;
-            right: 0px;
-        }
-
-        .td_detail_row:nth-child(odd) .td_detail {
-            background-color: #E3E8F7;
-        }
-
-        .td_detail_row:nth-child(even) .td_detail {
-            background-color: white;
-        }
-
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
+        }
+        #dropdowntracking {
+            width: 550px !important;
+            margin-right: 150% !important;
         }
 
         .dropend button:focus,
@@ -94,6 +84,51 @@
         }
 
     </style>
+
+<style>
+    div.pager {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    div.pager span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #2196F3;
+        color: #ffff;
+        margin-right: 0.5em;
+    }
+
+    div.pager span.active {
+        background: #0036e7;
+    }
+
+    div.pager-suc {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    div.pager-suc span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #2196F3;
+        color: #ffff;
+        margin-right: 0.5em;
+    }
+
+    div.pager-suc span.active {
+        background: #0036e7;
+    }
+
+</style>
 
 </head>
 
@@ -147,7 +182,7 @@
                                     <div class="col-2">
                                         <div class="mb-1">แหล่งที่มา</div>
                                         <div class="">
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="Allder Express">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -155,37 +190,41 @@
                                                 เบอร์โทรศัพท์</a></div>
                                         <div class="d-flex ">
                                             <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
+                                                <input class="form-control" type="text" style="width:325px;" id="search-traking">
                                             </div>
-                                            <div class="dropdown ">
-                                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <div class="dropdown closedropdownoutside">
+                                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-three-columns" viewBox="0 0 16 16">
                                                         <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H5V1H1.5zM10 15V1H6v14h4zm1 0h3.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H11v14z" />
                                                     </svg> <u>ตัวเลือกการแสดงผล</u>
                                                 </button>
-                                                <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
-                                                    <h5 class="dropdown-header">เลือกรายการเพื่อแสดงผล</h5>
+                                                <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton" id="dropdowntracking">
+                                                    <h5 class='dropdown-header'>เลือกรายการเพื่อแสดงผล</h5>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box1' checked=""><span>เวลาที่ทำรายการ</span></input>
-                                                                </div>
-                                                                <div class=""><input type="checkbox" id='box2' checked="">สถานะจัดส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box3' checked="">เลขออเดอร์</input></div>
-                                                                <div class=""><input type="checkbox" id='box4' checked="">เลขพัสดุ</input></div>
-                                                                <div class=""><input type="checkbox" id='box5' checked="">แหล่งที่มา</input></div>
-                                                                <div class=""><input type="checkbox" id='box6' checked="">ผู้ส่ง</input></div>
-                                                                <div class=""><input type="checkbox" id='box7' checked="">เบอร์โทรศัพท์ผู้ส่ง</input></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box1' checked></input><label for='box1' style="height: 0px;">เวลาที่ทำรายการ</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box2' checked></input><label for='box2' style="height: 0px;">สถานะจัดส่ง</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box3' checked></input><label for='box3' style="height: 0px;">เลขออเดอร์</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box4' checked></input><label for='box4' style="height: 0px;">เลขพัสดุ</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box5' checked></input><label for='box5' style="height: 0px;">แหล่งที่มา</label></div>
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="d-flexd align-content-center mx-1">
-                                                                <div class=""><input type="checkbox" id='box8' checked="">ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box9' checked="">เบอร์โทรศัพท์ผู้รับ</input></div>
-                                                                <div class=""><input type="checkbox" id='box10' checked="">ประเภทสินค้า</input></div>
-                                                                <div class=""><input type="checkbox" id='box11' checked="">ยอดเก็บเงินปลายทาง</input></div>
-                                                                <div class=""><input type="checkbox" id='box12' checked="">ราคาโดยประมาณ</input></div>
-                                                                <div class=""><input type="checkbox" id='box13' checked="">หมายเหตุ</input></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box6' checked></input><label for='box6' style="height: 0px;">ผู้ส่ง</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box7' checked></input><label for='box7' style="height: 0px;">เบอร์โทรศัพท์ผู้ส่ง</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box8' checked></input><label for='box8' style="height: 0px;">ผู้รับ</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box9' checked></input><label for='box9' style="height: 0px;">เบอร์โทรศัพท์ผู้รับ</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box10' checked></input><label for='box10' style="height: 0px;">ประเภทสินค้า</label></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="d-flexd align-content-center mx-1">
+                                                                <div><input class="dropsubbox" type="checkbox" id='box11' checked></input><label for='box11' style="height: 0px;">ยอดเก็บเงินปลายทาง</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box12' checked></input><label for='box12' style="height: 0px;">ราคาโดยประมาณ</label></div>
+                                                                <div><input class="dropsubbox" type="checkbox" id='box13' checked></input><label for='box13' style="height: 0px;">หมายเหตุ</label></div>
+                                                                <div><input class="dropall" type="checkbox" id='box0' checked></input><label for='box0' style="height: 0px;">ทั้งหมด</label></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,7 +235,7 @@
                                 </div>
                             </form>
                             <div class="px-2 ">
-                                <table class="table table-striped position-relative" id="my-table">
+                                <table class="table table-striped position-relative paginated" id="my-table">
                                     <thead>
                                         <tr>
                                             <th class=""><input id='mainbox' type="checkbox"></th>
@@ -213,44 +252,46 @@
                                             <th class='subbox11'>ยอดเก็บเงินปลายทาง</th>
                                             <th class='subbox12'>ราคาโดยประมาณ</th>
                                             <th class='subbox13'>หมายเหตุ</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         @foreach($orders as $order)
-
-                                                    <tr class="td_detail_row">
-                                                        <td><input class='subbox' type="checkbox"></td>
-                                                        <td>{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                                        <td>{{$order->status_text}} </td>
-                                                        <td>{{$order->order_no}}</td>
-                                                        <td>{{$order->tracking_no}}</td>
-                                                        <td>Allder Express</td>
-                                                        <td>{{$order->send_name}}<br>
-                                               {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}             <a class="text-muted">{{$order->send_detail}}</a>
-                                                            <a class="text-muted">{{$order->send_district}}</a>
-                                                            <a class="text-muted">{{$order->send_city}}</a>
-                                                            <a class="text-muted">{{$order->send_province}}</a>
-                                                            <a class="text-muted">{{$order->send_postal_code}}</a></td>
-                                                        <td>{{$order->send_tel}}</td>
-                                                        <td>{{$order->recv_name}}<br>
-                                                            <a class="text-muted">{{$order->recv_detail}}</a>
-                                                            <a class="text-muted">{{$order->recv_district}}</a>
-                                                            <a class="text-muted">{{$order->recv_city}}</a>
-                                                            <a class="text-muted">{{$order->recv_province}}</a>
-                                                            <a class="text-muted">{{$order->recv_postal_code}}</a></td>
-                                                        </td>
-                                                        <td>{{$order->recv_tel}}</td>
-                                                        <td >{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                        <td >{{$order->user_cod}} ({{$order->order_cod}})</td>
-                                                        <td >{{$order->user_price }} ({{$order->order_price}})</td>
-                                                        <td >{{$order->note_detail}}</td>
-                                                    </tr>
-                                                    @endforeach
+                                            <tr class="td_detail_row">
+                                                <td><input class='subbox' type="checkbox"></td>
+                                                <td class='subbox1'>{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                                <td class='subbox2'>@if($order->status_text == "ปริ้นแล้ว")
+                                                    <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "รอปริ้น")
+                                                    <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_code == "9")
+                                                    <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
+                                                    @endif</td>
+                                                <td class='subbox3'>{{$order->order_no}}</td>
+                                                <td class='subbox4'>{{$order->tracking_no}}</td>
+                                                <td class='subbox5'>Allder Express</td>
+                                                <td class='subbox6'>{{$order->send_name}}<br>
+                                                    <a class="text-muted">{{$order->send_detail}}</a>
+                                                    <a class="text-muted">{{$order->send_district}}</a>
+                                                    <a class="text-muted">{{$order->send_city}}</a>
+                                                    <a class="text-muted">{{$order->send_province}}</a>
+                                                    <a class="text-muted">{{$order->send_postal_code}}</a></td>
+                                                <td class='subbox7'>{{$order->send_tel}}</td>
+                                                <td class='subbox8'>{{$order->recv_name}}<br>
+                                                    <a class="text-muted">{{$order->recv_detail}}</a>
+                                                    <a class="text-muted">{{$order->recv_district}}</a>
+                                                    <a class="text-muted">{{$order->recv_city}}</a>
+                                                    <a class="text-muted">{{$order->recv_province}}</a>
+                                                    <a class="text-muted">{{$order->recv_postal_code}}</a></td>
+                                                <td class='subbox9'>{{$order->recv_tel}}</td>
+                                                <td class='subbox10'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
+                                                <td class='subbox11'>{{$order->user_cod}}</td>
+                                                <td class='subbox12'>{{$order->user_price }}</td>
+                                                <td class='subbox13'>{{$order->note_detail}}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
-
                                 </table>
+                                <div class="paginated"></div>
                             </div>
                         </div>
                     </div>
@@ -300,7 +341,13 @@
     <script>
         $('#my-table').DataTable({
             scrollX: true,
-            "columns": [{
+            paging: false,
+            ordering: false,
+            info: false,
+            language: {
+                emptyTable: "ไม่พบข้อมูล"
+            },
+            columns: [{
                 "width": "2%"
             }, {
                 "width": "150px"
@@ -313,11 +360,11 @@
             }, {
                 "width": "60px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {
@@ -328,9 +375,8 @@
                 "width": "120px"
             }, {
                 "width": "250px"
-            }, {
-                "width": "120px"
-            }, ],
+            },
+            ],
             "ordering": false
         });
         $(".dataTables_length").css("display", "none");
@@ -364,6 +410,47 @@
 
     </script>
     <script>
+        $('.closedropdownoutside').on('hide.bs.dropdown', function (e) {
+            if (e.clickEvent) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        $(".dropall").click(function () {
+            if ($(this).prop("checked")) {
+                $('.dropsubbox').prop('checked', true)
+                $(".subbox1").show();
+                $(".subbox2").show();
+                $(".subbox3").show();
+                $(".subbox4").show();
+                $(".subbox5").show();
+                $(".subbox6").show();
+                $(".subbox7").show();
+                $(".subbox8").show();
+                $(".subbox9").show();
+                $(".subbox10").show();
+                $(".subbox11").show();
+                $(".subbox12").show();
+                $(".subbox13").show();
+            } else {
+                $('.dropsubbox').prop('checked', false)
+                $(".subbox1").hide();
+                $(".subbox2").hide();
+                $(".subbox3").hide();
+                $(".subbox4").hide();
+                $(".subbox5").hide();
+                $(".subbox6").hide();
+                $(".subbox7").hide();
+                $(".subbox8").hide();
+                $(".subbox9").hide();
+                $(".subbox10").hide();
+                $(".subbox11").hide();
+                $(".subbox12").hide();
+                $(".subbox13").hide();
+            }
+        });
+
         $("#box1").click(function () {
             if ($(this).prop("checked")) {
                 $(".subbox1").show();
@@ -526,6 +613,81 @@
             cb(start, end);
         });
 
+    </script>
+
+    <script>
+        $('#search-traking').on("keyup", function () {
+            $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager"></div>');
+            var $previous = $('<span class="previous"><<</span>');
+            var $next = $('<span class="next">>></span>');
+
+            $pager.appendTo('div.paginated').find('span.page-number:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search-traking').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search-traking').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number, .previous, .next').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number:first');
+                $next.insertAfter('span.page-number:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number.active');
+                    if ($active.next('.page-number.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
     </script>
 </body>
 

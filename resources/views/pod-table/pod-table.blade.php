@@ -294,13 +294,13 @@
             }, {
                 "width": "100px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "100px"
             }, {
                 "width": "120px"
             }, {
-                "width": "600px"
+                "width": "400px"
             }, {
                 "width": "120px"
             }, {

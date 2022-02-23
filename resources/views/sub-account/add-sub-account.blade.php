@@ -261,7 +261,7 @@
                                 <div class="my-1">
                                     <p class="my-1">รหัสผ่าน <span class="text-muted">(8 - 16 ตัวอักษร)</span></p>
                                     <div class="d-flex align-items-center">
-                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" name="password" required id="password">
+                                        <input class="form-control "  value="" style="width: 65%; height: 75%;" name="password" required id="password">
                                         <button class="btn btn-link" type="button" b id="auto_password"><u>ใช้รหัสผ่านอัตโนมัติ</u></button>
                                     </div>
                                     @error('password')
@@ -271,7 +271,7 @@
                                 <div class="">
                                     <p class="my-1">รหัสผ่านอีกครั้ง</p>
                                     <div class="">
-                                        <input class="form-control " type="password" value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password_confirmation">
+                                        <input class="form-control "  value="" style="width: 65%; height: 75%;" required name="password_confirmation" id="password-confirm">
                                     </div>
                                     @error('password_confirmation')
                                     <div class="alert alert-danger">{{$message}}</div>

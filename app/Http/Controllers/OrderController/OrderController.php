@@ -159,7 +159,6 @@ class OrderController extends Controller {
 
             $user_price = round($order_price * (1 - (($accountRate->discount_rate) / 100)) / 100, 2);
             $user_cod = round($request->order_cod * (1 - (($accountRate->cod_rate) / 100)), 2);
-dd($user_price);
             if ($request->main_address == 1) {
                 (new AddressController)->updateMainAddress(Auth::id());
             }
@@ -420,9 +419,24 @@ dd($user_price);
         return redirect('orders/detail/' . $id );
     }
 
-    public function printLabel($id) {
+    public function printLabel_S($id) {
         $tracking_no = Order::find($id)->tracking_no;
         $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/small/pre_print";
+
+        $print = FlashCoreFunction::buildRequestParam([
+            'mchId' => 'AA0594',
+            'nonceStr' => time(),
+        ]);
+
+        $post = FlashCoreFunction::postRequest($url, $print);
+        Order::find($id)->update(['status_text' => "ปริ้นแล้ว"]);
+
+        return response($post)->header('Content-type', 'application/pdf');
+    }
+
+    public function printLabel_L($id) {
+        $tracking_no = Order::find($id)->tracking_no;
+        $url = "https://open-api.flashexpress.com/open/v1/orders/" . $tracking_no . "/pre_print";
 
         $print = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',

@@ -150,6 +150,7 @@
                     <div class="my-auto">
                         <div class="d-flex">
                             <h5 class="content-title mb-0 my-auto">จัดการออเดอร์</h5>
+                            <a class="px-2" href="{{url('/orders')}}"><u>รายการเตรียมจัดส่ง</u></a>
                         </div>
                     </div>
                 </div>
@@ -319,7 +320,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex">
-                                        <input type="checkbox" class="mt-1" id="accept">
+                                        <input type="checkbox" class="mt-1" id="accept" checked>
                                         <p class="px-1">ฉันได้อ่านและยอมรับข้อกำหนดใน<br>
                                             <a href="#" class="" style="color: blue;"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
                                         </p>
@@ -360,7 +361,7 @@
                                     <div class="jumps-prevent" style="padding-top: 100px;"></div>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{url('/order')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
-                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button" disabled>สร้างรายการ</button>
+                                        <button class="btn btn-primary mx-2" type="submit" id="submit-button" >สร้างรายการ</button>
                                     </div>
                                 </div>
                             </div>
