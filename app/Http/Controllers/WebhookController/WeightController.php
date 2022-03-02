@@ -11,7 +11,7 @@ class WeightController extends Controller {
         $weight = Order::orderBy('id', 'desc')->where('order_no', $request->data['outTradeNo'])->first();
         if ($weight) {
             $weight->update([
-                'webhook_weight' => $request->data['weight'],
+                'webhook_weight' => $request->data['weight'] / 1000,
                 'webhook_lenght' => $request->data['length'],
                 'webhook_width' => $request->data['width'],
                 'webhook_height' => $request->data['height'],
