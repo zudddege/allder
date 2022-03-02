@@ -4,8 +4,8 @@ namespace App\Http\Controllers\CourierController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Courier\Courier;
-use App\Models\Warehouse\Warehouse;
 use App\Models\FlashCoreFunction\FlashCoreFunction;
+use App\Models\Warehouse\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,14 +13,15 @@ class CourierController extends Controller {
     public function showCourier() {
         $couriers = Courier::all();
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
-        return view('courier.courier', compact('couriers','warehouses'));
+        return view('courier.courier', compact('couriers', 'warehouses'));
     }
 
-    public function getNotification() {
+    public function getNotification(Request $request) {
+        $date = $request->date;
         $get = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',
             'nonceStr' => time(),
-            'date' => "2021-12-28",
+            'date' => $date ?? null,
         ]);
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notifications", $get);
@@ -42,8 +43,9 @@ class CourierController extends Controller {
             'remark' => $request->note_detail,
         ]);
 
-        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/Courier", $notify);
+        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notify", $notify);
         $response = json_decode($post, true);
+        dd($response);
 
         if ($response['message'] == "success") {
             Courier::create([
@@ -75,7 +77,7 @@ class CourierController extends Controller {
 
     public function cancelNotification(Request $request) {
         $pickupId = $request->id; /* Courier::find($request->id)->pickup_id; */
-        $url = "https://open-api.flashexpress.com/open/v1/Courier/" . $pickupId . "/cancel";
+        $url = "https://open-api.flashexpress.com//open/v1/notify" . $pickupId . "/cancel";
 
         $cancel = FlashCoreFunction::buildRequestParam([
             'mchId' => 'AA0594',

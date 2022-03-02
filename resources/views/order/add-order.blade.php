@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/api/orders/create" method="post">
+                <form action="/api/orders/create" method="post" onSubmit="return fncSubmit()">
                     @csrf
                     <div class="row">
                         <div class="col-8">
@@ -176,31 +176,45 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_name ?? '' }}" name="send_name" id="send_name">
+                                                <div class="d-flex star1">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_name ?? '' }}" name="send_name" id="send_name">
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_tel ?? ''}}" name="send_tel" id="send_tel">
+                                                <div class="d-flex star2">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_tel ?? ''}}" name="send_tel" id="send_tel">
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $mainBook->book_detail ?? ''}}</textarea>
+                                                <div class="d-flex star3">
+                                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $mainBook->book_detail ?? ''}}</textarea>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_district ?? ''}}" name="send_district" id="send_district">
+                                                <div class="d-flex star4">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_district ?? ''}}" name="send_district" id="send_district">
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_city ?? ''}}" name="send_city" id="send_city">
+                                                <div class="d-flex star5">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_city ?? ''}}" name="send_city" id="send_city">
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_province ?? ''}}" name="send_province" id="send_province">
+                                                <div class="d-flex star6">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_province ?? ''}}" name="send_province" id="send_province">
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="{{ $mainBook->book_postal_code ?? ''}}" name="send_postal_code" id="send_postal_code">
+                                                <div class="d-flex star7">
+                                                    <input class="form-control" type="text" value="{{ $mainBook->book_postal_code ?? ''}}" name="send_postal_code" id="send_postal_code">
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
@@ -260,6 +274,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <p style="color: #ff0000">ค่าขนส่งพื้นที่ห่างไกลเพิ่ม 50บ.</p>
                                         </div>
                                     </div>
                                     <div class="jumps-prevent" style="padding-top: 20px;"></div>
@@ -306,7 +321,7 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-4">
                                             <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                            <input class="form-control" type="text" value="" name="order_cod">
+                                            <input class="form-control" type="text" value="0" name="order_cod">
                                         </div>
                                         <div class="col">
                                             <p class="mb-1">หมายเหตุ</p>
@@ -1168,6 +1183,54 @@
         $table.trigger('repaginate');
     });
 </script>
+
+<script>
+    function fncSubmit(){
+        var send_name=document.getElementById("send_name").value;
+        var send_tel=document.getElementById("send_tel").value;
+        var send_detail=document.getElementById("send_detail").value;
+        var send_district=document.getElementById("send_district").value;
+        var send_city=document.getElementById("send_city").value;
+        var send_province=document.getElementById("send_province").value;
+        var send_postal_code=document.getElementById("send_postal_code").value;
+        if (send_name==""){
+            $("#send_name").css('border-color', 'red');
+            $(".star1").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_tel==""){
+            $("#send_tel").css('border-color', 'red');
+            $(".star2").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_detail==""){
+            $("#send_detail").css('border-color', 'red');
+            $(".star3").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_district==""){
+            $("#send_district").css('border-color', 'red');
+            $(".star4").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_city==""){
+            $("#send_city").css('border-color', 'red');
+            $(".star5").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_province==""){
+            $("#send_province").css('border-color', 'red');
+            $(".star6").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+        if (send_postal_code==""){
+            $("#send_postal_code").css('border-color', 'red');
+            $(".star7").append("<b class='px-1' style='color:red;'>*</b>");
+            return false;
+        }
+    }
+</script>
+
 
 </body>
 
