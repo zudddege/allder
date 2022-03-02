@@ -1,6 +1,6 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="notify-courier-modal">
     <div class="modal-dialog modal-lg">
-        <form action="{{url('/api/courier/notify-courier')}}" method="POST">
+        <form action="{{url('/api/couriers/notify-courier')}}" method="POST">
             <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
                 <h6><b>เรียกพนักงานเข้ารับพัสดุ</b></h6>
@@ -331,4 +331,3 @@
     }
 
 </style>
-
