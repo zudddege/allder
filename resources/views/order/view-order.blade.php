@@ -574,13 +574,15 @@
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content" style="padding-left: 25px; padding-right: 25px;">
                         <div class="jumps-prevent" style="padding-top: 25px;"></div>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-between">
                             <h5><b>ปริ้นออเดอร์</b></h5>
-                            <select id="sizeprint">
-                                <option selected disabled>..เลือกขนาด</option>
-                                <option value="1">ขนาดเล็ก</option>
-                                <option value="2">ขนาดใหญ่</option>
-                            </select>
+                            <div class="d-flex">
+                                <p class="mx-2 pt-2">เลือกขนาด</p>
+                                <select class="form-control" id="sizeprint" style="width: 120px;">
+                                    <option value="1" selected>ขนาดเล็ก</option>
+                                    <option value="2">ขนาดใหญ่</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="jumps-prevent" style="padding-top: 15px;"></div>
@@ -595,14 +597,14 @@
                             </thead>
                             <tbody>
                                 @foreach($orders as $order)
-                                {{-- @if() --}}
+                                @if($order->status_text != "ยกเลิก")
                                 <tr>
                                     <th>{{$order->order_no}}</th>
                                     <th>{{$order->tracking_no}}</th>
                                     <th>{{$order->status_text}}</th>
                                     <th><button class="btn btn-primary printorder" type="button" value="{{$order->id}}" target="_blank" >ปริ้น</button></th>
                                 </tr>
-                                {{-- @endif --}}
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

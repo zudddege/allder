@@ -288,7 +288,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <p class="mb-1">ขนาด<a class="text-muted px-2">ยาว x กว้าง x สูง</a></p>
+                                            <p class="mb-1">ขนาด<a class="text-muted px-2">กว้าง x ยาว x สูง</a></p>
                                             <div class="d-flex">
                                                 <input class="form-control" type="text" value="{{ $order->length}}" name="length">
                                                 <a class="mt-2 px-2">x</a>
