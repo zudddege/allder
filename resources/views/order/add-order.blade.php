@@ -360,7 +360,7 @@
                                     </div>
                                     <div class="jumps-prevent" style="padding-top: 100px;"></div>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{url('/order')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
+                                        <a href="{{url('/orders')}}"><button type="button" class="btn btn-danger mx-2">ยกเลิก</button></a>
                                         <button class="btn btn-primary mx-2" type="submit" id="submit-button" >สร้างรายการ</button>
                                     </div>
                                 </div>

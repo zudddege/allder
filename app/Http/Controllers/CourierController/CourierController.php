@@ -70,7 +70,7 @@ class CourierController extends Controller {
             ]);
         }
 
-        return redirect('/courier');
+        return redirect('/couriers');
     }
 
     public function cancelNotification(Request $request) {

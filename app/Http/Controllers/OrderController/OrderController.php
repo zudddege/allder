@@ -47,7 +47,7 @@ class OrderController extends Controller {
 
     public function editOrder($id) {
         $order = Order::find($id);
-        $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->get();
+        $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->where('user_id', Auth::id())->get();
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         return view('order.edit-order', compact('order', 'addressBooks','warehouses'));
     }
@@ -55,7 +55,7 @@ class OrderController extends Controller {
     public function genOrderNo() {
         $order_no = Carbon::now('Asia/Bangkok')->isoFormat('YYMMDD');
         $order_no .= Auth::user()->short_id;
-        $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->count() + 1;
+        $order_today = Order::select('created_at')->whereDate('created_at', Carbon::today())->where(Auth::user()->User_id)->count() + 1;
         $order_no .= str_pad($order_today, 3, '0', STR_PAD_LEFT);
 
         return $order_no;
