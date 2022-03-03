@@ -103,68 +103,76 @@
 
                 <!-- row opened -->
                 @csrf
-                <div class="card  card-body">
-                    <div class="px-2 py-2">
-                        <p>ที่อยู่เข้ารับ</p>
-                        <div class="row mx-2">
-                            <div class="col-6">
-                                <div class="my-1">
-                                    <span>รหัสคลัง</span>
-                                    <input class="form-control" type="text" name="warehouse_no" value="{{$courier->warehouse_no}}">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card  card-body">
+                            <div class="px-2 py-2">
+                                <p>ที่อยู่เข้ารับ</p>
+                                <div class="row mx-2">
+                                    <div class="col-6">
+                                        <div class="my-1">
+                                            <span>รหัสคลัง</span>
+                                            <input class="form-control" type="text" name="warehouse_no" value="{{$courier->warehouse_no}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>ผู้ติดต่อ</span>
+                                            <input class="form-control" type="text" name="contact_name" value="{{$courier->contact_name}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>พื้นที่บริการ</span>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="warehouse_detail" readonly>{{$courier->warehouse_detail}}</textarea>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>จังหวัด</span>
+                                            <input class="form-control" type="text" name="warehouse_province" value="{{$courier->warehouse_province}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="my-1">
+                                            <span>ชื่อคลัง</span>
+                                            <input class="form-control" type="text" name="warehouse_name" value="{{$courier->warehouse_name}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>เบอร์โทรศัพท์</span>
+                                            <input class="form-control" type="text" name="warehouse_tel" value="{{$courier->warehouse_tel}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>ตำบล / แขวง</span>
+                                            <input class="form-control" type="text" name="warehouse_district" value="{{$courier->warehouse_district}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>อำเภอ / เขต</span>
+                                            <input class="form-control" type="text" name="warehouse_city" value="{{$courier->warehouse_city}}" readonly>
+                                        </div>
+                                        <div class="my-1">
+                                            <span>รหัสไปรษณีย์</span>
+                                            <input class="form-control" type="text" name="warehouse_postal_code" value="{{$courier->warehouse_postal_code}}" readonly>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="my-1">
-                                    <span>ผู้ติดต่อ</span>
-                                    <input class="form-control" type="text" name="contact_name" value="{{$courier->contact_name}}">
+                                <p>ฝากข้อความ</p>
+                                <div class="mx-4">
+                                    <div class="my-1">
+                                        <span>จำนวนพัสดุ</span>
+                                        <input class="form-control" type="text" name="estimate_parcel_quantity" value="{{$courier->parcel_quantity}}" readonly>
+                                    </div>
+                                    <div class="my-1">
+                                        <span>หมายเหตุ</span>
+                                        <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="note_detail" readonly>{{$courier->note_detail}}</textarea>
+                                    </div>
                                 </div>
-                                <div class="my-1">
-                                    <span>พื้นที่บริการ</span>
-                                    <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="warehouse_detail">{{$courier->warehouse_detail}}</textarea>
+                                <div class="d-flex my-2">
+                                    <p class="mx-1">เวลาคาดว่าจะไปรับ</p>
+                                    <p>: {{$courier->timeout_text}}</p>
                                 </div>
-                                <div class="my-1">
-                                    <span>จังหวัด</span>
-                                    <input class="form-control" type="text" name="warehouse_province" value="{{$courier->warehouse_province}}">
+                                <div class="d-flex my-1" style="padding-top: 15px;">
+                                    <button type="button" class="btn btn-danger mx-2">ยกเลิกการเรียกคูเรียร์</button>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="my-1">
-                                    <span>ชื่อคลัง</span>
-                                    <input class="form-control" type="text" name="warehouse_name" value="{{$courier->warehouse_name}}">
-                                </div>
-                                <div class="my-1">
-                                    <span>เบอร์โทรศัพท์</span>
-                                    <input class="form-control" type="text" name="warehouse_tel" value="{{$courier->warehouse_tel}}">
-                                </div>
-                                <div class="my-1">
-                                    <span>ตำบล / แขวง</span>
-                                    <input class="form-control" type="text" name="warehouse_district" value="{{$courier->warehouse_district}}">
-                                </div>
-                                <div class="my-1">
-                                    <span>อำเภอ / เขต</span>
-                                    <input class="form-control" type="text" name="warehouse_city" value="{{$courier->warehouse_city}}">
-                                </div>
-                                <div class="my-1">
-                                    <span>รหัสไปรษณีย์</span>
-                                    <input class="form-control" type="text" name="warehouse_postal_code" value="{{$courier->warehouse_postal_code}}">
-                                </div>
-                            </div>
-                        </div>
-                        <p>ฝากข้อความ</p>
-                        <div class="mx-4">
-                            <div class="my-1">
-                                <span>จำนวนพัสดุ</span>
-                                <input class="form-control" type="text" name="estimate_parcel_quantity" value="{{$courier->parcel_quantity}}">
-                            </div>
-                            <div class="my-1">
-                                <span>หมายเหตุ</span>
-                                <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="note_detail">{{$courier->note_detail}}</textarea>
-                            </div>
-                        </div>
-                        <p>เวลาคาดว่าจะไปรับ</p><p> :   {{$courier->timeout_text}}</p>
-                        <div class="d-flex my-1" style="padding-top: 15px;">
-                            <button type="button" class="btn btn-danger mx-2">ยกเลิกการเรียกคูเรียร์</button>
                         </div>
                     </div>
                 </div>
+
                 <!-- /row -->
             </div>
             <!-- Container closed -->
