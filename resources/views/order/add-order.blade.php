@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/api/orders/create" method="post" onSubmit="return fncSubmit()">
+                <form action="/api/orders/create" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-8">
@@ -162,8 +162,9 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <h6 class="px-2" style="padding-top: 10px;">เลขออเดอร์</h6>
-                                        <div class="">
+                                        <div class="d-flex">
                                             <input class="form-control" type="text" value="" id="order_no" name="order_no">
+                                            <b class='px-1' style='color:red;' id="star0" hidden>*</b>
                                         </div>
                                         <button type="button" class="btn btn-link" id="auto_order_no"><u>ใช้รหัสอัตโนมัติ</u></button>
                                     </div>
@@ -176,44 +177,51 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                                <div class="d-flex star1">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_name ?? '' }}" name="send_name" id="send_name">
+                                                    <b class='px-1' style='color:red;' id="star1" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <div class="d-flex star2">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_tel ?? ''}}" name="send_tel" id="send_tel">
+                                                    <b class='px-1' style='color:red;' id="star2" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <div class="d-flex star3">
-                                                    <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="send_detail" id="send_detail">{{ $mainBook->book_detail ?? ''}}</textarea>
+                                                <div class="d-flex">
+                                                    <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="send_detail" id="send_detail">{{ $mainBook->book_detail ?? ''}}</textarea>
+                                                    <b class='px-1' style='color:red;' id="star3" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <div class="d-flex star4">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_district ?? ''}}" name="send_district" id="send_district">
+                                                    <b class='px-1' style='color:red;' id="star4" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <div class="d-flex star5">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_city ?? ''}}" name="send_city" id="send_city">
+                                                    <b class='px-1' style='color:red;' id="star5" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <div class="d-flex star6">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_province ?? ''}}" name="send_province" id="send_province">
+                                                    <b class='px-1' style='color:red;' id="star6" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <div class="d-flex star7">
+                                                <div class="d-flex">
                                                     <input class="form-control" type="text" value="{{ $mainBook->book_postal_code ?? ''}}" name="send_postal_code" id="send_postal_code">
+                                                    <b class='px-1' style='color:red;' id="star7" hidden>*</b>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -239,31 +247,52 @@
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ชื่อผู้รับ</p>
-                                                <input class="form-control" type="text" value="" name="recv_name" id="recv_name">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_name" id="recv_name">
+                                                    <b class='px-1' style='color:red;' id="star8" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">เบอร์โทรศัพท์</p>
-                                                <input class="form-control" type="text" value="" name="recv_tel" id="recv_tel">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_tel" id="recv_tel">
+                                                    <b class='px-1' style='color:red;' id="star9" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ที่อยู่</p>
-                                                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="recv_detail" id="recv_detail"></textarea>
+                                                <div class="d-flex">
+                                                    <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="recv_detail" id="recv_detail"></textarea>
+                                                    <b class='px-1' style='color:red;' id="star10" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                                <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_district" id="recv_district">
+                                                    <b class='px-1' style='color:red;' id="star11" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                                <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_city" id="recv_city">
+                                                    <b class='px-1' style='color:red;' id="star12" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">จังหวัด</p>
-                                                <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_province" id="recv_province">
+                                                    <b class='px-1' style='color:red;' id="star13" hidden>*</b>
+                                                </div>
                                             </div>
                                             <div class="px-4">
                                                 <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                                <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                                <div class="d-flex">
+                                                    <input class="form-control" type="text" value="" name="recv_postal_code" id="recv_postal_code">
+                                                    <b class='px-1' style='color:red;' id="star14" hidden>*</b>
+                                                </div>
                                             </div>
 
                                             <div class="row">
@@ -282,38 +311,45 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-3">
                                             <p class="mb-1">ประเภทสินค้า</p>
-                                            <select class="custom-select my-1 mr-sm-2 border-light" id="inlineFormCustomSelectPref" style="width: 100%; height: 35px;" name="category">
-                                                <option disabled>ประเภทสินค้า</option>
-                                                <option value="0" selected>เอกสาร</option>
-                                                <option value="1">อาหารแห้ง</option>
-                                                <option value="2">ของใช้ทั่วไป</option>
-                                                <option value="3">อุปกรณ์ไอที</option>
-                                                <option value="4">เสื้อผ้า</option>
-                                                <option value="5">สื่อบันเทิง</option>
-                                                <option value="6">อะไหล่ยนต์</option>
-                                                <option value="7">รองเท้า/กระเป๋า</option>
-                                                <option value="8">อุปกรณ์กีฬา</option>
-                                                <option value="9">เครื่องสำอางค์</option>
-                                                <option value="10">เฟอร์นิเจอร์</option>
-                                                <option value="11">ผลไม้</option>
-                                                <option value="99">อื่นๆ</option>
-                                            </select>
+                                            <div class="d-flex">
+                                                <select class="custom-select my-1 mr-sm-2 form-control" id="selectdrop" style="width: 100%; height: 35px;" name="category">
+                                                    <option selected value="เลือกประเภท">เลือกประเภท</option>
+                                                    <option value="0">เอกสาร</option>
+                                                    <option value="1">อาหารแห้ง</option>
+                                                    <option value="2">ของใช้ทั่วไป</option>
+                                                    <option value="3">อุปกรณ์ไอที</option>
+                                                    <option value="4">เสื้อผ้า</option>
+                                                    <option value="5">สื่อบันเทิง</option>
+                                                    <option value="6">อะไหล่ยนต์</option>
+                                                    <option value="7">รองเท้า/กระเป๋า</option>
+                                                    <option value="8">อุปกรณ์กีฬา</option>
+                                                    <option value="9">เครื่องสำอางค์</option>
+                                                    <option value="10">เฟอร์นิเจอร์</option>
+                                                    <option value="11">ผลไม้</option>
+                                                    <option value="99">อื่นๆ</option>
+                                                </select>
+                                                <b class='px-1' style='color:red;' id="star15" hidden>*</b>
+                                            </div>
                                         </div>
                                         <div class="col-3">
                                             <p class="mb-1">น้ำหนัก</p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" name="weight">
+                                                <input class="form-control" type="text" value="" name="weight" id="weight" >
+                                                <b class='px-1' style='color:red;' id="star16" hidden>*</b>
                                                 <p class="mt-2 px-1">kg.</p>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <p class="mb-1">ขนาด<a class="text-muted px-2">กว้าง x ยาว  x สูง</a></p>
                                             <div class="d-flex">
-                                                <input class="form-control" type="text" value="" name="width" placeholder="กว้าง">
+                                                <input class="form-control" type="text" value="" name="width" id="width" placeholder="กว้าง">
+                                                <b class='px-1' style='color:red;' id="star17" hidden>*</b>
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="length" placeholder="ยาว">
+                                                <input class="form-control" type="text" value="" name="length" id="length" placeholder="ยาว">
+                                                <b class='px-1' style='color:red;' id="star18" hidden>*</b>
                                                 <a class="mt-2 px-2">x</a>
-                                                <input class="form-control" type="text" value="" name="height" placeholder="สูง">
+                                                <input class="form-control" type="text" value="" name="height" id="height" placeholder="สูง">
+                                                <b class='px-1' style='color:red;' id="star19" hidden>*</b>
                                                 <a class="mt-2 px-2">cm.</a>
                                             </div>
                                         </div>
@@ -321,7 +357,10 @@
                                     <div class="row px-2 mt-3">
                                         <div class="col-4">
                                             <p class="mb-1">COD<a class="text-muted px-2">ยอดเก็บเงินปลายทาง</a></p>
-                                            <input class="form-control" type="text" value="0" name="order_cod">
+                                            <div class="d-flex">
+                                                <input class="form-control" type="text" value="0" name="order_cod" id="order_cod" >
+                                                <b class='px-1' style='color:red;' id="star20" hidden>*</b>
+                                            </div>
                                         </div>
                                         <div class="col">
                                             <p class="mb-1">หมายเหตุ</p>
@@ -1185,50 +1224,140 @@
 </script>
 
 <script>
-    function fncSubmit(){
-        var send_name=document.getElementById("send_name").value;
-        var send_tel=document.getElementById("send_tel").value;
-        var send_detail=document.getElementById("send_detail").value;
-        var send_district=document.getElementById("send_district").value;
-        var send_city=document.getElementById("send_city").value;
-        var send_province=document.getElementById("send_province").value;
-        var send_postal_code=document.getElementById("send_postal_code").value;
+    $("#submit-button").on('click',function(){
+        var order_no= $("#order_no").val();
+        var send_name= $("#send_name").val();
+        var send_tel= $("#send_tel").val();
+        var send_detail= $("#send_detail").val();
+        var send_district= $("#send_district").val();
+        var send_city= $("#send_city").val();
+        var send_province= $("#send_province").val();
+        var send_postal_code= $("#send_postal_code").val();
+        var recv_name= $("#recv_name").val();
+        var recv_tel= $("#recv_tel").val();
+        var recv_detail= $("#recv_detail").val();
+        var recv_district= $("#recv_district").val();
+        var recv_city= $("#recv_city").val();
+        var recv_province= $("#recv_province").val();
+        var recv_postal_code= $("#recv_postal_code").val();
+        var selectdrop= $("#selectdrop").val();
+        var weight= $("#weight").val();
+        var width= $("#width").val();
+        var length= $("#length").val();
+        var height= $("#height").val();
+        var order_cod= $("#order_cod").val();
+        var check = 0;
+
+        if (order_no==""){
+            $("#order_no").css('border-color', 'red');
+            $("#star0").prop('hidden', false);
+            var check = 1;
+        }
         if (send_name==""){
             $("#send_name").css('border-color', 'red');
-            $(".star1").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star1").prop('hidden', false);
+            var check = 1;
         }
         if (send_tel==""){
             $("#send_tel").css('border-color', 'red');
-            $(".star2").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star2").prop('hidden', false);
+            var check = 1;
         }
         if (send_detail==""){
             $("#send_detail").css('border-color', 'red');
-            $(".star3").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star3").prop('hidden', false);
+            var check = 1;
         }
         if (send_district==""){
             $("#send_district").css('border-color', 'red');
-            $(".star4").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star4").prop('hidden', false);
+            var check = 1;
         }
         if (send_city==""){
             $("#send_city").css('border-color', 'red');
-            $(".star5").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star5").prop('hidden', false);
+            var check = 1;
         }
         if (send_province==""){
             $("#send_province").css('border-color', 'red');
-            $(".star6").append("<b class='px-1' style='color:red;'>*</b>");
-            return false;
+            $("#star6").prop('hidden', false);
+            var check = 1;
         }
         if (send_postal_code==""){
             $("#send_postal_code").css('border-color', 'red');
-            $(".star7").append("<b class='px-1' style='color:red;'>*</b>");
+            $("#star7").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_name==""){
+            $("#recv_name").css('border-color', 'red');
+            $("#star8").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_tel==""){
+            $("#recv_tel").css('border-color', 'red');
+            $("#star9").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_detail==""){
+            $("#recv_detail").css('border-color', 'red');
+            $("#star10").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_district==""){
+            $("#recv_district").css('border-color', 'red');
+            $("#star11").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_city==""){
+            $("#recv_city").css('border-color', 'red');
+            $("#star12").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_province==""){
+            $("#recv_province").css('border-color', 'red');
+            $("#star13").prop('hidden', false);
+            var check = 1;
+        }
+        if (recv_postal_code==""){
+            $("#recv_postal_code").css('border-color', 'red');
+            $("#star14").prop('hidden', false);
+            var check = 1;
+        }
+        if (selectdrop=="เลือกประเภท"){
+            $("#selectdrop").css('border-color', 'red');
+            $("#star15").prop('hidden', false);
+            var check = 1;
+        }
+        if (weight==""){
+            $("#weight").css('border-color', 'red');
+            $("#star16").prop('hidden', false);
+            var check = 1;
+        }
+        if (width==""){
+            $("#width").css('border-color', 'red');
+            $("#star17").prop('hidden', false);
+            var check = 1;
+        }
+        if (length==""){
+            $("#length").css('border-color', 'red');
+            $("#star18").prop('hidden', false);
+            var check = 1;
+        }
+        if (height==""){
+            $("#height").css('border-color', 'red');
+            $("#star19").prop('hidden', false);
+            var check = 1;
+        }
+        if (order_cod==""){
+            $("#order_cod").css('border-color', 'red');
+            $("#star20").prop('hidden', false);
+            var check = 1;
+        }
+
+        if (check=="1"){
             return false;
         }
-    }
+    });
 </script>
 
 

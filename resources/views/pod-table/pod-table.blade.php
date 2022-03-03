@@ -217,21 +217,31 @@
                                     </thead>
                                     <tbody>
                                         @foreach($orders as $order)
-                                        <tr class="td_detail_row">
+                                        @if ($order->status_text == "เซ็นรับแล้ว")
+                                         <tr class="td_detail_row">
                                             <th class=""><input id='mainbox' type="checkbox"></th>
                                             <td>{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             <td>{{$order->tracking_no}}</td>
                                             <td>{{$order->order_no}}</td>
                                             <td>{{$order->send_name}}</td>
-                                            <td>{{$order->send_detail}}</td>
+                                            <td>{{$order->send_detail}}<br>
+                                                <a>{{$order->send_district}}</a>
+                                                <a>{{$order->send_city}}</a>
+                                                <a>{{$order->send_province}}</a>
+                                                <a>{{$order->send_postal_code}}</a></td>
                                             <td>{{$order->updated_at}}</td>
                                             <td>{{$order->recv_name}}</td>
-                                            <td>{{$order->recv_detail}}</td>
+                                            <td>{{$order->recv_detail}}<br>
+                                                <a>{{$order->recv_district}}</a>
+                                                <a>{{$order->recv_city}}</a>
+                                                <a>{{$order->recv_province}}</a>
+                                                <a>{{$order->recv_postal_code}}</a> </td>
                                             <td>{{$order->signer_type}}</td>
                                             <td>{{$order->signer_name}}</td>
                                             <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="img-empty" > </td>
-                                            <td class="td_detail shadow"><a href="{{url('/detail-pod?id='.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                            <td class="td_detail shadow"><a href="{{url('/detail-pod/'.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -443,15 +453,6 @@
             }
             $('.subbox')
         });
-
-        if ($('img.photoPreview', this).attr('src') != '') {
-
-            $('.img-empty').attr({
-                src:"{{asset("assets/img/img-empty.png")}}",
-                width:"25%;",
-                height:"25%;"
-            });
-        }
 
     </script>
 

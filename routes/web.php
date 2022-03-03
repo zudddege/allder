@@ -77,7 +77,7 @@ Route::get('/event','CodController\CodController@event');
 
 // ตาราง POD-table
 Route::get('/pod','PodController\PodController@showPOD');
-Route::get('/detail-pod','PodController\PodController@detailPOD');
+Route::get('/detail-pod/{id}','PodController\PodController@detailPOD');
 
 // Problem-order
 Route::get('/problem-orders','ProblemOrderController\ProblemOrderController@showProlemOrder');

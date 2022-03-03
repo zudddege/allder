@@ -12,50 +12,67 @@
                     <div class="col-6">
                         <div class="my-1">
                             <span>รหัสคลัง</span>
-                            <input class="form-control" type="text" name="warehouse_no" id="notify_warehouse_no">
+                            <div class="d-flex">
+                                <input class="form-control" type="text" name="warehouse_no" id="notify_warehouse_no">
+                                <b class='px-1' style='color:red;' id="star01" hidden>*</b>
+                            </div>
                         </div>
                         <div class="my-1">
                             <span>ผู้ติดต่อ</span>
-                            <input class="form-control" type="text" name="contact_name" id="notify_contact_name">
+                            <div class="d-flex">
+                                <input class="form-control" type="text" name="contact_name" id="notify_contact_name">
+                                <b class='px-1' style='color:red;' id="star02" hidden>*</b>
+                            </div>
                         </div>
                         <div class="my-1">
                             <span>พื้นที่บริการ</span>
-                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail" id="notify_warehouse_detail"></textarea>
+                            <div class="d-flex">
+                                <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="warehouse_detail" id="notify_warehouse_detail"></textarea>
+                                <b class='px-1' style='color:red;' id="star03" hidden>*</b>
+                            </div>
                         </div>
                         <div class="my-1">
                             <span>จังหวัด</span>
-                            <div class="">
+                            <div class="d-flex">
                                 <input class="form-control" type="text" value="" name="warehouse_province" id="notify_warehouse_province">
+                                <b class='px-1' style='color:red;' id="star04" hidden>*</b>
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="my-1">
                             <span>ชื่อคลัง</span>
-                            <div class="">
+                            <div class="d-flex">
                                 <input class="form-control" type="text" name="warehouse_name" id="notify_warehouse_name">
+                                <b class='px-1' style='color:red;' id="star05" hidden>*</b>
                             </div>
                         </div>
                         <div class="my-1">
                             <span>เบอร์โทรศัพท์</span>
-                            <input class="form-control" type="text" name="warehouse_tel" id="notify_warehouse_tel">
+                            <div class="d-flex">
+                                <input class="form-control" type="text" name="warehouse_tel" id="notify_warehouse_tel">
+                                <b class='px-1' style='color:red;' id="star06" hidden>*</b>
+                            </div>
                         </div>
                         <div class="my-1">
                             <span>ตำบล / แขวง</span>
-                            <div class="">
+                            <div class="d-flex">
                                 <input class="form-control" type="text" value="" name="warehouse_district" id="notify_warehouse_district">
+                                <b class='px-1' style='color:red;' id="star07" hidden>*</b>
                             </div>
                         </div>
                         <div class="my-1">
                             <span>อำเภอ / เขต</span>
-                            <div class="">
+                            <div class="d-flex">
                                 <input class="form-control" type="text" value="" name="warehouse_city" id="notify_warehouse_city">
+                                <b class='px-1' style='color:red;' id="star08" hidden>*</b>
                             </div>
                         </div>
                         <div class="my-1">
                             <span>รหัสไปรษณีย์</span>
-                            <div class="">
+                            <div class="d-flex">
                                 <input class="form-control" type="text" value="" name="warehouse_postal_code" id="notify_warehouse_postal_code">
+                                <b class='px-1' style='color:red;' id="star09" hidden>*</b>
                             </div>
                         </div>
                     </div>
@@ -68,7 +85,10 @@
                         <div class="col-6">
                             <div class="my-1">
                                 <span>จำนวนพัสดุ</span>
-                                <input class="form-control" type="text" name="estimate_parcel_quantity">
+                                <div class="d-flex">
+                                    <input class="form-control" type="text" name="estimate_parcel_quantity" id="estimate_parcel_quantity">
+                                    <b class='px-1' style='color:red;' id="star010" hidden>*</b>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
@@ -96,12 +116,12 @@
                         </div>
                     </div>
                     <div class=" d-flex align-items-center my-2">
-                        <input type="checkbox" id="">ฉันได้อ่านและยอมรับข้อกำหนดใน</input>
+                        <input type="checkbox" id="checkbox-courier" checked>ฉันได้อ่านและยอมรับข้อกำหนดใน
                         <a href="#"><u>ข้อกำหนดเงื่อนไขการบริการ</u></a>
                     </div>
                     <div class="d-flex my-1" style="padding-top: 15px;">
                         <button type="button" class="btn btn-danger mx-2" data-dismiss="modal">ยกเลิก</button>
-                        <button class="btn btn-primary mx-2" type="submit" id="submit-button">บันทึกการแก้ไข</button>
+                        <button class="btn btn-primary mx-2" type="submit" id="submit-button-courier">ยืนยันรายการ</button>
                     </div>
                 </div>
                 <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -117,12 +137,15 @@
             <h6><b>ระบุพนักงานเข้ารับพัสดุ</b></h6>
             <div class="rounded-lg mx-2" style="background-color: #e48383bd">
                 <p class="mt-2" style="color: rgb(201, 61, 61); font-size: 12px; text-align: center;">คำแนะนำ: ในกรณีที่ลูกค้ามีจำนวนพัสดุที่ต้องการส่งเยอะ ลูกค้าสามารถแจ้งทางสาขาว่าต้องการพนักงานหลายท่านเข้ารับพัสดุ
-                    <br>จากนั้นสอบถามรหัสพนักงานเมื่อพนักงานมาถึง แล้วกรอกรหัสพนักงานนั้นในฟังก์ชั่น"ระบุพนักงานเข้ารับพัสดุ" เพื่อสร้างงานรับให้พนักงานตั้งกล่าว</p>
+                <br>จากนั้นสอบถามรหัสพนักงานเมื่อพนักงานมาถึง แล้วกรอกรหัสพนักงานนั้นในฟังก์ชั่น"ระบุพนักงานเข้ารับพัสดุ" เพื่อสร้างงานรับให้พนักงานตั้งกล่าว</p>
             </div>
             <div class="jumps-prevent" style="padding-top: 25px;"></div>
             <div class="my-1 mx-2">
                 <span>รหัสพนักงานรับพัสดุ</span>
-                <input class="form-control" type="text" style="width: 50%" name="staff_id">
+                <div class="d-flex">
+                    <input class="form-control" type="text" style="width: 50%" name="staff_id" id="staff_id">
+                    <b class='px-1' style='color:red;' id="star011" hidden>*</b>
+                </div>
             </div>
             <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
             <div class="jumps-prevent" style="padding-top: 25px;"></div>
@@ -134,41 +157,53 @@
                 <div class="col-6">
                     <div class="my-1">
                         <span>พื้นที่บริการ</span>
-                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="warehouse_detail" id="assign_warehouse_detail"></textarea>
+                        <div class="d-flex">
+                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="warehouse_detail" id="assign_warehouse_detail"></textarea>
+                            <b class='px-1' style='color:red;' id="star012" hidden>*</b>
+                        </div>
                     </div>
                     <div class="jumps-prevent" style="padding-top: 3.5px;"></div>
                     <div class="my-1">
                         <span>จังหวัด</span>
-                        <div class="">
+                        <div class="d-flex">
                             <input class="form-control" type="text" name="warehouse_province" id="assign_warehouse_province">
+                            <b class='px-1' style='color:red;' id="star013" hidden>*</b>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="my-1">
                         <span>ตำบล / แขวง</span>
-                        <div class="">
+                        <div class="d-flex">
                             <input class="form-control" type="text" name="warehouse_district" id="assign_warehouse_district">
+                            <b class='px-1' style='color:red;' id="star014" hidden>*</b>
                         </div>
                     </div>
                     <div class="my-1">
                         <span>อำเภอ / เขต</span>
-                        <div class="">
+                        <div class="d-flex">
                             <input class="form-control" type="text" name="warehouse_city" id="assign_warehouse_city">
+                            <b class='px-1' style='color:red;' id="star015" hidden>*</b>
                         </div>
                     </div>
                     <div class="my-1">
                         <span>รหัสไปรษณีย์</span>
-                        <div class="">
+                        <div class="d-flex">
                             <input class="form-control" type="text" name="warehouse_postal_code" id="assign_warehouse_postal_code">
+                            <b class='px-1' style='color:red;' id="star016" hidden>*</b>
                         </div>
                     </div>
                 </div>
             </div>
-            <p><b>ที่อยู่เข้ารับพัสดุ</b></p>
+            <div class="jumps-prevent border-bottom" style="padding-top: 25px;"></div>
+            <div class="jumps-prevent" style="padding-top: 25px;"></div>
+            <p><b>ฝากข้อความ</b></p>
             <div class="my-1 mx-2">
                 <span>จำนวนพัสดุ</span>
-                <input class="form-control" type="text" style="width: 50%">
+                <div class="d-flex">
+                    <input class="form-control" type="text" style="width: 50%" id="assign_estimate_parcel_quantity">
+                    <b class='px-1' style='color:red;' id="star017" hidden>*</b>
+                </div>
             </div>
             <div class="my-1 mx-2">
                 <span>หมายเหตุ</span>
@@ -189,7 +224,7 @@
             </div>
             <div class=" d-flex my-1 mx-2" style="padding-top: 15px;">
                 <input class="btn btn-danger mx-2" type="reset" data-dismiss="modal" value="ยกเลิก">
-                <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button">
+                <input class="btn btn-primary mx-2" type="submit" value="ยืนยันรายการ" id="submit-button-courier2">
             </div>
             <div class="jumps-prevent" style="padding-top: 25px;"></div>
         </div>
@@ -328,6 +363,12 @@
 
     div.pager-ware2 span.active {
         background: #0036e7;
+    }
+
+    button:disabled,
+        button[disabled] {
+            background-color: #cccccc !important;
+            color: #666666 !important;
     }
 
 </style>
