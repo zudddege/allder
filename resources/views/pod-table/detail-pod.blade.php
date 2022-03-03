@@ -168,11 +168,11 @@
                             <div class="card-body">
                                 <div class="d-flex flex-row align-self-center">
                                     <h6 class="px-2 mt-2">เลขออเดอร์</h6>
-                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-3 mt-2" style="color:blue">{{$order->order_no}}</h6>
                                     <h6 class="px-2 mt-2">เลขพัสดุ</h6>
-                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-3 mt-2" style="color:blue">{{$order->tracking_no}}</h6>
                                     <h6 class="px-2 mt-2">เวลาเข้ารับพัสดุ</h6>
-                                    <h6 class="px-3 mt-2" style="color:blue"></h6>
+                                    <h6 class="px-3 mt-2" style="color:blue">{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</h6>
                                 </div>
                                 <br>
                                 <div class="row row-cols-12">
@@ -182,27 +182,27 @@
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้ส่ง</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{$order->send_name}}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ที่อยู่</p>
-                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control"  readonly>{{$order->send_detail}}</textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{$order->send_district}}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->send_city }}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">จังหวัด</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->send_province }}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->send_postal_code }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -211,27 +211,27 @@
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ชื่อผู้รับ</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{$order->recv_name}}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ที่อยู่</p>
-                                            <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" readonly></textarea>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control"  readonly>{{$order->recv_detail}}</textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ตำบล / แขวง</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->recv_district }}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">อำเภอ / เขต</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->recv_city }}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">จังหวัด</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->recv_province }}" readonly>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">รหัสไปรษณีย์</p>
-                                            <input class="form-control" type="text" value="" readonly>
+                                            <input class="form-control" type="text" value="{{ $order->recv_postal_code }}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -244,15 +244,15 @@
                             <div class="card-body">
                                 <div class="px-4">
                                     <p class="mt-2 mb-1">ประเภทผู้เซ็นรับ</p>
-                                    <input class="form-control" type="text" value="" readonly>
+                                    <input class="form-control" type="text" value="{{ $order->signer_type }}"" readonly>
                                 </div>
                                 <div class="px-4">
                                     <p class="mt-2 mb-1">ชื่อผู้เซ็นรับ</p>
-                                    <input class="form-control" type="text" value="" readonly>
+                                    <input class="form-control" type="text" value="{{ $order->signer_name }}"" readonly>
                                 </div>
                                 <div class="px-4">
                                     <p class="mt-2 mb-1">เซ็นชื่อด้วยตัวบรรจง</p>
-                                    <img src="https://fle-asset-internal.oss-ap-southeast-1.aliyuncs.com/deliveryConfirm/1641816343-04eab6a95f1b47fc8b4a9a6d1ebef144.jpg" width="100%;" height="100%;" alt="">
+                                    <img src="{{$order->signature_url}}" width="100%;" height="100%;" alt="">
                                 </div>
                             </div>
                         </div>

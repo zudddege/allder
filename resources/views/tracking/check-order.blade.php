@@ -237,10 +237,10 @@
                             <div class="px-2 ">
                                 <table class="table table-striped position-relative paginated" id="my-table">
                                     <thead>
-                                        <tr>
+                                        <tr align="center">
                                             <th class=""><input id='mainbox' type="checkbox"></th>
                                             <th class='subbox1'>เวลาที่ทำรายการ</th>
-                                            <th class='subbox2'>สถานะจัดส่ง</th>
+                                            <th class='subbox2' >สถานะจัดส่ง</th>
                                             <th class='subbox3'>เลขออเดอร์</th>
                                             <th class='subbox4'>เลขพัสดุ</th>
                                             <th class='subbox5'>แหล่งที่มา</th>
@@ -257,36 +257,52 @@
                                     <tbody>
                                         @foreach($orders as $order)
                                             <tr class="td_detail_row">
-                                                <td><input class='subbox' type="checkbox"></td>
-                                                <td class='subbox1'>{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                                <td class='subbox2'>@if($order->status_text == "ปริ้นแล้ว")
-                                                    <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
+                                                <td align="center"><input class='subbox' type="checkbox"></td>
+                                                <td class='subbox1' align="center">{{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
+                                                <td class='subbox2' align="center">@if($order->status_text == "ปริ้นแล้ว")
+                                                    <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #005cfb;">{{$order->status_text}}</span>
                                                     @elseif($order->status_text == "รอปริ้น")
-                                                    <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
+                                                    <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "รับพัสดุแล้ว")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #29e44e;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "ระหว่างการขนส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff6c58;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "ระหว่างการจัดส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #fbab56;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "พัสดุคงคลัง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #100087;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "เซ็นรับแล้ว")
+                                                    <span class="border border-success rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #5cb85c;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "ระหว่างจัดการพัสดุมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "พัสดุตีกลับ")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$order->status_text}}</span>
+                                                    @elseif($order->status_text == "ปิดงานมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$order->status_text}}</span>
                                                     @elseif($order->status_code == "9")
-                                                    <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
+                                                    <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff0800;">{{$order->status_text}}</span>
                                                     @endif</td>
-                                                <td class='subbox3'>{{$order->order_no}}</td>
-                                                <td class='subbox4'>{{$order->tracking_no}}</td>
-                                                <td class='subbox5'>Allder Express</td>
+                                                <td class='subbox3' align="center">{{$order->order_no}}</td>
+                                                <td class='subbox4' align="center">{{$order->tracking_no}}</td>
+                                                <td class='subbox5' align="center">Allder Express</td>
                                                 <td class='subbox6'>{{$order->send_name}}<br>
                                                     <a class="text-muted">{{$order->send_detail}}</a>
                                                     <a class="text-muted">{{$order->send_district}}</a>
                                                     <a class="text-muted">{{$order->send_city}}</a>
                                                     <a class="text-muted">{{$order->send_province}}</a>
                                                     <a class="text-muted">{{$order->send_postal_code}}</a></td>
-                                                <td class='subbox7'>{{$order->send_tel}}</td>
+                                                <td class='subbox7' align="center">{{$order->send_tel}}</td>
                                                 <td class='subbox8'>{{$order->recv_name}}<br>
                                                     <a class="text-muted">{{$order->recv_detail}}</a>
                                                     <a class="text-muted">{{$order->recv_district}}</a>
                                                     <a class="text-muted">{{$order->recv_city}}</a>
                                                     <a class="text-muted">{{$order->recv_province}}</a>
                                                     <a class="text-muted">{{$order->recv_postal_code}}</a></td>
-                                                <td class='subbox9'>{{$order->recv_tel}}</td>
-                                                <td class='subbox10'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                <td class='subbox11'>{{$order->user_cod}}</td>
-                                                <td class='subbox12'>{{$order->user_price }}</td>
-                                                <td class='subbox13'>{{$order->note_detail}}</td>
+                                                <td class='subbox9' align="center">{{$order->recv_tel}}</td>
+                                                <td class='subbox10' align="center">{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
+                                                <td class='subbox11' align="center">{{$order->user_cod}}</td>
+                                                <td class='subbox12' align="center">{{$order->user_price }}</td>
+                                                <td class='subbox13' align="center">{{$order->note_detail}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -352,7 +368,7 @@
             }, {
                 "width": "150px"
             }, {
-                "width": "100px",
+                "width": "150px",
             }, {
                 "width": "100px"
             }, {

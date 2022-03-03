@@ -184,7 +184,7 @@
                                         <tr>
                                             <td><input type="checkbox"></td>
                                             <td>{{$courier->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td style="color: orange;">{{$courier->status_text}}</td>
+                                            <td><span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: orange;">{{$courier->status_text}}</span></td>
                                             <td>
                                                 <div>{{$courier->warehouse_name}}</div>
                                                 <div class="text-muted">
@@ -197,13 +197,14 @@
                                             </td>
                                             <td>
                                                 <div>{{$courier->operator_tel}}</div>
-                                                <div class="text-muted">{{$courier->operator_name}}</div>
+                                                <div class="text-muted">{{$courier->operator_name}} ({{$courier->operator_id}})</div>
                                             </td>
                                             <td>{{$courier->note_detail}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="paginated"></div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
                         </div>
@@ -257,7 +258,7 @@
 
     <script>
         $('#my-table').DataTable({
-            scrollX: false,
+            scrollX: true,
             paging: false,
             ordering: false,
             info: false,
@@ -267,15 +268,15 @@
             "columns": [{
                 "width": "2%"
             }, {
-                "width": "17%"
+                "width": "150px"
             }, {
-                "width": "9%"
+                "width": "100px"
             }, {
-                "width": "25%"
+                "width": "400px"
             }, {
-                "width": "25%"
+                "width": "250px"
             }, {
-                "width": "20%"
+                "width": "250px"
             }, ],
             "ordering": false
         });
@@ -297,7 +298,7 @@
             var $previous = $('<span class="previous"><<</span>');
             var $next = $('<span class="next">>></span>');
 
-            $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+            $pager.insertAfter('div.paginated').find('span.page-number:first').addClass('active');
 
             $table.bind('repaginate', function () {
                 $table.find('tbody tr').hide();
@@ -358,7 +359,7 @@
             $table.trigger('repaginate');
         });
     </script>
-    
+
 </body>
 
 </html>

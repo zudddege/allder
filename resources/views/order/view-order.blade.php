@@ -253,12 +253,14 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                @if (Auth::user()->is_admin == 1)
                                                 <div class="col-2">
                                                     <div class="mb-1">แหล่งที่มา</div>
                                                     <div class="">
                                                         <input class="form-control" type="text" value="Allder Express">
                                                     </div>
                                                 </div>
+                                                @endif
                                                 <div class="col-6">
                                                     <div class="mb-1">ค้นหา<a class="text-muted px-2">เลขออเดอร์, เลขพัสดุ, เบอร์โทรศัพท์</a></div>
                                                     <div class="d-flex">
@@ -337,11 +339,12 @@
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox2'>
                                                             @if($order->status_text == "ปริ้นแล้ว")
-                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
+                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #005cfb;">{{$order->status_text}}</span>
                                                             @elseif($order->status_text == "รอปริ้น")
-                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
+                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$order->status_text}}</span>
                                                             @elseif($order->status_code == "9")
-                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #d9534f;">{{$order->status_text}}</span>
+                                                            <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff0800;">{{$order->status_text}}</span>
+
                                                             @endif
                                                         </td>
                                                         <td class='subbox3'>{{$order->order_no}}</td>
@@ -509,18 +512,18 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($orders as $order)
-                                                    @if($order->status_text == "เสร็จสิ้น" )
+                                                    @if($order->status_text == "เสร็จสิ้น" || $order->status_text == "ระหว่างการขนส่ง" || $order->status_code == "5" )
                                                     <tr class="td_detail_row">
                                                         <td><input class='subbox' type="checkbox"></td>
                                                         <td class='subbox14'>
                                                             {{$order->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                                         <td class='subbox15'>
                                                             @if($order->status_text == "รอจัดสรร")
-                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #0275d8;">{{$order->status_text}}</span>
-                                                            @elseif($order->status_text == "ระหว่างจัดส่ง")
-                                                            <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #f0ad4e;">{{$order->status_text}}</span>
-                                                            @elseif($order->status_code == "5")
-                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #5cb85c;">{{$order->status_text}}</span>
+                                                            <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #0275d8;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "ระหว่างการขนส่ง")
+                                                            <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff6c58;">{{$order->status_text}}</span>
+                                                            @elseif($order->status_text == "เซ็นรับแล้ว")
+                                                            <span class="border border-success rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #5cb85c;">{{$order->status_text}}</span>
                                                             @endif
                                                         </td>
                                                         <td class='subbox16'>{{$order->order_no}}</td>
@@ -597,7 +600,7 @@
                             </thead>
                             <tbody>
                                 @foreach($orders as $order)
-                                @if($order->status_text != "ยกเลิก")
+                                @if($order->status_text == "รอปริ้น" || $order->status_text == "ปริ้นแล้ว" )
                                 <tr>
                                     <th>{{$order->order_no}}</th>
                                     <th>{{$order->tracking_no}}</th>
@@ -810,7 +813,7 @@
             }, {
                 "width": "150px"
             }, {
-                "width": "100px",
+                "width": "125px",
             }, {
                 "width": "100px"
             }, {
