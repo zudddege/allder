@@ -16,17 +16,16 @@ class CourierController extends Controller {
         return view('courier.courier', compact('couriers', 'warehouses'));
     }
 
-    public function getNotification(Request $request) {
-        $date = $request->date;
-        $get = FlashCoreFunction::buildRequestParam([
-            'mchId' => 'AA0594',
-            'nonceStr' => time(),
-            'date' => $date ?? null,
-        ]);
+    /* public function getNotification(Request $request) {
+    $date = $request->date;
+    $get = FlashCoreFunction::buildRequestParam([
+    'mchId' => 'AA0594',
+    'nonceStr' => time(),
+    'date' => $date ?? null,
+    ]);
 
-        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notifications", $get);
-        dd($post);
-    }
+    $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notifications", $get);
+    } */
 
     public function notifyCourier(Request $request) {
         $notify = FlashCoreFunction::buildRequestParam([
@@ -45,7 +44,6 @@ class CourierController extends Controller {
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notify", $notify);
         $response = json_decode($post, true);
-        dd($response);
 
         if ($response['message'] == "success") {
             Courier::create([
@@ -84,7 +82,8 @@ class CourierController extends Controller {
             'nonceStr' => time(),
         ]);
 
-        $post = FlashCoreFunction::postRequest($url, $cancel);
-        dd($post);
+        FlashCoreFunction::postRequest($url, $cancel);
+
+        return redirect('/couriers');
     }
 }
