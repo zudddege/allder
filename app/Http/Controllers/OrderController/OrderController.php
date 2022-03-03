@@ -141,7 +141,7 @@ class OrderController extends Controller {
                     'book_city' => $request->send_city,
                     'book_province' => $request->send_province,
                     'book_postal_code' => $request->send_postal_code,
-                    'is_main' => $request->main_address ? true : false,
+                    'is_main' => $request->main_address ? 1 : 0,
                 ]);
             }
 
@@ -156,7 +156,7 @@ class OrderController extends Controller {
                     'book_city' => $request->recv_city,
                     'book_province' => $request->recv_province,
                     'book_postal_code' => $request->recv_postal_code,
-                    'is_main' => false,
+                    'is_main' => 0,
                 ]);
             }
 
@@ -188,10 +188,10 @@ class OrderController extends Controller {
                 'user_cod' => $user_cod,
                 'user_price' => $user_price,
                 'note_detail' => $request->note_detail,
-                'is_return_insurance' => $request->is_return_insurance ? true : false,
-                'is_protect_insurance' => $request->is_protect_insurance ? true : false,
-                'is_express_transport' => $request->is_express_transport ? true : false,
-                'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                'is_return_insurance' => $request->is_return_insurance ? 1 : 0,
+                'is_protect_insurance' => $request->is_protect_insurance ? 1 : 0,
+                'is_express_transport' => $request->is_express_transport ? 1 : 0,
+                'is_damage_insurance' => $request->is_damage_insurance ? 1 : 0,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
                 'status_text' => "รอปริ้น",
@@ -287,7 +287,7 @@ class OrderController extends Controller {
                     'book_city' => $request->send_city,
                     'book_province' => $request->send_province,
                     'book_postal_code' => $request->send_postal_code,
-                    'is_main' => $request->main_address ? true : false,
+                    'is_main' => $request->main_address ? 1 : 0,
                 ]);
             }
 
@@ -302,7 +302,7 @@ class OrderController extends Controller {
                     'book_city' => $request->recv_city,
                     'book_province' => $request->recv_province,
                     'book_postal_code' => $request->recv_postal_code,
-                    'is_main' => false,
+                    'is_main' => 0,
                 ]);
             }
 
@@ -327,10 +327,10 @@ class OrderController extends Controller {
                 'order_price' => $order_price / 100,
                 'user_cod' => $user_cod,
                 'user_price' => $user_price,
-                'is_return_insurance' => $request->is_return_insurance ? true : false,
-                'is_protect_insurance' => $request->is_protect_insurance ? true : false,
-                'is_express_transport' => $request->is_express_transport ? true : false,
-                'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                'is_return_insurance' => $request->is_return_insurance ? 1 : 0,
+                'is_protect_insurance' => $request->is_protect_insurance ? 1 : 0,
+                'is_express_transport' => $request->is_express_transport ? 1 : 0,
+                'is_damage_insurance' => $request->is_damage_insurance ? 1 : 0,
                 'note_detail' => $request->note_detail,
                 'transport_text' => FlashCategoryCode::transport($request->is_express_transport == 1 ? 2 : 1),
                 'price_policy_code' => $response['data']['pricePolicy'],
@@ -545,10 +545,10 @@ class OrderController extends Controller {
                 'user_cod' => $user_cod,
                 'user_price' => $user_price,
                 'note_detail' => $request->note_detail,
-                'is_return_insurance' => $request->is_return_insurance ? true : false,
-                'is_protect_insurance' => $request->is_protect_insurance ? true : false,
-                'is_express_transport' => $request->is_express_transport ? true : false,
-                'is_damage_insurance' => $request->is_damage_insurance ? true : false,
+                'is_return_insurance' => $request->is_return_insurance ? 1 : 0,
+                'is_protect_insurance' => $request->is_protect_insurance ? 1 : 0,
+                'is_express_transport' => $request->is_express_transport ? 1 : 0,
+                'is_damage_insurance' => $request->is_damage_insurance ? 1 : 0,
                 'tracking_no' => $tracking_no,
                 'original_tracking' => $request->original_tracking,
                 'status_text' => "รอปริ้น",
