@@ -36,7 +36,7 @@ class Order extends Model {
         'is_protect_insurance',
         'is_return_insurance',
         'is_damage_insurance',
-        'is_express_transpot',
+        'is_express_transport',
         'order_cod',
         'order_price',
         'note_detail',
