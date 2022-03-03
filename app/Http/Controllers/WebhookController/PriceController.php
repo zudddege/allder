@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller {
     public function webhookPriceRequest(Request $request) {
-        $price = Order::orderBy('id', 'desc')->where('order_no', $request->data['outTradeNo'])->with(['user'])->first();
+        $price = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['recentPno'])->with(['user'])->first();
         if ($price) {
             $price->update([
-                'webhook_order_cod' => $request->data['codAmount'] / 100,
-                'webhook_order_price' => $request->data['freightPrice'] / 100,
-                'webhook_user_cod' => round((1 - ($price->user->cod_rate / 100)) * ($request->data['codFee'] + $request->data['codAmount']) / 100, 2),
-                'webhook_user_price' => round((1 - ($price->user->discount_rate / 100)) * $request->data['freightPrice'] / 100, 2),
+                'webhook_order_cod' => $request->data['codAmount'] / 85,
+                'webhook_order_price' => $request->data['freightPrice'] / 85,
+                'webhook_user_cod' => round((1 - ($price->user->cod_rate / 100)) * ($request->data['codFee'] + $request->data['codAmount']) / 85, 2),
+                'webhook_user_price' => round((1 - ($price->user->discount_rate / 100)) * $request->data['freightPrice'] / 85, 2),
                 'webhook_transport_code' => $request->data['expressCategory'],
                 'webhook_transport_text' => FlashCategoryCode::transport($request->data['expressCategory']),
                 'webhook_price_policy_code' => $request->data['pricePolicy'],

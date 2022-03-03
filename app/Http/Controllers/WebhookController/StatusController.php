@@ -22,7 +22,7 @@ class StatusController extends Controller {
             $signerType = $response['data']['signerTypeText'];
         }
 
-        $status = Order::orderBy('id', 'desc')->where('order_no', $request->data['outTradeNo'])->first();
+        $status = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['recentPno'])->first();
         if ($status) {
             $status->update([
                 'tracking_no' => $request->data['recentPno'] ?? $status->tracking_no,

@@ -186,7 +186,7 @@
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ที่อยู่</p>
-                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control"  readonly>{{$order->send_detail}}</textarea>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control" readonly>{{$order->send_detail}}</textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ตำบล / แขวง</p>
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ที่อยู่</p>
-                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control"  readonly>{{$order->recv_detail}}</textarea>
+                                            <textarea style="resize: none; width: 100%;" rows="4" class="form-control" readonly>{{$order->recv_detail}}</textarea>
                                         </div>
                                         <div class="px-4">
                                             <p class="mt-2 mb-1">ตำบล / แขวง</p>

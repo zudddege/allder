@@ -247,6 +247,139 @@
     });
 </script>
 
+<script>
+
+    $('#checkbox-courier').on('click', function (e) {
+        if (this.checked == true) {
+            $('#submit-button-courier').prop('disabled', false);
+        } else {
+            $('#submit-button-courier').prop('disabled', true);
+        }
+    });
+
+    $("#submit-button-courier").on("click", function(){
+        var notify_warehouse_no= $("#notify_warehouse_no").val();
+        var notify_contact_name= $("#notify_contact_name").val();
+        var notify_warehouse_detail= $("#notify_warehouse_detail").val();
+        var notify_warehouse_province= $("#notify_warehouse_province").val();
+        var notify_warehouse_name= $("#notify_warehouse_name").val();
+        var notify_warehouse_tel= $("#notify_warehouse_tel").val();
+        var notify_warehouse_district= $("#notify_warehouse_district").val();
+        var notify_warehouse_city= $("#notify_warehouse_city").val();
+        var notify_warehouse_postal_code= $("#notify_warehouse_postal_code").val();
+        var estimate_parcel_quantity= $("#estimate_parcel_quantity").val();
+        var check_courier= 0;
+
+        if (notify_warehouse_no==""){
+            $("#notify_warehouse_no").css('border-color', 'red');
+            $("#star01").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_contact_name==""){
+            $("#notify_contact_name").css('border-color', 'red');
+            $("#star02").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_detail==""){
+            $("#notify_warehouse_detail").css('border-color', 'red');
+            $("#star03").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_province==""){
+            $("#notify_warehouse_province").css('border-color', 'red');
+            $("#star04").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_name==""){
+            $("#notify_warehouse_name").css('border-color', 'red');
+            $("#star05").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_tel==""){
+            $("#notify_warehouse_tel").css('border-color', 'red');
+            $("#star06").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_district==""){
+            $("#notify_warehouse_district").css('border-color', 'red');
+            $("#star07").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_city==""){
+            $("#notify_warehouse_city").css('border-color', 'red');
+            $("#star08").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (notify_warehouse_postal_code==""){
+            $("#notify_warehouse_postal_code").css('border-color', 'red');
+            $("#star09").prop('hidden', false);
+            var check_courier = 1;
+        }
+        if (estimate_parcel_quantity==""){
+            $("#estimate_parcel_quantity").css('border-color', 'red');
+            $("#star010").prop('hidden', false);
+            var check_courier = 1;
+        }
+
+
+        if (check_courier=="1"){
+            return false;
+        }
+    });
+
+    $("#submit-button-courier2").on("click", function(){
+        var staff_id= $("#staff_id").val();
+        var assign_warehouse_detail= $("#assign_warehouse_detail").val();
+        var assign_warehouse_province= $("#assign_warehouse_province").val();
+        var assign_warehouse_district= $("#assign_warehouse_district").val();
+        var assign_warehouse_city= $("#assign_warehouse_city").val();
+        var assign_warehouse_postal_code= $("#assign_warehouse_postal_code").val();
+        var assign_estimate_parcel_quantity= $("#assign_estimate_parcel_quantity").val();
+        var check_courier2= 0;
+
+        if (staff_id==""){
+            $("#staff_id").css('border-color', 'red');
+            $("#star011").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_warehouse_detail==""){
+            $("#assign_warehouse_detail").css('border-color', 'red');
+            $("#star012").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_warehouse_province==""){
+            $("#assign_warehouse_province").css('border-color', 'red');
+            $("#star013").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_warehouse_district==""){
+            $("#assign_warehouse_district").css('border-color', 'red');
+            $("#star014").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_warehouse_city==""){
+            $("#assign_warehouse_city").css('border-color', 'red');
+            $("#star015").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_warehouse_postal_code==""){
+            $("#assign_warehouse_postal_code").css('border-color', 'red');
+            $("#star016").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+        if (assign_estimate_parcel_quantity==""){
+            $("#assign_estimate_parcel_quantity").css('border-color', 'red');
+            $("#star017").prop('hidden', false);
+            var check_courier2 = 1;
+        }
+
+        if (check_courier2=="1"){
+            return false;
+        }
+    });
+
+</script>
+
 
 
 

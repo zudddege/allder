@@ -239,7 +239,7 @@
                                             <td>{{$order->signer_type}}</td>
                                             <td>{{$order->signer_name}}</td>
                                             <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="img-empty" > </td>
-                                            <td class="td_detail shadow"><a href="{{url('/detail-pod/'.$order->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
+                                            <td class="td_detail shadow"><a href="{{url('/detail-pod/'.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endif
                                         @endforeach
@@ -453,8 +453,6 @@
             }
             $('.subbox')
         });
-
-
 
     </script>
 

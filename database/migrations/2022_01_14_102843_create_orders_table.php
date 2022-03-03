@@ -41,7 +41,7 @@ class CreateOrdersTable extends Migration {
             $table->boolean('is_protect_insurance')->nullable();
             $table->boolean('is_return_insurance')->nullable();
             $table->boolean('is_damage_insurance')->nullable();
-            $table->boolean('is_express_transpot')->nullable();
+            $table->boolean('is_express_transport')->nullable();
             $table->decimal('order_cod', 8, 2)->nullable();
             $table->decimal('order_price', 8, 2)->nullable();
             $table->string('note_detail', 200)->nullable();

@@ -96,8 +96,10 @@ class FlashCategoryCode extends Model {
             return 'เฟอร์นิเจอร์';
         } elseif ($code == '11') {
             return 'ผลไม้';
-        } else {
+        } elseif ($code == '99') {
             return 'อื่นๆ';
+        } else {
+            return $code;
         }
     }
 
@@ -108,6 +110,8 @@ class FlashCategoryCode extends Model {
             return 'รอรับพัสดุ';
         } elseif ($code == '2') {
             return 'รับพัสดุแล้ว';
+        } elseif ($code == '3') {
+            return 'โอนงานรับ';
         } elseif ($code == '4') {
             return 'ยกเลิกแล้ว';
         } else {

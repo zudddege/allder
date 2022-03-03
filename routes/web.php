@@ -29,6 +29,7 @@ Route::middleware(['auth', 'status'])->group(function () {
 
     Route::prefix('/couriers')->group(function () {
         Route::get('/', 'CourierController\CourierController@showCourier');
+        Route::get('/detail/{id}', 'CourierController\CourierController@detailCourier');
     });
 // สมุดที่อยู่
     Route::prefix('/books')->group(function () {

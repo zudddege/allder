@@ -11,22 +11,25 @@ use Illuminate\Support\Facades\Auth;
 
 class CourierController extends Controller {
     public function showCourier() {
-        $couriers = Courier::all();
+        $couriers = Courier::orderBy('id', 'desc')->when(Auth::user()->is_admin == 1, function ($query) {
+            return $query;
+        })->when(Auth::user()->is_admin == 0, function ($query) {
+            return $query->where('user_id', Auth::id());
+        })->get();
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         return view('courier.courier', compact('couriers', 'warehouses'));
     }
 
-    public function getNotification(Request $request) {
-        $date = $request->date;
-        $get = FlashCoreFunction::buildRequestParam([
-            'mchId' => 'AA0594',
-            'nonceStr' => time(),
-            'date' => $date ?? null,
-        ]);
+    /* public function getNotification(Request $request) {
+    $date = $request->date;
+    $get = FlashCoreFunction::buildRequestParam([
+    'mchId' => 'AA0594',
+    'nonceStr' => time(),
+    'date' => $date ?? null,
+    ]);
 
-        $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notifications", $get);
-        dd($post);
-    }
+    $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notifications", $get);
+    } */
 
     public function notifyCourier(Request $request) {
         $notify = FlashCoreFunction::buildRequestParam([
@@ -45,7 +48,6 @@ class CourierController extends Controller {
 
         $post = FlashCoreFunction::postRequest("https://open-api.flashexpress.com/open/v1/notify", $notify);
         $response = json_decode($post, true);
-        dd($response);
 
         if ($response['message'] == "success") {
             Courier::create([
@@ -84,7 +86,14 @@ class CourierController extends Controller {
             'nonceStr' => time(),
         ]);
 
-        $post = FlashCoreFunction::postRequest($url, $cancel);
-        dd($post);
+        FlashCoreFunction::postRequest($url, $cancel);
+
+        return redirect('/couriers');
+    }
+
+    public function detailCourier($id) {
+        $courier = courier::find($id);
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('courier.detail-courier', compact('warehouses','courier'));
     }
 }
