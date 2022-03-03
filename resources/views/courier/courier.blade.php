@@ -177,6 +177,7 @@
                                             <th>ที่อยู่เข้ารับพัสดุ</th>
                                             <th>ข้อมูลคูเรียร์</th>
                                             <th>หมายเหตุ</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -200,6 +201,7 @@
                                                 <div class="text-muted">{{$courier->operator_name}}</div>
                                             </td>
                                             <td>{{$courier->note_detail}}</td>
+                                            <td class="td_detail shadow"><a href="{{url('/couriers/detail/'.$courier->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -358,7 +360,7 @@
             $table.trigger('repaginate');
         });
     </script>
-    
+
 </body>
 
 </html>

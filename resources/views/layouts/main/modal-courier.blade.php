@@ -100,7 +100,7 @@
                     </div>
                     <div class="my-1">
                         <span>หมายเหตุ</span>
-                        <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="note_detail" id="notify_note_detail"></textarea>
+                        <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="note_detail" id="notify_note_detail"></textarea>
                     </div>
                     <div class="container-fluid my-2">
                         <div class="d-flex my-1">
@@ -207,7 +207,7 @@
             </div>
             <div class="my-1 mx-2">
                 <span>หมายเหตุ</span>
-                <textarea style="resize: none; width: 100%;" rows="4" class="border border-light form-control" name="note_detail" id="assign_note_detail"></textarea>
+                <textarea style="resize: none; width: 100%;" rows="4" class="form-control" name="note_detail" id="assign_note_detail"></textarea>
             </div>
             <div class="container-fluid my-2 mx-2">
                 <div class="d-flex my-1">
