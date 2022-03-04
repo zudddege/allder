@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class WeightController extends Controller {
     public function webhookWeightRequest(Request $request) {
-        $weight = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['recentPno'])->first();
+        $weight = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['pno'])->first();
         if ($weight) {
             $weight->update([
                 'webhook_weight' => $request->data['weight'] / 1000,

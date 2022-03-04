@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class StatusController extends Controller {
     public function webhookStatusRequest(Request $request) {
         if ($request->data['state'] == '5') {
-            $url = "https://open-api.flashexpress.com/open/v1/orders/" . $request->data['recentPno'] . "/deliveredInfo";
+            $url = "https://open-api.flashexpress.com/open/v1/orders/" . $request->data['pno'] . "/deliveredInfo";
             $sign = FlashCoreFunction::buildRequestParam([
                 'mchId' => 'AA0594',
                 'nonceStr' => time(),
@@ -22,10 +22,10 @@ class StatusController extends Controller {
             $signerType = $response['data']['signerTypeText'];
         }
 
-        $status = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['recentPno'])->first();
+        $status = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['pno'])->first();
         if ($status) {
             $status->update([
-                'tracking_no' => $request->data['recentPno'] ?? $status->tracking_no,
+                'tracking_no' => $request->data['pno'] ?? $status->tracking_no,
                 'operator_branch' => $request->data['operationAddress'] ?? $status->operator_branch,
                 'problem_code' => $request->data['markerCategory'] ?? $status->problem_code,
                 'problem_text' => FlashCategoryCode::problem($request->data['markerCategory'] ?? $status->problem_text),
@@ -33,7 +33,7 @@ class StatusController extends Controller {
                 'status_code' => $request->data['state'] ?? $status->status_code,
                 'status_text' => FlashCategoryCode::status($request->data['state']) ?? $status->status_text,
                 'pickup_id' => $request->data['ticketPickupId'] ?? $status->pickup_id,
-                'original_no' => $request->data['customPno'] ?? $status->original_no,
+                'original_no' => $request->data['customaryPno'] ?? $status->original_no,
                 'operator_tel' => $request->data['staffInfoPhone'] ?? $status->operator_tel,
                 'operator_id' => $request->data['staffInfoId'] ?? $status->operator_id,
                 'signer_name' => $signer ?? $status->signer_name,

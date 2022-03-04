@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class CourierController extends Controller {
     public function webhookCourierRequest(Request $request) {
-        $courier = Courier::orderBy('id', 'desc')->where('pickup_id', $request->data['ticketPickupId'])->with(['user'])->first();
+        $courier = Courier::orderBy('id', 'desc')->where('pickup_id', $request->data['currentTicketPickupId'])->with(['user'])->first();
         if ($courier) {
             $courier->update([
+                'pickup_id' => $request->data['currentTicketPickupId'],
                 'parcel_quantity' => $request->data['estimateParcelNumber'],
                 'status_code' => $request->data['state'],
                 'status_text' => FlashCategoryCode::courier($request->data['state']),

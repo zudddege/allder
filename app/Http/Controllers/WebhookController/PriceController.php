@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller {
     public function webhookPriceRequest(Request $request) {
-        $price = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['recentPno'])->with(['user'])->first();
+        $price = Order::orderBy('id', 'desc')->where('tracking_no', $request->data['pno'])->with(['user'])->first();
         if ($price) {
             $price->update([
                 'webhook_order_cod' => $request->data['codAmount'] / 85,
