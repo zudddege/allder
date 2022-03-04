@@ -299,6 +299,8 @@
                 "width": "250px"
             }, {
                 "width": "250px"
+            }, {
+                "width": "120px"
             }, ],
             "ordering": false
         });
