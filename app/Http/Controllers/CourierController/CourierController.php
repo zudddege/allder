@@ -78,7 +78,7 @@ class CourierController extends Controller {
     }
 
     public function cancelNotification(Request $request) {
-        $pickupId = $request->id; /* Courier::find($request->id)->pickup_id; */
+        $pickupId = Courier::find($request->id)->pickup_id;
         $url = "https://open-api.flashexpress.com//open/v1/notify" . $pickupId . "/cancel";
 
         $cancel = FlashCoreFunction::buildRequestParam([

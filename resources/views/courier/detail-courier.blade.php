@@ -154,7 +154,7 @@
                                 <div class="mx-4">
                                     <div class="my-1">
                                         <span>จำนวนพัสดุ</span>
-                                        <input class="form-control" type="text" name="estimate_parcel_quantity" value="{{$courier->parcel_quantity}}" readonly>
+                                        <input class="form-control" type="text" name="estimate_parcel_quantity" value="{{$courier->parcel_quantity}}" style="width:40%;" readonly>
                                     </div>
                                     <div class="my-1">
                                         <span>หมายเหตุ</span>

@@ -95,6 +95,51 @@
 
     </style>
 
+    <style>
+        div.pager {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager span.active {
+            background: #0036e7;
+        }
+
+        div.pager-suc {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        div.pager-suc span {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            line-height: 1.8;
+            text-align: center;
+            cursor: pointer;
+            background: #2196F3;
+            color: #ffff;
+            margin-right: 0.5em;
+        }
+
+        div.pager-suc span.active {
+            background: #0036e7;
+        }
+
+    </style>
+
 </head>
 
 <body class="main-body app sidebar-mini">
@@ -156,7 +201,7 @@
                                                 เบอร์โทรศัพท์</a></div>
                                         <div class="d-flex ">
                                             <div class="">
-                                                <input class="form-control" type="text" value="" style="width:325px;">
+                                                <input class="form-control" type="text" value="" style="width:325px;" id="search" >
                                             </div>
                                             <div class="dropdown ">
                                                 <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -197,7 +242,7 @@
                                 </div>
                             </form>
                             <div class="px-2 ">
-                                <table class="table table-striped position-relative" id="my-table">
+                                <table class="table table-striped position-relative paginated" id="my-table">
                                     <thead>
                                         <tr>
                                             <th class=""><input id='mainbox' type="checkbox"></th>
@@ -238,13 +283,14 @@
                                                 <a>{{$order->recv_postal_code}}</a> </td>
                                             <td>{{$order->signer_type}}</td>
                                             <td>{{$order->signer_name}}</td>
-                                            <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="img-empty" > </td>
+                                            <td> <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="shadow" > </td>
                                             <td class="td_detail shadow"><a href="{{url('/detail-pod/'.$order->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endif
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="paginated"></div>
                             </div>
                         </div>
                     </div>
@@ -293,6 +339,9 @@
     <script>
         $('#my-table').DataTable({
             scrollX: true,
+            paging: false,
+            ordering: false,
+            info: false,
             "columns": [{
                 "width": "2%"
             }, {
@@ -454,6 +503,80 @@
             $('.subbox')
         });
 
+    </script>
+    <script>
+        $('#search').on("keyup", function () {
+            $('table.paginated').trigger('repaginate');
+        })
+
+        $('table.paginated').each(function () {
+            var currentPage = 0;
+            var numPerPage = 7;
+            var $table = $(this);
+            var $pager = $('<div class="pager"></div>');
+            var $previous = $('<span class="previous"><<</span>');
+            var $next = $('<span class="next">>></span>');
+
+            $pager.appendTo('div.paginated').find('span.page-number:first').addClass('active');
+
+            $table.bind('repaginate', function () {
+                $table.find('tbody tr').hide();
+
+                $filteredRows = $table.find('tbody tr').filter(function (i, tr) {
+                    return $('#search').val() != "" ? $(tr).find("td").get().map(function (td) {
+                        return $(td).text();
+                    }).filter(function (td) {
+                        return td.indexOf($('#search').val()) != -1;
+                    }).length > 0 : true;
+                });
+
+                $filteredRows.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+
+                var numRows = $filteredRows.length;
+                var numPages = Math.ceil(numRows / numPerPage);
+
+                $pager.find('.page-number, .previous, .next').remove();
+                for (var page = 0; page < numPages; page++) {
+                    var $newPage = $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                        newPage: page
+                    }, function (event) {
+                        currentPage = event.data['newPage'];
+                        $table.trigger('repaginate');
+                    })
+                    if (page == currentPage) {
+                        $newPage.addClass('clickable active');
+                    } else {
+                        $newPage.addClass('clickable');
+                    }
+                    $newPage.appendTo($pager)
+                }
+
+                $previous.insertBefore('span.page-number:first');
+                $next.insertAfter('span.page-number:last');
+
+                $next.click(function (e) {
+                    $previous.addClass('clickable');
+                    $pager.find('.active').next('.page-number.clickable').click();
+                });
+                $previous.click(function (e) {
+                    $next.addClass('clickable');
+                    $pager.find('.active').prev('.page-number.clickable').click();
+                });
+
+                $next.addClass('clickable');
+                $previous.addClass('clickable');
+
+                setTimeout(function () {
+                    var $active = $pager.find('.page-number.active');
+                    if ($active.next('.page-number.clickable').length === 0) {
+                        $next.removeClass('clickable');
+                    } else if ($active.prev('.page-number.clickable').length === 0) {
+                        $previous.removeClass('clickable');
+                    }
+                });
+            });
+            $table.trigger('repaginate');
+        });
     </script>
 
 </body>

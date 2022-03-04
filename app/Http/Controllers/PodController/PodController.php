@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Warehouse\Warehouse;
 use App\Models\Order\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\AuthFacades\;
 
 class PodController extends Controller
 {

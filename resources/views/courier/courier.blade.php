@@ -65,6 +65,20 @@
     </style>
 
     <style>
+
+        .table th:last-child,
+        .table td:last-child {
+            position: sticky;
+            right: 0px;
+        }
+
+        .td_detail_row:nth-child(odd) .td_detail {
+            background-color: #E3E8F7;
+        }
+
+        .td_detail_row:nth-child(even) .td_detail {
+            background-color: white;
+        }
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
@@ -182,7 +196,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($couriers as $courier)
-                                        <tr>
+                                        <tr class="td_detail_row">
                                             <td><input type="checkbox"></td>
                                             <td>{{$courier->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
                                             <td><span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: orange;">{{$courier->status_text}}</span></td>

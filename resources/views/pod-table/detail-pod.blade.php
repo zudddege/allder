@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="px-4">
                                     <p class="mt-2 mb-1">เซ็นชื่อด้วยตัวบรรจง</p>
-                                    <img src="{{$order->signature_url}}" width="100%;" height="100%;" alt="">
+                                    <img src="{{$order->signature_url}}" width="100%;" height="100%;" alt="" class="border">
                                 </div>
                             </div>
                         </div>
