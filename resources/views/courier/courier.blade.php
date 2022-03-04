@@ -65,6 +65,20 @@
     </style>
 
     <style>
+
+        .table th:last-child,
+        .table td:last-child {
+            position: sticky;
+            right: 0px;
+        }
+
+        .td_detail_row:nth-child(odd) .td_detail {
+            background-color: #E3E8F7;
+        }
+
+        .td_detail_row:nth-child(even) .td_detail {
+            background-color: white;
+        }
         .dropdown-menu {
             width: 350px !important;
             margin-right: 50% !important;
@@ -177,14 +191,37 @@
                                             <th>ที่อยู่เข้ารับพัสดุ</th>
                                             <th>ข้อมูลคูเรียร์</th>
                                             <th>หมายเหตุ</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($couriers as $courier)
-                                        <tr>
+                                        <tr class="td_detail_row">
                                             <td><input type="checkbox"></td>
                                             <td>{{$courier->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td style="color: orange;">{{$courier->status_text}}</td>
+                                            <td class='subbox2' align="center">@if($courier->status_text == "ปริ้นแล้ว")
+                                                    <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #005cfb;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "รอปริ้น")
+                                                    <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "รับพัสดุแล้ว")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #29e44e;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างการขนส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff6c58;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างการจัดส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #fbab56;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "พัสดุคงคลัง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #100087;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "เซ็นรับแล้ว")
+                                                    <span class="border border-success rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #5cb85c;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างจัดการพัสดุมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "พัสดุตีกลับ")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ปิดงานมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_code == "9")
+                                                    <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff0800;">{{$courier->status_text}}</span>
+                                                    @endif</td>
                                             <td>
                                                 <div>{{$courier->warehouse_name}}</div>
                                                 <div class="text-muted">
@@ -197,13 +234,15 @@
                                             </td>
                                             <td>
                                                 <div>{{$courier->operator_tel}}</div>
-                                                <div class="text-muted">{{$courier->operator_name}}</div>
+                                                <div class="text-muted">{{$courier->operator_name}} ({{$courier->operator_id}})</div>
                                             </td>
                                             <td>{{$courier->note_detail}}</td>
+                                            <td class="td_detail shadow"><a href="{{url('/couriers/detail/'.$courier->id)}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="paginated"></div>
                             </div>
                             <div class="jumps-prevent" style="padding-top: 15px;"></div>
                         </div>
@@ -257,7 +296,7 @@
 
     <script>
         $('#my-table').DataTable({
-            scrollX: false,
+            scrollX: true,
             paging: false,
             ordering: false,
             info: false,
@@ -267,15 +306,17 @@
             "columns": [{
                 "width": "2%"
             }, {
-                "width": "17%"
+                "width": "150px"
             }, {
-                "width": "9%"
+                "width": "100px"
             }, {
-                "width": "25%"
+                "width": "400px"
             }, {
-                "width": "25%"
+                "width": "250px"
             }, {
-                "width": "20%"
+                "width": "250px"
+            }, {
+                "width": "120px"
             }, ],
             "ordering": false
         });
@@ -297,7 +338,7 @@
             var $previous = $('<span class="previous"><<</span>');
             var $next = $('<span class="next">>></span>');
 
-            $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+            $pager.insertAfter('div.paginated').find('span.page-number:first').addClass('active');
 
             $table.bind('repaginate', function () {
                 $table.find('tbody tr').hide();
@@ -358,7 +399,7 @@
             $table.trigger('repaginate');
         });
     </script>
-    
+
 </body>
 
 </html>

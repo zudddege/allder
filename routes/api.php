@@ -34,7 +34,7 @@ Route::middleware(['auth', 'status'])->group(function () {
     Route::prefix('/couriers')->group(function () {
         Route::post('/get-notify', 'CourierController\CourierController@getNotification');
         Route::post('/notify-courier', 'CourierController\CourierController@notifyCourier');
-        Route::post('/cancel-notify', 'CourierController\CourierController@cancelNotification');
+        Route::post('/cancel/{id}', 'CourierController\CourierController@cancelNotification');
     });
 
     Route::prefix('/books')->group(function () {

@@ -29,6 +29,7 @@ Route::middleware(['auth', 'status'])->group(function () {
 
     Route::prefix('/couriers')->group(function () {
         Route::get('/', 'CourierController\CourierController@showCourier');
+        Route::get('/detail/{id}', 'CourierController\CourierController@detailCourier');
     });
 // สมุดที่อยู่
     Route::prefix('/books')->group(function () {
@@ -77,7 +78,7 @@ Route::get('/event','CodController\CodController@event');
 
 // ตาราง POD-table
 Route::get('/pod','PodController\PodController@showPOD');
-Route::get('/detail-pod','PodController\PodController@detailPOD');
+Route::get('/detail-pod/{id}','PodController\PodController@detailPOD');
 
 // Problem-order
 Route::get('/problem-orders','ProblemOrderController\ProblemOrderController@showProlemOrder');

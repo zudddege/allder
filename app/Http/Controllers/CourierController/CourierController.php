@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CourierController extends Controller {
     public function showCourier() {
-        $couriers = Courier::all();
+        $couriers = Courier::orderBy('id', 'desc')->when(Auth::user()->is_admin == 1, function ($query) {
+            return $query;
+        })->when(Auth::user()->is_admin == 0, function ($query) {
+            return $query->where('user_id', Auth::id());
+        })->get();
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
         return view('courier.courier', compact('couriers', 'warehouses'));
     }
@@ -74,7 +78,7 @@ class CourierController extends Controller {
     }
 
     public function cancelNotification(Request $request) {
-        $pickupId = $request->id; /* Courier::find($request->id)->pickup_id; */
+        $pickupId = Courier::find($request->id)->pickup_id;
         $url = "https://open-api.flashexpress.com//open/v1/notify" . $pickupId . "/cancel";
 
         $cancel = FlashCoreFunction::buildRequestParam([
@@ -85,5 +89,11 @@ class CourierController extends Controller {
         FlashCoreFunction::postRequest($url, $cancel);
 
         return redirect('/couriers');
+    }
+
+    public function detailCourier($id) {
+        $courier = courier::find($id);
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('courier.detail-courier', compact('warehouses','courier'));
     }
 }
