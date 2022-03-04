@@ -177,7 +177,6 @@
                                             <th>ที่อยู่เข้ารับพัสดุ</th>
                                             <th>ข้อมูลคูเรียร์</th>
                                             <th>หมายเหตุ</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -185,7 +184,29 @@
                                         <tr>
                                             <td><input type="checkbox"></td>
                                             <td>{{$courier->created_at->addYear(543)->format('d/m/Y - h:i a')}}</td>
-                                            <td><span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: orange;">{{$courier->status_text}}</span></td>
+                                            <td class='subbox2' align="center">@if($courier->status_text == "ปริ้นแล้ว")
+                                                    <span class="border border-primary rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #005cfb;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "รอปริ้น")
+                                                    <span class="border border-warning rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "รับพัสดุแล้ว")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #29e44e;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างการขนส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff6c58;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างการจัดส่ง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #fbab56;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "พัสดุคงคลัง")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #100087;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "เซ็นรับแล้ว")
+                                                    <span class="border border-success rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #5cb85c;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ระหว่างจัดการพัสดุมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff9100;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "พัสดุตีกลับ")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_text == "ปิดงานมีปัญหา")
+                                                    <span class="border  rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff3300;">{{$courier->status_text}}</span>
+                                                    @elseif($courier->status_code == "9")
+                                                    <span class="border border-danger rounded-10" style="padding: 5px 10px; color: #ffffff; background-color: #ff0800;">{{$courier->status_text}}</span>
+                                                    @endif</td>
                                             <td>
                                                 <div>{{$courier->warehouse_name}}</div>
                                                 <div class="text-muted">
@@ -201,7 +222,6 @@
                                                 <div class="text-muted">{{$courier->operator_name}} ({{$courier->operator_id}})</div>
                                             </td>
                                             <td>{{$courier->note_detail}}</td>
-                                            <td class="td_detail shadow"><a href="{{url('/couriers/detail/'.$courier->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
