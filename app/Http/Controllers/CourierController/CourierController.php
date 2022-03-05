@@ -51,6 +51,7 @@ class CourierController extends Controller {
 
         if ($response['message'] == "success") {
             Courier::create([
+                'user_id' => Auth::id(),
                 'pickup_id' => $response['data']['ticketPickupId'],
                 'warehouse_no' => $request->warehouse_no,
                 'warehouse_name' => $request->warehouse_name,
@@ -61,16 +62,15 @@ class CourierController extends Controller {
                 'warehouse_city' => $request->warehouse_city,
                 'warehouse_province' => $request->warehouse_province,
                 'warehouse_postal_code' => $request->warehouse_postal_code,
-                'estimate_parcel_quantity' => $request->estimate_parcel_quantity,
-                'parcel_quantity' => "0",
-                'status' => "รอรับพัสดุ",
+                'parcel_quantity' => $request->estimate_parcel_quantity,
+                'status_code' => "1",
+                'status_text' => "รอรับพัสดุ",
                 'note_detail' => $request->note_detail,
-                'staff_id' => $response['data']['staffInfoId'],
-                'staff_name' => $response['data']['staffInfoName'],
-                'staff_tel' => $response['data']['staffInfoPhone'],
+                'operator_id' => $response['data']['staffInfoId'],
+                'operator_name' => $response['data']['staffInfoName'],
+                'operator_tel' => $response['data']['staffInfoPhone'],
                 'timeout_text' => $response['data']['timeoutAtText'],
                 'ticket_message' => $response['data']['ticketMessage'],
-                'notice' => $response['data']['notice'],
             ]);
         }
 
@@ -94,6 +94,6 @@ class CourierController extends Controller {
     public function detailCourier($id) {
         $courier = courier::find($id);
         $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
-        return view('courier.detail-courier', compact('warehouses','courier'));
+        return view('courier.detail-courier', compact('warehouses', 'courier'));
     }
 }
