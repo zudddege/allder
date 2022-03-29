@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration {
             $table->string('password', 100)->nullable();
             $table->string('account_name', 50)->nullable();
             $table->string('tel_no', 20)->nullable();
-            $table->decimal('discount_rate', 3, 0)->nullable();
-            $table->decimal('cod_rate', 3, 0)->nullable();
+            $table->decimal('discount_rate', 5, 2)->nullable();
+            $table->decimal('cod_rate', 5, 2)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

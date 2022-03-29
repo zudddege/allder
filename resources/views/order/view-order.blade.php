@@ -545,10 +545,10 @@
                                                         </td>
                                                         <td class='subbox22'>{{$order->recv_tel}}</td>
                                                         <td class='subbox23'>{{$order->category_text}} <br> {{$order->weight}} kg / {{$order->length}} x {{$order->width}} x {{$order->height}} cm</td>
-                                                        <td class='subbox24'>{{$order->order_price}} </td>
+                                                        <td class='subbox24'>{{$order->user_cod}} </td>
                                                         <td class='subbox25'>{{$order->user_price}} </td>
                                                         <td class='subbox26'>{{$order->note_detail}}</td>
-                                                        <td class="td_detail shadow"><button data-toggle="modal" data-target="#detail-ordersuccess-modal"  class="btn btn-link">ดูรายละเอียด</button>
+                                                        <td class="td_detail shadow"><button data-toggle="modal" data-target="#detail-ordersuccess-modal"  class="btn btn-link success-id" value="{{$order->id}}">ดูรายละเอียด</button>
                                                         </td>
                                                     </tr>
                                                     @endif
@@ -640,9 +640,6 @@
                     <div class="jumps-prevent" style="padding-top: 30px;"></div>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-label-detail" role="tabpanel" aria-labelledby="nav-label-detail-tab">
-
-
-
                             <div class="row">
                                 <div class="col-4">
                                     <p>เลขออเดอร์</p>
@@ -675,7 +672,8 @@
                                     <p>ค่าประกัน</p>
                                 </div>
                                 <div class="col-8">
-                                @foreach ( $orders as $order )
+                                    @foreach($orders as $order)
+                                    @if($order->id == 1)
                                     <p>{{$order->order_no}}</p>
                                     <p>{{$order->tracking_no}}</p>
                                     <p>--------</p>
@@ -704,12 +702,16 @@
                                     <p></p>
                                     <p></p>
                                     <p></p>
-                                @endforeach
+                                    @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-send-detail" role="tabpanel" aria-labelledby="nav-send-detail-tab">...</div>
-                        <div class="tab-pane fade" id="nav-signature" role="tabpanel" aria-labelledby="nav-signature-tab">...</div>
+                        <div class="tab-pane fade" id="nav-signature" role="tabpanel" aria-labelledby="nav-signature-tab">
+                            <p>เซ็นชื่อด้วยตัวบรรจง</p>
+                            <img src="{{$order->signature_url}}" width="60%;" height="100%;" alt="" class="shadow" >
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1155,6 +1157,10 @@
                     },
                 });
             }
+        });
+
+        $('.success-id').on('click', function (e) {
+            var success_id = $('.success-id').val();
         });
 
 

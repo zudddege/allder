@@ -166,7 +166,9 @@
                                     <p>: {{$courier->timeout_text}}</p>
                                 </div>
                                 <div class="d-flex my-1" style="padding-top: 15px;">
-                                    <button type="button" class="btn btn-danger mx-2">ยกเลิกการเรียกคูเรียร์</button>
+                                    <form action="{{url('/api/couriers/cancel/'.$couriers->id)}}" method="post">
+                                        <button type="submit" class="btn btn-danger mx-2">ยกเลิกการเรียกคูเรียร์</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +180,7 @@
             <!-- Container closed -->
         </div>
         <!-- main-content closed -->
-
+        
         <!-- End Page -->
         @include('layouts.main.modal-courier')
         <!-- Back-to-top -->
