@@ -548,8 +548,7 @@
                                                         <td class='subbox24'>{{$order->user_cod}} </td>
                                                         <td class='subbox25'>{{$order->user_price}} </td>
                                                         <td class='subbox26'>{{$order->note_detail}}</td>
-                                                        <td class="td_detail shadow"><button data-toggle="modal" data-target="#detail-ordersuccess-modal"  class="btn btn-link success-id" value="{{$order->id}}">ดูรายละเอียด</button>
-                                                        </td>
+                                                        <td class="td_detail shadow"><a href="{{url('/orders/detail-success/'.$order->id.'')}}" class="btn btn-link"><u>ดูรายละเอียด</u></a></td>
                                                     </tr>
                                                     @endif
                                                     @endforeach

@@ -44,6 +44,12 @@ class OrderController extends Controller {
         return view('order.detail-order', compact('order', 'warehouses'));
     }
 
+    public function detailOrderSuc($id) {
+        $order = Order::find($id);
+        $warehouses = Warehouse::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
+        return view('order.detail-ordersuc', compact('order', 'warehouses'));
+    }
+
     public function editOrder($id) {
         $order = Order::find($id);
         $addressBooks = AddressBook::select('id', 'book_name', 'book_tel', 'book_detail', 'book_district', 'book_city', 'book_province', 'book_postal_code')->where('user_id', Auth::id())->get();
