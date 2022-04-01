@@ -323,6 +323,10 @@
 </div>
 
 <style>
+
+    .modal {
+        overflow: auto !important;
+    }
     div.pager-ware {
         text-align: center;
         margin: 1em 0;
